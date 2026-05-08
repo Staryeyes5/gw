@@ -7,7 +7,7 @@
     <meta name="description" content="Cisetech成立于2010年，新三板上市企业，15年金融科技与企业数字化转型经验。">
     <meta name="keywords" content="Cisetech,申朴信息,关于我们,发展历程,企业文化">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script src="lang.js"></script>
+    <script src="assets/js/lang.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/renderers/CSS2DRenderer.js"></script>
@@ -1412,7 +1412,7 @@
             <div class="flex items-center justify-between h-20">
                 <a href="index.html" class="flex items-center gap-3 group">
                     <div class="h-12 w-12 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <img src="assets/申朴圆点logo.png" alt="Cisetech Logo" class="h-10 w-auto object-contain">
+                        <img src="assets/logos/申朴圆点logo.png" alt="Cisetech Logo" class="h-10 w-auto object-contain">
                     </div>
                     <div>
                         <h1 class="site-logo-text text-xl font-bold text-white">Cisetech</h1>
@@ -1548,7 +1548,7 @@
     <section class="relative h-screen min-h-[600px] overflow-hidden">
         <!-- 背景图片 -->
         <div class="absolute inset-0">
-            <img src="assets/aboutbg.jpg" alt="上海陆家嘴天际线" class="w-full h-full object-cover">
+            <img src="assets/about/aboutbg.jpg" alt="上海陆家嘴天际线" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20"></div>
         </div>
         
@@ -1716,7 +1716,7 @@
     <section class="py-20 relative">
         <!-- 背景图片 -->
         <div class="absolute inset-0">
-            <img src="assets/about-office.png" alt="Cisetech写字楼" class="w-full h-full object-cover">
+            <img src="assets/about/about-office.png" alt="Cisetech写字楼" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-blue-800/85"></div>
         </div>
         
@@ -1757,7 +1757,7 @@
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 <!-- 企业愿景 -->
                 <div class="relative rounded-2xl overflow-hidden h-64 group cursor-pointer fade-in">
-                    <img src="assets/about-desk.png" alt="办公文具" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img src="assets/about/about-desk.png" alt="办公文具" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-cyan-600/90 via-cyan-600/50 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-8">
                         <h3 class="text-2xl font-bold text-white mb-2">企业愿景</h3>
@@ -1767,7 +1767,7 @@
                 
                 <!-- 核心价值 -->
                 <div class="relative rounded-2xl overflow-hidden h-64 group cursor-pointer fade-in" style="transition-delay: 0.1s">
-                    <img src="assets/about-growth.png" alt="成长概念" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img src="assets/about/about-growth.png" alt="成长概念" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-emerald-600/90 via-emerald-600/50 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-8">
                         <h3 class="text-2xl font-bold text-white mb-2">核心价值</h3>
@@ -1782,7 +1782,7 @@
 <style>
     /* 发展历程背景 */
     .milestone-section {
-        background: url('assets/发展历程bg.jpg') center center/cover no-repeat;
+        background: url('assets/backgrounds/发展历程bg.jpg') center center/cover no-repeat;
         position: relative;
         overflow: visible;
     }
@@ -3440,7 +3440,7 @@
                 <div class="flex flex-col">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="h-10 w-10 flex items-center justify-center">
-                            <img src="assets/申朴圆点logo.png" alt="Cisetech Logo" class="h-8 w-auto object-contain">
+                            <img src="assets/logos/申朴圆点logo.png" alt="Cisetech Logo" class="h-8 w-auto object-contain">
                         </div>
                         <div>
                             <h3 class="text-lg font-bold text-white">Cisetech</h3>
@@ -4450,10 +4450,10 @@
 
             // 本地地球纹理资源（已下载到服务器）
             const earthTextures = {
-                map: 'textures/earth_atmos_2048.jpg',
-                normalMap: 'textures/earth_normal_2048.jpg',
-                specularMap: 'textures/earth_specular_2048.jpg',
-                cloudsMap: 'textures/earth_clouds_1024.png'
+                map: 'assets/textures/earth_atmos_2048.jpg',
+                normalMap: 'assets/textures/earth_normal_2048.jpg',
+                specularMap: 'assets/textures/earth_specular_2048.jpg',
+                cloudsMap: 'assets/textures/earth_clouds_1024.png'
             };
 
             // 创建地球（使用真实地球纹理）
