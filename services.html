@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>核心产品 - Cisetech</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="lang.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00d4ff",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2023",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    animation: {
+                        "fade-in": "fadeIn 0.8s ease-in-out",
+                        "hover-up": "hoverUp 0.3s ease-in-out"
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            "0%": { opacity: 0, transform: "translateY(20px)" },
+                            "100%": { opacity: 1, transform: "translateY(0)" }
+                        },
+                        hoverUp: {
+                            "0%": { transform: "translateY(0)" },
+                            "100%": { transform: "translateY(-5px)" }
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scroll-smooth {
+                scroll-behavior: smooth;
+            }
+            .card-shadow {
+                box-shadow: 0 4px 20px rgba(0, 212, 255, 0.05);
+            }
+            .card-shadow-hover {
+                box-shadow: 0 8px 30px rgba(0, 212, 255, 0.1);
+            }
+        }
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            min-height: 100%;
+        }
+
+        /* 滚动条滑块样式 - 确保可见 */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        * {
+            font-family: 'Noto Sans SC', 'Inter', system-ui, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* 移动端汉堡菜单 */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+        
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger-btn span:nth-child(1) { transform: translateY(-6px); }
+        .hamburger-btn span:nth-child(3) { transform: translateY(6px); }
+        .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translateY(0); }
+        .hamburger-btn.active span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translateY(0); }
+        
+        /* 移动端导航遮罩层 */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* 移动端导航菜单 */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 40%;
+            min-width: 200px;
+            max-width: 300px;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            border-left: 1px solid rgba(14, 165, 233, 0.2);
+        }
+        
+        .mobile-nav.active { transform: translateX(0); }
+        .mobile-nav.active > *:first-child,
+        .mobile-nav.active > ul > *:first-child {
+        }
+        .mobile-nav a {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e2e8f0;
+            padding: 14px 24px;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+        .mobile-nav a:hover, .mobile-nav a.active { color: #22d3ee; background: rgba(14, 165, 233, 0.1); }
+        
+        /* 移动端子菜单样式 */
+        .mobile-submenu { width: 100%; }
+        .mobile-submenu-trigger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .mobile-submenu-trigger:hover { color: #22d3ee; background: rgba(14, 165, 233, 0.1); }
+        .mobile-submenu-trigger.active svg { transform: rotate(180deg); }
+        /* 移动端子菜单容器 */
+        .mobile-submenu {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-submenu-items {
+            max-height: 0;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            transition: max-height 0.3s ease;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-submenu-items.active { max-height: 400px; }
+        .mobile-submenu-items a {
+            display: block;
+            width: 100%;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #94a3b8;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .mobile-submenu-items a:hover { color: #22d3ee; background: rgba(14, 165, 233, 0.1); }
+        
+        @media (max-width: 1023px) {
+            .hamburger-btn { display: flex; }
+        }
+        
+        /* 导航链接 */
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #0ea5e9, #22d3ee);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* 下拉菜单样式 */
+        .nav-dropdown {
+            position: relative;
+        }
+        
+        .nav-dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .nav-dropdown-trigger svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-trigger svg {
+            transform: rotate(180deg);
+        }
+        
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            min-width: 180px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 12px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #cbd5e1;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-dropdown-menu a:hover {
+            color: #22d3ee;
+            background: rgba(14, 165, 233, 0.1);
+        }
+        
+        /* 微信二维码悬浮样式 */
+        .wechat-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(7, 193, 96, 0.1);
+            border: 1px solid rgba(7, 193, 96, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .wechat-btn:hover {
+            background: rgba(7, 193, 96, 0.2);
+            border-color: rgba(7, 193, 96, 0.5);
+            transform: scale(1.1);
+        }
+        
+        .wechat-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .wechat-qrcode-popup {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .wechat-btn:hover .wechat-qrcode-popup {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-5px);
+        }
+        
+        .wechat-qrcode-popup::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid white;
+        }
+        
+        .wechat-qrcode-popup img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .wechat-qrcode-label {
+            text-align: center;
+            font-size: 12px;
+            color: #333;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        
+        /* 移动端微信弹窗右侧显示 */
+        @media (max-width: 768px) {
+            .wechat-btn {
+                position: relative;
+            }
+            .wechat-qrcode-popup {
+                bottom: auto !important;
+                left: calc(100% + 10px) !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+            }
+            .wechat-btn:hover .wechat-qrcode-popup {
+                transform: translateY(-50%) !important;
+                opacity: 1;
+                visibility: visible;
+            }
+            .wechat-qrcode-popup::after {
+                bottom: auto !important;
+                left: -8px !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                border-top: 8px solid transparent !important;
+                border-bottom: 8px solid transparent !important;
+                border-right: 8px solid white !important;
+                border-left: none !important;
+            }
+        }
+        
+        /* Footer样式 */
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 2rem;
+            height: 2px;
+            background: linear-gradient(90deg, #0ea5e9, #22d3ee);
+        }
+        
+        .footer-link {
+            color: #94a3b8;
+            transition: color 0.3s ease;
+            font-size: 0.875rem;
+        }
+        
+        .footer-link:hover {
+            color: #22d3ee;
+        }
+        
+        .footer-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+        
+        /* 回到顶部 */
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0ea5e9, #22d3ee);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(14, 165, 233, 0.4);
+            z-index: 1000;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .back-to-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(14, 165, 233, 0.5);
+        }
+        
+        /* 滚动显示动画 */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hero轮播图样式 */
+        .hero-carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+        
+        .carousel-dot:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+        
+        .carousel-dot.active {
+            background: #00d4ff;
+            width: 28px;
+            border-radius: 5px;
+        }
+        
+        /* 文字切换动画 */
+        .hero-text-slide {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out;
+            pointer-events: none;
+        }
+        
+        .hero-text-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            position: relative;
+        }
+        
+        /* 技术白皮书区域隐藏/显示动画 */
+        .whitepapers-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .whitepapers-section.visible {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 按钮文字切换 */
+        .btn-text-hidden {
+            display: none;
+        }
+        
+        /* 技术白皮书弹窗样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: #f5f8f8;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .dark .modal-content {
+            background: #0f2023;
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+        
+        .modal-header {
+            padding: 24px 32px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 212, 255, 0.05);
+        }
+        
+        .dark .modal-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f2023;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .dark .modal-title {
+            color: #f8fafc;
+        }
+        
+        .modal-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            border: none;
+            background: rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .dark .modal-close {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: rotate(90deg);
+        }
+        
+        .dark .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .modal-body {
+            padding: 32px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .modal-body::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+        
+        .modal-body::-webkit-scrollbar-thumb {
+            background: rgba(0, 212, 255, 0.3);
+            border-radius: 4px;
+        }
+        
+        .modal-body::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 212, 255, 0.5);
+        }
+
+        /* 移动端导航菜单项居中 */
+        .mobile-nav ul,
+        .mobile-nav .mobile-submenu {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-nav ul li,
+        .mobile-nav > * {
+            width: 100%;
+            text-align: center;
+        }
+        .tech-section {
+            margin-bottom: 32px;
+        }
+        
+        .tech-section h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0f2023;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .dark .tech-section h4 {
+            color: #f8fafc;
+        }
+        
+        .tech-section h4::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: #00d4ff;
+            border-radius: 2px;
+        }
+        
+        .tech-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .tech-section li {
+            padding: 12px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #475569;
+            line-height: 1.8;
+        }
+        
+        .dark .tech-section li {
+            color: #94a3b8;
+        }
+        
+        .tech-section li::before {
+            content: '▸';
+            position: absolute;
+            color: #00d4ff;
+            font-size: 14px;
+        }
+        
+        .tech-section p {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        .dark .tech-section p {
+            color: #94a3b8;
+        }
+        
+        .tech-highlight {
+            background: rgba(0, 212, 255, 0.1);
+            border-left: 4px solid #00d4ff;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .dark .tech-highlight {
+            background: rgba(0, 212, 255, 0.15);
+        }
+        
+        .tech-highlight p {
+            margin: 0;
+            color: #0f2023;
+            font-weight: 500;
+        }
+        
+        .dark .tech-highlight p {
+            color: #f8fafc;
+        }
+        
+        .modal-footer {
+            padding: 24px 32px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 16px;
+            justify-content: flex-end;
+        }
+        
+        .dark .modal-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-download {
+            background: #00d4ff;
+            color: #0f2023;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-download:hover {
+            background: #00bcd4;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .btn-close {
+            background: rgba(0, 0, 0, 0.1);
+            color: #0f2023;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .dark .btn-close {
+            background: rgba(255, 255, 255, 0.1);
+            color: #f8fafc;
+        }
+        
+        .btn-close:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .dark .btn-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+    <div class="relative flex min-h-screen flex-col">
+        <!-- Header -->
+        <header class="bg-slate-900 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-700/50">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between h-20">
+                    <a href="index.html" class="flex items-center gap-3 group">
+                        <div class="h-12 w-12 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <img src="assets/申朴圆点logo.png" alt="Cisetech Logo" class="h-10 w-auto object-contain">
+                        </div>
+                        <div>
+                            <h1 class="site-logo-text text-xl font-bold text-white">Cisetech</h1>
+                            <p class="text-xs text-slate-400">申朴信息技术（上海）股份有限公司</p>
+                        </div>
+                    </a>
+                    
+                    <!-- 桌面端导航 -->
+                    <nav class="hidden lg:flex items-center gap-8">
+                        <a href="index.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">首页</a>
+                        <div class="nav-dropdown">
+                            <a href="services.html#products" class="nav-link text-cyan-400 font-medium">核心产品</a>
+                            <div class="nav-dropdown-menu">
+                                <a href="services.html#product-simple-insight">一体化智能可观测平台</a>
+                                <a href="services.html#product-muxi-gpu">沐曦国产通用GPU</a>
+                                <a href="services.html#product-oceanbase">OceanBase数据库</a>
+                                <a href="services.html#product-ai-recruit">AI招聘助手</a>
+                                <a href="services.html#product-ai-bidding">AI招投标助手</a>
+                                <a href="services.html#product-ai-health">职场健康加油站</a>
+                                <a href="services.html#product-low-altitude">低空经济|低空综合管理服务平台</a>
+                            </div>
+                        </div>
+                        <div class="nav-dropdown">
+                            <a href="qualifications.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">企业实力</a>
+                            <div class="nav-dropdown-menu">
+                                <a href="qualifications.html#honors">荣誉资质</a>
+                                <a href="qualifications.html#clients">权威客户</a>
+                            </div>
+                        </div>
+                        <div class="nav-dropdown">
+                            <a href="joins.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">招贤纳士</a>
+                            <div class="nav-dropdown-menu">
+                                <a href="joins.html#openings">常招职位</a>
+                                <a href="joins.html#culture">文化环境</a>
+                            </div>
+                        </div>
+                        <div class="nav-dropdown">
+                            <a href="about.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">
+                                关于我们
+                            </a>
+                            <div class="nav-dropdown-menu">
+                                <a href="about.html#about">关于申朴</a>
+                                <a href="about.html#culture">企业文化</a>
+                                <a href="about.html#timeline">发展历程</a>
+                                <a href="about.html#branches">分支机构</a>
+                                <a href="about.html#offshore">离岸交付中心</a>
+                            </div>
+                        </div>
+                    </nav>
+                    
+                    <div class="flex items-center gap-4">
+                    <a href="contact.html" class="hidden sm:block bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2.5 rounded-xl font-medium hover:from-cyan-600 hover:to-blue-700 transition-all hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30">
+                        咨询合作
+                    </a>
+                    <!-- 汉堡菜单按钮 -->
+                    <button class="hamburger-btn lg:hidden" id="hamburgerBtn" aria-label="菜单">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+        
+        <!-- 移动端导航遮罩层 -->
+        <div class="mobile-nav-overlay lg:hidden" id="mobileNavOverlay"></div>
+        <!-- 移动端导航菜单 -->
+        <nav class="mobile-nav lg:hidden" id="mobileNav">
+            <a href="index.html">首页</a>
+            <div class="mobile-submenu">
+                <div class="mobile-submenu-trigger" id="mobileSubmenuTrigger">
+                    <span>核心产品</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
+                        <path d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+                <div class="mobile-submenu-items" id="mobileSubmenuItems">
+                    <a href="services.html#product-simple-insight">一体化智能可观测平台</a>
+                    <a href="services.html#product-muxi-gpu">沐曦国产通用GPU</a>
+                    <a href="services.html#product-oceanbase">OceanBase数据库</a>
+                    <a href="services.html#product-ai-recruit">AI招聘助手</a>
+                    <a href="services.html#product-ai-bidding">AI招投标助手</a>
+                    <a href="services.html#product-ai-health">职场健康加油站</a>
+                    <a href="services.html#product-low-altitude">低空经济|低空综合管理服务平台</a>
+                </div>
+            </div>
+            <div class="mobile-submenu">
+                <div class="mobile-submenu-trigger" id="mobileStrengthSubmenuTrigger">
+                    <span>企业实力</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
+                        <path d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+                <div class="mobile-submenu-items" id="mobileStrengthSubmenuItems">
+                    <a href="qualifications.html#honors">荣誉资质</a>
+                    <a href="qualifications.html#clients">权威客户</a>
+                </div>
+            </div>
+            <div class="mobile-submenu">
+                <div class="mobile-submenu-trigger" id="mobileJoinsSubmenuTrigger">
+                    <span>招贤纳士</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
+                        <path d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+                <div class="mobile-submenu-items" id="mobileJoinsSubmenuItems">
+                    <a href="joins.html#openings">常招职位</a>
+                    <a href="joins.html#culture">文化环境</a>
+                </div>
+            </div>
+            <div class="mobile-submenu">
+                <div class="mobile-submenu-trigger" id="mobileAboutSubmenuTrigger">
+                    <span>关于我们</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
+                        <path d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+                <div class="mobile-submenu-items" id="mobileAboutSubmenuItems">
+                    <a href="about.html#about">关于申朴</a>
+                    <a href="about.html#culture">企业文化</a>
+                    <a href="about.html#timeline">发展历程</a>
+                    <a href="about.html#branches">分支机构</a>
+                    <a href="about.html#offshore">离岸交付中心</a>
+                </div>
+            </div>
+            <a href="contact.html" class="mt-6 px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl text-white">咨询合作</a>
+        </nav>
+
+        <!-- ========== 以下内容已隐藏（Hero Section + 四大核心业务板块）如需恢复请将 style="display:none" 改为 style="display:block" ========== -->
+        <div style="display:none">
+        <!-- Hero Section -->
+        <section class="relative py-16 lg:py-24 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"></div>
+            <div class="max-w-[1280px] mx-auto px-6 lg:px-10 grid lg:grid-cols-5 gap-8 items-center">
+                <!-- 左侧文字区域 -->
+                <div class="lg:col-span-2 relative z-10">
+                    <!-- 文字内容容器 -->
+                    <div class="hero-text-container relative min-h-[280px]">
+                        <!-- Slide 1: 核心产品 -->
+                        <div class="hero-text-slide active" data-slide="0">
+                            <h1 class="text-3xl lg:text-5xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-4">
+                                核心产品
+                            </h1>
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 max-w-md leading-relaxed">
+                                AI-First：赋能企业实现数智化转型，构建未来生产力。从算力底座到行业应用，提供全栈式AI解决方案。
+                            </p>
+                        </div>
+                        
+                        <!-- Slide 2: 可观测APM体验监测平台 -->
+                        <div class="hero-text-slide" data-slide="1">
+                            <div class="inline-block bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3">自有产品</div>
+                            <h1 class="text-2xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-4">
+                                可观测APM体验监测平台
+                            </h1>
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 max-w-md leading-relaxed">
+                                私有部署，与运维平台对接一体化。故障精准定位，实时决策，运维提效。全链路端到端、全场景，支持从代码到用户端全流程可观测。三层下钻，覆盖全部可观测要素。
+                            </p>
+                        </div>
+                        
+                        <!-- Slide 3: AI场景实施方案 -->
+                        <div class="hero-text-slide" data-slide="2">
+                            <div class="inline-block bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3">自有产品</div>
+                            <h1 class="text-2xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-4">
+                                AI场景实施方案
+                            </h1>
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 max-w-md leading-relaxed">
+                                AI原生开发平台建设落地(云架构构建)。Agent开发、训练及集群管理。Agent工程化训练(大模型/深度学习/记忆与知识库/Skill/垂直行业Agent开发等方向)。AI辅助编程领域小模型构建与训练。
+                            </p>
+                        </div>
+                        
+                        <!-- Slide 4: OceanBase数据库 -->
+                        <div class="hero-text-slide" data-slide="3">
+                            <div class="inline-block bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full mb-3">代理产品</div>
+                            <h1 class="text-2xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-4">
+                                OceanBase数据库
+                            </h1>
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 max-w-md leading-relaxed">
+                                三地五中心城市级无损灾难的数据库。全兼容Oracle SQL5.8语法，老系统快速迁移。具备集中式数据库、分布式数据库双能力。一份数据实时同步支持生产、数据分析两用。极致压缩技术，节省60%存储成本。
+                            </p>
+                        </div>
+                        
+                        <!-- Slide 5: 沐曦GPU算力 -->
+                        <div class="hero-text-slide" data-slide="4">
+                            <div class="inline-block bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full mb-3">代理产品</div>
+                            <h1 class="text-2xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-4">
+                                沐曦GPU算力
+                            </h1>
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 max-w-md leading-relaxed">
+                                兼容CUDA生态，迁移无门槛。训推一体，场景适配更佳。高能效比，同算力下功耗比竞品低17%+。支持多品牌产品异构混训，平滑替换。可买、可租。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 了解更多方案按钮 -->
+                    <div class="flex flex-wrap gap-4">
+                        <a href="business-detail.html" class="bg-primary text-background-dark font-bold px-8 py-3 rounded-lg flex items-center gap-2 hover:scale-105 transition-transform">
+                            了解更多方案 <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 右侧轮播图区域 -->
+                <div class="lg:col-span-3">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-primary/20" style="aspect-ratio: 16/10;">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-background-dark/60 via-transparent to-transparent z-10"></div>
+                        <!-- 轮播图片容器 -->
+                        <div class="hero-carousel">
+                            <!-- Slide 1 -->
+                            <div class="carousel-slide active">
+                                <img alt="核心产品" class="w-full h-full object-cover" src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2Funnamed.png&nonce=6baf7142-a984-4e0d-8a7b-eb9501b2f128&project_id=7612545482618945587&sign=9a16827f80139594747df47605d8361a3d7ead2335597c65d880a6fb96382e50">
+                            </div>
+                            <!-- Slide 2: APM平台 -->
+                            <div class="carousel-slide">
+                                <img alt="可观测APM体验监测平台" class="w-full h-full object-cover" src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_69cc57b4-c799-41c4-bccb-1cb109b9e32c.jpeg?sign=1804329169-4c5fd27494-0-1fa58ee1aae27963bb4575b7f09df708284334bdc5ef6aa28931a29c46b4c1c0">
+                            </div>
+                            <!-- Slide 3: AI场景实施方案 -->
+                            <div class="carousel-slide">
+                                <img alt="AI场景实施方案" class="w-full h-full object-cover" src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_05dd7f5b-830c-46bc-8e0f-43cd67bc5247.jpeg?sign=1804329174-d60c0fc350-0-8ea99b0d2eec0c089d2c69b0d01a4fad160505bde4d228552c7b38816ff4cf8e">
+                            </div>
+                            <!-- Slide 4: OceanBase数据库 -->
+                            <div class="carousel-slide">
+                                <img alt="OceanBase数据库" class="w-full h-full object-cover" src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_09f0f0ad-46d2-493b-93e7-8aaa378cad70.jpeg?sign=1804329169-793289b0ff-0-83a03a3c0bbb34cd972c3114829b130ae7f9c4113262eb4f58693c900e7f311f">
+                            </div>
+                            <!-- Slide 5: 沐曦GPU算力 -->
+                            <div class="carousel-slide">
+                                <img alt="沐曦GPU算力" class="w-full h-full object-cover" src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_1fe1d97c-d361-41b2-a5b0-20906524ab48.jpeg?sign=1804329174-f0e8ebb734-0-b279a258ed1f4941c5d4abc0165493082d8cd7bd8f4c533f6d648e25d9c01f56">
+                            </div>
+                        </div>
+                        
+                        <!-- 小圆点导航 -->
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+                            <button class="carousel-dot active" data-slide="0"></button>
+                            <button class="carousel-dot" data-slide="1"></button>
+                            <button class="carousel-dot" data-slide="2"></button>
+                            <button class="carousel-dot" data-slide="3"></button>
+                            <button class="carousel-dot" data-slide="4"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Four Core Business Pillars -->
+        <section class="py-24 bg-slate-100 dark:bg-primary/5" id="business">
+            <div class="max-w-[1280px] mx-auto px-6 lg:px-10">
+                <div class="text-center mb-16 animate-fade-in">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">四大核心业务板块</h2>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">全面覆盖AI价值链，为不同规模的企业量身定制数智化路径</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Pillar 1 -->
+                    <div id="consulting" class="bg-background-light dark:bg-background-dark p-8 rounded-xl border border-slate-200 dark:border-primary/10 hover:border-primary transition-all group card-shadow hover:card-shadow-hover hover:animate-hover-up" style="scroll-margin-top: 100px;">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-background-dark transition-colors">
+                            <span class="material-symbols-outlined text-2xl">strategy</span>
+                        </div>
+                        <!-- 业务配图 -->
+                        <div class="mb-4 h-32 overflow-hidden rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" alt="AI咨询和解决方案" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">AI咨询和解决方案</h3>
+                        <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#consulting-1" class="hover:text-primary transition-colors">AI 战略规划</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#consulting-2" class="hover:text-primary transition-colors">企业 AI 原生开发平台</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#consulting-3" class="hover:text-primary transition-colors">AI Agent 智能体开发与实施</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#consulting-4" class="hover:text-primary transition-colors">AI代码安全审查</a></li>
+                        </ul>
+                    </div>
+                    <!-- Pillar 2 -->
+                    <div id="infrastructure" class="bg-background-light dark:bg-background-dark p-8 rounded-xl border border-slate-200 dark:border-primary/10 hover:border-primary transition-all group card-shadow hover:card-shadow-hover hover:animate-hover-up" style="scroll-margin-top: 100px;">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-background-dark transition-colors">
+                            <span class="material-symbols-outlined text-2xl">database</span>
+                        </div>
+                        <!-- 业务配图 -->
+                        <div class="mb-4 h-32 overflow-hidden rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=200&fit=crop" alt="AI基建服务" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">AI基建服务</h3>
+                        <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#infrastructure-1" class="hover:text-primary transition-colors">算力供给与集群管理</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#infrastructure-2" class="hover:text-primary transition-colors">数据基础设施与治理</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#infrastructure-3" class="hover:text-primary transition-colors">高速互联与网络架构</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#infrastructure-4" class="hover:text-primary transition-colors">全栈软件平台与工具链</a></li>
+                        </ul>
+                    </div>
+                    <!-- Pillar 3 -->
+                    <div id="industry" class="bg-background-light dark:bg-background-dark p-8 rounded-xl border border-slate-200 dark:border-primary/10 hover:border-primary transition-all group card-shadow hover:card-shadow-hover hover:animate-hover-up" style="scroll-margin-top: 100px;">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-background-dark transition-colors">
+                            <span class="material-symbols-outlined text-2xl">apartment</span>
+                        </div>
+                        <!-- 业务配图 -->
+                        <div class="mb-4 h-32 overflow-hidden rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=200&fit=crop" alt="AI行业应用" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">AI行业应用</h3>
+                        <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#industry-1" class="hover:text-primary transition-colors">金融行业 AI 解决方案</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#industry-2" class="hover:text-primary transition-colors">互联网行业 AI 解决方案</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#industry-3" class="hover:text-primary transition-colors">制造行业 AI 解决方案</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#industry-4" class="hover:text-primary transition-colors">零售与电商行业 AI 解决方案</a></li>
+                        </ul>
+                    </div>
+                    <!-- Pillar 4 -->
+                    <div id="operation" class="bg-background-light dark:bg-background-dark p-8 rounded-xl border border-slate-200 dark:border-primary/10 hover:border-primary transition-all group card-shadow hover:card-shadow-hover hover:animate-hover-up" style="scroll-margin-top: 100px;">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-background-dark transition-colors">
+                            <span class="material-symbols-outlined text-2xl">settings_account_box</span>
+                        </div>
+                        <!-- 业务配图 -->
+                        <div class="mb-4 h-32 overflow-hidden rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop" alt="AI驱动智能运营" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">AI驱动智能运营</h3>
+                        <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#operation-1" class="hover:text-primary transition-colors">数字化人才交付</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#operation-2" class="hover:text-primary transition-colors">AI全流程智能运营托管</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#operation-3" class="hover:text-primary transition-colors">智能业务流程外包</a></li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#operation-4" class="hover:text-primary transition-colors">AI专家技术支持</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+        <!-- ========== 以上内容已隐藏 ========== -->
+
+        <!-- Flagship Products Showcase -->
+        <section class="py-24" id="products" style="scroll-margin-top: 80px;">
+            <div class="max-w-[1280px] mx-auto px-6 lg:px-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 animate-fade-in">
+                    <div>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">核心产品</h2>
+                        <p class="text-slate-600 dark:text-slate-400 max-w-xl">基于核心技术研发的标准化产品，满足多样化业务场景需求</p>
+                    </div>
+                    <a href="business-detail.html#star-products" class="text-primary font-bold flex items-center gap-2 hover:underline">
+                        查看全部产品库 <span class="material-symbols-outlined">chevron_right</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                    <!-- Featured Product 1 (Large) - Simple Insight -->
+                    <div id="product-simple-insight" class="lg:col-span-8 group relative overflow-hidden rounded-2xl bg-slate-900 border border-primary/20 aspect-[16/9] lg:aspect-auto animate-fade-in" style="scroll-margin-top: 100px;">
+                        <img alt="Simple Insight 一体化智能可观测平台" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2Funnamed+2.png&nonce=d757bb5e-62b7-479c-a5c1-2cc43cc4bd75&project_id=7612545482618945587&sign=e918d63a5286a8282cff26aa9885afb8eeecfeea298c3024719304d00f84a8d2">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 lg:p-12">
+                            <span class="inline-block bg-primary text-background-dark text-xs font-black px-3 py-1 rounded-full mb-4 uppercase tracking-wider">本地私有化部署</span>
+                            <h3 class="text-3xl font-bold text-white mb-4">Simple Insight 一体化智能可观测平台</h3>
+                            <p class="text-slate-300 max-w-lg mb-6">集成全栈链路监控、智能异常检测与自动化响应，为企业本地私有化部署提供全方位安全护航。</p>
+                            <a href="business-detail.html#product-simple-insight" class="inline-flex bg-white/10 hover:bg-white/20 text-white backdrop-blur-md px-6 py-2 rounded-lg font-bold transition-all items-center gap-2">
+                                详情介绍 <span class="material-symbols-outlined">launch</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Product 2 - AI招聘助手 -->
+                    <div id="product-ai-recruit" class="lg:col-span-4 bg-background-light dark:bg-primary/5 rounded-2xl p-8 border border-slate-200 dark:border-primary/10 flex flex-col card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in" style="scroll-margin-top: 100px;">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-6">person_search</span>
+                        <h3 class="text-2xl font-bold mb-3">AI 招聘助手</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-8 flex-grow">重塑人才招聘流程，通过简历智能解析与初筛，提升招聘效率 300% 以上。</p>
+                        <div class="pt-6 border-t border-slate-200 dark:border-primary/10 relative flex items-center justify-between">
+                            <a class="absolute inset-0 z-10 cursor-pointer" href="business-detail.html#product-ai-recruit"></a>
+                            <span class="text-xs font-medium text-slate-500 relative z-0">智能人力资源</span>
+                            <span class="material-symbols-outlined text-primary relative z-0">arrow_forward</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 - AI招投标助手 -->
+                    <div id="product-ai-bidding" class="lg:col-span-4 bg-background-light dark:bg-primary/5 rounded-2xl p-8 border border-slate-200 dark:border-primary/10 flex flex-col card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in" style="scroll-margin-top: 100px;">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-6">description</span>
+                        <h3 class="text-2xl font-bold mb-3">AI 招投标助手</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-8 flex-grow">自动化分析招标需求，一键生成合规应标文件，大幅降低人为失误，提升中标率。</p>
+                        <div class="pt-6 border-t border-slate-200 dark:border-primary/10 relative flex items-center justify-between">
+                            <a class="absolute inset-0 z-10 cursor-pointer" href="business-detail.html#product-ai-bidding"></a>
+                            <span class="text-xs font-medium text-slate-500 relative z-0">智慧办公</span>
+                            <span class="material-symbols-outlined text-primary relative z-0">arrow_forward</span>
+                        </div>
+                    </div>
+                    <!-- Featured Product 4 - 沐曦国产通用 GPU (Large) -->
+                    <div id="product-muxi-gpu" class="lg:col-span-8 group relative overflow-hidden rounded-2xl bg-slate-900 border border-primary/20 aspect-[16/9] lg:aspect-auto animate-fade-in" style="scroll-margin-top: 100px;">
+                        <img alt="沐曦国产通用 GPU" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2Funnamed+3.png&nonce=360a47c3-f2f2-4c91-aa3b-240be3ba4481&project_id=7612545482618945587&sign=20927bc3c4e720b6c2e7ac966db9fe1bec119729e64453dd130d836e70017e20">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 lg:p-12">
+                            <span class="inline-block bg-primary text-background-dark text-xs font-black px-3 py-1 rounded-full mb-4 uppercase tracking-wider">国产算力底座</span>
+                            <h3 class="text-3xl font-bold text-white mb-4">沐曦国产通用 GPU</h3>
+                            <p class="text-slate-300 max-w-lg mb-6">我们提供多样的租售模式：购买、租赁多元化；一站式服务落地应用，便捷高效；覆盖行业广泛，经验丰富。</p>
+                            <a href="business-detail.html#product-muxi-gpu" class="inline-flex bg-primary text-background-dark px-6 py-2 rounded-lg font-bold hover:scale-105 transition-all items-center gap-2">
+                                申请试用 <span class="material-symbols-outlined">science</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Featured Product 5 - OceanBase数据库 (Large) -->
+                    <div id="product-oceanbase" class="lg:col-span-8 group relative overflow-hidden rounded-2xl bg-slate-900 border border-primary/20 aspect-[16/9] lg:aspect-auto animate-fade-in" style="scroll-margin-top: 100px;">
+                        <img alt="OceanBase 数据库" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2FOceanBase2.png&nonce=44cb68f4-91a2-49f1-806b-21e1f47417f2&project_id=7612545482618945587&sign=10e192a8b89e01871140ecd51394cd16cc8b025522582b23a4028ebd635f0850">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 lg:p-12">
+                            <span class="inline-block bg-primary text-background-dark text-xs font-black px-3 py-1 rounded-full mb-4 uppercase tracking-wider">企业级数据库</span>
+                            <h3 class="text-3xl font-bold text-white mb-4">OceanBase 数据库</h3>
+                            <p class="text-slate-300 max-w-lg mb-2">我们是OceanBase数据库生态合作伙伴，已有多家企业以及央国企落地，具有OceanBase实施部署能力，有经验，有众多OB认证人才。</p>
+                            <p class="text-slate-400 text-sm mb-6">城市级无损容灾 | 全兼容Oracle SQL语法 | 极致压缩技术，节省60%存储成本</p>
+                            <a href="business-detail.html#product-oceanbase" class="inline-flex bg-primary text-background-dark px-6 py-2 rounded-lg font-bold hover:scale-105 transition-all items-center gap-2">
+                                了解详情 <span class="material-symbols-outlined">database</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Product 6 - 职场健康加油站 -->
+                    <div id="product-ai-health" class="lg:col-span-4 bg-background-light dark:bg-primary/5 rounded-2xl p-8 border border-slate-200 dark:border-primary/10 flex flex-col card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in" style="scroll-margin-top: 100px;">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-6">health_metrics</span>
+                        <h3 class="text-2xl font-bold mb-3">职场健康加油站</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-8 flex-grow">专注企业职工健康管理，提供一站式健康监测、智能评估与个性化干预服务。</p>
+                        <div class="pt-6 border-t border-slate-200 dark:border-primary/10 relative flex items-center justify-between">
+                            <a class="absolute inset-0 z-10 cursor-pointer" href="business-detail.html#product-ai-health"></a>
+                            <span class="text-xs font-medium text-slate-500 relative z-0">大健康领域</span>
+                            <span class="material-symbols-outlined text-primary relative z-0">arrow_forward</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Featured Product 7 - 低空综合管理服务平台 (Full Width) -->
+                    <div id="product-low-altitude" class="lg:col-span-12 group relative overflow-hidden rounded-2xl bg-slate-900 border border-primary/20 min-h-[400px] lg:min-h-[500px] animate-fade-in" style="scroll-margin-top: 100px;">
+                        <img alt="低空综合管理服务平台" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src="assets/%E4%BD%8E%E7%A9%BA%E7%BB%8F%E6%B5%8Ebg.png">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 lg:p-12">
+                            <span class="inline-block bg-primary text-background-dark text-xs font-black px-3 py-1 rounded-full mb-4 uppercase tracking-wider">智慧城市·低空经济</span>
+                            <h3 class="text-3xl font-bold text-white mb-4">低空综合管理服务平台</h3>
+                            <p class="text-slate-300 max-w-lg mb-6">面向低空飞行管理领域的专业测试平台，支持测试任务管理、测试数据管理、测试脚本管理等核心功能，保障低空飞行安全高效运行。</p>
+                            <a href="business-detail.html#product-low-altitude" class="inline-flex bg-primary text-background-dark px-6 py-2 rounded-lg font-bold hover:scale-105 transition-all items-center gap-2">
+                                了解详情 <span class="material-symbols-outlined">flight</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Custom Product CTA -->
+                    <div class="lg:col-span-12 flex items-center justify-center p-8 bg-primary/10 rounded-2xl border border-dashed border-primary/40 animate-fade-in">
+                        <div class="text-center">
+                            <h4 class="text-xl font-bold mb-2">需要定制化产品？</h4>
+                            <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm">我们的专家团队可以为您量身打造专属AI工具</p>
+                            <a href="contact.html" class="bg-primary text-background-dark font-bold px-6 py-2 rounded-lg hover:bg-primary/90 transition-all inline-block">
+                                立即咨询专家
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Cases Section -->
+        <section class="py-24 bg-slate-100 dark:bg-primary/5" id="cases">
+            <div class="max-w-[1280px] mx-auto px-6 lg:px-10">
+                <div class="text-center mb-16 animate-fade-in">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">相关案例</h2>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">深耕金融科技领域，以AI技术赋能银行等业务创新，助力客户实现数智化转型</p>
+                </div>
+
+                <div class="space-y-12">
+                    <!-- 案例1: SME智能信贷审批解决方案 -->
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg animate-fade-in">
+                        <!-- 顶部标题 -->
+                        <div class="bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-4">
+                            <div class="flex items-center gap-4">
+                                <span class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">案例一</span>
+                                <div>
+                                    <h3 class="text-lg lg:text-xl font-bold text-white">SME智能信贷审批解决方案</h3>
+                                    <p class="text-blue-100 text-xs mt-0.5">针对中小微企业信贷审批业务场景</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 内容区域 -->
+                        <div class="flex flex-col lg:flex-row-reverse">
+                            <!-- 右侧图片 -->
+                            <div class="lg:w-72 xl:w-80 flex-shrink-0">
+                                <div class="h-48 lg:h-full rounded-none overflow-hidden">
+                                    <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2FSME%E6%99%BA%E8%83%BD%E4%BF%A1%E8%B4%B7%E5%AE%A1%E6%89%B9%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.jpeg&nonce=77563556-2944-404f-b8c9-80a56c1e0dcc&project_id=7612545482618945587&sign=a088814f852d0cc2f317df5f682ad81eaa7b6da016a79ed57502af70be6d1ffa" alt="SME智能信贷审批解决方案" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <!-- 左侧内容 -->
+                            <div class="flex-1 p-6">
+                                <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                                    针对中小微企业信贷审批业务场景，建立或改善直连用户和业务的渠道；使用私有化、个性化训练的AI工具处理信贷审批核心业务逻辑，集成了风控平台和OCR、NLP等关键AI能力，达成高效与自动化。技术架构灵活简洁，可与现有系统灵活对接，能有效节省成本的信贷风控审批。
+                                </p>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                                    <div class="text-center p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">+8.3%</div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400">审批通过率净增</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">-3.6%</div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400">不良率净降</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">-75%</div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400">单均风控成本</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">-87%</div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400">端到端审批时长</div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">智能风控</span>
+                                    <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">OCR/NLP</span>
+                                    <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">信贷审批</span>
+                                    <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">城商行实践</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 案例2: 小微企业线上开户智能解决方案 -->
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg animate-fade-in">
+                        <!-- 顶部标题 -->
+                        <div class="bg-gradient-to-r from-emerald-600 to-teal-500 px-6 py-4">
+                            <div class="flex items-center gap-4">
+                                <span class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">案例二</span>
+                                <div>
+                                    <h3 class="text-lg lg:text-xl font-bold text-white">小微企业线上开户智能解决方案</h3>
+                                    <p class="text-emerald-100 text-xs mt-0.5">某国有银行成功实践案例</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 内容区域 -->
+                        <div class="flex flex-col lg:flex-row-reverse">
+                            <!-- 右侧图片 -->
+                            <div class="lg:w-72 xl:w-80 flex-shrink-0">
+                                <div class="h-48 lg:h-full rounded-none overflow-hidden">
+                                    <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E5%B0%8F%E5%BE%AE%E4%BC%81%E4%B8%9A%E7%BA%BF%E4%B8%8A%E5%BC%80%E6%88%B7%E6%99%BA%E8%83%BD%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.jpeg&nonce=ea0410c0-68b6-4f2c-b724-c0599205e36a&project_id=7612545482618945587&sign=22cee4df94033659cc2cf5a1d0c7fa74cfed868a3d5816773b37bd7dd084d16e" alt="小微企业线上开户智能解决方案" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <!-- 左侧内容 -->
+                            <div class="flex-1 p-6">
+                                <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                                    专为小微企业打造的线上开户智能解决方案。通过AI技术实现极致提效，利用智能识别、实时风控和智能交互，将开户流程从几天缩短到几分钟。建立端到端的数字化闭环，实现全流程线上化和无纸化，让企业主足不出户就能完成开户。具备强大的无缝跨境服务能力，支持多语言、跨境身份认证和全球合规结算。
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400">speed</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 dark:text-slate-100 text-sm mb-1">AI驱动·极致提效</h4>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400">OCR+人脸识别替代90%人工录入，审核周期从数日缩短至分钟级</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400">sync</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 dark:text-slate-100 text-sm mb-1">端到端·数字化闭环</h4>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400">全流程线上化，实现"零跑腿"开户，电子签章确保合规可追溯</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400">public</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 dark:text-slate-100 text-sm mb-1">无缝·跨境服务能力</h4>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400">支持多语言、跨境身份认证和国际AML/KYC引擎，助力企业出海</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium rounded-full">智能识别</span>
+                                    <span class="px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium rounded-full">实时风控</span>
+                                    <span class="px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium rounded-full">NLP客服</span>
+                                    <span class="px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium rounded-full">跨境服务</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 案例3: AI Agent安全检测与加固平台 -->
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg animate-fade-in">
+                        <!-- 顶部标题 -->
+                        <div class="bg-gradient-to-r from-purple-600 to-violet-500 px-6 py-4">
+                            <div class="flex items-center gap-4">
+                                <span class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">案例三</span>
+                                <div>
+                                    <h3 class="text-lg lg:text-xl font-bold text-white">AI Agent安全检测与加固平台</h3>
+                                    <p class="text-purple-100 text-xs mt-0.5">为企业AI Agent安全护航</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 内容区域 -->
+                        <div class="flex flex-col lg:flex-row-reverse">
+                            <!-- 右侧图片 -->
+                            <div class="lg:w-72 xl:w-80 flex-shrink-0">
+                                <div class="h-48 lg:h-full rounded-none overflow-hidden">
+                                    <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2FAI+Agent%E5%AE%89%E5%85%A8%E4%BD%93%E7%B3%BB.jpeg&nonce=5134b623-898d-447c-a621-05f9c849bc6e&project_id=7612545482618945587&sign=fe3b65220befc3a5922f7fbbcf0eea017526d8db9dfc8f2d719b95afacbd24a7" alt="AI Agent安全检测与加固平台" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <!-- 左侧内容 -->
+                            <div class="flex-1 p-6">
+                                <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                                    随着AI Agent的部署和使用，传统金融企业在业务层面和IT体系面临新的更大信息安全挑战，甚至来自于Agent自身的风险和幻觉。申朴为企业设计一套面向自建Agent集群的规范管理架构，覆盖Agent生命周期，建立Agent安全检测模式，给出检测报告，提供培训、方法论以及案例等。
+                                </p>
+                                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                    <div class="p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
+                                        <h4 class="font-semibold text-slate-900 dark:text-slate-100 text-sm mb-3 flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-purple-600 dark:text-purple-400 text-lg">security</span>
+                                            安全检测能力
+                                        </h4>
+                                        <ul class="space-y-2 text-xs text-slate-500 dark:text-slate-400">
+                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>过度授权检测</li>
+                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>数据泄露防护</li>
+                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>模型投毒检测</li>
+                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>代码注入防护</li>
+                                        </ul>
+                                    </div>
+                                    <div class="p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
+                                        <h4 class="font-semibold text-slate-900 dark:text-slate-100 text-sm mb-3 flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-purple-600 dark:text-purple-400 text-lg">manage_accounts</span>
+                                            运营管理能力
+                                        </h4>
+                                        <ul class="space-y-2 text-xs text-slate-500 dark:text-slate-400">
+                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>业务上线管理</li>
+                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>权限审批流程</li>
+                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>自动巡检机制</li>
+                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>自动处置响应</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-medium rounded-full">Agent安全</span>
+                                    <span class="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-medium rounded-full">生命周期管理</span>
+                                    <span class="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-medium rounded-full">风险检测</span>
+                                    <span class="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-medium rounded-full">合规加固</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Whitepapers Section -->
+        <section class="py-20 bg-slate-100 dark:bg-primary/5 whitepapers-section" id="whitepapers">
+            <div class="max-w-[1280px] mx-auto px-6 lg:px-10">
+                <div class="text-center mb-16 animate-fade-in">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">技术白皮书</h2>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">深入了解我们AI解决方案的技术架构、实施路径与最佳实践</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Whitepaper 1 - AI招聘助手 -->
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('ai-recruit')">
+                        <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                            <span class="material-symbols-outlined text-4xl text-primary">person_search</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">AI招聘助手技术白皮书</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">基于深度学习的简历智能解析、自动初筛与面试评估系统技术架构详解，助力企业招聘效率提升300%以上。</p>
+                        <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
+                            <span class="text-xs text-slate-500 dark:text-slate-500">PDF · 2.5MB · 2024年3月</span>
+                            <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
+                                下载预览 <span class="material-symbols-outlined text-lg">download</span>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Whitepaper 2 - AI招投标助手 -->
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('ai-bidding')">
+                        <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                            <span class="material-symbols-outlined text-4xl text-primary">description</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">AI招投标助手技术白皮书</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">招标文件智能分析、合规性审查与应标方案自动生成技术方案，大幅提升中标率并降低人为失误。</p>
+                        <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
+                            <span class="text-xs text-slate-500 dark:text-slate-500">PDF · 3.1MB · 2024年3月</span>
+                            <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
+                                下载预览 <span class="material-symbols-outlined text-lg">download</span>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Whitepaper 3 - 职场健康加油站 -->
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('ai-health')">
+                        <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                            <span class="material-symbols-outlined text-4xl text-primary">health_metrics</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">职场健康加油站技术白皮书</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">专注企业职工健康管理的智能监测系统，提供一站式健康检测、评估与干预服务。</p>
+                        <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
+                            <span class="text-xs text-slate-500 dark:text-slate-500">PDF · 2.8MB · 2024年3月</span>
+                            <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
+                                下载预览 <span class="material-symbols-outlined text-lg">download</span>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Whitepaper 4 - Simple Insight -->
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('simple-insight')">
+                        <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                            <span class="material-symbols-outlined text-4xl text-primary">insights</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">Simple Insight技术白皮书</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">一体化智能可观测平台架构设计，全栈链路监控、智能异常检测与自动化响应技术方案详解。</p>
+                        <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
+                            <span class="text-xs text-slate-500 dark:text-slate-500">PDF · 3.5MB · 2024年3月</span>
+                            <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
+                                下载预览 <span class="material-symbols-outlined text-lg">download</span>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Whitepaper 5 - OceanBase数据库 -->
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('oceanbase')">
+                        <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                            <span class="material-symbols-outlined text-4xl text-primary">storage</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">OceanBase数据库技术白皮书</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">三地五中心城市级无损容灾架构、全兼容Oracle SQL语法实现原理与企业级数据库迁移最佳实践。</p>
+                        <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
+                            <span class="text-xs text-slate-500 dark:text-slate-500">PDF · 4.2MB · 2024年3月</span>
+                            <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
+                                下载预览 <span class="material-symbols-outlined text-lg">download</span>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Whitepaper 6 - 沐曦国产通用GPU -->
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('muxi-gpu')">
+                        <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                            <span class="material-symbols-outlined text-4xl text-primary">developer_board</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">沐曦国产通用GPU技术白皮书</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">国产通用GPU架构设计、大规模AI计算优化与图形渲染技术详解，实现国产化替代的核心动力源。</p>
+                        <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
+                            <span class="text-xs text-slate-500 dark:text-slate-500">PDF · 3.8MB · 2024年3月</span>
+                            <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
+                                下载预览 <span class="material-symbols-outlined text-lg">download</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-background-dark text-white relative overflow-hidden animate-fade-in">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 left-0 w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
+            </div>
+            <div class="max-w-[1280px] mx-auto px-6 lg:px-10 relative z-10 text-center">
+                <h2 class="text-4xl lg:text-5xl font-black mb-8">开启您的 AI 数智化之旅</h2>
+                <p class="text-xl text-slate-300 max-w-4xl mx-auto mb-10">
+                    与全球领先的企业一同选择我们的 AI 解决方案，重构业务逻辑，引领行业创新。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="bg-primary text-background-dark font-bold px-10 py-4 rounded-xl text-lg hover:scale-105 transition-all">
+                        立即开始
+                    </a>
+                    <button id="showWhitepapersBtn" onclick="toggleWhitepapers()" class="bg-white/10 hover:bg-white/20 text-white px-10 py-4 rounded-xl text-lg font-bold backdrop-blur-md transition-all">
+                        查看技术白皮书
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 border-t border-slate-700/50">
+            <div class="max-w-[1280px] mx-auto px-4 pt-12 pb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- 公司信息 -->
+                    <div class="footer-col">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="h-10 w-10 flex items-center justify-center">
+                                <img src="assets/申朴圆点logo.png" alt="Cisetech Logo" class="h-8 w-auto object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Cisetech</h3>
+                                <p class="text-xs text-slate-500">申朴信息技术（上海）股份有限公司</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            申信达诚，朴心进取
+                        </p>
+                    </div>
+                    
+                    <!-- 核心产品 -->
+                    <div class="footer-col">
+                        <h4 class="footer-title">核心产品</h4>
+                        <ul class="space-y-2">
+                            <li><a href="services.html#product-simple-insight" class="footer-link">一体化智能可观测平台</a></li>
+                            <li><a href="services.html#product-muxi-gpu" class="footer-link">沐曦国产通用GPU</a></li>
+                            <li><a href="services.html#product-oceanbase" class="footer-link">OceanBase数据库</a></li>
+                            <li><a href="services.html#product-ai-recruit" class="footer-link">AI招聘助手</a></li>
+                            <li><a href="services.html#product-ai-bidding" class="footer-link">AI招投标助手</a></li>
+                            <li><a href="services.html#product-ai-health" class="footer-link">职场健康加油站</a></li>
+                            <li><a href="services.html#product-low-altitude" class="footer-link">低空综合管理服务平台</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 联系我们 -->
+                    <div class="footer-col">
+                        <h4 class="footer-title">联系我们</h4>
+                        <ul class="space-y-3">
+                            <li class="footer-info">
+                                <svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                <span>(021)-6075 6566</span>
+                            </li>
+                            <li class="footer-info">
+                                <svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                <span>info@cisetech.com</span>
+                            </li>
+                            <li class="footer-info">
+                                <svg class="w-4 h-4 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>上海市浦东新区国展路1529号906-908室</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 关注我们 -->
+                    <div class="footer-col">
+                        <h4 class="footer-title">关注我们</h4>
+                        <div class="wechat-btn">
+                            <svg viewBox="0 0 24 24" fill="#07C160">
+                                <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 01-.023-.156.49.49 0 01.201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-7.062-6.122zm-2.036 2.905c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982z"/>
+                            </svg>
+                            <div class="wechat-qrcode-popup">
+                                <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E7%94%B3%E6%9C%B4%E6%9C%8D%E5%8A%A1%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg&nonce=fa8195e2-1745-486c-8dd5-1664e5198a65&project_id=7612545482618945587&sign=60d8b3903f8e4d4d551217c02caf3512076d3c4ffca00d5eb195030d803b2b3c" alt="微信公众号">
+                                <p class="wechat-qrcode-label">扫码关注公众号</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 底部版权 -->
+                <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-slate-500 text-sm">© 2024 Cisetech. All rights reserved.</p>
+                    <div class="flex gap-6">
+                        <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">隐私政策</a>
+                        <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">使用条款</a>
+                        <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">网站地图</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top" id="backToTop">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </div>
+
+    <!-- 交互脚本 -->
+    <script>
+        // 移动端汉堡菜单
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileSubmenuTrigger = document.getElementById('mobileSubmenuTrigger');
+        const mobileSubmenuItems = document.getElementById('mobileSubmenuItems');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+
+        mobileNavOverlay.addEventListener('click', () => {
+            hamburgerBtn.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+            mobileNav.classList.remove('active');
+        });
+
+        mobileSubmenuTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileSubmenuTrigger.classList.toggle('active');
+            mobileSubmenuItems.classList.toggle('active');
+            mobileSubmenuTrigger.querySelector('svg').style.transform = 
+                mobileSubmenuItems.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        });
+        
+        // 关于我们子菜单
+        const mobileAboutSubmenuTrigger = document.getElementById('mobileAboutSubmenuTrigger');
+        const mobileAboutSubmenuItems = document.getElementById('mobileAboutSubmenuItems');
+        
+        if (mobileAboutSubmenuTrigger && mobileAboutSubmenuItems) {
+            mobileAboutSubmenuTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileAboutSubmenuTrigger.classList.toggle('active');
+                mobileAboutSubmenuItems.classList.toggle('active');
+                mobileAboutSubmenuTrigger.querySelector('svg').style.transform =
+                    mobileAboutSubmenuItems.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+        
+        // 企业实力子菜单
+        const mobileStrengthSubmenuTrigger = document.getElementById('mobileStrengthSubmenuTrigger');
+        const mobileStrengthSubmenuItems = document.getElementById('mobileStrengthSubmenuItems');
+        
+        if (mobileStrengthSubmenuTrigger && mobileStrengthSubmenuItems) {
+            mobileStrengthSubmenuTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileStrengthSubmenuTrigger.classList.toggle('active');
+                mobileStrengthSubmenuItems.classList.toggle('active');
+                mobileStrengthSubmenuTrigger.querySelector('svg').style.transform =
+                    mobileStrengthSubmenuItems.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+        
+        // 招贤纳士子菜单
+        const mobileJoinsSubmenuTrigger = document.getElementById('mobileJoinsSubmenuTrigger');
+        const mobileJoinsSubmenuItems = document.getElementById('mobileJoinsSubmenuItems');
+        
+        if (mobileJoinsSubmenuTrigger && mobileJoinsSubmenuItems) {
+            mobileJoinsSubmenuTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileJoinsSubmenuTrigger.classList.toggle('active');
+                mobileJoinsSubmenuItems.classList.toggle('active');
+                mobileJoinsSubmenuTrigger.querySelector('svg').style.transform =
+                    mobileJoinsSubmenuItems.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+
+        // 回到顶部按钮
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 滚动渐入动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Hero轮播图
+        const carouselSlides = document.querySelectorAll('.carousel-slide');
+        const carouselDots = document.querySelectorAll('.carousel-dot');
+        const textSlides = document.querySelectorAll('.hero-text-slide');
+        let currentSlide = 0;
+        const totalSlides = carouselSlides.length;
+        let autoPlayInterval;
+        
+        function goToSlide(index) {
+            // 移除当前活动状态
+            carouselSlides[currentSlide].classList.remove('active');
+            carouselDots[currentSlide].classList.remove('active');
+            textSlides[currentSlide].classList.remove('active');
+            
+            // 更新索引
+            currentSlide = index;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            
+            // 添加新的活动状态
+            carouselSlides[currentSlide].classList.add('active');
+            carouselDots[currentSlide].classList.add('active');
+            textSlides[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+        
+        // 点击小圆点切换
+        carouselDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+                // 重置自动播放计时器
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(nextSlide, 5000);
+            });
+        });
+        
+        // 自动播放
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 5000);
+        }
+        
+        // 页面加载后启动自动播放
+        startAutoPlay();
+    </script>
+    
+    <!-- 技术白皮书弹窗 -->
+    <div id="whitepaperModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">
+                    <span class="material-symbols-outlined text-3xl text-primary" id="modalIcon">person_search</span>
+                    <span id="modalTitleText">技术白皮书</span>
+                </h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 动态内容将在这里加载 -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-close" onclick="closeModal()">关闭</button>
+                <button class="btn-download" onclick="downloadWhitepaper()">
+                    <span class="material-symbols-outlined">download</span>
+                    下载完整白皮书
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 技术白皮书数据内容 -->
+    <script>
+        // 技术白皮书详细内容数据
+        const whitepaperData = {
+            'ai-recruit': {
+                title: 'AI招聘助手技术白皮书',
+                icon: 'person_search',
+                content: `
+                    <div class="tech-section">
+                        <h4>一、系统概述</h4>
+                        <p>AI招聘助手是一款基于深度学习与自然语言处理技术的新一代智能招聘系统。通过智能简历解析、自动初筛、智能面试评估等核心功能，全面重构企业招聘流程，显著提升招聘效率与质量。</p>
+                        <div class="tech-highlight">
+                            <p>核心价值：提升招聘效率300%以上，降低招聘成本60%，提高人岗匹配准确率</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>二、核心技术架构</h4>
+                        <ul>
+                            <li><strong>简历智能解析引擎：</strong>基于BERT预训练模型的多格式文档解析系统，支持PDF、Word、Excel等20+种格式，准确率达98.5%以上。采用OCR技术处理扫描件与图片简历</li>
+                            <li><strong>知识图谱构建：</strong>构建包含500万+职位描述、3000万+简历样本的行业知识图谱，实现语义理解与智能匹配</li>
+                            <li><strong>深度学习初筛模型：</strong>基于XGBoost与深度神经网络的混合模型，结合200+维特征向量，实现精准候选人排序</li>
+                            <li><strong>智能面试评估系统：</strong>集成语音识别（ASR）与情感分析技术，自动评估面试表现，生成结构化评估报告</li>
+                            <li><strong>推荐算法引擎：</strong>采用协同过滤与内容推荐相结合的混合推荐算法，实时推荐最匹配的候选人</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>三、技术实现细节</h4>
+                        <ul>
+                            <li><strong>自然语言处理（NLP）：</strong>采用中文分词、实体识别、关系抽取等技术，提取简历关键信息（姓名、联系方式、教育背景、工作经历、技能等）</li>
+                            <li><strong>机器学习模型：</strong>使用LightGBM进行快速特征训练，结合BERT fine-tuning实现语义理解</li>
+                            <li><strong>数据处理流水线：</strong>Apache Kafka + Flink实现实时简历处理，支持单日处理10万+简历</li>
+                            <li><strong>数据库架构：</strong>Elasticsearch全文检索 + PostgreSQL关系存储 + Redis缓存，毫秒级响应</li>
+                            <li><strong>API接口设计：</strong>RESTful API + GraphQL，支持Web、移动端、第三方系统集成</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>四、应用场景</h4>
+                        <ul>
+                            <li><strong>批量简历处理：</strong>一键导入数百份简历，自动解析、评分、排序，大幅提升HR工作效率</li>
+                            <li><strong>智能人才搜索：</strong>自然语言搜索，如"3年Java开发经验，熟悉微服务架构"，精准匹配候选人</li>
+                            <li><strong>面试辅助：</strong>实时提示候选人关键信息与风险点，生成面试题库，记录面试评价</li>
+                            <li><strong>人才库管理：</strong>自动分类、标签化，激活沉睡人才池</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>五、性能指标</h4>
+                        <ul>
+                            <li>简历解析准确率：≥98.5%</li>
+                            <li>人岗匹配准确率：≥85%</li>
+                            <li>简历处理速度：单份简历≤2秒</li>
+                            <li>系统可用性：≥99.9%</li>
+                            <li>支持并发用户：≥10,000+</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'ai-bidding': {
+                title: 'AI招投标助手技术白皮书',
+                icon: 'description',
+                content: `
+                    <div class="tech-section">
+                        <h4>一、系统概述</h4>
+                        <p>AI招投标助手是一款面向政府采购与企业招标的智能应标系统。通过自动化分析招标需求、智能生成应标文件、合规性审查等功能，大幅降低招投标工作量，提升中标率。</p>
+                        <div class="tech-highlight">
+                            <p>核心价值：应标效率提升500%，合规性审查准确率达99%，中标率提升40%以上</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>二、核心技术架构</h4>
+                        <ul>
+                            <li><strong>招标文件智能解析：</strong>基于深度学习的文档理解系统，自动提取招标公告、技术要求、评分标准等关键信息</li>
+                            <li><strong>合规性知识库：</strong>构建包含50万+条法律法规、行业标准、历史案例的合规知识图谱</li>
+                            <li><strong>智能标书生成：</strong>采用模板引擎 + GPT大模型，自动生成技术方案、商务方案、资格证明等章节</li>
+                            <li><strong>风险检测引擎：</strong>基于规则引擎与机器学习的混合系统，识别资质不符、业绩缺失等风险点</li>
+                            <li><strong>竞品分析：</strong>自动抓取公开信息，分析竞争对手报价策略与技术方案</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>三、技术实现细节</h4>
+                        <ul>
+                            <li><strong>文档结构分析：</strong>采用版面分析（Layout Analysis）技术，识别文档层级结构与表格内容</li>
+                            <li><strong>信息抽取技术：</strong>基于BiLSTM-CRF的命名实体识别，提取关键参数与要求</li>
+                            <li><strong>模板匹配引擎：</strong>支持100+种行业标书模板，智能匹配最佳模板</li>
+                            <li><strong>AI内容生成：</strong>集成GPT-4、Claude等大语言模型，生成高质量技术方案</li>
+                            <li><strong>数字签名：</strong>集成国密算法，支持电子签章与加密传输</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>四、应用场景</h4>
+                        <ul>
+                            <li><strong>政府采购投标：</strong>自动解析招标文件，生成符合政府要求的标准化标书</li>
+                            <li><strong>企业项目竞标：</strong>快速生成技术方案，智能评估竞品策略</li>
+                            <li><strong>资质管理：</strong>自动维护资质证书库，及时预警资质到期</li>
+                            <li><strong>业绩管理：</strong>智能匹配历史业绩，自动生成业绩证明材料</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>五、性能指标</h4>
+                        <ul>
+                            <li>招标文件解析准确率：≥97%</li>
+                            <li>标书生成时间：≤30分钟</li>
+                            <li>合规性审查准确率：≥99%</li>
+                            <li>系统可用性：≥99.95%</li>
+                            <li>支持并发项目：≥5,000+</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'ai-health': {
+                title: '职场健康加油站技术白皮书',
+                icon: 'health_metrics',
+                content: `
+                    <div class="tech-section">
+                        <h4>一、系统概述</h4>
+                        <p>职场健康加油站是一款专注企业职工健康管理的智能终端设备。通过多模态生物传感器与AI算法，为企业职工提供一站式健康指标检测、智能风险评估与个性化健康干预服务，助力企业构建健康关怀体系，提升员工幸福感与工作效率。</p>
+                        <div class="tech-highlight">
+                            <p>核心价值：职工健康检测时间≤5分钟，准确率达医疗级标准，健康建议个性化匹配率≥90%，企业员工健康管理效率提升60%</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-section">
+                        <h4>二、核心技术架构</h4>
+                        <ul>
+                            <li><strong>多模态生物识别：</strong>集成人脸识别、指纹识别，实现职工身份验证与健康档案自动关联</li>
+                            <li><strong>健康指标采集：</strong>心率、血压、血氧、体温、体脂率等20+项健康指标智能采集</li>
+                            <li><strong>AI健康评估模型：</strong>基于企业职工健康数据训练的深度学习模型，实现亚健康风险预测</li>
+                            <li><strong>智能问诊系统：</strong>集成医疗知识图谱与NLP技术，为职工提供健康咨询与就医建议</li>
+                            <li><strong>企业健康档案管理：</strong>区块链技术保障数据安全，支持企业职工健康档案云端存储与管理</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-section">
+                        <h4>三、技术实现细节</h4>
+                        <ul>
+                            <li><strong>传感器技术：</strong>医用级传感器，采样精度±0.1%，支持实时连续监测</li>
+                            <li><strong>信号处理算法：</strong>自适应滤波算法去除噪声，小波变换提取特征</li>
+                            <li><strong>深度学习模型：</strong>采用CNN处理时序健康数据，LSTM进行健康趋势预测</li>
+                            <li><strong>边缘计算：</strong>本地AI芯片处理敏感数据，保障职工隐私安全</li>
+                            <li><strong>IoT互联互通：</strong>支持BLE、WiFi、4G/5G多种通信方式，便于企业内部部署</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-section">
+                        <h4>四、应用场景</h4>
+                        <ul>
+                            <li><strong>企业职工健康管理：</strong>员工健康档案建立，定期体检提醒，健康干预方案</li>
+                            <li><strong>企业职工健康监测：</strong>职工自助健康检测，亚健康筛查，健康数据汇总分析</li>
+                            <li><strong>企业健康服务：</strong>职工预检分诊，健康数据采集，远程健康管理</li>
+                            <li><strong>企业健康福利：</strong>定期健康检测，健康评估报告，个性化健康建议推送</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-section">
+                        <h4>五、性能指标</h4>
+                        <ul>
+                            <li>健康指标检测准确率：≥95%</li>
+                            <li>亚健康风险预测准确率：≥85%</li>
+                            <li>单次检测时间：≤5分钟</li>
+                            <li>数据加密标准：国密SM2/SM3/SM4</li>
+                            <li>支持并发职工检测：≥500+</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'simple-insight': {
+                title: 'Simple Insight技术白皮书',
+                icon: 'insights',
+                content: `
+                    <div class="tech-section">
+                        <h4>一、系统概述</h4>
+                        <p>Simple Insight是一款面向企业本地私有化部署的一体化智能可观测平台。集成全栈链路监控、智能异常检测、自动化响应等功能，为本地私有化部署应用提供全方位的可观测性与安全护航。</p>
+                        <div class="tech-highlight">
+                            <p>核心价值：故障检测时间缩短70%，故障定位时间缩短80%，MTTR（平均修复时间）降低60%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>二、核心技术架构</h4>
+                        <ul>
+                            <li><strong>全栈链路追踪：</strong>基于OpenTelemetry标准的分布式追踪系统，支持跨服务、跨云的端到端链路监控</li>
+                            <li><strong>智能异常检测：</strong>采用无监督机器学习算法，自动发现性能异常、业务异常、安全异常</li>
+                            <li><strong>自动化响应：</strong>基于规则引擎与AI决策的自动化运维，支持自动扩缩容、自动故障恢复</li>
+                            <li><strong>日志智能分析：</strong>NLP技术分析日志，自动提取关键信息，生成问题摘要</li>
+                            <li><strong>指标可视化：</strong>自定义Dashboard，支持100+种图表类型，实时监控业务指标</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>三、技术实现细节</h4>
+                        <ul>
+                            <li><strong>数据采集：</strong>Sidecar模式采集Trace、Log、Metric，支持Java、Python、Go、Node.js等语言</li>
+                            <li><strong>时序数据库：</strong>基于ClickHouse的时序数据存储，支持每秒百万级写入</li>
+                            <li><strong>机器学习引擎：</strong>集成TensorFlow、PyTorch，支持在线学习与模型更新</li>
+                            <li><strong>告警系统：</strong>多级告警策略，支持邮件、短信、钉钉、企业微信等通知方式</li>
+                            <li><strong>API集成：</strong>开放API，支持与Prometheus、Grafana、ELK等系统集成</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>四、应用场景</h4>
+                        <ul>
+                            <li><strong>微服务监控：</strong>实时监控数百个微服务的性能与状态</li>
+                            <li><strong>用户体验监控：</strong>APM监控前端性能，优化用户加载体验</li>
+                            <li><strong>安全审计：</strong>自动识别异常访问、SQL注入、XSS攻击等安全威胁</li>
+                            <li><strong>容量规划：</strong>基于历史趋势预测资源需求，优化成本</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>五、性能指标</h4>
+                        <ul>
+                            <li>数据采集延迟：≤100ms</li>
+                            <li>异常检测准确率：≥95%</li>
+                            <li>告警响应时间：≤1秒</li>
+                            <li>支持数据保留：≥365天</li>
+                            <li>系统可用性：≥99.99%</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'oceanbase': {
+                title: 'OceanBase数据库技术白皮书',
+                icon: 'storage',
+                content: `
+                    <div class="tech-section">
+                        <h4>一、系统概述</h4>
+                        <p>OceanBase是一款原生分布式关系数据库，具备集中式与分布式双能力，支持三地五中心城市级无损容灾，全兼容Oracle SQL语法，助力企业数据库国产化替代与数字化转型。</p>
+                        <div class="tech-highlight">
+                            <p>核心价值：城市级容灾RPO=0，存储成本降低60%，迁移成本降低80%，单集群支持1000+节点</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>二、核心技术架构</h4>
+                        <ul>
+                            <li><strong>原生分布式架构：</strong>基于Paxos的分布式共识算法，数据三副本存储，自动故障切换</li>
+                            <li><strong>三地五中心容灾：</strong>支持同城双活、异地容灾，RPO=0、RTO<30秒的城市级容灾能力</li>
+                            <li><strong>Oracle兼容模式：</strong>全兼容Oracle SQL语法、PL/SQL、触发器、存储过程，迁移成本最低</li>
+                            <li><strong>HTAP混合负载：</strong>一份数据同时支持OLTP与OLAP，TP与AP负载隔离，避免资源争抢</li>
+                            <li><strong>极致压缩技术：</strong>列式存储+多种压缩算法，节省60%以上存储成本</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>三、技术实现细节</h4>
+                        <ul>
+                            <li><strong>存储引擎：</strong>LSM-Tree结构，WAL日志 + MemTable + SSTable，支持增量与全量合并</li>
+                            <li><strong>SQL引擎：</strong>自研SQL优化器，支持100+种算子，智能查询优化</li>
+                            <li><strong>事务处理：</strong>MVCC多版本并发控制，支持强一致性与最终一致性</li>
+                            <li><strong>分区技术：</strong>支持Hash、Range、List分区，自动分区路由</li>
+                            <li><strong>备份恢复：</strong>物理备份+逻辑备份，支持秒级快照与时间点恢复</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>四、应用场景</h4>
+                        <ul>
+                            <li><strong>金融核心系统：</strong>银行核心、支付系统，要求高可用、强一致性</li>
+                            <li><strong>电信BOSS系统：</strong>计费、CRM系统，数据量大、并发高</li>
+                            <li><strong>电商交易系统：</strong>订单、库存系统，高并发、低延迟</li>
+                            <li><strong>政府政务系统：</strong>一网通办、数据共享，国产化替代</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>五、性能指标</h4>
+                        <ul>
+                            <li>TPCC性能：7070万tpmC（1000节点集群）</li>
+                            <li>单表支持数据量：≥3200亿行</li>
+                            <li>单表支持数据文件：≥100TB</li>
+                            <li>事务延迟（P99）：≤10ms</li>
+                            <li>系统可用性：≥99.999%（5个9）</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'muxi-gpu': {
+                title: '沐曦国产通用GPU技术白皮书',
+                icon: 'developer_board',
+                content: `
+                    <div class="tech-section">
+                        <h4>一、系统概述</h4>
+                        <p>沐曦国产通用GPU是一款面向大规模AI计算与图形渲染的自主可控GPU芯片。采用先进制程工艺与自研架构，实现通用计算与图形渲染的双引擎设计，为国产化替代提供强大算力底座。</p>
+                        <div class="tech-highlight">
+                            <p>核心价值：AI计算性能对标国际主流产品，图形渲染兼容DirectX/OpenGL，功耗降低30%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>二、核心技术架构</h4>
+                        <ul>
+                            <li><strong>自研架构设计：</strong>C·X·H（沐曦·鸿鹄）架构，支持CUDA生态，兼容主流AI框架</li>
+                            <li><strong>双引擎设计：</strong>AI计算引擎（张量核心）+ 图形渲染引擎，灵活切换</li>
+                            <li><strong>高带宽显存：</strong>HBM2e显存，带宽≥1.5TB/s，显存容量≥32GB</li>
+                            <li><strong>先进制程工艺：</strong>7nm/5nm工艺，集成晶体管数≥600亿</li>
+                            <li><strong>异构计算支持：</strong>支持FP16、FP32、FP64、INT8等多种数据精度</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>三、技术实现细节</h4>
+                        <ul>
+                            <li><strong>张量计算核心：</strong>支持矩阵乘法加速，AI训练性能提升10倍以上</li>
+                            <li><strong>光线追踪单元：</strong>硬件级光线追踪，支持实时光追渲染</li>
+                            <li><strong>视频编解码：</strong>支持8K视频编解码，AV1/H.265/H.264格式</li>
+                            <li><strong>互联技术：</strong>支持NVLink、PCIe 5.0，多卡并行扩展</li>
+                            <li><strong>驱动软件栈：</strong>自研驱动+编译器，兼容PyTorch、TensorFlow、MindSpore等框架</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>四、应用场景</h4>
+                        <ul>
+                            <li><strong>AI训练：</strong>大模型训练、深度学习训练，支持千亿参数模型</li>
+                            <li><strong>AI推理：</strong>图像识别、NLP、推荐系统，低延迟推理</li>
+                            <li><strong>图形渲染：</strong>CAD设计、3D建模、视频编辑</li>
+                            <li><strong>科学计算：</strong>气象预测、基因测序、物理模拟</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <h4>五、性能指标</h4>
+                        <ul>
+                            <li>AI算力（FP16）：≥300 TFLOPS</li>
+                            <li>显存带宽：≥1.5TB/s</li>
+                            <li>显存容量：≥32GB HBM2e</li>
+                            <li>功耗：≤300W</li>
+                            <li>制程工艺：7nm/5nm</li>
+                        </ul>
+                    </div>
+                `
+            }
+        };
+    </script>
+    
+    <!-- 技术白皮书显示/隐藏控制 -->
+    <script>
+        function toggleWhitepapers() {
+            const whitepapersSection = document.getElementById('whitepapers');
+            const showBtn = document.getElementById('showWhitepapersBtn');
+            const isVisible = whitepapersSection.classList.contains('visible');
+            
+            if (isVisible) {
+                // 隐藏技术白皮书区域
+                whitepapersSection.classList.remove('visible');
+                // 更改按钮文字为"查看技术白皮书"
+                showBtn.textContent = '查看技术白皮书';
+            } else {
+                // 显示技术白皮书区域
+                whitepapersSection.classList.add('visible');
+                // 更改按钮文字为"收起技术白皮书"
+                showBtn.textContent = '收起技术白皮书';
+                // 平滑滚动到技术白皮书区域
+                setTimeout(() => {
+                    whitepapersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        }
+        
+        // 打开技术白皮书弹窗
+        function openModal(whitepaperId) {
+            const modal = document.getElementById('whitepaperModal');
+            const modalTitle = document.getElementById('modalTitleText');
+            const modalIcon = document.getElementById('modalIcon');
+            const modalBody = document.getElementById('modalBody');
+            
+            const data = whitepaperData[whitepaperId];
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalIcon.textContent = data.icon;
+                modalBody.innerHTML = data.content;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // 防止背景滚动
+            }
+        }
+        
+        // 关闭技术白皮书弹窗
+        function closeModal() {
+            const modal = document.getElementById('whitepaperModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // 恢复滚动
+        }
+        
+        // 点击弹窗外部关闭
+        document.getElementById('whitepaperModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // ESC键关闭弹窗
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // 下载白皮书（示例）
+        function downloadWhitepaper() {
+            alert('感谢您的兴趣！完整白皮书下载功能即将上线，如需获取请联系我们。');
+        }
+    </script>
+</body>
+</html>

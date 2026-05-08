@@ -1,90 +1,47 @@
-node_modules
-dist
-.DS_Store
-*.swp
-.git/*
-__pycache__/
-*.pyc
-.venv/*
-*.o
-*.a
-/vendor
-*.egg-info/
-/.env
-.env
+# Java
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/
+mvnw
+mvnw.cmd
 
-# JS/TS bundlers & build outputs
-.next
-.nuxt
-.turbo
-.vercel
-.parcel-cache
-.cache
-coverage
-storybook-static
-
-# Package manager artifacts
-pnpm-lock.yaml
-package-lock.json
-yarn.lock
-.pnp*
-.npm
-
-# Python tooling
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.tox/
-
-# Go tooling
-bin/
-*.test
-
-# Editor / IDE
-.vscode/
-.idea/
-*.iml
-
-# OS / misc
-Thumbs.db
-ehthumbs.db
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
 
 # Logs
-output.log
-*.log
-*.log.*
 logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# 视频文件
-*.mp4
-*.avi
-*.mov
-*.wmv
-*.flv
-*.mkv
-*.webm
-*.m4v
-*.mpeg
-*.mpg
-*.3gp
-*.f4v
-*.rmvb
-*.vob
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
 
-# 归档文件
-*.iso
-*.dmg
-*.rar
-*.zip
-*.gz
+# Environment
+.env
+.env.local
+.env.*.local
 
-# 文档类也默认加入
-*.pdf
-*.docx
-*.doc
-*.xlsx
-*.xls
-*.ppt
-*.pptx
-*.xlsx
-*.csv
+# Build
+.cache/
+.parcel-cache/
+.vite/

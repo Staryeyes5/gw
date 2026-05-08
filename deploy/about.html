@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 申朴信息</title>
+    <meta name="description" content="申朴信息成立于2009年，新四板上市企业，15年金融科技与企业数字化转型经验。">
+    <meta name="keywords" content="申朴信息,关于我们,发展历程,企业文化">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #0ea5e9, #22c55e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0ea5e9;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .footer-gradient {
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #0ea5e9, #22c55e);
+            border-radius: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 32px;
+            width: 2px;
+            height: calc(100% - 24px);
+            background: #e5e7eb;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-2">
+                    <span class="text-2xl font-bold text-sky-800">申朴信息</span>
+                    <span class="text-xs px-2 py-1 bg-green-500 text-white rounded">870221</span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link text-gray-700 font-medium hover:text-sky-600">首页</a>
+                    <a href="services.html" class="nav-link text-gray-700 font-medium hover:text-sky-600">核心业务</a>
+                    <a href="products.html" class="nav-link text-gray-700 font-medium hover:text-sky-600">产品方案</a>
+                    <a href="qualifications.html" class="nav-link text-gray-700 font-medium hover:text-sky-600">企业实力</a>
+                    <a href="about.html" class="nav-link text-gray-700 font-medium hover:text-sky-600 active">关于我们</a>
+                    <a href="contact.html" class="px-5 py-2 bg-sky-600 text-white rounded-lg font-medium hover:bg-sky-700 transition-colors">联系我们</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header pt-32 pb-20 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">关于我们</h1>
+            <p class="text-xl opacity-90">15年砥砺前行，铸就行业领先地位</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- Company Overview -->
+            <div class="mb-16">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-sky-900 mb-6">公司简介</h2>
+                        <p class="text-lg text-gray-600 mb-4 leading-relaxed">
+                            上海申朴信息技术股份有限公司成立于2009年，新四板上市企业（股票代码：870221），是国内领先的金融科技与企业数字化转型解决方案服务商。
+                        </p>
+                        <p class="text-lg text-gray-600 mb-4 leading-relaxed">
+                            我们聚焦金融科技、AI赋能、信息安全、信创适配等核心领域，为客户提供从咨询规划、技术开发到运维服务的全周期数字化转型解决方案。
+                        </p>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            凭借15年的行业深耕经验和技术积累，申朴信息已服务超过500家企业客户，涵盖金融、政府、制造、零售等多个行业。
+                        </p>
+                    </div>
+                    <div class="bg-gradient-to-br from-sky-50 to-green-50 rounded-3xl p-12 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4">🏢</div>
+                            <h3 class="text-2xl font-bold text-sky-900 mb-2">15年行业经验</h3>
+                            <p class="text-gray-600">2009年成立至今<br>专业团队 · 值得信赖</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission & Vision -->
+            <div class="mb-16 pt-12 border-t border-gray-100">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="text-2xl font-bold text-sky-900 mb-4">企业使命</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            以技术创新驱动数字化转型，助力企业实现业务增长与价值提升，成为客户最信赖的数字化伙伴。
+                        </p>
+                    </div>
+                    <div class="card-hover bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <div class="text-4xl mb-4">🔭</div>
+                        <h3 class="text-2xl font-bold text-sky-900 mb-4">企业愿景</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            成为国内领先的数字化转型服务商，用技术赋能千行百业，推动产业数字化升级。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Culture Values -->
+            <div class="mb-16 pt-12 border-t border-gray-100">
+                <h2 class="text-3xl font-extrabold text-sky-900 mb-8 text-center">企业文化与价值观</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card-hover bg-gradient-to-br from-sky-50 to-green-50 rounded-2xl p-6 text-center border border-sky-100">
+                        <div class="text-4xl mb-4">💡</div>
+                        <h4 class="text-xl font-bold text-sky-900 mb-2">创新</h4>
+                        <p class="text-gray-600 text-sm">持续创新，引领技术前沿</p>
+                    </div>
+                    <div class="card-hover bg-gradient-to-br from-green-50 to-sky-50 rounded-2xl p-6 text-center border border-green-100">
+                        <div class="text-4xl mb-4">🤝</div>
+                        <h4 class="text-xl font-bold text-sky-900 mb-2">协作</h4>
+                        <p class="text-gray-600 text-sm">团队协作，共创美好未来</p>
+                    </div>
+                    <div class="card-hover bg-gradient-to-br from-sky-50 to-green-50 rounded-2xl p-6 text-center border border-sky-100">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h4 class="text-xl font-bold text-sky-900 mb-2">专业</h4>
+                        <p class="text-gray-600 text-sm">专业服务，成就客户价值</p>
+                    </div>
+                    <div class="card-hover bg-gradient-to-br from-green-50 to-sky-50 rounded-2xl p-6 text-center border border-green-100">
+                        <div class="text-4xl mb-4">⚡</div>
+                        <h4 class="text-xl font-bold text-sky-900 mb-2">高效</h4>
+                        <p class="text-gray-600 text-sm">高效执行，追求卓越品质</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Development Timeline -->
+            <div class="pt-12 border-t border-gray-100">
+                <h2 class="text-3xl font-extrabold text-sky-900 mb-8 text-center">发展历程</h2>
+                <div class="max-w-3xl mx-auto">
+                    <div class="timeline-item pb-8">
+                        <h4 class="text-xl font-bold text-sky-900 mb-2">2009年</h4>
+                        <p class="text-gray-600">申朴信息在上海正式成立，开启企业信息化服务征程</p>
+                    </div>
+                    <div class="timeline-item pb-8">
+                        <h4 class="text-xl font-bold text-sky-900 mb-2">2015年</h4>
+                        <p class="text-gray-600">成功挂牌新四板（股票代码：870221），开启资本市场新篇章</p>
+                    </div>
+                    <div class="timeline-item pb-8">
+                        <h4 class="text-xl font-bold text-sky-900 mb-2">2018年</h4>
+                        <p class="text-gray-600">获得CMMI 5级认证，软件研发能力达到国际最高标准</p>
+                    </div>
+                    <div class="timeline-item pb-8">
+                        <h4 class="text-xl font-bold text-sky-900 mb-2">2020年</h4>
+                        <p class="text-gray-600">全面布局金融科技与AI赋能业务，自研产品矩阵初具规模</p>
+                    </div>
+                    <div class="timeline-item pb-8">
+                        <h4 class="text-xl font-bold text-sky-900 mb-2">2022年</h4>
+                        <p class="text-gray-600">信创业务全面发力，完成多家主流信创厂商适配认证</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="text-xl font-bold text-sky-900 mb-2">2024年至今</h4>
+                        <p class="text-gray-600">持续技术创新，打造行业领先的数字化转型解决方案服务商</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-sky-900 to-sky-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">了解更多关于申朴信息</h2>
+            <p class="text-xl text-sky-200 mb-8 max-w-2xl mx-auto">
+                期待与您携手，共同开创数字化转型新篇章
+            </p>
+            <a href="contact.html" class="inline-block px-8 py-4 bg-white text-sky-700 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors">
+                联系我们
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-gradient text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-2xl font-bold">申朴信息</span>
+                        <span class="text-xs px-2 py-1 bg-green-500 text-white rounded">870221</span>
+                    </div>
+                    <p class="text-sky-200 leading-relaxed">
+                        国内领先的金融科技与企业数字化转型解决方案服务商，15年行业深耕经验。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">核心业务</h4>
+                    <ul class="space-y-2 text-sky-200">
+                        <li><a href="services.html" class="hover:text-white transition-colors">数字化转型</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">AI赋能服务</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">信息安全</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">信创适配</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品方案</h4>
+                    <ul class="space-y-2 text-sky-200">
+                        <li><a href="products.html" class="hover:text-white transition-colors">APM可观测平台</a></li>
+                        <li><a href="products.html" class="hover:text-white transition-colors">AI辅助编程</a></li>
+                        <li><a href="products.html" class="hover:text-white transition-colors">金融科技解决方案</a></li>
+                        <li><a href="products.html" class="hover:text-white transition-colors">安全与信创产品</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-3 text-sky-200">
+                        <li class="flex items-start gap-2">
+                            <span>📞</span>
+                            <span>400-888-8888</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span>✉️</span>
+                            <span>contact@cisetech.com</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span>📍</span>
+                            <span>上海市浦东新区</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-sky-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sky-300 text-sm">© 2024 上海申朴信息技术股份有限公司 版权所有</p>
+                <p class="text-sky-300 text-sm">沪ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,2878 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>加入我们 | Cisetech官方招聘网站</title>
+    <meta name="description" content="加入Cisetech，与优秀团队共创未来。我们正在寻找最具好奇心和创造力的灵魂。">
+    <meta name="keywords" content="Cisetech招聘,申朴信息招聘,技术岗位招聘,JOIN US">
+    <!-- Tailwind CSS v3 with Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="lang.js"></script>
+    <!-- Font Setup -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style data-purpose="typography">
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #ffffff;
+            color: #0f172a;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        /* 滚动条滑块样式 - 确保可见 */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* 防止所有容器和 section 元素导致横向滚动 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* 滚动渐显动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 首屏不受滚动动画影响 */
+        .hero-fade {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            will-change: opacity, transform !important;
+            backface-visibility: hidden !important;
+        }
+        /* 数字滚动动效 */
+        .counter {
+            transition: all 0.3s ease;
+        }
+        
+        /* 六边形蜂巢布局 */
+        .hexagon-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+        
+        .hex-row {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .hex-row-offset {
+            margin-top: -35px;
+            transform: translateX(0);
+        }
+        
+        .hex-wrapper {
+            width: 180px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hexagon {
+            width: 160px;
+            height: 180px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+        
+        .hexagon:hover {
+            transform: scale(1.15);
+            z-index: 10;
+        }
+        
+        .hex-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            background: url('assets/bg7.png') center center / contain no-repeat;
+        }
+        
+        /* 六边形内部光效 - 移除以避免闪烁 */
+        .hex-content::before {
+            display: none;
+        }
+        
+        .hex-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+        }
+        
+        .hex-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        /* 悬浮时图标上浮缩小并隐藏 */
+        .hexagon:hover .hex-icon {
+            transform: translateY(-15px) scale(0.3);
+            opacity: 0;
+            height: 0;
+            width: 0;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        
+        .hex-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            white-space: nowrap;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.4);
+            flex-shrink: 0;
+        }
+        
+        /* 文字容器 - 用于包裹标题和扩展文字，实现整体居中 */
+        .hex-text-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* 悬浮时文字容器轻微上浮，整体居中 */
+        .hexagon:hover .hex-text-wrap {
+            transform: translateY(-5px);
+        }
+        
+        .hex-expand {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        .hex-expand p {
+            font-size: 12px;
+            color: #4a5568;
+            line-height: 1.6;
+            padding: 4px 6px;
+            font-weight: 500;
+        }
+        
+        /* 悬浮时扩展文字显示 */
+        .hexagon:hover .hex-expand {
+            opacity: 1;
+            max-height: 80px;
+            margin-top: 8px;
+        }
+        
+        .hexagon:hover .hex-title {
+            /* 标题不再单独移动，由父容器统一控制 */
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .hex-wrapper {
+                width: 130px;
+                height: 145px;
+            }
+            
+            .hexagon {
+                width: 120px;
+                height: 135px;
+            }
+            
+            .hex-content {
+                padding: 12px 8px;
+            }
+            
+            .hex-icon {
+                width: 35px;
+                height: 35px;
+                margin-bottom: 8px;
+            }
+            
+            .hex-title {
+                font-size: 12px;
+            }
+            
+            .hex-expand p {
+                font-size: 10px;
+                padding: 4px 6px;
+            }
+            
+            .hex-row-offset {
+                margin-top: -25px;
+            }
+            
+            .hex-row {
+                gap: 4px;
+            }
+            
+            /* 移动端点击激活状态 */
+            .hexagon.active .hex-icon {
+                transform: translateY(-10px) scale(0.3);
+                opacity: 0;
+                height: 0;
+                width: 0;
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+            
+            .hexagon.active .hex-text-wrap {
+                transform: translateY(-3px);
+            }
+            
+            .hexagon.active .hex-expand {
+                opacity: 1;
+                max-height: 60px;
+                margin-top: 6px;
+            }
+        }
+        
+        /* 职位卡片展开动画 */
+        .job-details {
+            transition: max-height 0.4s ease-out, padding 0.3s ease, border 0.3s ease;
+        }
+        
+        .job-card.expanded {
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.12);
+        }
+        
+        /* 模态框动画 */
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .animate-modal-in {
+            animation: modalIn 0.3s ease-out;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .animate-scale-in {
+            animation: scaleIn 0.3s ease-out;
+        }
+        
+        /* Footer标题下划线装饰 */
+        footer h4 {
+            position: relative;
+            display: inline-block;
+        }
+        footer h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 2rem;
+            height: 2px;
+            background: linear-gradient(to right, #0ea5e9, #22d3ee);
+            border-radius: 1px;
+        }
+    <style data-purpose="custom-layout">
+        /* 导航容器 */
+        nav {
+            position: relative;
+        }
+        
+        /* 导航链接样式 */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #0ea5e9, #22d3ee);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* 下拉菜单样式 */
+        .nav-dropdown {
+            position: relative;
+        }
+        
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 200px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 12px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #94a3b8;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .nav-dropdown-menu a:hover {
+            color: #22d3ee;
+            background: rgba(14, 165, 233, 0.1);
+        }
+        
+        /* 移动端汉堡菜单 */
+        .hamburger-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+        
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger-btn span:nth-child(1) {
+            transform: translateY(-6px);
+        }
+        
+        .hamburger-btn span:nth-child(3) {
+            transform: translateY(6px);
+        }
+        
+        .hamburger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(0);
+        }
+        
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(0);
+        }
+        
+        /* 移动端导航遮罩层 */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* 移动端导航菜单 */
+        .mobile-nav {
+            position: fixed !important;
+            top: 0 !important;
+            right: 0 !important;
+            width: 40% !important;
+            min-width: 200px !important;
+            max-width: 300px !important;
+            height: 100% !important;
+            background: rgba(15, 23, 42, 0.98) !important;
+            backdrop-filter: blur(20px) !important;
+            z-index: 2000 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            
+            overflow-y: auto !important;
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+            min-height: 100vh;
+            overflow-x: hidden !important;
+            -webkit-overflow-scrolling: touch !important;
+            transform: translateX(100%) !important;
+            transition: transform 0.3s ease !important;
+            border-left: 1px solid rgba(14, 165, 233, 0.2) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        .mobile-nav.active {
+            transform: translateX(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        .mobile-nav a {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e2e8f0;
+            padding: 14px 24px;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+        
+        .mobile-nav a:hover, .mobile-nav a.active {
+            color: #22d3ee;
+            background: rgba(14, 165, 233, 0.1);
+        }
+        
+        .mobile-submenu-trigger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .mobile-submenu-trigger:hover {
+            color: #22d3ee;
+            background: rgba(14, 165, 233, 0.1);
+        }
+
+        .mobile-nav.active > *:first-child,
+        .mobile-nav.active > ul > *:first-child {
+        }
+        /* 移动端导航菜单项居中 */
+        .mobile-nav ul,
+        .mobile-nav .mobile-submenu {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-nav ul li,
+        .mobile-nav > * {
+            width: 100%;
+            text-align: center;
+        }
+        .mobile-submenu-trigger.active svg {
+            transform: rotate(180deg);
+        }
+
+        /* 移动端子菜单容器 */
+        .mobile-submenu {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-submenu-items {
+            max-height: 0;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            transition: max-height 0.3s ease;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-submenu-items.active {
+            max-height: 400px;
+        }
+        
+        .mobile-submenu-items a {
+            display: block;
+            width: 100%;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #94a3b8;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        
+        .mobile-submenu-items a:hover {
+            color: #22d3ee;
+            background: rgba(14, 165, 233, 0.1);
+        }
+
+        @media (min-width: 1024px) {
+            .hamburger-btn {
+                display: none;
+            }
+            .mobile-nav {
+                display: none;
+            }
+            .mobile-nav-overlay {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            html, body {
+                overflow-y: scroll;
+                overflow-x: hidden;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            section, .container, .container-fluid {
+                overflow-x: hidden;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            header {
+                z-index: 10 !important;
+                width: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+            }
+
+            /* 移动端卡片堆叠调整 */
+            .card-item[data-index="0"] { transform: translateX(-60px) translateY(20px) rotateZ(-15deg) translateZ(0px) !important; }
+            .card-item[data-index="1"] { transform: translateX(-40px) translateY(10px) rotateZ(-10deg) translateZ(-20px) !important; }
+            .card-item[data-index="2"] { transform: translateX(-20px) translateY(5px) rotateZ(-5deg) translateZ(-40px) !important; }
+            .card-item[data-index="3"] { transform: translateX(0px) translateY(0px) rotateZ(0deg) translateZ(-60px) !important; }
+            .card-item[data-index="4"] { transform: translateX(20px) translateY(5px) rotateZ(5deg) translateZ(-40px) !important; }
+            .card-item[data-index="5"] { transform: translateX(40px) translateY(10px) rotateZ(10deg) translateZ(-20px) !important; }
+            .card-item[data-index="6"] { transform: translateX(60px) translateY(20px) rotateZ(15deg) translateZ(0px) !important; }
+        }
+
+        /* 卡片悬浮效果优化 */
+        .hover-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.12);
+        }
+        .hover-card-dark {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hover-card-dark:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+            background-color: #1e293b;
+        }
+        /* 业务领域卡片渐变优化 */
+        .bg-gradient-tech {
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.1));
+        }
+        
+        /* 页脚微信二维码 */
+        .wechat-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(7, 193, 96, 0.1);
+            border: 1px solid rgba(7, 193, 96, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .wechat-btn:hover {
+            background: rgba(7, 193, 96, 0.2);
+            border-color: rgba(7, 193, 96, 0.5);
+            transform: scale(1.1);
+        }
+        
+        .wechat-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .wechat-qrcode-popup {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 9999;
+        }
+        
+        .wechat-btn:hover .wechat-qrcode-popup {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-5px);
+        }
+        
+        .wechat-qrcode-popup::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid white;
+        }
+        
+        .wechat-qrcode-popup img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .wechat-qrcode-label {
+            text-align: center;
+            font-size: 12px;
+            color: #333;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        
+        /* 移动端微信公众号弹窗 - 图标正右方 */
+        @media (max-width: 768px) {
+            .wechat-hover-wrapper {
+                position: relative;
+            }
+            
+            .wechat-btn {
+                position: relative;
+            }
+            
+            .wechat-btn .wechat-qrcode-popup {
+                position: absolute;
+                left: calc(100% + 10px) !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                bottom: auto !important;
+                width: 120px;
+                visibility: hidden;
+                opacity: 0;
+            }
+            
+            .wechat-btn:hover .wechat-qrcode-popup {
+                visibility: visible;
+                opacity: 1;
+            }
+            
+            .wechat-qrcode-popup::after {
+                bottom: auto !important;
+                left: -8px !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                border-top: 8px solid transparent !important;
+                border-bottom: 8px solid transparent !important;
+                border-right: 8px solid white !important;
+                border-left: none !important;
+            }
+        }
+        
+        /* 卡片堆叠效果样式 */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .card-item {
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+
+        .card-item:hover {
+            transform: translateX(0px) translateY(-50px) rotateZ(0deg) translateZ(300px) scale(1.2) !important;
+            z-index: 999 !important;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        /* 办公环境图片展示样式 */
+        .office-gallery-container {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .office-photo {
+            position: absolute;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            overflow: visible;
+        }
+
+        .office-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .office-photo:hover {
+            z-index: 100;
+        }
+
+        .office-photo:hover img {
+            transform: scale(2.5);
+            box-shadow: 0 25px 80px rgba(59, 130, 246, 0.4);
+        }
+
+        /* 各图片位置和浮动动画 */
+        .office-photo-1 {
+            left: 5%;
+            top: 20%;
+            width: 200px;
+            height: 150px;
+            animation: officeFloat1 4s ease-in-out infinite;
+        }
+
+        .office-photo-2 {
+            left: 22%;
+            top: 45%;
+            width: 180px;
+            height: 130px;
+            animation: officeFloat2 4.5s ease-in-out infinite 0.5s;
+        }
+
+        .office-photo-3 {
+            left: 40%;
+            top: 15%;
+            width: 220px;
+            height: 160px;
+            animation: officeFloat3 5s ease-in-out infinite 1s;
+        }
+
+        .office-photo-4 {
+            left: 55%;
+            top: 50%;
+            width: 190px;
+            height: 140px;
+            animation: officeFloat4 4.2s ease-in-out infinite 0.3s;
+        }
+
+        .office-photo-5 {
+            left: 72%;
+            top: 25%;
+            width: 200px;
+            height: 150px;
+            animation: officeFloat5 4.7s ease-in-out infinite 0.7s;
+        }
+
+        .office-photo-6 {
+            left: 15%;
+            top: 65%;
+            width: 180px;
+            height: 135px;
+            animation: officeFloat6 4.3s ease-in-out infinite 1.2s;
+        }
+
+        .office-photo-7 {
+            left: 60%;
+            top: 70%;
+            width: 185px;
+            height: 140px;
+            animation: officeFloat7 4.6s ease-in-out infinite 0.4s;
+        }
+
+        .office-photo-8 {
+            left: 35%;
+            top: 55%;
+            width: 175px;
+            height: 130px;
+            animation: officeFloat8 4.4s ease-in-out infinite 0.9s;
+        }
+
+        .office-photo-9 {
+            left: 85%;
+            top: 55%;
+            width: 170px;
+            height: 125px;
+            animation: officeFloat9 4.8s ease-in-out infinite 0.6s;
+        }
+
+        .office-photo-10 {
+            left: 50%;
+            top: 30%;
+            width: 190px;
+            height: 140px;
+            animation: officeFloat10 4.2s ease-in-out infinite 1.1s;
+        }
+
+        .office-photo-11 {
+            left: 0%;
+            top: 78%;
+            width: 190px;
+            height: 140px;
+            animation: officeFloat11 4.5s ease-in-out infinite 1.3s;
+        }
+
+        @keyframes officeFloat1 {
+            0%, 100% { transform: translateY(0) scale(0.75); }
+            50% { transform: translateY(-8px) scale(0.75); }
+        }
+
+        @keyframes officeFloat2 {
+            0%, 100% { transform: translateY(0) scale(0.75); }
+            50% { transform: translateY(10px) scale(0.75); }
+        }
+
+        @keyframes officeFloat3 {
+            0%, 100% { transform: translateY(0) scale(0.75); }
+            50% { transform: translateY(-12px) scale(0.75); }
+        }
+
+        @keyframes officeFloat4 {
+            0%, 100% { transform: translateY(0) scale(0.75); }
+            50% { transform: translateY(8px) scale(0.75); }
+        }
+
+        @keyframes officeFloat5 {
+            0%, 100% { transform: translateY(0) scale(0.75); }
+            50% { transform: translateY(-6px) scale(0.75); }
+        }
+
+        @keyframes officeFloat6 {
+            0%, 100% { transform: translateY(0) scale(0.75); }
+            50% { transform: translateY(9px) scale(0.75); }
+        }
+
+        @keyframes officeFloat7 {
+            0%, 100% { transform: translateY(0) scale(0.75); }
+            50% { transform: translateY(-7px) scale(0.75); }
+        }
+
+        @keyframes officeFloat8 {
+            0%, 100% { transform: translateY(0) scale(0.75); }
+            50% { transform: translateY(11px) scale(0.75); }
+        }
+
+        @keyframes officeFloat9 {
+            0%, 100% { transform: translateY(0) scale(0.75); }
+            50% { transform: translateY(-9px) scale(0.75); }
+        }
+
+        @keyframes officeFloat10 {
+            0%, 100% { transform: translateY(0) scale(0.75); }
+            50% { transform: translateY(7px) scale(0.75); }
+        }
+
+        @keyframes officeFloat11 {
+            0%, 100% { transform: translateY(0) scale(0.75); }
+            50% { transform: translateY(-9px) scale(0.75); }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .office-gallery-container {
+                height: 600px;
+                padding: 0 10px;
+            }
+            .office-photo {
+                transform: scale(0.4);
+            }
+            .office-photo-1 { left: 0%; top: 5%; }
+            .office-photo-2 { left: 35%; top: 15%; }
+            .office-photo-3 { left: 15%; top: 25%; }
+            .office-photo-4 { left: 50%; top: 35%; }
+            .office-photo-5 { left: 0%; top: 45%; }
+            .office-photo-6 { left: 40%; top: 50%; }
+            .office-photo-7 { left: 10%; top: 65%; }
+            .office-photo-8 { left: 45%; top: 70%; }
+            .office-photo-9 { left: 0%; top: 80%; }
+            .office-photo-10 { left: 50%; top: 85%; }
+            .office-photo-11 { left: 25%; top: 90%; }
+        }
+    </style>
+    <!-- Tailwind 自定义配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#3b82f6',
+                        tertiary: '#06b6d4',
+                    },
+                    boxShadow: {
+                        'tech': '0 8px 30px rgba(0, 0, 0, 0.08)',
+                        'tech-hover': '0 12px 40px rgba(0, 0, 0, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased">
+    <!-- BEGIN: Navigation -->
+    <header class="bg-slate-900 backdrop-blur-lg sticky lg:fixed top-0 z-50 border-b border-slate-700/50" style="left: 0; right: 0;">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="h-12 w-12 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <img src="assets/申朴圆点logo.png" alt="Cisetech Logo" class="h-10 w-auto object-contain">
+                    </div>
+                    <div>
+                        <h1 class="site-logo-text text-xl font-bold text-white">Cisetech</h1>
+                        <p class="text-xs text-slate-400">申朴信息技术（上海）股份有限公司</p>
+                    </div>
+                </a>
+                
+                <!-- 桌面端导航 -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">首页</a>
+                    <div class="nav-dropdown">
+                        <a href="services.html#products" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">核心产品</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="services.html#product-simple-insight">一体化智能可观测平台</a>
+                            <a href="services.html#product-muxi-gpu">沐曦国产通用GPU</a>
+                            <a href="services.html#product-oceanbase">OceanBase数据库</a>
+                            <a href="services.html#product-ai-recruit">AI招聘助手</a>
+                            <a href="services.html#product-ai-bidding">AI招投标助手</a>
+                            <a href="services.html#product-ai-health">职场健康加油站</a>
+                            <a href="services.html#product-low-altitude">低空经济|低空综合管理服务平台</a>
+                        </div>
+                    </div>
+                    <div class="nav-dropdown">
+                        <a href="qualifications.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">企业实力</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="qualifications.html#honors">荣誉资质</a>
+                            <a href="qualifications.html#clients">权威客户</a>
+                        </div>
+                    </div>
+                    <div class="nav-dropdown">
+                        <a href="joins.html" class="nav-link text-cyan-400 font-medium">招贤纳士</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="joins.html#openings">常招职位</a>
+                            <a href="joins.html#culture">文化环境</a>
+                        </div>
+                    </div>
+                    <div class="nav-dropdown">
+                        <a href="about.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">
+                            关于我们
+                        </a>
+                        <div class="nav-dropdown-menu">
+                            <a href="about.html#about">关于申朴</a>
+                            <a href="about.html#culture">企业文化</a>
+                            <a href="about.html#timeline">发展历程</a>
+                            <a href="about.html#branches">分支机构</a>
+                            <a href="about.html#offshore">离岸交付中心</a>
+                        </div>
+                    </div>
+                </nav>
+                
+                <div class="flex items-center gap-4">
+                    <a href="contact.html" class="hidden sm:block bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2.5 rounded-xl font-medium hover:from-cyan-600 hover:to-blue-700 transition-all hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30">
+                        咨询合作
+                    </a>
+                    <!-- 汉堡菜单按钮 -->
+                    <button class="hamburger-btn lg:hidden" id="hamburgerBtn" aria-label="菜单">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 移动端导航遮罩层 -->
+    <div class="mobile-nav-overlay lg:hidden" id="mobileNavOverlay"></div>
+    
+    <!-- 移动端导航菜单 -->
+    <nav class="mobile-nav lg:hidden" id="mobileNav">
+        <a href="index.html">首页</a>
+        <div class="mobile-submenu">
+            <div class="mobile-submenu-trigger" id="mobileSubmenuTrigger">
+                <span>核心产品</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
+                    <path d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>
+            <div class="mobile-submenu-items" id="mobileSubmenuItems">
+                <a href="services.html#product-simple-insight">一体化智能可观测平台</a>
+                <a href="services.html#product-muxi-gpu">沐曦国产通用GPU</a>
+                <a href="services.html#product-oceanbase">OceanBase数据库</a>
+                <a href="services.html#product-ai-recruit">AI招聘助手</a>
+                <a href="services.html#product-ai-bidding">AI招投标助手</a>
+                <a href="services.html#product-ai-health">职场健康加油站</a>
+                <a href="services.html#product-low-altitude">低空经济|低空综合管理服务平台</a>
+            </div>
+        </div>
+        <div class="mobile-submenu">
+            <div class="mobile-submenu-trigger" id="mobileStrengthSubmenuTrigger">
+                <span>企业实力</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
+                    <path d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>
+            <div class="mobile-submenu-items" id="mobileStrengthSubmenuItems">
+                <a href="qualifications.html#honors">荣誉资质</a>
+                <a href="qualifications.html#clients">权威客户</a>
+            </div>
+        </div>
+        <div class="mobile-submenu">
+            <div class="mobile-submenu-trigger" id="mobileJoinsSubmenuTrigger">
+                <span>招贤纳士</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
+                    <path d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>
+            <div class="mobile-submenu-items" id="mobileJoinsSubmenuItems">
+                <a href="joins.html#openings">常招职位</a>
+                <a href="joins.html#culture">文化环境</a>
+            </div>
+        </div>
+        <div class="mobile-submenu">
+            <div class="mobile-submenu-trigger" id="mobileAboutSubmenuTrigger">
+                <span>关于我们</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
+                    <path d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>
+            <div class="mobile-submenu-items" id="mobileAboutSubmenuItems">
+                <a href="about.html#about">关于申朴</a>
+                <a href="about.html#culture">企业文化</a>
+                <a href="about.html#timeline">发展历程</a>
+                <a href="about.html#branches">分支机构</a>
+                <a href="about.html#offshore">离岸交付中心</a>
+            </div>
+        </div>
+        <a href="contact.html" class="mt-6 px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl text-white text-center">咨询合作</a>
+    </nav>
+    <!-- END: Navigation -->
+
+    <!-- BEGIN: Hero Section -->
+    <main>
+        <section class="relative bg-white overflow-hidden pt-4 sm:pt-6 lg:pt-8 pb-12 sm:pb-16 lg:pb-20 hero-fade">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center">
+                <!-- Text Content -->
+                <div class="w-full lg:w-1/2 z-10">
+                    <h1 class="text-5xl lg:text-7xl font-bold text-slate-900 leading-tight mb-6">
+                        定义未来，<br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-tertiary">从这里开始。</span>
+                    </h1>
+                    <p class="text-xl text-slate-500 mb-10 max-w-lg leading-relaxed">
+                        加入我们，与全球顶尖的工程师和设计师一起，用技术驱动世界进步。我们寻找最具好奇心和创造力的灵魂。
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="javascript:void(0)" onclick="scrollToSection('openings')" class="px-8 py-4 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-all shadow-xl hover:shadow-2xl">
+                            浏览所有职位
+                        </a>
+                        <a href="javascript:void(0)" onclick="scrollToSection('culture')" class="px-8 py-4 border border-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-50 transition-all hover:shadow-md">
+                            了解公司文化
+                        </a>
+                    </div>
+                </div>
+                <!-- Hero Image Container -->
+                <div class="w-full lg:w-1/2 mt-16 lg:mt-0 relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img alt="Team Work" class="w-full h-auto object-cover" src="assets/joins1.png"/>
+                    </div>
+                    <!-- 装饰元素 -->
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-tertiary/10 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
+                    <div class="absolute -bottom-10 -left-10 w-60 h-60 bg-secondary/10 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- END: Hero Section -->
+
+
+<!-- BEGIN: Business Areas (Imported from SCREEN_6) -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 fade-in">
+                <div>
+                    <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-4">业务领域</h2>
+                    <h3 class="text-3xl lg:text-5xl font-bold text-primary">探索你的无限可能</h3>
+                </div>
+                <!-- 查看全部部门链接已注释
+                <a class="hidden md:flex items-center gap-2 text-secondary font-bold group mt-4 md:mt-0" href="#">
+                    查看全部部门 
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+                </a>
+                -->
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Area 1 -->
+                <div class="group relative h-80 rounded-3xl overflow-hidden cursor-pointer shadow-lg hover-card fade-in">
+                    <img alt="研发与工程" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="assets/joins2.png"/>
+                    <div class="absolute inset-0 bg-gradient-tech"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <p class="text-white/70 text-sm font-bold uppercase mb-1">Engineering</p>
+                        <h5 class="text-white text-2xl font-bold">研发与工程</h5>
+                    </div>
+                </div>
+                <!-- Area 2 -->
+                <div class="group relative h-80 rounded-3xl overflow-hidden cursor-pointer shadow-lg hover-card fade-in">
+                    <img alt="创意设计" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="assets/joins3.png"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-secondary to-transparent opacity-80"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <p class="text-white/70 text-sm font-bold uppercase mb-1">Design</p>
+                        <h5 class="text-white text-2xl font-bold">创意设计</h5>
+                    </div>
+                </div>
+                <!-- Area 3 -->
+                <div class="group relative h-80 rounded-3xl overflow-hidden cursor-pointer shadow-lg hover-card fade-in">
+                    <img alt="市场营销" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="assets/joins4.png"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-tertiary to-transparent opacity-80"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <p class="text-white/70 text-sm font-bold uppercase mb-1">Marketing</p>
+                        <h5 class="text-white text-2xl font-bold">市场营销</h5>
+                    </div>
+                </div>
+                <!-- Area 4 -->
+                <div class="group relative h-80 rounded-3xl overflow-hidden cursor-pointer shadow-lg hover-card fade-in">
+                    <img alt="业务运营" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="assets/joins5.png"/>
+                    <div class="absolute inset-0 bg-gradient-tech"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <p class="text-white/70 text-sm font-bold uppercase mb-1">Operations</p>
+                        <h5 class="text-white text-2xl font-bold">业务运营</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Business Areas -->
+
+    <!-- 常招职位 -->
+    <section class="bg-slate-50 py-24" id="openings">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h3 class="text-3xl lg:text-4xl font-bold text-primary mb-4">常招职位</h3>
+                <p class="text-slate-500">正在寻找志同道合的你，共赴山海</p>
+            </div>
+            <div class="space-y-6" id="job-list">
+                <!-- Job Item 1: 大模型算法研究员 / 工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="llm">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">大模型算法研究员 / 工程师</h5>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-red-100 text-red-600">Urgent</span>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-8年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">30k - 80k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details px-6 pb-0 border-t border-slate-100" style="max-height: 0; overflow: hidden; padding-bottom: 0; border-top-width: 0;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责大语言模型的预训练、微调、提示工程等核心算法研究</li>
+                                    <li>优化模型推理性能，提升训练效率与模型效果</li>
+                                    <li>将大模型能力应用于具体业务场景，打造行业解决方案</li>
+                                    <li>跟踪前沿技术，探索大模型在Agent、RAG等方向的应用</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机、数学等相关专业硕士及以上学历，3年以上NLP/大模型经验</li>
+                                    <li>精通Transformer、Attention机制等深度学习核心算法</li>
+                                    <li>熟悉PyTorch、TensorFlow等框架，有大模型训练/微调经验</li>
+                                    <li>有顶级会议论文发表或开源项目贡献者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 2: 多模态算法工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="multimodal">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">多模态算法工程师</h5>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-red-100 text-red-600">Urgent</span>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-8年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">30k - 70k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责多模态大模型的研究与开发，包括图文融合、视频理解等</li>
+                                    <li>设计并实现跨模态特征对齐与融合算法</li>
+                                    <li>优化多模态模型的训练效率与推理性能</li>
+                                    <li>将多模态能力应用于实际业务场景，提升产品智能化水平</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机、人工智能相关专业硕士及以上学历，3年以上多模态经验</li>
+                                    <li>熟悉视觉-语言模型（如CLIP、BLIP、LLaVA等）</li>
+                                    <li>精通PyTorch、TensorFlow，有大规模模型训练经验</li>
+                                    <li>有CVPR、ICCV、ACL等顶级会议论文发表者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 3: AIGC 工程化工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="aigc">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">AIGC 工程化工程师</h5>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-red-100 text-red-600">Urgent</span>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-6年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">25k - 50k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责AIGC模型的工程化落地，包括模型压缩、量化、部署优化</li>
+                                    <li>构建高并发、低延迟的AI生成内容服务</li>
+                                    <li>优化推理引擎，提升模型推理性能与成本效率</li>
+                                    <li>设计模型服务架构，保障系统稳定性与可扩展性</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机相关专业本科及以上学历，3年以上AI工程化经验</li>
+                                    <li>熟悉TensorRT、ONNX、TensorFlow Serving等推理框架</li>
+                                    <li>精通Python/C++，有高并发服务开发经验</li>
+                                    <li>有Stable Diffusion、Midjourney等AIGC模型部署经验者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 4: 智能体研发工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="agent">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">智能体研发工程师</h5>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-red-100 text-red-600">Urgent</span>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-6年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">25k - 60k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责AI Agent系统的研究与开发，包括规划、记忆、工具调用等模块</li>
+                                    <li>设计Agent架构，实现多智能体协作与自主决策能力</li>
+                                    <li>构建Agent评估体系，优化Agent任务执行效果</li>
+                                    <li>将Agent能力应用于实际业务场景，打造行业解决方案</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机、人工智能相关专业硕士及以上学历，3年以上Agent经验</li>
+                                    <li>熟悉LangChain、AutoGPT、BabyAGI等Agent框架</li>
+                                    <li>精通Python，有复杂系统设计与开发经验</li>
+                                    <li>有RAG、Function Calling、Multi-Agent等项目经验者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 5: 机器学习基础算法研究员 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="ml">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">机器学习基础算法研究员</h5>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-10年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">40k - 90k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责机器学习基础算法的研究，包括优化、统计学习、强化学习等</li>
+                                    <li>设计并实现新型算法模型，提升模型性能与泛化能力</li>
+                                    <li>跟踪学术前沿，探索算法在实际业务中的应用价值</li>
+                                    <li>发表高水平学术论文，推动技术创新与专利布局</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机、数学、统计相关专业博士学位，3年以上算法研究经验</li>
+                                    <li>深厚的数学基础，精通优化理论、概率论、线性代数等</li>
+                                    <li>有ICML、NeurIPS、CVPR等顶级会议论文发表</li>
+                                    <li>具备强烈的科研热情，有团队合作精神</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 6: 基础架构研究员 / 工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="infra">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">基础架构研究员 / 工程师</h5>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-red-100 text-red-600">Urgent</span>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-8年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">25k - 60k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责AI基础设施的研发，包括分布式训练、集群调度、存储系统等</li>
+                                    <li>优化GPU集群性能，提升训练效率与资源利用率</li>
+                                    <li>设计并实现高可用、高扩展的架构方案</li>
+                                    <li>研究新型架构技术，推动基础设施创新</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机相关专业本科及以上学历，3年以上基础架构经验</li>
+                                    <li>熟悉Kubernetes、Docker、分布式系统设计</li>
+                                    <li>精通Go/Python/C++，有大规模系统开发经验</li>
+                                    <li>有AI基础设施、云原生、微服务等项目经验者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 7: 数据库内核研发工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="database">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">数据库内核研发工程师</h5>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-red-100 text-red-600">Urgent</span>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-8年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">30k - 70k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责分布式数据库内核的研发，包括查询优化、存储引擎、事务处理等</li>
+                                    <li>优化数据库性能，提升吞吐量与响应速度</li>
+                                    <li>设计并实现高可用、高可靠的数据库架构</li>
+                                    <li>研究新型数据库技术，推动产品创新</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机相关专业本科及以上学历，3年以上数据库内核经验</li>
+                                    <li>熟悉分布式系统、数据结构、算法设计</li>
+                                    <li>精通C/C++/Rust，有大规模系统开发经验</li>
+                                    <li>有OceanBase、TiDB、PostgreSQL等开源项目经验者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 8: 边缘计算研发工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="edge">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">边缘计算研发工程师</h5>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-6年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">25k - 50k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责边缘计算平台的研发，包括边缘推理、设备管理、数据同步等</li>
+                                    <li>优化边缘设备上的AI模型推理性能</li>
+                                    <li>设计并实现云端协同的边缘计算架构</li>
+                                    <li>将边缘计算能力应用于物联网、智能硬件等场景</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机相关专业本科及以上学历，3年以上边缘计算经验</li>
+                                    <li>熟悉嵌入式系统、物联网协议、边缘AI框架</li>
+                                    <li>精通C/C++/Python，有嵌入式开发或IoT项目经验</li>
+                                    <li>有TensorFlow Lite、ONNX Runtime等边缘推理框架经验者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 9: 深度学习算法工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="dl">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">深度学习算法工程师</h5>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-red-100 text-red-600">Urgent</span>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-8年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">35k - 75k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责深度学习模型的研发与优化，包括CNN、RNN、Transformer等网络架构</li>
+                                    <li>设计并实现图像识别、自然语言处理、推荐系统等深度学习解决方案</li>
+                                    <li>优化模型训练流程，提升模型性能与推理效率</li>
+                                    <li>跟踪深度学习前沿技术，探索新型网络架构与训练方法</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机、数学、自动化等相关专业硕士及以上学历，3年以上深度学习经验</li>
+                                    <li>精通CNN、RNN、Transformer、GAN等深度学习网络架构</li>
+                                    <li>熟悉PyTorch、TensorFlow等深度学习框架，有大规模模型训练经验</li>
+                                    <li>有CVPR、ICCV、NeurIPS、ICML等顶级会议论文发表者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 10: 视觉算法工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="cv">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">视觉算法工程师</h5>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-red-100 text-red-600">Urgent</span>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-8年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">35k - 70k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责计算机视觉算法的研发，包括目标检测、图像分割、人脸识别等</li>
+                                    <li>设计并实现视觉算法在实际场景中的应用，如安防监控、工业质检、医疗影像等</li>
+                                    <li>优化视觉模型性能，提升检测精度与推理速度</li>
+                                    <li>跟踪计算机视觉前沿技术，探索3D视觉、视频理解等方向</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机、电子工程、数学等相关专业硕士及以上学历，3年以上视觉算法经验</li>
+                                    <li>精通目标检测（YOLO、Faster R-CNN等）、图像分割（U-Net、Mask R-CNN等）算法</li>
+                                    <li>熟悉PyTorch、TensorFlow，有大规模视觉模型训练与部署经验</li>
+                                    <li>有CVPR、ICCV、ECCV等顶级会议论文发表者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 11: Java高级开发工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="java">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">Java高级开发工程师</h5>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-8年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">25k - 50k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责后端系统核心模块的设计、开发与优化</li>
+                                    <li>参与系统架构设计，解决技术难题，提升系统性能与稳定性</li>
+                                    <li>编写高质量代码，进行代码审查，确保代码质量</li>
+                                    <li>参与需求分析、技术方案设计与实施</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机相关专业本科及以上学历，3年以上Java开发经验</li>
+                                    <li>精通Java基础，熟悉JVM原理、多线程、IO、集合等</li>
+                                    <li>熟悉Spring Boot、Spring Cloud等主流框架</li>
+                                    <li>熟悉MySQL、Redis、MongoDB等数据库，有数据库优化经验</li>
+                                    <li>有高并发、分布式系统开发经验者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 12: Python高级开发工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="python">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">Python高级开发工程师</h5>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-8年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">25k - 50k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责Python后端系统开发，包括API设计、数据处理、业务逻辑实现</li>
+                                    <li>参与AI相关项目开发，包括模型部署、数据处理、服务化封装</li>
+                                    <li>优化代码性能，解决技术难题，提升系统稳定性</li>
+                                    <li>参与需求分析与技术方案设计，编写技术文档</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机相关专业本科及以上学历，3年以上Python开发经验</li>
+                                    <li>精通Python语言，熟悉Django、Flask、FastAPI等框架</li>
+                                    <li>熟悉MySQL、PostgreSQL、Redis、MongoDB等数据库</li>
+                                    <li>熟悉Linux操作系统，有Shell脚本编写能力</li>
+                                    <li>有AI/ML相关项目经验、大模型应用开发经验者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 13: 前端开发工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="frontend">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">前端开发工程师</h5>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 2-6年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">20k - 45k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责Web前端页面开发，包括UI实现、交互逻辑、数据可视化</li>
+                                    <li>优化前端性能，提升用户体验，解决浏览器兼容性问题</li>
+                                    <li>参与前端架构设计，制定前端开发规范</li>
+                                    <li>与产品、设计、后端团队协作，完成项目开发</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机相关专业本科及以上学历，2年以上前端开发经验</li>
+                                    <li>精通HTML5、CSS3、JavaScript/TypeScript</li>
+                                    <li>熟悉React、Vue或Angular等主流框架</li>
+                                    <li>熟悉Webpack、Vite等构建工具，有前端工程化经验</li>
+                                    <li>有数据可视化、移动端开发经验者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Item 14: 全栈开发工程师 -->
+                <div class="job-card bg-white rounded-2xl border border-slate-100 hover:shadow-tech-hover hover:border-secondary/20 transition-all duration-300 fade-in overflow-hidden">
+                    <div class="flex items-center justify-between p-6 cursor-pointer job-header" data-job="fullstack">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h5 class="text-lg font-bold text-primary">全栈开发工程师</h5>
+                            </div>
+                            <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 上海</span>
+                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> 3-8年</span>
+                                <span class="flex items-center gap-1 font-bold text-secondary">30k - 60k</span>
+                            </div>
+                        </div>
+                        <button class="size-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-300 job-toggle">
+                            <span class="material-symbols-outlined transition-transform duration-300">chevron_right</span>
+                        </button>
+                    </div>
+                    <!-- Job Details -->
+                    <div class="job-details" style="max-height: 0; overflow: hidden; padding: 0 1.5rem; border-top: 0 solid #f1f5f9;">
+                        <div class="pt-6 space-y-6">
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">assignment</span>
+                                    职位描述
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>负责全栈应用开发，包括前端页面、后端API、数据库设计</li>
+                                    <li>参与项目架构设计，制定技术方案，推动项目落地</li>
+                                    <li>优化系统性能，解决技术难题，提升开发效率</li>
+                                    <li>参与需求分析，与产品、设计团队协作完成项目开发</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-primary mb-3 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-secondary">checklist</span>
+                                    任职要求
+                                </h6>
+                                <ul class="text-slate-600 text-sm space-y-2 list-disc pl-5">
+                                    <li>计算机相关专业本科及以上学历，3年以上全栈开发经验</li>
+                                    <li>精通Java/Python/Node.js等至少一种后端语言</li>
+                                    <li>精通React/Vue/Angular等前端框架，具备前端开发能力</li>
+                                    <li>熟悉MySQL、Redis、MongoDB等数据库</li>
+                                    <li>有独立完成项目全流程开发经验者优先</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="apply-btn px-6 py-2.5 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">send</span>
+                                    投递简历
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- END: Hot Positions -->
+
+    <!-- 投递简历模态框 -->
+    <div id="apply-modal" class="fixed inset-0 z-[200] hidden">
+        <!-- 背景遮罩 -->
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeApplyModal()"></div>
+        <!-- 模态框内容 -->
+        <div class="absolute inset-0 overflow-y-auto py-12 px-4">
+            <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl relative animate-modal-in">
+                <!-- 关闭按钮 -->
+                <button onclick="closeApplyModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors">
+                    <span class="material-symbols-outlined text-slate-600">close</span>
+                </button>
+                
+                <!-- 头部 -->
+                <div class="p-8 pb-6 border-b border-slate-100">
+                    <h3 class="text-2xl font-bold text-primary mb-2">投递简历</h3>
+                    <p class="text-slate-500 text-sm">请填写以下信息，我们会尽快与您联系</p>
+                    <div class="mt-4 p-3 bg-secondary/10 rounded-lg inline-flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary text-sm">work</span>
+                        <span class="text-secondary font-medium text-sm" id="apply-job-title">职位名称</span>
+                    </div>
+                </div>
+                
+                <!-- 表单 -->
+                <form id="apply-form" class="p-8 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">姓名 <span class="text-red-500">*</span></label>
+                            <input type="text" name="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all" placeholder="请输入您的姓名">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">手机号 <span class="text-red-500">*</span></label>
+                            <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all" placeholder="请输入您的手机号">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">邮箱 <span class="text-red-500">*</span></label>
+                        <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all" placeholder="请输入您的邮箱">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">工作年限 <span class="text-red-500">*</span></label>
+                        <select name="experience" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all bg-white">
+                            <option value="">请选择</option>
+                            <option value="1-3年">1-3年</option>
+                            <option value="3-5年">3-5年</option>
+                            <option value="5-8年">5-8年</option>
+                            <option value="8-10年">8-10年</option>
+                            <option value="10年以上">10年以上</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">上传简历 <span class="text-red-500">*</span></label>
+                        <div class="relative">
+                            <input type="file" name="resume" id="resume-file" accept=".pdf,.doc,.docx" required class="hidden">
+                            <label for="resume-file" class="w-full px-4 py-6 rounded-xl border-2 border-dashed border-slate-200 hover:border-secondary cursor-pointer flex flex-col items-center justify-center transition-all">
+                                <span class="material-symbols-outlined text-4xl text-slate-300 mb-2">upload_file</span>
+                                <span class="text-slate-500 text-sm" id="file-name">点击上传简历（PDF/Word格式）</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">自我介绍</label>
+                        <textarea name="introduction" rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all resize-none" placeholder="请简要介绍一下您的工作经历和技能亮点"></textarea>
+                    </div>
+                    
+                    <!-- 提交按钮 -->
+                    <div class="flex gap-4 pt-4">
+                        <button type="button" onclick="closeApplyModal()" class="flex-1 px-6 py-3 border border-slate-200 text-slate-600 font-medium rounded-xl hover:bg-slate-50 transition-colors">
+                            取消
+                        </button>
+                        <button type="submit" class="flex-1 px-6 py-3 bg-secondary text-white font-medium rounded-xl hover:bg-secondary/90 transition-colors flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-sm">send</span>
+                            提交投递
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 投递成功提示 -->
+    <div id="success-toast" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[300] hidden">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 text-center animate-scale-in">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="material-symbols-outlined text-4xl text-green-600">check_circle</span>
+            </div>
+            <h4 class="text-xl font-bold text-primary mb-2">投递成功</h4>
+            <p class="text-slate-500">您的简历已成功提交，我们会尽快与您联系！</p>
+        </div>
+    </div>
+
+    <!-- 文化环境 -->
+    <section id="culture" class="bg-primary py-24 relative overflow-hidden">
+        <!-- 背景装饰元素优化 -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] -mr-48 -mt-48"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-tertiary/10 rounded-full blur-[120px] -ml-48 -mb-48"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl font-bold text-white mb-4">为什么选择我们</h2>
+                <div class="w-12 h-1 bg-secondary mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                <!-- Feature 1 -->
+                <div class="relative overflow-hidden rounded-2xl border border-slate-700/50 hover-card-dark transition-all duration-300 fade-in group">
+                    <!-- 背景图 -->
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_2989b9d9-5002-4760-a0dd-23bce09bc1f0.jpeg?sign=1808464327-0e51a3223f-0-9f9b4c47f4c62050a3fd921a556a16e7fd11eb58c084108351aae46904f4c390" 
+                             alt="" class="w-full h-full object-cover opacity-100">
+                    </div>
+                    <!-- 渐变遮罩 -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-900/80 z-[1]"></div>
+                    <!-- 内容 -->
+                    <div class="relative z-10 p-10 pt-24">
+                        <h3 class="text-xl font-bold mb-4 text-white">卓越技术栈</h3>
+                        <p class="text-white/90 leading-relaxed">接触行业最前沿的技术挑战，参与核心架构的设计与开发，不断突破自我。</p>
+                    </div>
+                </div>
+                <!-- Feature 2 -->
+                <div class="relative overflow-hidden rounded-2xl border border-slate-700/50 hover-card-dark transition-all duration-300 fade-in group">
+                    <!-- 背景图 -->
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_846a5d59-ca49-48fa-aadd-b7d6c4161f87.jpeg?sign=1808464326-bff80f8efe-0-fb7dee2fb0bc2d3aa8445f5d60d4980f401226caa0cd71b6ce3f7760b1b405c0" 
+                             alt="" class="w-full h-full object-cover opacity-100">
+                    </div>
+                    <!-- 渐变遮罩 -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-900/80 z-[1]"></div>
+                    <!-- 内容 -->
+                    <div class="relative z-10 p-10 pt-24">
+                        <h3 class="text-xl font-bold mb-4 text-white">超棒团队氛围</h3>
+                        <p class="text-white/90 leading-relaxed">扁平化管理，透明的沟通机制，与行业顶尖人才共同成长，享受思想碰撞。</p>
+                    </div>
+                </div>
+                <!-- Feature 3 -->
+                <div class="relative overflow-hidden rounded-2xl border border-slate-700/50 hover-card-dark transition-all duration-300 fade-in group">
+                    <!-- 背景图 -->
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_efe05a69-2a8c-40df-bfdd-654f5f5149b4.jpeg?sign=1808464890-0f1f54d357-0-d263ebf8b4d99a54f2ce11eb5157c385c51650ec9089f784971eb4c23310cfdf" 
+                             alt="" class="w-full h-full object-cover opacity-100">
+                    </div>
+                    <!-- 渐变遮罩 -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-900/80 z-[1]"></div>
+                    <!-- 内容 -->
+                    <div class="relative z-10 p-10 pt-24">
+                        <h3 class="text-xl font-bold mb-4 text-white">全方位成长</h3>
+                        <p class="text-white/90 leading-relaxed">提供具有竞争力的薪酬，完善的保险计划，以及丰富的内部培训和职业晋升通道。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Why Join Us -->
+
+    <!-- BEGIN: Employee Benefits -->
+    <section class="py-20 relative overflow-hidden" id="benefits">
+        <!-- 背景图 - 办公环境 -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_9a28b58d-f698-4c9b-a566-ecfdc5f2f683.jpeg?sign=1804823279-86d23bc709-0-649163a0cebfe99577b9d2df59b428962d793f20384b99ef86341bbeee1d204d" 
+                 alt="Benefits Background" 
+                 class="w-full h-full object-cover">
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 lg:px-8 relative z-10">
+            <!-- 标题 -->
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">公司福利</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-4 rounded-full shadow-[0_2px_10px_rgba(34,211,238,0.5)]"></div>
+                <p class="text-white max-w-xl mx-auto text-sm md:text-base drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] font-medium">我们深知员工的幸福是企业发展的基石，为您提供全方位的福利保障</p>
+            </div>
+            
+            <!-- 蜂巢布局容器 -->
+            <div class="hexagon-grid">
+                <!-- 第一行：3个六边形 -->
+                <div class="hex-row">
+                    <!-- 五险一金 -->
+                    <div class="hex-wrapper fade-in">
+                        <div class="hexagon group" data-benefit="insurance">
+                            <div class="hex-content">
+                                <div class="hex-icon">
+                                    <img src="assets/gsfl1.png" alt="五险一金" class="w-full h-full object-contain">
+                                </div>
+                                <div class="hex-text-wrap">
+                                    <h3 class="hex-title">五险一金</h3>
+                                    <div class="hex-expand">
+                                        <p>为员工提供全面的<br>社会保障</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 绩效奖金 -->
+                    <div class="hex-wrapper fade-in">
+                        <div class="hexagon group" data-benefit="bonus">
+                            <div class="hex-content">
+                                <div class="hex-icon">
+                                    <img src="assets/gsfl2.png" alt="绩效奖金" class="w-full h-full object-contain">
+                                </div>
+                                <div class="hex-text-wrap">
+                                    <h3 class="hex-title">绩效奖金</h3>
+                                    <div class="hex-expand">
+                                        <p>健全的激励<br>机制体系</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 部门团建 -->
+                    <div class="hex-wrapper fade-in">
+                        <div class="hexagon group" data-benefit="teambuilding">
+                            <div class="hex-content">
+                                <div class="hex-icon">
+                                    <img src="assets/gsfl3.png" alt="部门团建" class="w-full h-full object-contain">
+                                </div>
+                                <div class="hex-text-wrap">
+                                    <h3 class="hex-title">部门团建</h3>
+                                    <div class="hex-expand">
+                                        <p>提供户外拓展训练、团队游戏、聚餐等</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第二行：3个六边形（错位） -->
+                <div class="hex-row hex-row-offset">
+                    <!-- 带薪年假 -->
+                    <div class="hex-wrapper fade-in">
+                        <div class="hexagon group" data-benefit="vacation">
+                            <div class="hex-content">
+                                <div class="hex-icon">
+                                    <img src="assets/gsfl4.png" alt="带薪年假" class="w-full h-full object-contain">
+                                </div>
+                                <div class="hex-text-wrap">
+                                    <h3 class="hex-title">带薪年假</h3>
+                                    <div class="hex-expand">
+                                        <p>员工享有带薪休假</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 双休 -->
+                    <div class="hex-wrapper fade-in">
+                        <div class="hexagon group" data-benefit="weekend">
+                            <div class="hex-content">
+                                <div class="hex-icon">
+                                    <img src="assets/gsfl5.png" alt="双休" class="w-full h-full object-contain">
+                                </div>
+                                <div class="hex-text-wrap">
+                                    <h3 class="hex-title">双休</h3>
+                                    <div class="hex-expand">
+                                        <p>周末休息<br>充实生活</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 节日福利 -->
+                    <div class="hex-wrapper fade-in">
+                        <div class="hexagon group" data-benefit="holiday">
+                            <div class="hex-content">
+                                <div class="hex-icon">
+                                    <img src="assets/gsfl7.png" alt="节日福利" class="w-full h-full object-contain">
+                                </div>
+                                <div class="hex-text-wrap">
+                                    <h3 class="hex-title">节日福利</h3>
+                                    <div class="hex-expand">
+                                        <p>重要节假日及特定庆祝日多种福利</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Employee Benefits -->
+
+    <!-- BEGIN: Employee Care -->
+    <section class="py-20 bg-white" id="employee-care">
+        <div class="mx-auto px-6 lg:px-8 max-w-7xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                <!-- 左侧文字区域 -->
+                <div class="fade-in py-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-8">员工关怀</h2>
+                    <div class="space-y-10 text-slate-600 leading-loose">
+                        <p>申朴信息一直秉持着以人为本的管理理念，致力于为每一位员工创造一个和谐、舒适的工作环境。</p>
+                        <p>公司注重员工日常的身心健康，定期组织各类体育活动，鼓励员工积极参与，锻炼身体，放松心情。同时，公司设有年度体检、身心健康咨询等服务，从不同角度赋能员工健康、提升员工体验。</p>
+                        <p>此外，公司还关注员工的职业发展，提供丰富的培训和学习机会，帮助员工不断提升自己的专业技能和知识水平。公司还设有完善的晋升机制，为优秀员工提供广阔的职业发展空间。</p>
+                        <p>在申朴信息，员工关怀不仅仅是一句口号，更是公司文化的重要组成部分。公司将继续努力，为员工创造更好的工作环境和发展机会，让每一位员工都能在这里感受到家的温暖和公司的关爱。</p>
+                    </div>
+                </div>
+                <!-- 右侧图片区域 -->
+                <div class="fade-in flex items-center justify-center">
+                    <div class="rounded-2xl overflow-hidden shadow-lg w-4/5">
+                        <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_8597533d-8f0f-4701-b409-84e121d0a84d.jpeg?sign=1804836119-49b274e0e5-0-8dd6adb06ab807165a6f0402045fe18654e46bbefd57154326bf282659275eb1" 
+                             alt="员工关怀" 
+                             class="w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+            <!-- 底部品牌标识 - 左下方 -->
+            <div class="mt-2">
+                <img src="assets/申朴字母logo.jpg" alt="Cisetech" class="object-contain opacity-70 w-full max-w-2xl h-auto" style="height: 172px;">
+            </div>
+        </div>
+    </section>
+    <!-- END: Employee Care -->
+
+    <!-- BEGIN: Team Building -->
+    <section class="py-20 bg-slate-50" id="team-building">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <!-- 标题 -->
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-12">申信达诚，朴心进取</h2>
+            
+            <!-- 卡片堆叠容器 -->
+            <div class="relative h-[500px] md:h-[600px] flex items-center justify-center perspective-1000 mb-6">
+                <div id="card-stack" class="relative w-full max-w-[800px] h-full flex items-center justify-center">
+                    <!-- 卡片1 -->
+                    <div class="card-item absolute w-[70%] h-[80%] rounded-2xl shadow-2xl transition-all duration-500 ease-out cursor-pointer" data-index="0" style="transform: translateX(-180px) translateY(20px) rotateZ(-15deg) translateZ(0px); z-index: 1;">
+                        <img src="assets/tuanjian_1.png" alt="申朴团建活动" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                    <!-- 卡片2 -->
+                    <div class="card-item absolute w-[70%] h-[80%] rounded-2xl shadow-2xl transition-all duration-500 ease-out cursor-pointer" data-index="1" style="transform: translateX(-120px) translateY(10px) rotateZ(-10deg) translateZ(-20px); z-index: 2;">
+                        <img src="assets/tuanjian_2.png" alt="申朴团建活动" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                    <!-- 卡片3 -->
+                    <div class="card-item absolute w-[70%] h-[80%] rounded-2xl shadow-2xl transition-all duration-500 ease-out cursor-pointer" data-index="2" style="transform: translateX(-60px) translateY(5px) rotateZ(-5deg) translateZ(-40px); z-index: 3;">
+                        <img src="assets/tuanjian_3.png" alt="申朴团建活动" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                    <!-- 卡片4 (中心) -->
+                    <div class="card-item absolute w-[70%] h-[80%] rounded-2xl shadow-2xl transition-all duration-500 ease-out cursor-pointer" data-index="3" style="transform: translateX(0px) translateY(0px) rotateZ(0deg) translateZ(-60px); z-index: 4;">
+                        <img src="assets/tuanjian_4.png" alt="申朴团建活动" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                    <!-- 卡片5 -->
+                    <div class="card-item absolute w-[70%] h-[80%] rounded-2xl shadow-2xl transition-all duration-500 ease-out cursor-pointer" data-index="4" style="transform: translateX(60px) translateY(5px) rotateZ(5deg) translateZ(-40px); z-index: 3;">
+                        <img src="assets/tuanjian_5.png" alt="申朴团建活动" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                    <!-- 卡片6 -->
+                    <div class="card-item absolute w-[70%] h-[80%] rounded-2xl shadow-2xl transition-all duration-500 ease-out cursor-pointer" data-index="5" style="transform: translateX(120px) translateY(10px) rotateZ(10deg) translateZ(-20px); z-index: 2;">
+                        <img src="assets/tuanjian_6.png" alt="申朴团建活动" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                    <!-- 卡片7 -->
+                    <div class="card-item absolute w-[70%] h-[80%] rounded-2xl shadow-2xl transition-all duration-500 ease-out cursor-pointer" data-index="6" style="transform: translateX(180px) translateY(20px) rotateZ(15deg) translateZ(0px); z-index: 1;">
+                        <img src="assets/tuanjian_7.png" alt="申朴团建活动" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 小字说明 -->
+            <p class="text-center text-slate-500 text-sm mb-6">悬停查看团建活动照片</p>
+
+            <!-- 办公环境图片展示 -->
+            <div class="office-gallery-container">
+                <div class="office-photo office-photo-1">
+                    <img src="assets/大厅办公环境.JPG" alt="办公环境">
+                </div>
+                <div class="office-photo office-photo-2">
+                    <img src="assets/大会议室办公环境.JPG" alt="办公环境">
+                </div>
+                <div class="office-photo office-photo-3">
+                    <img src="assets/大厅办公环境3.JPG" alt="办公环境">
+                </div>
+                <div class="office-photo office-photo-4">
+                    <img src="assets/大厅办公环境4.JPG" alt="办公环境">
+                </div>
+                <div class="office-photo office-photo-5">
+                    <img src="assets/门口办公环境.JPG" alt="办公环境">
+                </div>
+                <div class="office-photo office-photo-6">
+                    <img src="assets/茶水零食微波炉冰箱.JPG" alt="办公环境">
+                </div>
+                <div class="office-photo office-photo-7">
+                    <img src="assets/门口春联礼盒.JPG" alt="办公环境">
+                </div>
+                <div class="office-photo office-photo-8">
+                    <img src="assets/文化零食角2.JPG" alt="办公环境">
+                </div>
+                <div class="office-photo office-photo-9">
+                    <img src="assets/文化零食角.JPG" alt="办公环境">
+                </div>
+                <div class="office-photo office-photo-10">
+                    <img src="assets/图书资质奖项.JPG" alt="办公环境">
+                </div>
+                <div class="office-photo office-photo-11">
+                    <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E7%94%B3%E8%83%BD%E9%87%91%E8%9E%8D%E5%A4%A7%E5%8E%A6.jpg&nonce=95048a43-06b0-47bd-a922-50824e6f9faa&project_id=7612545482618945587&sign=afa59e9159196edbc49979536d784f19ec8de811c97f08a07a27b729b76811d7" alt="申能金邸大厦">
+                </div>
+            </div>
+
+            <!-- 小字说明 -->
+            <p class="text-center text-slate-500 text-sm">悬停查看办公环境图</p>
+        </div>
+    </section>
+    <!-- END: Team Building -->
+
+    <!-- BEGIN: Closing Message -->
+    <section class="py-20 bg-gradient-to-br from-primary via-slate-800 to-primary relative overflow-hidden">
+        <!-- 背景装饰 -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[150px]"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-tertiary/10 rounded-full blur-[150px]"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+            <div class="fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 drop-shadow-lg">
+                    祝愿你能找到属于自己的舞台
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-secondary to-tertiary mx-auto mb-10 rounded-full"></div>
+                <p class="text-lg md:text-xl text-slate-300 leading-loose max-w-3xl mx-auto">
+                    用能力证明自己，用专业成就未来。<br>
+                    无论是个人成长还是事业发展，突破的关键在于持续的努力和专业的追求。
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- END: Closing Message -->
+
+    <!-- BEGIN: Footer -->
+    <footer class="bg-slate-900 border-t border-slate-700/50 relative overflow-visible" style="z-index: 100;">
+        <div class="container mx-auto px-4 pt-12 pb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 公司信息 -->
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-10 w-10 flex items-center justify-center">
+                            <img src="assets/申朴圆点logo.png" alt="Cisetech Logo" class="h-8 w-auto object-contain">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Cisetech</h3>
+                            <p class="text-xs text-slate-500">申朴信息技术（上海）股份有限公司</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        申信达诚，朴心进取
+                    </p>
+                </div>
+                
+                <!-- 核心产品 -->
+                <div class="flex flex-col">
+                    <h4 class="text-base font-semibold text-white mb-4">核心产品</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#product-simple-insight" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">一体化智能可观测平台</a></li>
+                        <li><a href="services.html#product-muxi-gpu" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">沐曦国产通用GPU</a></li>
+                        <li><a href="services.html#product-oceanbase" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">OceanBase数据库</a></li>
+                        <li><a href="services.html#product-ai-recruit" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">AI招聘助手</a></li>
+                        <li><a href="services.html#product-ai-bidding" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">AI招投标助手</a></li>
+                        <li><a href="services.html#product-ai-health" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">职场健康加油站</a></li>
+                        <li><a href="services.html#product-low-altitude" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">低空经济|低空综合管理服务平台</a></li>
+                    </ul>
+                </div>
+                
+                <!-- 联系我们 -->
+                <div class="flex flex-col">
+                    <h4 class="text-base font-semibold text-white mb-4">联系我们</h4>
+                    <ul class="space-y-2.5 text-slate-400 text-sm">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            <span>(021)-6075 6566</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <span>info@cisetech.com</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>上海市浦东新区国展路1529号906-908室</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 关注我们 -->
+                <div class="flex flex-col relative overflow-visible">
+                    <h4 class="text-base font-semibold text-white mb-4">关注我们</h4>
+                    <div class="wechat-btn">
+                        <svg viewBox="0 0 24 24" fill="#07C160">
+                            <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.042 10.042 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 01-.023-.156.49.49 0 01.201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-7.062-6.122zm-2.036 2.905c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982z"/>
+                        </svg>
+                        <div class="wechat-qrcode-popup">
+                            <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E7%94%B3%E6%9C%B4%E6%9C%8D%E5%8A%A1%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg&nonce=fa8195e2-1745-486c-8dd5-1664e5198a65&project_id=7612545482618945587&sign=60d8b3903f8e4d4d551217c02caf3512076d3c4ffca00d5eb195030d803b2b3c" alt="微信公众号">
+                            <p class="wechat-qrcode-label">扫码关注公众号</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部版权 -->
+            <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-500 text-sm">© 2024 Cisetech. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">隐私政策</a>
+                    <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">使用条款</a>
+                    <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">网站地图</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END: Footer -->
+
+    <!-- 核心交互JS -->
+    <script>
+        // 1. 移动端导航
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const mobileSubmenuTrigger = document.getElementById('mobileSubmenuTrigger');
+        const mobileSubmenuItems = document.getElementById('mobileSubmenuItems');
+
+        if (hamburgerBtn && mobileNav && mobileNavOverlay) {
+            const toggleMenu = (show) => {
+                if (show) {
+                    hamburgerBtn.classList.add('active');
+                    mobileNav.classList.add('active');
+                    mobileNavOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    hamburgerBtn.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    mobileNavOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            };
+
+            hamburgerBtn.addEventListener('click', () => {
+                const isActive = mobileNav.classList.contains('active');
+                toggleMenu(!isActive);
+            });
+
+            mobileNavOverlay.addEventListener('click', () => {
+                toggleMenu(false);
+            });
+
+            // 点击菜单链接后关闭菜单
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    toggleMenu(false);
+                });
+            });
+        }
+
+        mobileSubmenuTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileSubmenuItems.classList.toggle('active');
+            mobileSubmenuTrigger.querySelector('svg').style.transform = 
+                mobileSubmenuItems.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        });
+        
+        // 关于我们子菜单
+        const mobileAboutSubmenuTrigger = document.getElementById('mobileAboutSubmenuTrigger');
+        const mobileAboutSubmenuItems = document.getElementById('mobileAboutSubmenuItems');
+        
+        if (mobileAboutSubmenuTrigger && mobileAboutSubmenuItems) {
+            mobileAboutSubmenuTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileAboutSubmenuTrigger.classList.toggle('active');
+                mobileAboutSubmenuItems.classList.toggle('active');
+                mobileAboutSubmenuTrigger.querySelector('svg').style.transform =
+                    mobileAboutSubmenuItems.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+        
+        // 企业实力子菜单
+        const mobileStrengthSubmenuTrigger = document.getElementById('mobileStrengthSubmenuTrigger');
+        const mobileStrengthSubmenuItems = document.getElementById('mobileStrengthSubmenuItems');
+        
+        if (mobileStrengthSubmenuTrigger && mobileStrengthSubmenuItems) {
+            mobileStrengthSubmenuTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileStrengthSubmenuTrigger.classList.toggle('active');
+                mobileStrengthSubmenuItems.classList.toggle('active');
+                mobileStrengthSubmenuTrigger.querySelector('svg').style.transform =
+                    mobileStrengthSubmenuItems.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+        
+        // 招贤纳士子菜单
+        const mobileJoinsSubmenuTrigger = document.getElementById('mobileJoinsSubmenuTrigger');
+        const mobileJoinsSubmenuItems = document.getElementById('mobileJoinsSubmenuItems');
+        
+        if (mobileJoinsSubmenuTrigger && mobileJoinsSubmenuItems) {
+            mobileJoinsSubmenuTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileJoinsSubmenuTrigger.classList.toggle('active');
+                mobileJoinsSubmenuItems.classList.toggle('active');
+                mobileJoinsSubmenuTrigger.querySelector('svg').style.transform =
+                    mobileJoinsSubmenuItems.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        }
+        
+        // 滚动到指定区域
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // 2. 滚动渐显动画
+        const fadeElements = document.querySelectorAll('.fade-in:not(.hero-fade)');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => observer.observe(el));
+
+        // 4. 职位卡片展开/收起交互
+        document.querySelectorAll('.job-header').forEach(header => {
+            header.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.job-card');
+                const details = card.querySelector('.job-details');
+                const toggleBtn = this.querySelector('.job-toggle');
+                const arrow = toggleBtn.querySelector('.material-symbols-outlined');
+                const isOpen = card.classList.contains('expanded');
+                
+                // 关闭所有其他打开的卡片
+                document.querySelectorAll('.job-card').forEach(otherCard => {
+                    if (otherCard !== card && otherCard.classList.contains('expanded')) {
+                        const otherDetails = otherCard.querySelector('.job-details');
+                        const otherArrow = otherCard.querySelector('.job-toggle .material-symbols-outlined');
+                        otherCard.classList.remove('expanded');
+                        otherDetails.style.maxHeight = '0';
+                        otherDetails.style.paddingBottom = '0';
+                        otherDetails.style.borderTopWidth = '0';
+                        if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // 切换当前卡片
+                if (isOpen) {
+                    card.classList.remove('expanded');
+                    details.style.maxHeight = '0';
+                    details.style.paddingBottom = '0';
+                    details.style.borderTopWidth = '0';
+                    arrow.style.transform = 'rotate(0deg)';
+                } else {
+                    card.classList.add('expanded');
+                    details.style.maxHeight = details.scrollHeight + 'px';
+                    details.style.paddingBottom = '1.5rem';
+                    details.style.borderTopWidth = '1px';
+                    arrow.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+        
+        // 5. 投递简历按钮点击
+        const applyBtns = document.querySelectorAll('.apply-btn');
+        applyBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const card = this.closest('.job-card');
+                const jobTitle = card.querySelector('h5').textContent;
+                document.getElementById('apply-job-title').textContent = jobTitle;
+                document.getElementById('apply-modal').classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // 6. 关闭投递模态框
+        function closeApplyModal() {
+            document.getElementById('apply-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        
+        // 7. 文件上传显示文件名
+        const resumeFile = document.getElementById('resume-file');
+        if (resumeFile) {
+            resumeFile.addEventListener('change', function() {
+                const fileName = this.files[0] ? this.files[0].name : '点击上传简历（PDF/Word格式）';
+                document.getElementById('file-name').textContent = fileName;
+            });
+        }
+        
+        // 8. 表单提交
+        const applyForm = document.getElementById('apply-form');
+        if (applyForm) {
+            applyForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                closeApplyModal();
+                
+                // 显示成功提示
+                const toast = document.getElementById('success-toast');
+                toast.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 3000);
+                
+                // 重置表单
+                this.reset();
+                document.getElementById('file-name').textContent = '点击上传简历（PDF/Word格式）';
+            });
+        }
+        
+        // 9. 六边形福利卡片移动端点击交互
+        const hexagons = document.querySelectorAll('.hexagon');
+        hexagons.forEach(hex => {
+            hex.addEventListener('click', function() {
+                // 在移动端，点击卡片切换扩展内容
+                if (window.innerWidth <= 768) {
+                    // 关闭其他卡片的扩展
+                    hexagons.forEach(h => {
+                        if (h !== this) {
+                            h.classList.remove('active');
+                        }
+                    });
+                    // 切换当前卡片的扩展
+                    this.classList.toggle('active');
+                }
+            });
+        });
+
+        // 5. 图片懒加载兼容
+        document.addEventListener('DOMContentLoaded', () => {
+            const lazyImages = document.querySelectorAll('img.lazyload');
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const image = entry.target;
+                            image.classList.remove('lazyload');
+                            imageObserver.unobserve(image);
+                        }
+                    });
+                });
+                lazyImages.forEach(img => imageObserver.observe(img));
+            }
+        });
+
+        // 10. 卡片堆叠效果
+        const cardItems = document.querySelectorAll('.card-item');
+        let hoverTimer = null;
+        let carouselTimer = null;
+        let isCarouselRunning = false;
+        let currentHoverIndex = -1;
+        
+        // 保存每张卡片的原始状态
+        const originalStates = [];
+        cardItems.forEach((card, i) => {
+            originalStates[i] = {
+                transform: card.style.transform,
+                zIndex: card.style.zIndex,
+                opacity: '1'
+            };
+        });
+        
+        // 恢复所有卡片到原始状态
+        function resetAllCards() {
+            cardItems.forEach((card, i) => {
+                card.style.transform = originalStates[i].transform;
+                card.style.zIndex = originalStates[i].zIndex;
+                card.style.opacity = originalStates[i].opacity;
+                card.style.transition = 'transform 0.5s ease-out';
+            });
+        }
+        
+        // 为每张卡片添加hover事件
+        cardItems.forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                currentHoverIndex = index;
+                
+                // 鼠标悬停时，其他卡片透明度降低
+                cardItems.forEach((otherCard, i) => {
+                    if (i !== index) {
+                        otherCard.style.opacity = '0.3';
+                    }
+                });
+                // 当前卡片不透明
+                card.style.opacity = '1';
+                
+                // 清除之前的定时器
+                if (hoverTimer) clearTimeout(hoverTimer);
+                if (carouselTimer) clearTimeout(carouselTimer);
+                
+                // 设置1.5秒后开始轮播
+                hoverTimer = setTimeout(() => {
+                    startCarousel(index);
+                }, 1500);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                currentHoverIndex = -1;
+                
+                // 清除所有定时器
+                if (hoverTimer) clearTimeout(hoverTimer);
+                if (carouselTimer) clearTimeout(carouselTimer);
+                isCarouselRunning = false;
+                
+                // 鼠标离开时，恢复所有卡片到原始状态
+                resetAllCards();
+            });
+        });
+
+        // 开始轮播函数
+        function startCarousel(startIndex) {
+            let currentIndex = startIndex;
+            const totalCards = cardItems.length;
+            
+            isCarouselRunning = true;
+            
+            // 轮播函数
+            function showNextCard() {
+                if (!isCarouselRunning || currentHoverIndex === -1) return;
+                
+                // 恢复所有卡片的原始状态
+                cardItems.forEach((otherCard, i) => {
+                    if (i !== currentIndex) {
+                        otherCard.style.transform = originalStates[i].transform;
+                        otherCard.style.zIndex = originalStates[i].zIndex;
+                        otherCard.style.transition = 'transform 0.5s ease-out';
+                        otherCard.style.opacity = '0.3';
+                    }
+                });
+                
+                // 当前卡片飞到中心
+                const currentCard = cardItems[currentIndex];
+                currentCard.style.transition = 'transform 0.5s ease-out';
+                currentCard.style.transform = 'translateX(0px) translateY(-50px) rotateZ(0deg) translateZ(300px) scale(1.2)';
+                currentCard.style.zIndex = '999';
+                currentCard.style.opacity = '1';
+                
+                // 1.2秒后切换到下一张
+                carouselTimer = setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % totalCards;
+                    // 如果鼠标还在悬停且轮播仍在运行，继续轮播
+                    if (isCarouselRunning && currentHoverIndex !== -1) {
+                        showNextCard();
+                    }
+                }, 1200);
+            }
+            
+            // 开始轮播
+            showNextCard();
+        }
+    </script>
+    
+    <!-- 返回顶部按钮 -->
+    <button id="backToTopBtn" onclick="scrollToTop()" class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-primary/90 hover:scale-110 z-50" title="返回顶部">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+    
+    <script>
+        // 返回顶部按钮功能
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // 显示/隐藏返回顶部按钮
+        window.addEventListener('scroll', function() {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.add('opacity-100');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.remove('opacity-100');
+            }
+        });
+    </script>
+</body>
+</html>
