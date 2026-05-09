@@ -721,97 +721,7 @@
             transform: scale(1.8);
         }
         
-        /* 全部客户弹窗样式 */
-        .modal-cat-tab {
-            background: white;
-            color: #64748b;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
-        }
-        .modal-cat-tab:hover {
-            background: #f1f5f9;
-            border-color: #cbd5e1;
-        }
-        .modal-cat-tab.active {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            color: white;
-            border-color: transparent;
-            box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
-        }
-        .modal-logo-item {
-            aspect-ratio: 1;
-            background: white;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            overflow: hidden;
-            position: relative;
-        }
-        .modal-logo-item:hover {
-            border-color: #0ea5e9;
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
-            transform: translateY(-2px);
-        }
-        .modal-logo-item img {
-            position: relative;
-            z-index: 1;
-        }
-        .logo-item img.logo-xxlarge {
-            max-width: 100%;
-            max-height: 100%;
-            transform: scale(1.25);
-        }
-        .logo-item img.logo-medium {
-            max-width: 100%;
-            max-height: 100%;
-            transform: scale(0.85);
-        }
-        
-        /* Logo放大预览浮层 */
-        .logo-preview-popup {
-            position: fixed;
-            width: 460px;
-            height: 250px;
-            background: white;
-            border-radius: 16px;
-            border: 2px solid #0ea5e9;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(14, 165, 233, 0.3);
-            z-index: 10000;
-            pointer-events: none;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 0.25s ease, transform 0.25s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 28px;
-        }
-        .logo-preview-popup.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .logo-preview-popup img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        .logo-preview-popup::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid #0ea5e9;
-        }
+
         
         /* 轮播容器 */
         .carousel-container {
@@ -2725,159 +2635,7 @@
         // 页面加载后初始化
         document.addEventListener('DOMContentLoaded', initHonorCarousel);
 
-        // ===== 全部客户弹窗相关 =====
-        // 收集所有logo数据
-        function collectAllLogos() {
-            const categories = ['insurance', 'bank', 'securities', 'internet', 'bigdata', 'fintech', 'manufacturing', 'others'];
-            const allLogos = { all: [] };
-            
-            // 用于按src去重，优先保留"金保信社保卡科技"这个alt
-            const srcPriority = {};
-            
-            categories.forEach(cat => {
-                allLogos[cat] = [];
-                const content = document.getElementById('client-' + cat);
-                if (content) {
-                    const imgs = content.querySelectorAll('img');
-                    const seenSrcs = new Set();
-                    imgs.forEach(img => {
-                        const src = img.src;
-                        const alt = img.alt;
-                        // 根据src去重，优先保留"金保信社保卡科技"这个alt
-                        if (!seenSrcs.has(src)) {
-                            seenSrcs.add(src);
-                            srcPriority[src] = { src, alt };
-                        } else if (alt === '金保信社保卡科技') {
-                            // 如果已存在但当前alt是"金保信社保卡科技"，替换
-                            srcPriority[src] = { src, alt };
-                        }
-                    });
-                }
-            });
-            
-            // 按优先级构建去重后的数据
-            const uniqueLogos = Object.values(srcPriority);
-            allLogos.all = [...uniqueLogos];
-            
-            categories.forEach(cat => {
-                const content = document.getElementById('client-' + cat);
-                if (content) {
-                    const imgs = content.querySelectorAll('img');
-                    const catSrcs = new Set();
-                    imgs.forEach(img => {
-                        if (!catSrcs.has(img.src)) {
-                            catSrcs.add(img.src);
-                            const entry = srcPriority[img.src];
-                            if (entry) {
-                                allLogos[cat].push(entry);
-                            }
-                        }
-                    });
-                }
-            });
-            
-            return allLogos;
-        }
 
-        let allLogosData = null;
-
-        // 打开全部客户弹窗
-        function openAllClientsModal() {
-            if (!allLogosData) {
-                allLogosData = collectAllLogos();
-            }
-            const modal = document.getElementById('allClientsModal');
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            switchModalCategory('all');
-        }
-
-        // 需要放大的logo关键词列表（全部放大到130%）
-        const maxEnlargedLogoKeywords = [
-            '太平洋保险', '大家保险', '国民养老保险', '南京银行', '网商银行', '中国民生银行',
-            '北京银行', '常熟农商银行', '万家基金', '富国基金', '光大证券', '国联安基金',
-            '百度', '京东', '蚂蚁集团', '腾讯', '阿里巴巴集团', '翰迪数据',
-            'SCHAEFFLER', '中国远洋海运', '招商轮船', '正泰', '吉利汽车', '联合汽车',
-            '哈银消费金融', '金农股份', '吉象普惠', '平安租赁', '荣数信息', '上海清算所'
-        ];
-
-        // 需要更大放大的logo关键词列表（放大到150%）
-        const extraEnlargedLogoKeywords = ['金保信', '社保卡科技', '联仁健康', '安徽征信', '平安科技', '中航国际融资租赁有限公司', '国民养老保险'];
-
-        // 需要缩小的logo关键词列表（缩小到80%）
-        const smallerLogoKeywords = ['中国建设银行', '陆家嘴信托'];
-        
-        // 需要缩小的logo图片文件（按文件名，70%）
-        const smallerLogoFiles = ['zxyh.png', 'hg.jpeg', 'ljj.jpeg'];
-
-        // 判断logo是否需要放大，返回放大级别：0=默认, 1=130%, 2=150%, -1=缩小到80%
-        function getLogoEnlargeLevel(alt) {
-            if (extraEnlargedLogoKeywords.some(keyword => alt.includes(keyword))) {
-                return 2;
-            }
-            if (maxEnlargedLogoKeywords.some(keyword => alt.includes(keyword))) {
-                return 1;
-            }
-            if (smallerLogoKeywords.some(keyword => alt.includes(keyword))) {
-                return -1;
-            }
-            return 0;
-        }
-
-        // 关闭全部客户弹窗
-        function closeAllClientsModal() {
-            const modal = document.getElementById('allClientsModal');
-            modal.classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        // 切换分类
-        function switchModalCategory(category) {
-            // 更新tab样式
-            document.querySelectorAll('.modal-cat-tab').forEach(tab => {
-                tab.classList.toggle('active', tab.dataset.cat === category);
-            });
-            
-            // 更新grid
-            const grid = document.getElementById('allClientsGrid');
-            grid.innerHTML = '';
-            
-            const logos = allLogosData[category] || [];
-            logos.forEach(logo => {
-                const item = document.createElement('div');
-                item.className = 'modal-logo-item';
-                // 根据放大级别决定尺寸：-1=80%(缩小), 0=100%(默认), 1=130%, 2=150%, 3=170%
-                const level = getLogoEnlargeLevel(logo.alt);
-                // 检查文件名是否在缩小列表中
-                const isSmallerFile = smallerLogoFiles.some(file => logo.src.includes(file));
-                const sizeStyle = (level === 2 ? 'max-width: 150%; max-height: 150%;' : (level === 1 ? 'max-width: 130%; max-height: 130%;' : (level === -1 || isSmallerFile ? 'max-width: 70%; max-height: 70%;' : 'max-width: 100%; max-height: 100%;')));
-                item.innerHTML = `<img src="${logo.src}" alt="${logo.alt}" style="${sizeStyle} object-fit: contain;" onclick="openSingleLogoModal('${logo.src}', '${logo.alt}')">`;
-                grid.appendChild(item);
-            });
-        }
-
-        // 打开单个logo放大弹窗
-        function openSingleLogoModal(src, alt) {
-            const modal = document.getElementById('singleLogoModal');
-            const img = document.getElementById('singleLogoImg');
-            img.src = src;
-            img.alt = alt;
-            modal.classList.remove('hidden');
-        }
-
-        // 关闭单个logo放大弹窗
-        function closeSingleLogoModal() {
-            const modal = document.getElementById('singleLogoModal');
-            modal.classList.add('hidden');
-        }
-
-        // ESC键关闭弹窗
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeSingleLogoModal();
-                closeAllClientsModal();
-            }
-        });
     </script>
 
     <!-- 权威客户 -->
@@ -2916,9 +2674,7 @@
                 <button class="client-tab px-5 py-2.5 rounded-full font-medium text-sm" data-client="others" onclick="switchClientTab('others')">
                     其他
                 </button>
-                <button class="px-6 py-2.5 rounded-full font-medium text-sm bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 ml-4" onclick="openAllClientsModal()">
-                    查看全部
-                </button>
+
             </div>
             
             <!-- 保险 -->
@@ -3125,55 +2881,7 @@
         </div>
     </section>
 
-    <!-- 全部客户弹窗 -->
-    <div id="allClientsModal" class="fixed inset-0 z-[200] hidden">
-        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeAllClientsModal()"></div>
-        <div class="absolute inset-4 md:inset-8 lg:inset-12 bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col">
-            <!-- 弹窗头部 -->
-            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
-                <div>
-                    <h3 class="text-xl font-bold text-slate-800">全部客户展示</h3>
-                    <p class="text-sm text-slate-500">点击任意logo可放大查看</p>
-                </div>
-                <button onclick="closeAllClientsModal()" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors">
-                    <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-            </div>
-            <!-- 分类标签 -->
-            <div class="flex items-center gap-2 px-6 py-3 border-b border-slate-100 overflow-x-auto bg-slate-50/50">
-                <button class="modal-cat-tab active px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap" data-cat="all" onclick="switchModalCategory('all')">全部</button>
-                <button class="modal-cat-tab px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap" data-cat="insurance" onclick="switchModalCategory('insurance')">保险</button>
-                <button class="modal-cat-tab px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap" data-cat="bank" onclick="switchModalCategory('bank')">银行</button>
-                <button class="modal-cat-tab px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap" data-cat="securities" onclick="switchModalCategory('securities')">证券基金</button>
-                <button class="modal-cat-tab px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap" data-cat="internet" onclick="switchModalCategory('internet')">互联网</button>
-                <button class="modal-cat-tab px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap" data-cat="bigdata" onclick="switchModalCategory('bigdata')">数据要素</button>
-                <button class="modal-cat-tab px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap" data-cat="fintech" onclick="switchModalCategory('fintech')">金融科技</button>
-                <button class="modal-cat-tab px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap" data-cat="manufacturing" onclick="switchModalCategory('manufacturing')">新型制造</button>
-                <button class="modal-cat-tab px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap" data-cat="others" onclick="switchModalCategory('others')">其他</button>
-            </div>
-            <!-- Logo网格 -->
-            <div class="flex-1 overflow-y-auto p-6">
-                <div id="allClientsGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-3 sm:gap-4">
-                    <!-- JS动态填充 -->
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- 单个Logo放大查看弹窗 -->
-    <div id="singleLogoModal" class="fixed inset-0 z-[300] hidden">
-        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeSingleLogoModal()"></div>
-        <div class="absolute inset-0 flex items-center justify-center p-8">
-            <img id="singleLogoImg" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl cursor-zoom-out" onclick="closeSingleLogoModal()">
-        </div>
-        <button onclick="closeSingleLogoModal()" class="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-        </button>
-    </div>
 
     <!-- ===== 原有页脚 ===== -->
     <footer class="bg-slate-900 border-t border-slate-700/50 relative overflow-visible" style="z-index: 100;">
@@ -3548,70 +3256,10 @@
                 }
             });
             
-            // 初始化Logo预览浮层
-            initLogoPreview();
+
         }
         
-        // Logo预览浮层功能
-        function initLogoPreview() {
-            // 创建预览浮层元素
-            let previewPopup = document.getElementById('logo-preview-popup');
-            if (!previewPopup) {
-                previewPopup = document.createElement('div');
-                previewPopup.id = 'logo-preview-popup';
-                previewPopup.className = 'logo-preview-popup';
-                previewPopup.innerHTML = '<img src="" alt="Logo预览">';
-                document.body.appendChild(previewPopup);
-            }
-            const previewImg = previewPopup.querySelector('img');
-            
-            // 为所有logo-item添加鼠标事件
-            document.querySelectorAll('.logo-item').forEach(item => {
-                const img = item.querySelector('img');
-                if (!img) return;
-                
-                item.addEventListener('mouseenter', (e) => {
-                    previewImg.src = img.src;
-                    previewImg.alt = img.alt;
-                    
-                    // 计算位置：在logo上方居中显示
-                    const rect = item.getBoundingClientRect();
-                    const popupWidth = 460;
-                    const popupHeight = 250;
-                    
-                    let left = rect.left + rect.width / 2 - popupWidth / 2;
-                    let top = rect.top - popupHeight - 16;
-                    
-                    // 边界检测：确保不超出屏幕
-                    if (left < 10) left = 10;
-                    if (left + popupWidth > window.innerWidth - 10) {
-                        left = window.innerWidth - popupWidth - 10;
-                    }
-                    if (top < 10) {
-                        // 如果上方空间不足，显示在下方
-                        top = rect.bottom + 16;
-                    }
-                    
-                    previewPopup.style.left = left + 'px';
-                    previewPopup.style.top = top + 'px';
-                    previewPopup.classList.add('visible');
-                });
-                
-                item.addEventListener('mouseleave', () => {
-                    previewPopup.classList.remove('visible');
-                });
-            });
-            
-            // 页面滚动时隐藏预览框
-            window.addEventListener('scroll', () => {
-                previewPopup.classList.remove('visible');
-            }, { passive: true });
-            
-            // 鼠标滚轮事件也隐藏预览框
-            window.addEventListener('wheel', () => {
-                previewPopup.classList.remove('visible');
-            }, { passive: true });
-        }
+
         
         // 页面加载完成后初始化
         document.addEventListener('DOMContentLoaded', function() {
