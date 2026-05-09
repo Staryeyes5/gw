@@ -854,7 +854,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 40px 0 60px;
+            padding: 40px 40px 40px 60px;
             z-index: 10;
             overflow: hidden;
             flex-shrink: 0;
@@ -1258,72 +1258,47 @@
             }
         }
         
-        /* 标签容器 - 靠左对齐，纯文字样式 */
+        /* 标签容器 - 靠左对齐，四个标签全部静态显示 */
         .category-tabs-container {
             position: relative;
             z-index: 5;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 40px;
+            gap: 0;
             width: 100%;
-            max-width: 320px;
+            max-width: 400px;
             margin-left: 20px;
-            min-height: 280px;
+            justify-content: space-evenly;
+            height: 100%;
         }
         
         .category-tab {
-            padding: 0;
-            padding-left: 28px;
+            padding: 20px 0 20px 28px;
             font-size: 22px;
             font-weight: 500;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255,255,255,0.5);
             cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: absolute;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
             letter-spacing: 6px;
             user-select: none;
             text-align: left;
             background: transparent;
             border: none;
-            opacity: 0;
-            transform: translateY(0);
-            top: -80px;
+            width: 100%;
         }
         
-        /* 可见状态 - 上方 */
-        .category-tab.visible-prev {
-            opacity: 0.4;
-            transform: translateY(0);
-            top: 0;
-        }
-        
-        /* 可见状态 - 中间（激活） */
-        .category-tab.visible-active {
-            opacity: 1;
-            transform: translateY(0);
-            top: 80px;
-        }
-        
-        /* 可见状态 - 下方 */
-        .category-tab.visible-next {
-            opacity: 0.4;
-            transform: translateY(0);
-            top: 160px;
-        }
-        
-        /* 隐藏状态 - 准备从上方滑入 */
-        .category-tab.hidden-up {
-            opacity: 0;
-            transform: translateY(0);
-            top: -80px;
-        }
-        
-        /* 隐藏状态 - 准备从下方滑入 */
+        /* 四个标签全部静态显示，无滑动动画 */
+        .category-tab.visible-prev,
+        .category-tab.visible-active,
+        .category-tab.visible-next,
+        .category-tab.hidden-up,
         .category-tab.hidden-down {
-            opacity: 0;
-            transform: translateY(0);
-            top: 240px;
+            opacity: 1;
+            transform: none;
+            top: auto;
+            position: relative;
         }
         
         /* 左侧圆点图标 */
@@ -1375,7 +1350,7 @@
         /* 动态下划线 */
         .tab-underline {
             position: absolute;
-            bottom: -8px;
+            bottom: 18px;
             left: 28px;
             width: 0;
             height: 2px;
@@ -2471,51 +2446,12 @@
             }
         }
         
-        // 更新标签可见性（循环轮播效果）
+        // 更新标签可见性（四个标签全部静态显示）
         function updateTabsVisibility(activeCategory, direction = null) {
-            const categories = ['honors', 'qualifications', 'patents', 'software'];
-            const activeIndex = categories.indexOf(activeCategory);
             const tabs = document.querySelectorAll('.category-tab');
-            
-            // 循环计算上一个和下一个索引
-            const prevIndex = (activeIndex - 1 + 4) % 4;
-            const nextIndex = (activeIndex + 1) % 4;
-            
-            // 计算第4个标签的索引（不在显示范围内的那个）
-            const fourthIndex = (activeIndex + 2) % 4;
-            
             tabs.forEach(tab => {
-                const tabCategory = tab.dataset.category;
-                const tabIndex = categories.indexOf(tabCategory);
-                
-                // 清除所有可见状态类
+                // 清除旧的可见状态类，四个标签全部保持静态显示
                 tab.classList.remove('visible-prev', 'visible-active', 'visible-next', 'hidden-up', 'hidden-down');
-                
-                if (tabIndex === activeIndex) {
-                    // 当前激活的标签 - 中间位置
-                    tab.classList.add('visible-active');
-                } else if (tabIndex === prevIndex) {
-                    // 上一个标签（循环）- 上方位置
-                    tab.classList.add('visible-prev');
-                } else if (tabIndex === nextIndex) {
-                    // 下一个标签（循环）- 下方位置
-                    tab.classList.add('visible-next');
-                } else {
-                    // 第4个标签 - 设置隐藏位置
-                    // 根据滚动方向决定从哪里滑入
-                    if (direction === 'up') {
-                        // 向上滚动，第4个标签在上方准备
-                        tab.classList.add('hidden-up');
-                    } else if (direction === 'down') {
-                        // 向下滚动，第4个标签在下方准备
-                        tab.classList.add('hidden-down');
-                    } else {
-                        // 初始状态，根据索引设置默认位置
-                        if (tabIndex === (activeIndex + 2) % 4) {
-                            tab.classList.add('hidden-down');
-                        }
-                    }
-                }
             });
         }
         
