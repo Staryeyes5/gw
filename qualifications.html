@@ -720,32 +720,57 @@
             max-height: 100%;
             transform: scale(1.8);
         }
+        }
+        .logo-item img.logo-xxlarge {
+            max-width: 100%;
+            max-height: 100%;
+            transform: scale(1.25);
+        }
+        .logo-item img.logo-medium {
+            max-width: 100%;
+            max-height: 100%;
+            transform: scale(0.85);
+        }
         
-
-        
-        /* Logo 放大预览浮层 */
+        /* Logo放大预览浮层 */
         .logo-preview-popup {
             position: fixed;
-            z-index: 9999;
+            width: 460px;
+            height: 250px;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.18);
-            padding: 16px;
+            border-radius: 16px;
+            border: 2px solid #0ea5e9;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(14, 165, 233, 0.3);
+            z-index: 10000;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.2s ease;
-            max-width: 280px;
+            transform: scale(0.8);
+            transition: opacity 0.25s ease, transform 0.25s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 28px;
         }
         .logo-preview-popup.visible {
             opacity: 1;
+            transform: scale(1);
         }
         .logo-preview-popup img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+        }
+        .logo-preview-popup::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #0ea5e9;
         }
 
         /* 轮播容器 */
@@ -3287,45 +3312,64 @@
 
         
         // Logo 放大预览浮层
-        let popupTimeout = null;
         function initLogoPreview() {
-            const popup = document.getElementById('logoPreviewPopup');
-            const previewImg = document.getElementById('logoPreviewImg');
+            // 创建预览浮层元素
+            let previewPopup = document.getElementById('logo-preview-popup');
+            if (!previewPopup) {
+                previewPopup = document.createElement('div');
+                previewPopup.id = 'logo-preview-popup';
+                previewPopup.className = 'logo-preview-popup';
+                previewPopup.innerHTML = '<img src="" alt="Logo预览">';
+                document.body.appendChild(previewPopup);
+            }
+            const previewImg = previewPopup.querySelector('img');
+            
+            // 为所有logo-item添加鼠标事件
             document.querySelectorAll('.logo-item').forEach(item => {
-                item.addEventListener('mouseenter', function(e) {
-                    const img = item.querySelector('img');
-                    if (!img) return;
-                    popupTimeout = setTimeout(() => {
-                        previewImg.src = img.src;
-                        previewImg.alt = img.alt;
-                        popup.style.width = '220px';
-                        popup.style.height = '130px';
-                        popup.classList.add('visible');
-                        positionPopup(e);
-                    }, 300);
-                });
-                item.addEventListener('mousemove', function(e) {
-                    if (popup.classList.contains('visible')) {
-                        positionPopup(e);
+                const img = item.querySelector('img');
+                if (!img) return;
+                
+                item.addEventListener('mouseenter', () => {
+                    previewImg.src = img.src;
+                    previewImg.alt = img.alt;
+                    
+                    // 计算位置：在logo上方居中显示
+                    const rect = item.getBoundingClientRect();
+                    const popupWidth = 460;
+                    const popupHeight = 250;
+                    
+                    let left = rect.left + rect.width / 2 - popupWidth / 2;
+                    let top = rect.top - popupHeight - 16;
+                    
+                    // 边界检测：确保不超出屏幕
+                    if (left < 10) left = 10;
+                    if (left + popupWidth > window.innerWidth - 10) {
+                        left = window.innerWidth - popupWidth - 10;
                     }
+                    if (top < 10) {
+                        // 如果上方空间不足，显示在下方
+                        top = rect.bottom + 16;
+                    }
+                    
+                    previewPopup.style.left = left + 'px';
+                    previewPopup.style.top = top + 'px';
+                    previewPopup.classList.add('visible');
                 });
-                item.addEventListener('mouseleave', function() {
-                    clearTimeout(popupTimeout);
-                    popup.classList.remove('visible');
+                
+                item.addEventListener('mouseleave', () => {
+                    previewPopup.classList.remove('visible');
                 });
             });
-        }
-        function positionPopup(e) {
-            const popup = document.getElementById('logoPreviewPopup');
-            const offset = 15;
-            let x = e.clientX + offset;
-            let y = e.clientY + offset;
-            const pw = popup.offsetWidth || 220;
-            const ph = popup.offsetHeight || 130;
-            if (x + pw > window.innerWidth) x = e.clientX - pw - offset;
-            if (y + ph > window.innerHeight) y = e.clientY - ph - offset;
-            popup.style.left = x + 'px';
-            popup.style.top = y + 'px';
+            
+            // 页面滚动时隐藏预览框
+            window.addEventListener('scroll', () => {
+                previewPopup.classList.remove('visible');
+            }, { passive: true });
+            
+            // 鼠标滚轮事件也隐藏预览框
+            window.addEventListener('wheel', () => {
+                previewPopup.classList.remove('visible');
+            }, { passive: true });
         }
 
         // 页面加载完成后初始化
@@ -3334,9 +3378,5 @@
             initLogoPreview();
         });
     </script>
-    <!-- Logo 放大预览浮层 -->
-    <div class="logo-preview-popup" id="logoPreviewPopup">
-        <img id="logoPreviewImg" src="" alt="">
-    </div>
 </body>
 </html>
