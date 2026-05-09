@@ -721,7 +721,7 @@
             transform: scale(1.8);
         }
         
-        /* 全部客户弹窗样式 */
+        /* ===== 全部客户弹窗样式 - 暂时隐藏 =====
         .modal-cat-tab {
             background: white;
             color: #64748b;
@@ -761,6 +761,7 @@
             position: relative;
             z-index: 1;
         }
+        ===== 弹窗样式结束 - 暂时隐藏 ===== */
         .logo-item img.logo-xxlarge {
             max-width: 100%;
             max-height: 100%;
@@ -2725,6 +2726,7 @@
         // 页面加载后初始化
         document.addEventListener('DOMContentLoaded', initHonorCarousel);
 
+        /* ===== 全部客户弹窗相关 - 暂时隐藏 =====
         // ===== 全部客户弹窗相关 =====
         // 收集所有logo数据
         function collectAllLogos() {
@@ -2837,7 +2839,7 @@
             document.querySelectorAll('.modal-cat-tab').forEach(tab => {
                 tab.classList.toggle('active', tab.dataset.cat === category);
             });
-            
+
             // 更新grid
             const grid = document.getElementById('allClientsGrid');
             grid.innerHTML = '';
@@ -2878,6 +2880,8 @@
                 closeAllClientsModal();
             }
         });
+
+        */
     </script>
 
     <!-- 权威客户 -->
@@ -2916,9 +2920,11 @@
                 <button class="client-tab px-5 py-2.5 rounded-full font-medium text-sm" data-client="others" onclick="switchClientTab('others')">
                     其他
                 </button>
+                <!-- 查看全部按钮 - 暂时隐藏
                 <button class="px-6 py-2.5 rounded-full font-medium text-sm bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 ml-4" onclick="openAllClientsModal()">
                     查看全部
                 </button>
+                -->
             </div>
             
             <!-- 保险 -->
@@ -3125,6 +3131,7 @@
         </div>
     </section>
 
+    <!-- 全部客户弹窗 + 单个Logo放大弹窗 - 暂时隐藏
     <!-- 全部客户弹窗 -->
     <div id="allClientsModal" class="fixed inset-0 z-[200] hidden">
         <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeAllClientsModal()"></div>
@@ -3174,6 +3181,9 @@
             </svg>
         </button>
     </div>
+
+
+    -->
 
     <!-- ===== 原有页脚 ===== -->
     <footer class="bg-slate-900 border-t border-slate-700/50 relative overflow-visible" style="z-index: 100;">
