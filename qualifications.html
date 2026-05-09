@@ -1274,7 +1274,7 @@
         }
         
         .category-tab {
-            padding: 20px 0 20px 28px;
+            padding: 20px 0 20px 24px;
             font-size: 22px;
             font-weight: 500;
             color: rgba(255,255,255,0.5);
@@ -1287,6 +1287,9 @@
             background: transparent;
             border: none;
             width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         
         /* 四个标签全部静态显示，无滑动动画 */
@@ -1303,14 +1306,16 @@
         
         /* 左侧圆点图标 */
         .tab-icon {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
             width: 10px;
             height: 10px;
             background: rgba(255,255,255,0.3);
             border-radius: 50%;
             transition: all 0.4s ease;
+            flex-shrink: 0;
         }
         
         .category-tab:hover .tab-icon {
@@ -1351,7 +1356,7 @@
         .tab-underline {
             position: absolute;
             bottom: 18px;
-            left: 28px;
+            left: 22px;
             width: 0;
             height: 2px;
             background: linear-gradient(90deg, rgba(100,180,255,0.9), rgba(255,255,255,0.7));
