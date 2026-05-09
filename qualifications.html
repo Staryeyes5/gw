@@ -723,6 +723,31 @@
         
 
         
+        /* Logo 放大预览浮层 */
+        .logo-preview-popup {
+            position: fixed;
+            z-index: 9999;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+            padding: 16px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            max-width: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-preview-popup.visible {
+            opacity: 1;
+        }
+        .logo-preview-popup img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
         /* 轮播容器 */
         .carousel-container {
             overflow: hidden;
@@ -3261,10 +3286,57 @@
         
 
         
+        // Logo 放大预览浮层
+        let popupTimeout = null;
+        function initLogoPreview() {
+            const popup = document.getElementById('logoPreviewPopup');
+            const previewImg = document.getElementById('logoPreviewImg');
+            document.querySelectorAll('.logo-item').forEach(item => {
+                item.addEventListener('mouseenter', function(e) {
+                    const img = item.querySelector('img');
+                    if (!img) return;
+                    popupTimeout = setTimeout(() => {
+                        previewImg.src = img.src;
+                        previewImg.alt = img.alt;
+                        popup.style.width = '220px';
+                        popup.style.height = '130px';
+                        popup.classList.add('visible');
+                        positionPopup(e);
+                    }, 300);
+                });
+                item.addEventListener('mousemove', function(e) {
+                    if (popup.classList.contains('visible')) {
+                        positionPopup(e);
+                    }
+                });
+                item.addEventListener('mouseleave', function() {
+                    clearTimeout(popupTimeout);
+                    popup.classList.remove('visible');
+                });
+            });
+        }
+        function positionPopup(e) {
+            const popup = document.getElementById('logoPreviewPopup');
+            const offset = 15;
+            let x = e.clientX + offset;
+            let y = e.clientY + offset;
+            const pw = popup.offsetWidth || 220;
+            const ph = popup.offsetHeight || 130;
+            if (x + pw > window.innerWidth) x = e.clientX - pw - offset;
+            if (y + ph > window.innerHeight) y = e.clientY - ph - offset;
+            popup.style.left = x + 'px';
+            popup.style.top = y + 'px';
+        }
+
         // 页面加载完成后初始化
         document.addEventListener('DOMContentLoaded', function() {
             initClientCarousels();
+            initLogoPreview();
         });
+    <!-- Logo 放大预览浮层 -->
+    <div class="logo-preview-popup" id="logoPreviewPopup">
+        <img id="logoPreviewImg" src="" alt="">
+    </div>
     </script>
 </body>
 </html>
