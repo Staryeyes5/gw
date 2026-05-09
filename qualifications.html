@@ -2882,6 +2882,19 @@
         });
 
         */
+
+        // ===== 客户类别切换功能 =====
+        function switchClientTab(category) {
+            // 切换tab样式
+            document.querySelectorAll('.client-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.client === category);
+            });
+            // 切换内容显示
+            document.querySelectorAll('.client-content').forEach(content => {
+                content.classList.toggle('active', content.id === 'client-' + category);
+            });
+        }
+
     </script>
 
     <!-- 权威客户 -->
