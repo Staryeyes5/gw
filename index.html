@@ -744,10 +744,10 @@
         /* 回到顶部 */
         .back-to-top {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 60px;
-            height: 60px;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, #0ea5e9, #22d3ee);
             border-radius: 50%;
             display: flex;
@@ -755,20 +755,23 @@
             justify-content: center;
             cursor: pointer;
             opacity: 0;
-            transform: scale(0) rotate(-180deg);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 40px rgba(14, 165, 233, 0.4);
+            pointer-events: none;
+            transform: scale(1);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
             z-index: 1000;
+            border: none;
         }
         
         .back-to-top.visible {
             opacity: 1;
-            transform: scale(1) rotate(0);
+            pointer-events: auto;
         }
         
         .back-to-top:hover {
-            transform: scale(1.1) rotate(0);
-            box-shadow: 0 15px 50px rgba(14, 165, 233, 0.5);
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #0ea5e9dd, #22d3eedd);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
         }
         
         /* 滚动显示 */
@@ -1840,7 +1843,7 @@
                             <a href="services.html#products" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">核心产品</a>
                             <div class="nav-dropdown-menu">
                                 <a href="services.html#product-simple-insight">一体化智能可观测平台</a>
-                                <a href="services.html#product-muxi-gpu">沐曦国产通用GPU</a>
+                                <a href="services.html#product-muxi-gpu">国产通用GPU</a>
                                 <a href="services.html#product-oceanbase">OceanBase数据库</a>
                                 <a href="services.html#product-ai-recruit">AI招聘助手</a>
                                 <a href="services.html#product-ai-bidding">AI招投标助手</a>
@@ -1911,7 +1914,7 @@
                 </div>
                 <div class="mobile-submenu-items" id="mobileSubmenuItems">
                     <a href="services.html#product-simple-insight">一体化智能可观测平台</a>
-                    <a href="services.html#product-muxi-gpu">沐曦国产通用GPU</a>
+                    <a href="services.html#product-muxi-gpu">国产通用GPU</a>
                     <a href="services.html#product-oceanbase">OceanBase数据库</a>
                     <a href="services.html#product-ai-recruit">AI招聘助手</a>
                     <a href="services.html#product-ai-bidding">AI招投标助手</a>
@@ -2279,7 +2282,7 @@
                             <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E6%B2%90%E6%9B%A6GPU.jpg_e1080.webp&nonce=b9492293-80a0-4134-86d1-1d9931e0cf6c&project_id=7612545482618945587&sign=d8d2ac8cf58bafe17813e25b0af096494939d396aa240f98fcc3ad4a1e6f1e89" alt="沐曦国产通用GPU" class="w-full h-full object-cover"/>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-white mb-2">沐曦国产通用 GPU</h3>
+                            <h3 class="text-xl font-bold text-white mb-2">国产通用 GPU</h3>
                             <p class="text-slate-400 text-sm mb-4">专为大规模AI计算设计，支持通用计算与图形渲染，实现国产化替代的强大动力源。</p>
                             <a href="business-detail.html#product-muxi-gpu" class="text-amber-400 hover:text-amber-300 text-sm inline-flex items-center gap-1">
                                 申请试用 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
@@ -2818,12 +2821,12 @@
                         <h4 class="footer-title">核心产品</h4>
                         <ul class="space-y-2">
                             <li><a href="services.html#product-simple-insight" class="footer-link">一体化智能可观测平台</a></li>
-                            <li><a href="services.html#product-muxi-gpu" class="footer-link">沐曦国产通用GPU</a></li>
+                            <li><a href="services.html#product-muxi-gpu" class="footer-link">国产通用GPU</a></li>
                             <li><a href="services.html#product-oceanbase" class="footer-link">OceanBase数据库</a></li>
                             <li><a href="services.html#product-ai-recruit" class="footer-link">AI招聘助手</a></li>
                             <li><a href="services.html#product-ai-bidding" class="footer-link">AI招投标助手</a></li>
                             <li><a href="services.html#product-ai-health" class="footer-link">职场健康加油站</a></li>
-                            <li><a href="services.html#product-low-altitude" class="footer-link">低空经济|低空综合管理服务平台</a></li>
+                            <li><a href="services.html#product-low-altitude" class="footer-link">低空综合管理服务平台</a></li>
                         </ul>
                     </div>
                     
@@ -2882,11 +2885,11 @@
     </div>
 
     <!-- 回到顶部按钮 -->
-    <div class="back-to-top" id="backToTop">
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">
         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
-    </div>
+    </button>
     
     <!-- 页面导航指示器 -->
     <nav class="page-nav" id="pageNav">
@@ -3157,10 +3160,6 @@
             } else {
                 backToTop.classList.remove('visible');
             }
-        });
-        
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
         
         // ===== 页面导航指示器 =====
