@@ -1501,7 +1501,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Whitepaper 1 - AI招聘助手 -->
-                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('ai-recruit')">
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="showWhitepaperNotice()">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">person_search</span>
                         </div>
@@ -1516,7 +1516,7 @@
                     </div>
                     
                     <!-- Whitepaper 2 - AI招投标助手 -->
-                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('ai-bidding')">
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="showWhitepaperNotice()">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">description</span>
                         </div>
@@ -1531,7 +1531,7 @@
                     </div>
                     
                     <!-- Whitepaper 3 - 职场健康加油站 -->
-                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('ai-health')">
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="showWhitepaperNotice()">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">health_metrics</span>
                         </div>
@@ -1546,7 +1546,7 @@
                     </div>
                     
                     <!-- Whitepaper 4 - Simple Insight -->
-                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('simple-insight')">
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="showWhitepaperNotice()">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">insights</span>
                         </div>
@@ -1561,7 +1561,7 @@
                     </div>
                     
                     <!-- Whitepaper 5 - OceanBase数据库 -->
-                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('oceanbase')">
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="showWhitepaperNotice()">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">storage</span>
                         </div>
@@ -1576,7 +1576,7 @@
                     </div>
                     
                     <!-- Whitepaper 6 - 沐曦国产通用GPU -->
-                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('muxi-gpu')">
+                    <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="showWhitepaperNotice()">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">developer_board</span>
                         </div>
@@ -1858,372 +1858,31 @@
         startAutoPlay();
     </script>
     
-    <!-- 技术白皮书弹窗 -->
-    <div id="whitepaperModal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modalTitle">
-                    <span class="material-symbols-outlined text-3xl text-primary" id="modalIcon">person_search</span>
-                    <span id="modalTitleText">技术白皮书</span>
-                </h3>
-                <button class="modal-close" onclick="closeModal()">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
+    <!-- 技术白皮书提示弹窗 -->
+    <div id="whitepaperNotice" style="display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px);" onclick="if(event.target===this)this.style.display='none'">
+        <div style="background:white; border-radius:16px; padding:40px 48px; max-width:420px; text-align:center; box-shadow:0 25px 60px rgba(0,0,0,0.3);">
+            <div style="width:64px; height:64px; margin:0 auto 20px; background:linear-gradient(135deg,#0ea5e9,#3b82f6); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                <span class="material-symbols-outlined" style="font-size:32px; color:white;">lock</span>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- 动态内容将在这里加载 -->
-            </div>
-            <div class="modal-footer">
-                <button class="btn-close" onclick="closeModal()">关闭</button>
-                <button class="btn-download" onclick="downloadWhitepaper()">
-                    <span class="material-symbols-outlined">download</span>
-                    下载完整白皮书
-                </button>
-            </div>
+            <h3 style="font-size:20px; font-weight:700; color:#0f172a; margin-bottom:12px;">权限未开通</h3>
+            <p style="font-size:16px; color:#64748b; line-height:1.6; margin-bottom:28px;">技术白皮书权限暂未开通，抱歉！</p>
+            <button onclick="document.getElementById('whitepaperNotice').style.display='none'" style="background:linear-gradient(135deg,#0ea5e9,#3b82f6); color:white; border:none; padding:12px 36px; border-radius:10px; font-size:15px; font-weight:600; cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">我知道了</button>
         </div>
     </div>
     
-    <!-- 技术白皮书数据内容 -->
     <script>
-        // 技术白皮书详细内容数据
-        const whitepaperData = {
-            'ai-recruit': {
-                title: 'AI招聘助手技术白皮书',
-                icon: 'person_search',
-                content: `
-                    <div class="tech-section">
-                        <h4>一、系统概述</h4>
-                        <p>AI招聘助手是一款基于深度学习与自然语言处理技术的新一代智能招聘系统。通过智能简历解析、自动初筛、智能面试评估等核心功能，全面重构企业招聘流程，显著提升招聘效率与质量。</p>
-                        <div class="tech-highlight">
-                            <p>核心价值：提升招聘效率300%以上，降低招聘成本60%，提高人岗匹配准确率</p>
-                        </div>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>二、核心技术架构</h4>
-                        <ul>
-                            <li><strong>简历智能解析引擎：</strong>基于BERT预训练模型的多格式文档解析系统，支持PDF、Word、Excel等20+种格式，准确率达98.5%以上。采用OCR技术处理扫描件与图片简历</li>
-                            <li><strong>知识图谱构建：</strong>构建包含500万+职位描述、3000万+简历样本的行业知识图谱，实现语义理解与智能匹配</li>
-                            <li><strong>深度学习初筛模型：</strong>基于XGBoost与深度神经网络的混合模型，结合200+维特征向量，实现精准候选人排序</li>
-                            <li><strong>智能面试评估系统：</strong>集成语音识别（ASR）与情感分析技术，自动评估面试表现，生成结构化评估报告</li>
-                            <li><strong>推荐算法引擎：</strong>采用协同过滤与内容推荐相结合的混合推荐算法，实时推荐最匹配的候选人</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>三、技术实现细节</h4>
-                        <ul>
-                            <li><strong>自然语言处理（NLP）：</strong>采用中文分词、实体识别、关系抽取等技术，提取简历关键信息（姓名、联系方式、教育背景、工作经历、技能等）</li>
-                            <li><strong>机器学习模型：</strong>使用LightGBM进行快速特征训练，结合BERT fine-tuning实现语义理解</li>
-                            <li><strong>数据处理流水线：</strong>Apache Kafka + Flink实现实时简历处理，支持单日处理10万+简历</li>
-                            <li><strong>数据库架构：</strong>Elasticsearch全文检索 + PostgreSQL关系存储 + Redis缓存，毫秒级响应</li>
-                            <li><strong>API接口设计：</strong>RESTful API + GraphQL，支持Web、移动端、第三方系统集成</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>四、应用场景</h4>
-                        <ul>
-                            <li><strong>批量简历处理：</strong>一键导入数百份简历，自动解析、评分、排序，大幅提升HR工作效率</li>
-                            <li><strong>智能人才搜索：</strong>自然语言搜索，如"3年Java开发经验，熟悉微服务架构"，精准匹配候选人</li>
-                            <li><strong>面试辅助：</strong>实时提示候选人关键信息与风险点，生成面试题库，记录面试评价</li>
-                            <li><strong>人才库管理：</strong>自动分类、标签化，激活沉睡人才池</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>五、性能指标</h4>
-                        <ul>
-                            <li>简历解析准确率：≥98.5%</li>
-                            <li>人岗匹配准确率：≥85%</li>
-                            <li>简历处理速度：单份简历≤2秒</li>
-                            <li>系统可用性：≥99.9%</li>
-                            <li>支持并发用户：≥10,000+</li>
-                        </ul>
-                    </div>
-                `
-            },
-            'ai-bidding': {
-                title: 'AI招投标助手技术白皮书',
-                icon: 'description',
-                content: `
-                    <div class="tech-section">
-                        <h4>一、系统概述</h4>
-                        <p>AI招投标助手是一款面向政府采购与企业招标的智能应标系统。通过自动化分析招标需求、智能生成应标文件、合规性审查等功能，大幅降低招投标工作量，提升中标率。</p>
-                        <div class="tech-highlight">
-                            <p>核心价值：应标效率提升500%，合规性审查准确率达99%，中标率提升40%以上</p>
-                        </div>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>二、核心技术架构</h4>
-                        <ul>
-                            <li><strong>招标文件智能解析：</strong>基于深度学习的文档理解系统，自动提取招标公告、技术要求、评分标准等关键信息</li>
-                            <li><strong>合规性知识库：</strong>构建包含50万+条法律法规、行业标准、历史案例的合规知识图谱</li>
-                            <li><strong>智能标书生成：</strong>采用模板引擎 + GPT大模型，自动生成技术方案、商务方案、资格证明等章节</li>
-                            <li><strong>风险检测引擎：</strong>基于规则引擎与机器学习的混合系统，识别资质不符、业绩缺失等风险点</li>
-                            <li><strong>竞品分析：</strong>自动抓取公开信息，分析竞争对手报价策略与技术方案</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>三、技术实现细节</h4>
-                        <ul>
-                            <li><strong>文档结构分析：</strong>采用版面分析（Layout Analysis）技术，识别文档层级结构与表格内容</li>
-                            <li><strong>信息抽取技术：</strong>基于BiLSTM-CRF的命名实体识别，提取关键参数与要求</li>
-                            <li><strong>模板匹配引擎：</strong>支持100+种行业标书模板，智能匹配最佳模板</li>
-                            <li><strong>AI内容生成：</strong>集成GPT-4、Claude等大语言模型，生成高质量技术方案</li>
-                            <li><strong>数字签名：</strong>集成国密算法，支持电子签章与加密传输</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>四、应用场景</h4>
-                        <ul>
-                            <li><strong>政府采购投标：</strong>自动解析招标文件，生成符合政府要求的标准化标书</li>
-                            <li><strong>企业项目竞标：</strong>快速生成技术方案，智能评估竞品策略</li>
-                            <li><strong>资质管理：</strong>自动维护资质证书库，及时预警资质到期</li>
-                            <li><strong>业绩管理：</strong>智能匹配历史业绩，自动生成业绩证明材料</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>五、性能指标</h4>
-                        <ul>
-                            <li>招标文件解析准确率：≥97%</li>
-                            <li>标书生成时间：≤30分钟</li>
-                            <li>合规性审查准确率：≥99%</li>
-                            <li>系统可用性：≥99.95%</li>
-                            <li>支持并发项目：≥5,000+</li>
-                        </ul>
-                    </div>
-                `
-            },
-            'ai-health': {
-                title: '职场健康加油站技术白皮书',
-                icon: 'health_metrics',
-                content: `
-                    <div class="tech-section">
-                        <h4>一、系统概述</h4>
-                        <p>职场健康加油站是一款专注企业职工健康管理的智能终端设备。通过多模态生物传感器与AI算法，为企业职工提供一站式健康指标检测、智能风险评估与个性化健康干预服务，助力企业构建健康关怀体系，提升员工幸福感与工作效率。</p>
-                        <div class="tech-highlight">
-                            <p>核心价值：职工健康检测时间≤5分钟，准确率达医疗级标准，健康建议个性化匹配率≥90%，企业员工健康管理效率提升60%</p>
-                        </div>
-                    </div>
-
-                    <div class="tech-section">
-                        <h4>二、核心技术架构</h4>
-                        <ul>
-                            <li><strong>多模态生物识别：</strong>集成人脸识别、指纹识别，实现职工身份验证与健康档案自动关联</li>
-                            <li><strong>健康指标采集：</strong>心率、血压、血氧、体温、体脂率等20+项健康指标智能采集</li>
-                            <li><strong>AI健康评估模型：</strong>基于企业职工健康数据训练的深度学习模型，实现亚健康风险预测</li>
-                            <li><strong>智能问诊系统：</strong>集成医疗知识图谱与NLP技术，为职工提供健康咨询与就医建议</li>
-                            <li><strong>企业健康档案管理：</strong>区块链技术保障数据安全，支持企业职工健康档案云端存储与管理</li>
-                        </ul>
-                    </div>
-
-                    <div class="tech-section">
-                        <h4>三、技术实现细节</h4>
-                        <ul>
-                            <li><strong>传感器技术：</strong>医用级传感器，采样精度±0.1%，支持实时连续监测</li>
-                            <li><strong>信号处理算法：</strong>自适应滤波算法去除噪声，小波变换提取特征</li>
-                            <li><strong>深度学习模型：</strong>采用CNN处理时序健康数据，LSTM进行健康趋势预测</li>
-                            <li><strong>边缘计算：</strong>本地AI芯片处理敏感数据，保障职工隐私安全</li>
-                            <li><strong>IoT互联互通：</strong>支持BLE、WiFi、4G/5G多种通信方式，便于企业内部部署</li>
-                        </ul>
-                    </div>
-
-                    <div class="tech-section">
-                        <h4>四、应用场景</h4>
-                        <ul>
-                            <li><strong>企业职工健康管理：</strong>员工健康档案建立，定期体检提醒，健康干预方案</li>
-                            <li><strong>企业职工健康监测：</strong>职工自助健康检测，亚健康筛查，健康数据汇总分析</li>
-                            <li><strong>企业健康服务：</strong>职工预检分诊，健康数据采集，远程健康管理</li>
-                            <li><strong>企业健康福利：</strong>定期健康检测，健康评估报告，个性化健康建议推送</li>
-                        </ul>
-                    </div>
-
-                    <div class="tech-section">
-                        <h4>五、性能指标</h4>
-                        <ul>
-                            <li>健康指标检测准确率：≥95%</li>
-                            <li>亚健康风险预测准确率：≥85%</li>
-                            <li>单次检测时间：≤5分钟</li>
-                            <li>数据加密标准：国密SM2/SM3/SM4</li>
-                            <li>支持并发职工检测：≥500+</li>
-                        </ul>
-                    </div>
-                `
-            },
-            'simple-insight': {
-                title: 'Simple Insight技术白皮书',
-                icon: 'insights',
-                content: `
-                    <div class="tech-section">
-                        <h4>一、系统概述</h4>
-                        <p>Simple Insight是一款面向企业本地私有化部署的一体化智能可观测平台。集成全栈链路监控、智能异常检测、自动化响应等功能，为本地私有化部署应用提供全方位的可观测性与安全护航。</p>
-                        <div class="tech-highlight">
-                            <p>核心价值：故障检测时间缩短70%，故障定位时间缩短80%，MTTR（平均修复时间）降低60%</p>
-                        </div>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>二、核心技术架构</h4>
-                        <ul>
-                            <li><strong>全栈链路追踪：</strong>基于OpenTelemetry标准的分布式追踪系统，支持跨服务、跨云的端到端链路监控</li>
-                            <li><strong>智能异常检测：</strong>采用无监督机器学习算法，自动发现性能异常、业务异常、安全异常</li>
-                            <li><strong>自动化响应：</strong>基于规则引擎与AI决策的自动化运维，支持自动扩缩容、自动故障恢复</li>
-                            <li><strong>日志智能分析：</strong>NLP技术分析日志，自动提取关键信息，生成问题摘要</li>
-                            <li><strong>指标可视化：</strong>自定义Dashboard，支持100+种图表类型，实时监控业务指标</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>三、技术实现细节</h4>
-                        <ul>
-                            <li><strong>数据采集：</strong>Sidecar模式采集Trace、Log、Metric，支持Java、Python、Go、Node.js等语言</li>
-                            <li><strong>时序数据库：</strong>基于ClickHouse的时序数据存储，支持每秒百万级写入</li>
-                            <li><strong>机器学习引擎：</strong>集成TensorFlow、PyTorch，支持在线学习与模型更新</li>
-                            <li><strong>告警系统：</strong>多级告警策略，支持邮件、短信、钉钉、企业微信等通知方式</li>
-                            <li><strong>API集成：</strong>开放API，支持与Prometheus、Grafana、ELK等系统集成</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>四、应用场景</h4>
-                        <ul>
-                            <li><strong>微服务监控：</strong>实时监控数百个微服务的性能与状态</li>
-                            <li><strong>用户体验监控：</strong>APM监控前端性能，优化用户加载体验</li>
-                            <li><strong>安全审计：</strong>自动识别异常访问、SQL注入、XSS攻击等安全威胁</li>
-                            <li><strong>容量规划：</strong>基于历史趋势预测资源需求，优化成本</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>五、性能指标</h4>
-                        <ul>
-                            <li>数据采集延迟：≤100ms</li>
-                            <li>异常检测准确率：≥95%</li>
-                            <li>告警响应时间：≤1秒</li>
-                            <li>支持数据保留：≥365天</li>
-                            <li>系统可用性：≥99.99%</li>
-                        </ul>
-                    </div>
-                `
-            },
-            'oceanbase': {
-                title: 'OceanBase数据库技术白皮书',
-                icon: 'storage',
-                content: `
-                    <div class="tech-section">
-                        <h4>一、系统概述</h4>
-                        <p>OceanBase是一款原生分布式关系数据库，具备集中式与分布式双能力，支持三地五中心城市级无损容灾，全兼容Oracle SQL语法，助力企业数据库国产化替代与数字化转型。</p>
-                        <div class="tech-highlight">
-                            <p>核心价值：城市级容灾RPO=0，存储成本降低60%，迁移成本降低80%，单集群支持1000+节点</p>
-                        </div>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>二、核心技术架构</h4>
-                        <ul>
-                            <li><strong>原生分布式架构：</strong>基于Paxos的分布式共识算法，数据三副本存储，自动故障切换</li>
-                            <li><strong>三地五中心容灾：</strong>支持同城双活、异地容灾，RPO=0、RTO<30秒的城市级容灾能力</li>
-                            <li><strong>Oracle兼容模式：</strong>全兼容Oracle SQL语法、PL/SQL、触发器、存储过程，迁移成本最低</li>
-                            <li><strong>HTAP混合负载：</strong>一份数据同时支持OLTP与OLAP，TP与AP负载隔离，避免资源争抢</li>
-                            <li><strong>极致压缩技术：</strong>列式存储+多种压缩算法，节省60%以上存储成本</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>三、技术实现细节</h4>
-                        <ul>
-                            <li><strong>存储引擎：</strong>LSM-Tree结构，WAL日志 + MemTable + SSTable，支持增量与全量合并</li>
-                            <li><strong>SQL引擎：</strong>自研SQL优化器，支持100+种算子，智能查询优化</li>
-                            <li><strong>事务处理：</strong>MVCC多版本并发控制，支持强一致性与最终一致性</li>
-                            <li><strong>分区技术：</strong>支持Hash、Range、List分区，自动分区路由</li>
-                            <li><strong>备份恢复：</strong>物理备份+逻辑备份，支持秒级快照与时间点恢复</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>四、应用场景</h4>
-                        <ul>
-                            <li><strong>金融核心系统：</strong>银行核心、支付系统，要求高可用、强一致性</li>
-                            <li><strong>电信BOSS系统：</strong>计费、CRM系统，数据量大、并发高</li>
-                            <li><strong>电商交易系统：</strong>订单、库存系统，高并发、低延迟</li>
-                            <li><strong>政府政务系统：</strong>一网通办、数据共享，国产化替代</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>五、性能指标</h4>
-                        <ul>
-                            <li>TPCC性能：7070万tpmC（1000节点集群）</li>
-                            <li>单表支持数据量：≥3200亿行</li>
-                            <li>单表支持数据文件：≥100TB</li>
-                            <li>事务延迟（P99）：≤10ms</li>
-                            <li>系统可用性：≥99.999%（5个9）</li>
-                        </ul>
-                    </div>
-                `
-            },
-            'muxi-gpu': {
-                title: '沐曦国产通用GPU技术白皮书',
-                icon: 'developer_board',
-                content: `
-                    <div class="tech-section">
-                        <h4>一、系统概述</h4>
-                        <p>沐曦国产通用GPU是一款面向大规模AI计算与图形渲染的自主可控GPU芯片。采用先进制程工艺与自研架构，实现通用计算与图形渲染的双引擎设计，为国产化替代提供强大算力底座。</p>
-                        <div class="tech-highlight">
-                            <p>核心价值：AI计算性能对标国际主流产品，图形渲染兼容DirectX/OpenGL，功耗降低30%</p>
-                        </div>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>二、核心技术架构</h4>
-                        <ul>
-                            <li><strong>自研架构设计：</strong>C·X·H（沐曦·鸿鹄）架构，支持CUDA生态，兼容主流AI框架</li>
-                            <li><strong>双引擎设计：</strong>AI计算引擎（张量核心）+ 图形渲染引擎，灵活切换</li>
-                            <li><strong>高带宽显存：</strong>HBM2e显存，带宽≥1.5TB/s，显存容量≥32GB</li>
-                            <li><strong>先进制程工艺：</strong>7nm/5nm工艺，集成晶体管数≥600亿</li>
-                            <li><strong>异构计算支持：</strong>支持FP16、FP32、FP64、INT8等多种数据精度</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>三、技术实现细节</h4>
-                        <ul>
-                            <li><strong>张量计算核心：</strong>支持矩阵乘法加速，AI训练性能提升10倍以上</li>
-                            <li><strong>光线追踪单元：</strong>硬件级光线追踪，支持实时光追渲染</li>
-                            <li><strong>视频编解码：</strong>支持8K视频编解码，AV1/H.265/H.264格式</li>
-                            <li><strong>互联技术：</strong>支持NVLink、PCIe 5.0，多卡并行扩展</li>
-                            <li><strong>驱动软件栈：</strong>自研驱动+编译器，兼容PyTorch、TensorFlow、MindSpore等框架</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>四、应用场景</h4>
-                        <ul>
-                            <li><strong>AI训练：</strong>大模型训练、深度学习训练，支持千亿参数模型</li>
-                            <li><strong>AI推理：</strong>图像识别、NLP、推荐系统，低延迟推理</li>
-                            <li><strong>图形渲染：</strong>CAD设计、3D建模、视频编辑</li>
-                            <li><strong>科学计算：</strong>气象预测、基因测序、物理模拟</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <h4>五、性能指标</h4>
-                        <ul>
-                            <li>AI算力（FP16）：≥300 TFLOPS</li>
-                            <li>显存带宽：≥1.5TB/s</li>
-                            <li>显存容量：≥32GB HBM2e</li>
-                            <li>功耗：≤300W</li>
-                            <li>制程工艺：7nm/5nm</li>
-                        </ul>
-                    </div>
-                `
+        // 显示技术白皮书权限提示
+        function showWhitepaperNotice() {
+            const notice = document.getElementById('whitepaperNotice');
+            notice.style.display = 'flex';
+        }
+        
+        // ESC键关闭提示
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('whitepaperNotice').style.display = 'none';
             }
-        };
+        });
     </script>
     
     <!-- 技术白皮书显示/隐藏控制 -->
@@ -2250,48 +1909,17 @@
             }
         }
         
-        // 打开技术白皮书弹窗
-        function openModal(whitepaperId) {
-            const modal = document.getElementById('whitepaperModal');
-            const modalTitle = document.getElementById('modalTitleText');
-            const modalIcon = document.getElementById('modalIcon');
-            const modalBody = document.getElementById('modalBody');
-            
-            const data = whitepaperData[whitepaperId];
-            if (data) {
-                modalTitle.textContent = data.title;
-                modalIcon.textContent = data.icon;
-                modalBody.innerHTML = data.content;
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // 防止背景滚动
-            }
+        // 显示技术白皮书权限提示
+        function showWhitepaperNotice() {
+            document.getElementById('whitepaperNotice').style.display = 'flex';
         }
         
-        // 关闭技术白皮书弹窗
-        function closeModal() {
-            const modal = document.getElementById('whitepaperModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = ''; // 恢复滚动
-        }
-        
-        // 点击弹窗外部关闭
-        document.getElementById('whitepaperModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-        
-        // ESC键关闭弹窗
+        // ESC键关闭提示
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                closeModal();
+                document.getElementById('whitepaperNotice').style.display = 'none';
             }
         });
-        
-        // 下载白皮书（示例）
-        function downloadWhitepaper() {
-            alert('感谢您的兴趣！完整白皮书下载功能即将上线，如需获取请联系我们。');
-        }
     </script>
 </body>
 </html>
