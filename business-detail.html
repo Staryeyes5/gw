@@ -486,15 +486,14 @@
             justify-content: center;
             cursor: pointer;
             opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
+            transform: scale(0);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 10px 40px rgba(14, 165, 233, 0.4);
             z-index: 1000;
         }
         .back-to-top.visible {
             opacity: 1;
             transform: scale(1);
-            pointer-events: auto;
         }
         .back-to-top:hover {
             transform: scale(1.1);
@@ -691,11 +690,11 @@
                     <a href="index.html" class="flex items-center gap-3 group">
                         <div class="h-12 w-12 flex items-center justify-center group-hover:scale-110 transition-transform">
                             <img src="assets/logos/申朴圆点logo.png" alt="Cisetech Logo" class="h-10 w-auto object-contain">
-                        </button>
+                        </div>
                         <div>
                             <h1 class="site-logo-text text-xl font-bold text-slate-900 dark:text-white">Cisetech</h1>
                             <p class="text-xs text-slate-400">申朴信息技术（上海）股份有限公司</p>
-                        </button>
+                        </div>
                     </a>
                     
                     <!-- 桌面端导航 -->
@@ -716,22 +715,22 @@
                                 <a href="services.html#product-ai-bidding">AI招投标助手</a>
                                 <a href="services.html#product-ai-health">职场健康加油站</a>
                                 <a href="services.html#product-low-altitude">低空经济|低空综合管理服务平台</a>
-                            </button>
-                        </button>
+                            </div>
+                        </div>
                         <div class="nav-dropdown">
                             <a href="qualifications.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">企业实力</a>
                             <div class="nav-dropdown-menu">
                                 <a href="qualifications.html#honors">荣誉资质</a>
                                 <a href="qualifications.html#clients">权威客户</a>
-                            </button>
-                        </button>
+                            </div>
+                        </div>
                         <div class="nav-dropdown">
                             <a href="joins.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">招贤纳士</a>
                             <div class="nav-dropdown-menu">
                                 <a href="joins.html#openings">常招职位</a>
                                 <a href="joins.html#culture">文化环境</a>
-                            </button>
-                        </button>
+                            </div>
+                        </div>
                         <div class="nav-dropdown">
                             <a href="about.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">
                                 关于我们
@@ -742,10 +741,10 @@
                                 <a href="about.html#timeline">发展历程</a>
                                 <a href="about.html#branches">分支机构</a>
                                 <a href="about.html#offshore">离岸交付中心</a>
-                            </button>
-                        </button>
+                            </div>
+                        </div>
                     </nav>
-                </button>
+                </div>
                 
                 <div class="flex items-center gap-4">
                     <a href="contact.html" class="hidden sm:block bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2.5 rounded-xl font-medium hover:from-cyan-600 hover:to-blue-700 transition-all hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30">
@@ -756,12 +755,12 @@
                         <span></span>
                         <span></span>
                     </button>
-                </button>
-            </button>
+                </div>
+            </div>
         </header>
         
         <!-- 移动端导航遮罩层 -->
-        <div class="mobile-nav-overlay lg:hidden" id="mobileNavOverlay"></button>
+        <div class="mobile-nav-overlay lg:hidden" id="mobileNavOverlay"></div>
         <!-- 移动端导航菜单 -->
         <nav class="mobile-nav lg:hidden" id="mobileNav">
             <a href="index.html">首页</a>
@@ -771,7 +770,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
-                </button>
+                </div>
                 <div class="mobile-submenu-items" id="mobileSubmenuItems">
                     <a href="services.html#product-simple-insight">一体化智能可观测平台</a>
                     <a href="services.html#product-muxi-gpu">国产通用GPU</a>
@@ -780,47 +779,47 @@
                     <a href="services.html#product-ai-bidding">AI招投标助手</a>
                     <a href="services.html#product-ai-health">职场健康加油站</a>
                     <a href="services.html#product-low-altitude">低空经济|低空综合管理服务平台</a>
-                </button>
-            </button>
+                </div>
+            </div>
             <div class="mobile-submenu">
                 <div class="mobile-submenu-trigger" id="mobileStrengthSubmenuTrigger">
                     <span>企业实力</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
-                </button>
+                </div>
                 <div class="mobile-submenu-items" id="mobileStrengthSubmenuItems">
                     <a href="qualifications.html#honors">荣誉资质</a>
                     <a href="qualifications.html#clients">权威客户</a>
-                </button>
-            </button>
+                </div>
+            </div>
             <div class="mobile-submenu">
                 <div class="mobile-submenu-trigger" id="mobileJoinsSubmenuTrigger">
                     <span>招贤纳士</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
-                </button>
+                </div>
                 <div class="mobile-submenu-items" id="mobileJoinsSubmenuItems">
                     <a href="joins.html#openings">常招职位</a>
                     <a href="joins.html#culture">文化环境</a>
-                </button>
-            </button>
+                </div>
+            </div>
             <div class="mobile-submenu">
                 <div class="mobile-submenu-trigger" id="mobileAboutSubmenuTrigger">
                     <span>关于我们</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
-                </button>
+                </div>
                 <div class="mobile-submenu-items" id="mobileAboutSubmenuItems">
                     <a href="about.html#about">关于申朴</a>
                     <a href="about.html#culture">企业文化</a>
                     <a href="about.html#timeline">发展历程</a>
                     <a href="about.html#branches">分支机构</a>
                     <a href="about.html#offshore">离岸交付中心</a>
-                </button>
-            </button>
+                </div>
+            </div>
             <a href="contact.html" class="mt-6 px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl text-white">咨询合作</a>
         </nav>
 
@@ -828,14 +827,14 @@
         <div style="display:none">
         <!-- Hero Section -->
         <section class="relative py-16 lg:py-24 overflow-hidden border-b border-primary/10">
-            <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5 pointer-events-none"></button>
-            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent opacity-50"></button>
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5 pointer-events-none"></div>
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent opacity-50"></div>
             <div class="max-w-[1280px] mx-auto px-6 lg:px-10 relative z-10">
                 <div class="max-w-3xl">
                     <div class="flex items-center gap-2 mb-4">
                         <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">Core Business</span>
                         <span class="text-slate-500 dark:text-slate-400 text-sm">全栈式AI解决方案</span>
-                    </button>
+                    </div>
                     <h1 class="text-4xl lg:text-5xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-6">
                         核心业务详情
                     </h1>
@@ -849,9 +848,9 @@
                         <a href="#infrastructure" class="quick-nav-btn">AI基建服务</a>
                         <a href="#industry" class="quick-nav-btn">AI行业应用</a>
                         <a href="#operation" class="quick-nav-btn">AI智能运营</a>
-                    </button>
-                </button>
-            </button>
+                    </div>
+                </div>
+            </div>
         </section>
 
 
@@ -887,7 +886,7 @@
                                 <a href="#operation-3" class="toc-link toc-secondary">智能业务流程外包</a>
                                 <a href="#operation-4" class="toc-link toc-secondary">AI专家技术支持</a>
                             </nav>
-                        </button>
+                        </div>
                     </aside>
                     
                     <!-- 主内容区 -->
@@ -899,24 +898,24 @@
                             <div class="flex items-center gap-4 mb-8">
                                 <div class="w-14 h-14 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center text-white flex-shrink-0">
                                     <span class="material-symbols-outlined text-2xl">strategy</span>
-                                </button>
+                                </div>
                                 <div>
                                     <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white">AI咨询和解决方案</h2>
                                     <p class="text-slate-500 dark:text-slate-400">AI Consulting & Solutions</p>
-                                </button>
-                            </button>
+                                </div>
+                            </div>
                             
                             <!-- 3.1.1 AI 战略规划 -->
                             <div id="consulting-1" class="business-card mb-8 reveal">
                                 <div class="grid lg:grid-cols-2 gap-0">
                                     <div class="h-48 lg:h-auto overflow-hidden">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_41c24c51-cfd5-405d-92c6-4a1df9c87278.jpeg?sign=1804324354-9cd7e13c67-0-5271d47dc793ae2a9c15e22c856c22124274aa6fc857868b9c3e9dfddaa475d2" alt="AI 战略规划" class="w-full h-full object-cover">
-                                    </button>
+                                    </div>
                                     <div class="p-6 lg:p-8">
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.1.1</span>
                                             <h3 class="text-xl font-bold text-white">AI 战略规划</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             为企业提供全链路 AI 战略咨询服务，通过现状评估、场景挖掘与技术规划，构建可落地的 AI 转型蓝图。
                                         </p>
@@ -926,9 +925,9 @@
                                             <li>技术选型、算力 / 数据 / 模型规划</li>
                                             <li>可落地 AI 场景挖掘（降本、增效、增收）</li>
                                         </ul>
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.1.2 企业 AI 原生开发平台 -->
                             <div id="consulting-2" class="business-card mb-8 reveal">
@@ -937,7 +936,7 @@
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.1.2</span>
                                             <h3 class="text-xl font-bold text-white">企业 AI 原生开发平台</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             打造企业专属AI 原生技术底座，支持私有化部署与多云适配，提供模型管理、数据治理、向量库、提示词工程、LLMOps 全生命周期能力。
                                         </p>
@@ -947,24 +946,24 @@
                                             <li>数据不出域、权限可管控、行为可审计</li>
                                             <li>支撑业务系统快速 AI 化，构建企业 AI 能力中枢</li>
                                         </ul>
-                                    </button>
+                                    </div>
                                     <div class="h-48 lg:h-auto overflow-hidden order-1 lg:order-2">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_2c1a4d52-7f06-4e63-9381-112c99e4e0cf.jpeg?sign=1804324353-ea60cc987b-0-9aaf78f199bfabdb9893bfd07d715c648d29b02f2884035d30cfdd93ed1f2eed" alt="企业 AI 原生开发平台" class="w-full h-full object-cover">
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.1.3 AI Agent 智能体开发与实施 -->
                             <div id="consulting-3" class="business-card mb-8 reveal">
                                 <div class="grid lg:grid-cols-2 gap-0">
                                     <div class="h-48 lg:h-auto overflow-hidden">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_e1e4eb45-b72b-416e-8edf-a7b60ff07cf3.jpeg?sign=1804324373-8e5626eb87-0-1c51c962448e1411b64d815a91b144e01861f463cfd66ed3d785d55c1a1414c4" alt="AI Agent 智能体开发与实施" class="w-full h-full object-cover">
-                                    </button>
+                                    </div>
                                     <div class="p-6 lg:p-8">
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.1.3</span>
                                             <h3 class="text-xl font-bold text-white">AI Agent 智能体开发与实施</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             面向复杂业务流程，构建自主决策、主动执行、多智能体协同的 AI Agent 体系，让 AI 成为可落地的 "数字员工"。
                                         </p>
@@ -976,9 +975,9 @@
                                             <li>多 Agent 协同：跨部门、跨系统智能联动，端到端流程自动化</li>
                                             <li>全生命周期管理：开发、测试、发布、监控、迭代一站式支撑</li>
                                         </ul>
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.1.4 AI代码安全审查 -->
                             <div id="consulting-4" class="business-card mb-8 reveal">
@@ -987,7 +986,7 @@
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.1.4</span>
                                             <h3 class="text-xl font-bold text-white">AI代码安全审查</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             面向研发与信息安全场景，提供AI 驱动的代码质量与安全治理，让生成式代码可信、可用、可上线。
                                         </p>
@@ -997,12 +996,12 @@
                                             <li>代码质量评分与优化建议，提升交付稳定性</li>
                                             <li>融入 CI/CD 流程，实现 "写 - 审 - 测 - 修" 自动化闭环</li>
                                         </ul>
-                                    </button>
+                                    </div>
                                     <div class="h-48 lg:h-auto overflow-hidden order-1 lg:order-2">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_d02f63b9-bac5-4f07-9f20-15f0c2b53086.jpeg?sign=1804324359-f353a20626-0-4bec14d39e0739fd0b8dff337fd61e9571f9bcdc5869b19bd4aef52225561bee" alt="AI代码安全审查" class="w-full h-full object-cover">
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                         </section>
 
 
@@ -1012,24 +1011,24 @@
                             <div class="flex items-center gap-4 mb-8">
                                 <div class="w-14 h-14 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center text-white flex-shrink-0">
                                     <span class="material-symbols-outlined text-2xl">database</span>
-                                </button>
+                                </div>
                                 <div>
                                     <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white">AI基建服务</h2>
                                     <p class="text-slate-500 dark:text-slate-400">AI Infrastructure Services</p>
-                                </button>
-                            </button>
+                                </div>
+                            </div>
                             
                             <!-- 3.2.1 算力供给与集群管理 -->
                             <div id="infrastructure-1" class="business-card mb-8 reveal">
                                 <div class="grid lg:grid-cols-2 gap-0">
                                     <div class="h-48 lg:h-auto overflow-hidden">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_59a53544-810d-4cff-867d-920b38d783c3.jpeg?sign=1804324354-487d97b6af-0-5f44c23998bd1c7733db00c023d5364e0abd60d7c79bc68eb2eb357eaf207a4b" alt="算力供给与集群管理" class="w-full h-full object-cover">
-                                    </button>
+                                    </div>
                                     <div class="p-6 lg:p-8">
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.2.1</span>
                                             <h3 class="text-xl font-bold text-white">算力供给与集群管理</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             为企业提供全栈式算力基础设施服务，通过异构芯片选型、弹性调度与集群化部署，构建高效、可扩展的 AI 算力底座。
                                         </p>
@@ -1039,9 +1038,9 @@
                                             <li>边缘算力部署：端侧 / 边缘设备推理加速、低延迟响应与离线运行能力</li>
                                             <li>绿色算力中心：液冷散热、智能供电与数据中心能效优化，实现降本增效</li>
                                         </ul>
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.2.2 数据基础设施与治理 -->
                             <div id="infrastructure-2" class="business-card mb-8 reveal">
@@ -1050,7 +1049,7 @@
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.2.2</span>
                                             <h3 class="text-xl font-bold text-white">数据基础设施与治理</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             打造企业级 AI 数据底座，支撑海量数据高效流转、安全合规与全生命周期管理，为 AI 模型训练提供 "燃料" 保障。
                                         </p>
@@ -1060,24 +1059,24 @@
                                             <li>高速数据传输：高带宽网络、低延迟 IO 优化服务，消除训练数据瓶颈</li>
                                             <li>数据安全管控：隐私计算、数据脱敏、访问控制与全链路加密</li>
                                         </ul>
-                                    </button>
+                                    </div>
                                     <div class="h-48 lg:h-auto overflow-hidden order-1 lg:order-2">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_c4e13c72-8b64-4538-a724-5d2f27cec16e.jpeg?sign=1804324367-a28e7c49b1-0-93e671a08a404ad1341e07920c2322e3dc6fae30014f920c6554af1c761bf08d" alt="数据基础设施与治理" class="w-full h-full object-cover">
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.2.3 高速互联与网络架构 -->
                             <div id="infrastructure-3" class="business-card mb-8 reveal">
                                 <div class="grid lg:grid-cols-2 gap-0">
                                     <div class="h-48 lg:h-auto overflow-hidden">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_64faac4a-4efb-42aa-a487-c1e010e1cefe.jpeg?sign=1804324372-6c1287f534-0-a462d9ac370d16b9b8bd5801278247d7b6dc43271d27286b7273bb4c9367faf0" alt="高速互联与网络架构" class="w-full h-full object-cover">
-                                    </button>
+                                    </div>
                                     <div class="p-6 lg:p-8">
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.2.3</span>
                                             <h3 class="text-xl font-bold text-white">高速互联与网络架构</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             构建面向 AI 工作负载优化的专用网络，支撑多机多卡高效通信与跨区域协同，保障训练与推理性能。
                                         </p>
@@ -1086,9 +1085,9 @@
                                             <li>跨区域互联：云边端、多数据中心间低延迟、高可靠网络架构</li>
                                             <li>网络智能调度：流量优化、故障自愈与 QoS 保障，提升通信效率</li>
                                         </ul>
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.2.4 全栈软件平台与工具链 -->
                             <div id="infrastructure-4" class="business-card mb-8 reveal">
@@ -1097,7 +1096,7 @@
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.2.4</span>
                                             <h3 class="text-xl font-bold text-white">全栈软件平台与工具链</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             提供从训练到推理的一体化软件平台与自动化工具链，降低 AI 开发门槛，加速模型迭代与落地。
                                         </p>
@@ -1108,24 +1107,24 @@
                                             <li>容器化调度：K8s 等容器编排，实现资源高效利用与弹性扩展</li>
                                             <li>领域小模型训练：基于全栈软件平台，提供小模型训练、微调、蒸馏与轻量化部署能力，支持行业场景快速定制专属模型</li>
                                         </ul>
-                                    </button>
+                                    </div>
                                     <div class="h-48 lg:h-auto overflow-hidden order-1 lg:order-2">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_8def3067-fd3d-4efc-aab9-46260d0392a5.jpeg?sign=1804324371-567449b39e-0-32b7281239efdf872f22ae5d413719f28fd8917f23df625b3b970d4e9d41c009" alt="全栈软件平台与工具链" class="w-full h-full object-cover">
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.2.5 AI人才培训及企业AI培训 -->
                             <div id="infrastructure-5" class="business-card mb-8 reveal">
                                 <div class="grid lg:grid-cols-2 gap-0">
                                     <div class="h-48 lg:h-auto overflow-hidden">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_0702e36f-84d3-4b8f-a287-a39015133681.jpeg?sign=1804324364-bcbb07c174-0-d1dcf8b3adc031cb44bd159c6d74e27f09a539f9f71cface182e2f677f6f1256" alt="AI人才培训及企业AI培训" class="w-full h-full object-cover">
-                                    </button>
+                                    </div>
                                     <div class="p-6 lg:p-8">
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.2.5</span>
                                             <h3 class="text-xl font-bold text-white">AI人才培训及企业AI培训</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             为企业提供与 AI 基建深度绑定的人才培养服务，让技术底座与人才能力同步升级，保障 AI 基建价值最大化。
                                         </p>
@@ -1133,9 +1132,9 @@
                                             <li>定制化岗位赋能：针对 AI 算力运维、数据工程、平台开发等岗位，提供实战化技能培训</li>
                                             <li>团队能力共建：通过内训师培养、技术沙龙、项目制实战，沉淀企业内部 AI 基建能力</li>
                                         </ul>
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                         </section>
 
 
@@ -1145,24 +1144,24 @@
                             <div class="flex items-center gap-4 mb-8">
                                 <div class="w-14 h-14 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center text-white flex-shrink-0">
                                     <span class="material-symbols-outlined text-2xl">apartment</span>
-                                </button>
+                                </div>
                                 <div>
                                     <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white">AI解决方案行业应用</h2>
                                     <p class="text-slate-500 dark:text-slate-400">AI Industry Solutions</p>
-                                </button>
-                            </button>
+                                </div>
+                            </div>
                             
                             <!-- 3.3.1 金融行业 AI 解决方案 -->
                             <div id="industry-1" class="business-card mb-8 reveal">
                                 <div class="grid lg:grid-cols-2 gap-0">
                                     <div class="h-48 lg:h-auto overflow-hidden">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_15770da0-428d-4fda-845c-32ba9917b34b.jpeg?sign=1804324370-758bbdb774-0-5959f1f098d7a92e13bde18d9c814f3a1b49f2182e02accefdd4ac7182ec1516" alt="金融行业 AI 解决方案" class="w-full h-full object-cover">
-                                    </button>
+                                    </div>
                                     <div class="p-6 lg:p-8">
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.3.1</span>
                                             <h3 class="text-xl font-bold text-white">金融行业 AI 解决方案</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             深耕金融科技领域，为银行、保险、证券等金融机构提供智能化转型解决方案，助力风险管控、客户服务与业务创新。
                                         </p>
@@ -1173,9 +1172,9 @@
                                             <li>合规审查：自动审核合同、监管文件，识别合规风险，提升审核效率与准确性</li>
                                             <li>智能理赔：材料智能审核、理赔反欺诈、定损自动化、理赔时效提升</li>
                                         </ul>
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.3.2 互联网行业 AI 解决方案 -->
                             <div id="industry-2" class="business-card mb-8 reveal">
@@ -1184,7 +1183,7 @@
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.3.2</span>
                                             <h3 class="text-xl font-bold text-white">互联网行业 AI 解决方案</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             助力互联网企业实现内容智能化、用户精细化运营与商业化效率提升，构建差异化竞争优势。
                                         </p>
@@ -1196,24 +1195,24 @@
                                             <li>智能搜索与问答：语义理解、智能检索、智能客服 / 智能助手</li>
                                             <li>数据智能分析：用户行为分析、业务指标监控、异常预警</li>
                                         </ul>
-                                    </button>
+                                    </div>
                                     <div class="h-48 lg:h-auto overflow-hidden order-1 lg:order-2">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_f84f49ac-544b-4586-b79c-05be6169c5f8.jpeg?sign=1804324370-11bd7abf74-0-60af3ccc313a8ea779c8484f92d71d2a78d96258e4f6332ec119b662c0173cf7" alt="互联网行业 AI 解决方案" class="w-full h-full object-cover">
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.3.3 制造行业 AI 解决方案 -->
                             <div id="industry-3" class="business-card mb-8 reveal">
                                 <div class="grid lg:grid-cols-2 gap-0">
                                     <div class="h-48 lg:h-auto overflow-hidden">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_11f5e2bd-7ce2-4bcd-9d7c-bf5b5f15937a.jpeg?sign=1804324367-985a977869-0-dca441555b3c27ebc6dfc3f994538bc8ee2748f4530daf30e6db7a5e4253ca95" alt="制造行业 AI 解决方案" class="w-full h-full object-cover">
-                                    </button>
+                                    </div>
                                     <div class="p-6 lg:p-8">
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.3.3</span>
                                             <h3 class="text-xl font-bold text-white">制造行业 AI 解决方案</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             推动制造业向智能制造转型，通过AI技术优化生产流程、提升产品质量、降低运营成本。
                                         </p>
@@ -1223,9 +1222,9 @@
                                             <li>生产排程优化：基于订单、产能、物料数据，智能排产，提升生产效率</li>
                                             <li>数字孪生：构建产线 / 工厂数字模型，模拟优化生产流程，降低试错成本</li>
                                         </ul>
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.3.4 零售与电商行业 AI 解决方案 -->
                             <div id="industry-4" class="business-card mb-8 reveal">
@@ -1234,7 +1233,7 @@
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.3.4</span>
                                             <h3 class="text-xl font-bold text-white">零售与电商行业 AI 解决方案</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             为零售与电商企业提供全链路智能化解决方案，从获客、转化到履约，提升运营效率与用户体验。
                                         </p>
@@ -1244,11 +1243,11 @@
                                             <li>库存管理：预测销量，智能补货，降低库存积压与缺货风险</li>
                                             <li>无人零售：智能货架、自助结算、无人店，提升购物体验与运营效率</li>
                                         </ul>
-                                    </button>
+                                    </div>
                                     <div class="h-48 lg:h-auto overflow-hidden order-1 lg:order-2">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_6957e7a6-4934-4bcb-b6ee-ad008bd544f0.jpeg?sign=1804324367-23908556bb-0-18eb807ea4867b750537ece99091c02e1e365dfc08e6683578163cdc0f17bff2" alt="零售与电商行业 AI 解决方案" class="w-full h-full object-cover">
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                         </section>
 
 
@@ -1258,31 +1257,31 @@
                             <div class="flex items-center gap-4 mb-8">
                                 <div class="w-14 h-14 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center text-white flex-shrink-0">
                                     <span class="material-symbols-outlined text-2xl">settings_account_box</span>
-                                </button>
+                                </div>
                                 <div>
                                     <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white">AI驱动型智能运营服务与人才赋能</h2>
                                     <p class="text-slate-500 dark:text-slate-400">AI-Powered Operations & Talent Enablement</p>
-                                </button>
-                            </button>
+                                </div>
+                            </div>
                             
                             <!-- 板块介绍 -->
                             <div class="bg-primary/5 border border-primary/10 rounded-xl p-6 mb-8">
                                 <p class="text-slate-400 leading-relaxed">
                                     依托 AI 人才库与智能运营平台，为企业提供覆盖核心技术人才交付与关键业务流程托管的一站式服务，打通从技术架构到业务落地的全链路，实现降本增效与组织敏捷。
                                 </p>
-                            </button>
+                            </div>
                             
                             <!-- 3.4.1 数字化人才交付 -->
                             <div id="operation-1" class="business-card mb-8 reveal">
                                 <div class="grid lg:grid-cols-2 gap-0">
                                     <div class="h-48 lg:h-auto overflow-hidden">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_3db5e512-22da-4763-bbde-809debb6753c.jpeg?sign=1804324367-b836aecc81-0-4f43ae94e941a63c538a59aa76b2af5083238bc9d7db0c1cbd2d7d6a6cdf5920" alt="数字化人才交付" class="w-full h-full object-cover">
-                                    </button>
+                                    </div>
                                     <div class="p-6 lg:p-8">
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.4.1</span>
                                             <h3 class="text-xl font-bold text-white">数字化人才交付</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             基于大模型人才画像与智能匹配技术，构建弹性的数字化人才供应链，为企业提供高适配度的技术人才与项目团队，支撑业务快速迭代。
                                         </p>
@@ -1292,9 +1291,9 @@
                                             <li>核心技术岗位补位：提供覆盖算力运维、算法研发、全栈开发、信息安全等领域的高精尖人才，按需匹配长期或项目制需求</li>
                                             <li>AI 驱动的人才管理：通过 AI 工具实现人才筛选、绩效量化与能力成长追踪，确保交付质量</li>
                                         </ul>
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.4.2 AI全流程智能运营托管 -->
                             <div id="operation-2" class="business-card mb-8 reveal">
@@ -1303,7 +1302,7 @@
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.4.2</span>
                                             <h3 class="text-xl font-bold text-white">AI全流程智能运营托管</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             将 AI 技术深度融入业务流程，面向全行业提供人机协同的运营托管服务，保障核心业务的连续性与合规性。
                                         </p>
@@ -1312,24 +1311,24 @@
                                             <li>内容安全与合规治理：依托多模态大模型，提供文本、图片、音视频的智能审核与人工精校，构建全时段内容安全防线</li>
                                             <li>智能客户交互中心：提供基于大模型的工单处理、智能外呼、精准营销及在线客户关怀服务，提升转化与留存</li>
                                         </ul>
-                                    </button>
+                                    </div>
                                     <div class="h-48 lg:h-auto overflow-hidden order-1 lg:order-2">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_79dee942-1690-4591-8328-0f4081aef762.jpeg?sign=1804324374-3ea572ed5c-0-9d20977512579dec303910dee251bea8174399a02d172fd27f55f2472dffc23d" alt="AI全流程智能运营托管" class="w-full h-full object-cover">
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.4.3 智能业务流程外包 -->
                             <div id="operation-3" class="business-card mb-8 reveal">
                                 <div class="grid lg:grid-cols-2 gap-0">
                                     <div class="h-48 lg:h-auto overflow-hidden">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_52b1948d-3b75-4bb6-8167-4c3a4ef8c3b8.jpeg?sign=1804324369-61e0580c83-0-c8bcbd5606de7060ea62c2ecdbb798c0800b7de3ea5b02f8bab8f92ea4fe952d" alt="智能业务流程外包" class="w-full h-full object-cover">
-                                    </button>
+                                    </div>
                                     <div class="p-6 lg:p-8">
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.4.3</span>
                                             <h3 class="text-xl font-bold text-white">智能业务流程外包</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             基于AI智能化平台与专业服务团队，为企业提供端到端的业务流程外包服务，通过人机协同模式实现效率提升与成本优化。
                                         </p>
@@ -1340,9 +1339,9 @@
                                             <li>客服流程外包：多渠道客户咨询处理、投诉管理、售后服务等智能客服解决方案</li>
                                             <li>流程优化咨询：基于数据分析，持续优化业务流程，提升运营效率与服务质量</li>
                                         </ul>
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <!-- 3.4.4 AI专家技术支持 -->
                             <div id="operation-4" class="business-card mb-8 reveal">
@@ -1351,7 +1350,7 @@
                                         <div class="flex items-center gap-2 mb-3">
                                             <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">3.4.4</span>
                                             <h3 class="text-xl font-bold text-white">AI专家技术支持</h3>
-                                        </button>
+                                        </div>
                                         <p class="text-slate-400 mb-4 leading-relaxed">
                                             为企业提供专业级AI技术支持服务，由资深技术专家团队提供7×24小时响应，保障企业AI系统稳定运行与持续优化。
                                         </p>
@@ -1362,12 +1361,12 @@
                                             <li>安全加固服务：AI系统安全评估、漏洞修复、数据安全策略制定与实施</li>
                                             <li>知识转移培训：技术文档编写、最佳实践分享、团队能力提升培训</li>
                                         </ul>
-                                    </button>
+                                    </div>
                                     <div class="h-48 lg:h-auto overflow-hidden order-1 lg:order-2">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_6fb26a8e-8a02-4606-8b6a-727c2631ec86.jpeg?sign=1804324369-4efe64bed9-0-6dd40d6faab5846d229763e44fc0fe060def53089778fde3d5a123b36c1af943" alt="AI专家技术支持" class="w-full h-full object-cover">
-                                    </button>
-                                </button>
-                            </button>
+                                    </div>
+                                </div>
+                            </div>
                         </section>
 
                         <!-- CTA Section -->
@@ -1384,15 +1383,15 @@
                                     <a href="services.html" class="border border-primary/30 text-primary px-8 py-3 rounded-xl font-medium hover:bg-primary/10 transition-all">
                                         返回核心产品
                                     </a>
-                                </button>
-                            </button>
+                                </div>
+                            </div>
                         </section>
                         
-                    </button>
-                </button>
-            </button>
+                    </div>
+                </div>
+            </div>
         </main>
-        </button>
+        </div>
         <!-- ========== 以上内容已隐藏 ========== -->
 
         <!-- 明星产品详情区域 -->
@@ -1402,7 +1401,7 @@
                 <div class="text-center mb-16">
                     <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">核心产品</h2>
                     <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">基于核心技术研发的标准化产品，满足多样化业务场景需求</p>
-                </button>
+                </div>
 
                 <!-- 产品1: Simple Insight 一体化智能可观测平台 -->
                 <div class="mb-12 bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg" id="product-simple-insight">
@@ -1413,9 +1412,9 @@
                             <div class="min-w-0">
                                 <h3 class="text-lg lg:text-xl font-bold text-white truncate">Simple Insight 一体化智能可观测平台</h3>
                                 <p class="text-cyan-100 text-xs mt-0.5">本地私有化部署</p>
-                            </button>
-                        </button>
-                    </button>
+                            </div>
+                        </div>
+                    </div>
                     <!-- 内容区域 -->
                     <div class="flex flex-col lg:flex-row">
                         <!-- 左侧内容 -->
@@ -1429,58 +1428,58 @@
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI赋能全生命周期安全</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI算法实时解析各环节安全数据，精准研判风险，将AI安全能力融入全流程，主动预判隐患，替代被动防护，实现安全管控无死角。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 font-bold">2</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI全流程智能服务</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">以AI大模型为核心，提供全流程智能化服务，自动生成适配方案，减少人工干预，让企业轻松享受专业安全保障。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 font-bold">3</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI动态循环防护</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI驱动漏洞管理，实时发现、分级、修复漏洞，依托AI自学习能力迭代防护策略，构建闭环防护体系。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 font-bold">4</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI适配灵活部署</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI驱动组件化设计，支持多部署模式，精准适配业务需求，优化方案并降低部署运维成本，适配不同规模企业。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 font-bold">5</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI多维度检测</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">内置120+AI智能检测组件，覆盖多形态应用与多维度风险，AI深度学习筛选风险，提升检测精准度与效率。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 font-bold">6</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI智能风险报告</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI自动生成专业报告，挖掘高频风险、定位根源，提供优化建议，为安全决策与整改提供数据支撑。</p>
-                                    </button>
-                                </button>
-                            </button>
-                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 右侧图片 -->
                         <div class="lg:w-[55%] xl:flex-1 flex-shrink-0 relative">
                             <!-- 虚化背景装饰 - 占满整个容器 -->
                             <div class="absolute inset-0 bg-slate-100 dark:bg-slate-800/80 overflow-hidden rounded-none">
                                 <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_37364200-1922-4488-86b0-0a1076e2b18a.jpeg?sign=1804922335-2d0b19bbd0-0-b30f0043d2fa97af3ec94c81760f31e9a819510e4b278fd51cba5bea95970b34" alt="" class="w-full h-full object-contain blur-lg opacity-50 scale-150" style="filter: blur(16px);">
-                            </button>
+                            </div>
                             <!-- 主图片 -->
                             <div class="relative h-72 lg:h-full p-6">
                                 <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_37364200-1922-4488-86b0-0a1076e2b18a.jpeg?sign=1804922335-2d0b19bbd0-0-b30f0043d2fa97af3ec94c81760f31e9a819510e4b278fd51cba5bea95970b34" alt="Simple Insight 一体化智能可观测平台" class="w-full h-full object-contain">
-                            </button>
-                        </button>
-                    </button>
-                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- 产品2: 沐曦国产通用GPU -->
                 <div class="mb-12 bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg" id="product-muxi-gpu">
@@ -1491,9 +1490,9 @@
                             <div class="min-w-0">
                                 <h3 class="text-lg lg:text-xl font-bold text-white truncate">国产通用 GPU</h3>
                                 <p class="text-red-100 text-xs mt-0.5">国产算力底座</p>
-                            </button>
-                        </button>
-                    </button>
+                            </div>
+                        </div>
+                    </div>
                     <!-- 内容区域 -->
                     <div class="flex flex-col lg:flex-row">
                         <!-- 左侧内容 -->
@@ -1507,58 +1506,58 @@
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">全自研架构 高性能算力</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">全自研 GPU IP，多精度混合算力，搭配高带宽显存与高速互连技术，性能对标国际主流，支撑千亿参数大模型训推。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center text-red-500 font-bold">2</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">全兼容生态 零成本迁移</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">自研 MXMACA® 软件栈兼容 CUDA，支持主流开源生态，业务近零成本迁移，适配各类创新模型与算子。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center text-red-500 font-bold">3</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">全系列产品 全场景适配</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">曦云 / 曦思 / 曦彩三大系列，PCIe/OAM 多形态，风冷 / 液冷可选，覆盖云端训推、大模型推理、高端渲染全场景。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center text-red-500 font-bold">4</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">异构混训 高效利用资产</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">支持与国际 GPU 异构混训，算力利用效率超 100%，盘活既有资源，最大化保护客户投资。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center text-red-500 font-bold">5</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">高稳定 易部署</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">万卡集群线性度 91.2%，长期稳定无中断运行，适配浪潮、H3C 等主流服务器，商业化千卡集群批量落地。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center text-red-500 font-bold">6</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">全行业赋能 定制化方案</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">打造全链路算力解决方案，深度优化训推性能，赋能金融、汽车、高校、电力等多行业全场景应用。</p>
-                                    </button>
-                                </button>
-                            </button>
-                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 右侧图片 -->
                         <div class="lg:w-[55%] xl:flex-1 flex-shrink-0 relative">
                             <!-- 虚化背景装饰 - 占满整个容器 -->
                             <div class="absolute inset-0 bg-slate-100 dark:bg-slate-800/80 overflow-hidden rounded-none">
                                 <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E6%B2%90%E6%9B%A6GPU.jpg_e1080.webp&nonce=b9492293-80a0-4134-86d1-1d9931e0cf6c&project_id=7612545482618945587&sign=d8d2ac8cf58bafe17813e25b0af096494939d396aa240f98fcc3ad4a1e6f1e89" alt="" class="w-full h-full object-contain blur-lg opacity-50 scale-150" style="filter: blur(16px);">
-                            </button>
+                            </div>
                             <!-- 主图片 -->
                             <div class="relative h-72 lg:h-full p-6">
                                 <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E6%B2%90%E6%9B%A6GPU.jpg_e1080.webp&nonce=b9492293-80a0-4134-86d1-1d9931e0cf6c&project_id=7612545482618945587&sign=d8d2ac8cf58bafe17813e25b0af096494939d396aa240f98fcc3ad4a1e6f1e89" alt="沐曦国产通用GPU" class="w-full h-full object-contain">
-                            </button>
-                        </button>
-                    </button>
-                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- 产品3: OceanBase数据库 -->
                 <div class="mb-12 bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg" id="product-oceanbase">
@@ -1569,9 +1568,9 @@
                             <div class="min-w-0">
                                 <h3 class="text-lg lg:text-xl font-bold text-white truncate">OceanBase 数据库</h3>
                                 <p class="text-blue-100 text-xs mt-0.5">企业级数据库</p>
-                            </button>
-                        </button>
-                    </button>
+                            </div>
+                        </div>
+                    </div>
                     <!-- 内容区域 -->
                     <div class="flex flex-col lg:flex-row">
                         <!-- 左侧内容 -->
@@ -1585,51 +1584,51 @@
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">城市级无损容灾</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">三地五中心城市级无损容灾能力，RPO=0、RPO<30秒，确保业务连续性与数据安全，满足金融级高可用要求。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-500 font-bold">2</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">全兼容Oracle SQL语法</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">全面兼容Oracle SQL语法、PL/SQL、数据类型等，老系统丝滑迁移，大幅降低迁移成本与风险。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-500 font-bold">3</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">极致压缩技术</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">独创编码压缩技术，节省60%存储成本，一份数据支持生产与分析两用，降本增效显著。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-500 font-bold">4</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">集中/分布式双能力</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">一套引擎同时支持集中式与分布式部署，灵活适配不同业务规模，平滑扩展无需改造应用。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-500 font-bold">5</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">金融级安全合规</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">通过国家等保三级、商用密码产品认证，满足金融、政务等行业严格的安全合规要求。</p>
-                                    </button>
-                                </button>
-                            </button>
-                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 右侧图片 -->
                         <div class="lg:w-[55%] xl:flex-1 flex-shrink-0 relative">
                             <!-- 虚化背景装饰 - 占满整个容器 -->
                             <div class="absolute inset-0 bg-white/80 dark:bg-slate-800/80 overflow-hidden rounded-none">
                                 <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2FOceanBase2.png&nonce=44cb68f4-91a2-49f1-806b-21e1f47417f2&project_id=7612545482618945587&sign=10e192a8b89e01871140ecd51394cd16cc8b025522582b23a4028ebd635f0850" alt="" class="w-full h-full object-contain blur-lg opacity-50 scale-150" style="filter: blur(16px);">
-                            </button>
+                            </div>
                             <!-- 主图片 -->
                             <div class="relative h-72 lg:h-full p-6">
                                 <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2FOceanBase2.png&nonce=44cb68f4-91a2-49f1-806b-21e1f47417f2&project_id=7612545482618945587&sign=10e192a8b89e01871140ecd51394cd16cc8b025522582b23a4028ebd635f0850" alt="OceanBase数据库" class="w-full h-full object-contain">
-                            </button>
-                        </button>
-                    </button>
-                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- 产品4: AI招聘助手 -->
                 <div class="mb-12 bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg" id="product-ai-recruit">
@@ -1640,9 +1639,9 @@
                             <div class="min-w-0">
                                 <h3 class="text-lg lg:text-xl font-bold text-white truncate">AI招聘助手</h3>
                                 <p class="text-purple-100 text-xs mt-0.5">智能人力资源</p>
-                            </button>
-                        </button>
-                    </button>
+                            </div>
+                        </div>
+                    </div>
                     <!-- 内容区域 -->
                     <div class="flex flex-col lg:flex-row">
                         <!-- 左侧内容 -->
@@ -1656,65 +1655,65 @@
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI全渠道信息同步</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI对接多招聘平台及企业自有渠道，实现招聘信息自动同步、统一管理，消除信息孤岛，提升渠道运营效率。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-500 font-bold">2</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI智能职位发布</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI结合各平台特性优化发布方案，一键精准投放，提升职位曝光与候选人触达率，优化招聘投放ROI。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-500 font-bold">3</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI简历智能筛选</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI自动解析海量简历、提取关键信息，结合岗位需求智能匹配筛选，降低人工成本，提升初筛效率与精准度。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-500 font-bold">4</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI人才挖掘储备</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI多维度挖掘潜在优质人才、精准触达，构建并更新企业人才库，为人才储备与战略招聘提供支撑。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-500 font-bold">5</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI数据决策支持</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI分析招聘全流程数据，生成多维度报告与优化建议，为招聘策略调整、人才规划提供科学数据依据。</p>
-                                    </button>
-                                </button>
-                            </button>
-                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 右侧图片 - 轮播 -->
                         <div class="lg:w-[55%] xl:flex-1 flex-shrink-0">
                             <div class="relative h-72 lg:h-full rounded-none overflow-hidden bg-slate-50/80 dark:bg-slate-800/50">
                                 <!-- 虚化背景装饰 -->
                                 <div class="absolute inset-0 overflow-hidden">
                                     <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_49c482dc-7e74-437e-a5fe-ffa1acd28fff.jpeg?sign=1804932614-797bb7c236-0-76b5e53f958ae73cdf6c7f825aaae3fd0cd36d28d6a8161a1793cd4d16cb2b2f" alt="" class="w-full h-full object-cover blur-lg opacity-20 scale-110 transition-opacity duration-700" style="filter: blur(8px);">
-                                </button>
+                                </div>
                                 <!-- 轮播容器 -->
                                 <div class="relative h-full w-full" id="recruit-carousel">
                                     <!-- 图片1 -->
                                     <div class="carousel-slide absolute inset-0 transition-opacity duration-500" data-slide="0">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_49c482dc-7e74-437e-a5fe-ffa1acd28fff.jpeg?sign=1804932614-797bb7c236-0-76b5e53f958ae73cdf6c7f825aaae3fd0cd36d28d6a8161a1793cd4d16cb2b2f" alt="AI招聘助手" class="w-full h-full object-contain p-4">
-                                    </button>
+                                    </div>
                                     <!-- 图片2 -->
                                     <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-slide="1">
                                         <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_35c175f1-5b8d-44c7-9b56-41394753fbc9.jpeg?sign=1804932622-075e51aa62-0-b85aaa355eefedc3300de9d39abfbde37fe1872c6a2d5cc1f4a7e01124ea9cbc" alt="AI招聘助手功能展示" class="w-full h-full object-contain p-4">
-                                    </button>
+                                    </div>
                                     <!-- 轮播指示器 -->
                                     <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                                         <button class="carousel-dot w-2 h-2 rounded-full bg-white/80 dark:bg-slate-300/80 transition-all duration-300" data-slide="0"></button>
                                         <button class="carousel-dot w-2 h-2 rounded-full bg-white/40 dark:bg-slate-600/40 transition-all duration-300" data-slide="1"></button>
-                                    </button>
-                                </button>
-                            </button>
-                        </button>
-                    </button>
-                </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- 产品5: AI招投标助手 -->
                 <div class="mb-12 bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg" id="product-ai-bidding">
@@ -1725,9 +1724,9 @@
                             <div>
                                 <h3 class="text-lg lg:text-xl font-bold text-white">AI招投标助手</h3>
                                 <p class="text-amber-100 text-xs mt-0.5">智慧办公</p>
-                            </button>
-                        </button>
-                    </button>
+                            </div>
+                        </div>
+                    </div>
                     <!-- 内容区域 -->
                     <div class="flex flex-col lg:flex-row">
                         <!-- 左侧内容 -->
@@ -1741,57 +1740,57 @@
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI高效信息匹配</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI自动抓取、分类全网招投标信息，智能筛选定位高匹配项目，节省人工检索时间，提升项目获取效率与精准度。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-amber-500/20 rounded-lg flex items-center justify-center text-amber-500 font-bold">2</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI智能标书生成</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">依托标准模板与结构化数据，AI自动填充生成标书，提升编制效率，减少人为疏漏，保障标书准确规范。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-amber-500/20 rounded-lg flex items-center justify-center text-amber-500 font-bold">3</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI实时风险预警</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI动态监测项目资质、时间节点等，及时预警各类投标风险，帮助企业提前规避隐患。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-amber-500/20 rounded-lg flex items-center justify-center text-amber-500 font-bold">4</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI数据决策辅助</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI挖掘历史中标数据与市场动态，提供趋势分析、竞争研判，输出投标策略与报价参考，助力科学决策。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-amber-500/20 rounded-lg flex items-center justify-center text-amber-500 font-bold">5</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI自动化合规审查</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI对照最新法规与招标要求，自动检查标书合规性与完整性，识别疏漏项，降低废标风险。</p>
-                                    </button>
-                                </button>
-                            </button>
-                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 右侧图片 -->
                         <div class="lg:w-[55%] xl:flex-1 flex-shrink-0">
                             <div class="relative h-72 lg:h-full rounded-none overflow-hidden bg-slate-50/80 dark:bg-slate-800/50 p-4">
                                 <!-- 虚化背景装饰 -->
                                 <div class="absolute inset-0 overflow-hidden">
                                     <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2FAI%E6%8B%9B%E6%8A%95%E6%A0%87%E5%8A%A9%E6%89%8B1.png&nonce=8b7ec5f3-1e1c-4d42-8e87-c21f438f0e74&project_id=7612545482618945587&sign=9b9c57709a4dc605dee0c35a0492c89083c82eb8b7535a013e5fb8019fa54772" alt="" class="w-full h-full object-contain blur-lg opacity-20 scale-110" style="filter: blur(8px);">
-                                </button>
+                                </div>
                                 <div class="relative space-y-3 h-full flex flex-col">
                                     <div class="rounded-xl overflow-hidden h-1/2 bg-white">
                                         <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2FAI%E6%8B%9B%E6%8A%95%E6%A0%87%E5%8A%A9%E6%89%8B1.png&nonce=8b7ec5f3-1e1c-4d42-8e87-c21f438f0e74&project_id=7612545482618945587&sign=9b9c57709a4dc605dee0c35a0492c89083c82eb8b7535a013e5fb8019fa54772" alt="AI招投标助手" class="w-full h-full object-contain">
-                                    </button>
+                                    </div>
                                     <div class="rounded-xl overflow-hidden h-1/2 bg-white">
                                         <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2FAI%E6%8B%9B%E6%8A%95%E6%A0%87%E5%8A%A9%E6%89%8B2.png&nonce=e8e1df0c-864c-4a6a-aded-45e85eac9d57&project_id=7612545482618945587&sign=325af7deb675ade10aa420c468c9d3b623cb476f2ae977b5722d825031c6a5eb" alt="AI招投标助手功能展示" class="w-full h-full object-contain">
-                                    </button>
-                                </button>
-                            </button>
-                        </button>
-                    </button>
-                </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- 产品6: 职场健康加油站 -->
                 <div class="mb-12 bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg" id="product-ai-health">
@@ -1802,9 +1801,9 @@
                             <div>
                                 <h3 class="text-lg lg:text-xl font-bold text-white">职场健康加油站</h3>
                                 <p class="text-emerald-100 text-xs mt-0.5">职场健康管理</p>
-                            </button>
-                        </button>
-                    </button>
+                            </div>
+                        </div>
+                    </div>
                     <!-- 内容区域 -->
                     <div class="flex flex-col lg:flex-row">
                         <!-- 左侧内容 -->
@@ -1818,51 +1817,51 @@
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI早防早核预防体系</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI驱动多维度职工健康筛查，提前预警潜在健康风险，构筑主动预防型职工健康体系，从源头降低员工健康问题发生率，守护职工健康。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-500 font-bold">2</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI全流程健康闭环</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI整合"筛查-监测-干预"全链路服务，结合医用设备生成职工个人健康画像，实现一站式管理与职工健康数据、干预措施的闭环联动。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-500 font-bold">3</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI多场景精准监测</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI联动多套系设备，灵活覆盖企业办公区、食堂等场景，实时采集十大核心健康指标并同步管理，构建企业全域实时健康监测网络。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-500 font-bold">4</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI个性化健康干预</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI基于检测数据生成职工定制化健康计划，联动第三方专业机构提供康复服务，实现精准个性化管理，提升干预效果与职工依从性。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-500 font-bold">5</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">AI开放生态赋能</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">AI通过B端工具整合健康资源，支持管理系统定制化开发，助力企业构建"检测+服务+商业"开放健康生态，融合职工健康管理与企业发展。</p>
-                                    </button>
-                                </button>
-                            </button>
-                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 右侧图片 -->
                         <div class="lg:w-[55%] xl:flex-1 flex-shrink-0 relative">
                             <!-- 虚化背景装饰 - 占满整个容器 -->
                             <div class="absolute inset-0 bg-slate-100 dark:bg-slate-800/80 overflow-hidden rounded-none">
                                 <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_e363eba1-0cf0-4aab-90a7-ad8a02e34929.jpeg?sign=1804922336-51292bfecf-0-76e4cb24663e33394d0b9563a824a9c6a0f5cf18b1a667d2a825c50a2c654304" alt="" class="w-full h-full object-contain blur-lg opacity-50 scale-150" style="filter: blur(16px);">
-                            </button>
+                            </div>
                             <!-- 主图片 -->
                             <div class="relative h-72 lg:h-full p-6">
                                 <img src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_e363eba1-0cf0-4aab-90a7-ad8a02e34929.jpeg?sign=1804922336-51292bfecf-0-76e4cb24663e33394d0b9563a824a9c6a0f5cf18b1a667d2a825c50a2c654304" alt="职场健康加油站" class="w-full h-full object-contain">
-                            </button>
-                        </button>
-                    </button>
-                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- 产品7: 低空综合管理服务平台 -->
                 <div class="mb-12 bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg" id="product-low-altitude">
@@ -1873,9 +1872,9 @@
                             <div>
                                 <h3 class="text-lg lg:text-xl font-bold text-white">低空综合管理服务平台</h3>
                                 <p class="text-sky-100 text-xs mt-0.5">智慧城市·低空经济</p>
-                            </button>
-                        </button>
-                    </button>
+                            </div>
+                        </div>
+                    </div>
                     <!-- 内容区域 -->
                     <div class="flex flex-col lg:flex-row">
                         <!-- 左侧内容 -->
@@ -1889,58 +1888,58 @@
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">测试任务全生命周期管理</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">覆盖创建、执行、停止、保存、删除五大环节，支持三步引导式配置、定时调度与实时监控，实现测试任务标准化、智能化管控。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-sky-500/20 rounded-lg flex items-center justify-center text-sky-500 font-bold">2</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">Mock数据智能生成</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">提供基础规则与业务规则双层配置，内置飞行计划编号生成、时空数据关联等低空场景专用规则，支持JSON、XML、CSV等多种格式。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-sky-500/20 rounded-lg flex items-center justify-center text-sky-500 font-bold">3</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">多语言脚本支持</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">支持Java、Python、JavaScript三大主流语言，深度集成JMeter、TestNG、Locust等测试框架，提供语法高亮、自动补全、在线编辑等智能化功能。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-sky-500/20 rounded-lg flex items-center justify-center text-sky-500 font-bold">4</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">高可用架构保障</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">采用分层微服务+云原生部署架构，实现集群化部署、故障自动转移、数据多副本存储，确保服务可用性不低于99.99%。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-sky-500/20 rounded-lg flex items-center justify-center text-sky-500 font-bold">5</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">全链路数据安全</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">遵循《数据安全法》与民航领域数据安全规范，采用HTTPS/TLS 1.3传输加密、AES-256-GCM字段级加密、RBAC权限控制，保障数据安全合规。</p>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex gap-4 items-start bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                                     <span class="flex-shrink-0 w-8 h-8 bg-sky-500/20 rounded-lg flex items-center justify-center text-sky-500 font-bold">6</span>
                                     <div>
                                         <h4 class="text-slate-900 dark:text-white font-semibold mb-1">进度可视化与缺陷跟踪</h4>
                                         <p class="text-slate-500 dark:text-slate-400 text-sm">提供甘特图、折线图、仪表盘等多维度图表展示，实现"需求-测试-缺陷"全链路追溯，缺陷从提交到闭环全生命周期管理。</p>
-                                    </button>
-                                </button>
-                            </button>
-                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 右侧图片 -->
                         <div class="lg:w-[55%] xl:flex-1 flex-shrink-0 relative">
                             <!-- 虚化背景装饰 - 占满整个容器 -->
                             <div class="absolute inset-0 bg-slate-100 dark:bg-slate-800/80 overflow-hidden rounded-none">
                                 <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E4%BD%8E%E7%A9%BA%E7%BB%8F%E6%B5%8E%E5%B1%95%E7%A4%BA%E5%9B%BE.jpg&nonce=829e8091-6d8c-461e-8399-14777a1eaaae&project_id=7612545482618945587&sign=ad7726256ff89ea0e1dcb70da256489704e6828a6cbff61deac2ea99a5b71f5e" alt="" class="w-full h-full object-contain blur-lg opacity-50 scale-150" style="filter: blur(16px);">
-                            </button>
+                            </div>
                             <!-- 主图片 -->
                             <div class="relative h-72 lg:h-full p-6">
                                 <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E4%BD%8E%E7%A9%BA%E7%BB%8F%E6%B5%8E%E5%B1%95%E7%A4%BA%E5%9B%BE.jpg&nonce=829e8091-6d8c-461e-8399-14777a1eaaae&project_id=7612545482618945587&sign=ad7726256ff89ea0e1dcb70da256489704e6828a6cbff61deac2ea99a5b71f5e" alt="低空综合管理服务平台" class="w-full h-full object-contain">
-                            </button>
-                        </button>
-                    </button>
-                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- 返回核心产品按钮 -->
                 <div class="text-center mt-16">
@@ -1948,8 +1947,8 @@
                         <span class="material-symbols-outlined">arrow_back</span>
                         返回核心产品
                     </a>
-                </button>
-            </button>
+                </div>
+            </div>
         </section>
 
         <!-- Footer -->
@@ -1961,16 +1960,16 @@
                         <div class="flex items-center gap-3 mb-4">
                             <div class="h-10 w-10 flex items-center justify-center">
                                 <img src="assets/logos/申朴圆点logo.png" alt="Cisetech Logo" class="h-8 w-auto object-contain">
-                            </button>
+                            </div>
                             <div>
                                 <h3 class="text-lg font-bold text-white">Cisetech</h3>
                                 <p class="text-xs text-slate-500">申朴信息技术（上海）股份有限公司</p>
-                            </button>
-                        </button>
+                            </div>
+                        </div>
                         <p class="text-slate-400 text-sm leading-relaxed">
                             申信达诚，朴心进取
                         </p>
-                    </button>
+                    </div>
                     
                     <!-- 核心产品 -->
                     <div class="footer-col">
@@ -1984,7 +1983,7 @@
                             <li><a href="services.html#product-ai-health" class="footer-link">职场健康加油站</a></li>
                             <li><a href="services.html#product-low-altitude" class="footer-link">低空综合管理服务平台</a></li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <!-- 联系我们 -->
                     <div class="footer-col">
@@ -2010,7 +2009,7 @@
                                 <span>上海市浦东新区国展路1529号906-908室</span>
                             </li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <!-- 关注我们 -->
                     <div class="footer-col">
@@ -2022,10 +2021,10 @@
                             <div class="wechat-qrcode-popup">
                                 <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E7%94%B3%E6%9C%B4%E6%9C%8D%E5%8A%A1%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg&nonce=fa8195e2-1745-486c-8dd5-1664e5198a65&project_id=7612545482618945587&sign=60d8b3903f8e4d4d551217c02caf3512076d3c4ffca00d5eb195030d803b2b3c" alt="微信公众号">
                                 <p class="wechat-qrcode-label">扫码关注公众号</p>
-                            </button>
-                        </button>
-                    </button>
-                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- 底部版权 -->
                 <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -2034,18 +2033,18 @@
                         <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">隐私政策</a>
                         <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">使用条款</a>
                         <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">网站地图</a>
-                    </button>
-                </button>
-            </button>
+                    </div>
+                </div>
+            </div>
         </footer>
-    </button>
+    </div>
 
     <!-- 回到顶部按钮 -->
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:&quot;smooth&quot;})">
+    <div class="back-to-top" id="backToTop">
         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
-    </button>
+    </div>
 
     <!-- 交互脚本 -->
     <script>

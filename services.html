@@ -474,8 +474,8 @@
             justify-content: center;
             cursor: pointer;
             opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
+            transform: scale(0);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 10px 40px rgba(14, 165, 233, 0.4);
             z-index: 1000;
         }
@@ -483,7 +483,6 @@
         .back-to-top.visible {
             opacity: 1;
             transform: scale(1);
-            pointer-events: auto;
         }
         
         .back-to-top:hover {
@@ -549,7 +548,7 @@
             width: 100%;
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.5s ease-in-out;
+            transition: all 0.3s ease-in-out;
             pointer-events: none;
         }
         
@@ -565,7 +564,7 @@
             display: none;
             opacity: 0;
             transform: translateY(-20px);
-            transition: all 0.5s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
         
         .whitepapers-section.visible {
@@ -860,11 +859,11 @@
                     <a href="index.html" class="flex items-center gap-3 group">
                         <div class="h-12 w-12 flex items-center justify-center group-hover:scale-110 transition-transform">
                             <img src="assets/logos/申朴圆点logo.png" alt="Cisetech Logo" class="h-10 w-auto object-contain">
-                        </button>
+                        </div>
                         <div>
                             <h1 class="site-logo-text text-xl font-bold text-white">Cisetech</h1>
                             <p class="text-xs text-slate-400">申朴信息技术（上海）股份有限公司</p>
-                        </button>
+                        </div>
                     </a>
                     
                     <!-- 桌面端导航 -->
@@ -880,22 +879,22 @@
                                 <a href="services.html#product-ai-bidding">AI招投标助手</a>
                                 <a href="services.html#product-ai-health">职场健康加油站</a>
                                 <a href="services.html#product-low-altitude">低空经济|低空综合管理服务平台</a>
-                            </button>
-                        </button>
+                            </div>
+                        </div>
                         <div class="nav-dropdown">
                             <a href="qualifications.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">企业实力</a>
                             <div class="nav-dropdown-menu">
                                 <a href="qualifications.html#honors">荣誉资质</a>
                                 <a href="qualifications.html#clients">权威客户</a>
-                            </button>
-                        </button>
+                            </div>
+                        </div>
                         <div class="nav-dropdown">
                             <a href="joins.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">招贤纳士</a>
                             <div class="nav-dropdown-menu">
                                 <a href="joins.html#openings">常招职位</a>
                                 <a href="joins.html#culture">文化环境</a>
-                            </button>
-                        </button>
+                            </div>
+                        </div>
                         <div class="nav-dropdown">
                             <a href="about.html" class="nav-link text-slate-300 font-medium hover:text-white transition-colors">
                                 关于我们
@@ -906,8 +905,8 @@
                                 <a href="about.html#timeline">发展历程</a>
                                 <a href="about.html#branches">分支机构</a>
                                 <a href="about.html#offshore">离岸交付中心</a>
-                            </button>
-                        </button>
+                            </div>
+                        </div>
                     </nav>
                     
                     <div class="flex items-center gap-4">
@@ -920,13 +919,13 @@
                         <span></span>
                         <span></span>
                     </button>
-                </button>
-            </button>
-        </button>
+                </div>
+            </div>
+        </div>
     </header>
         
         <!-- 移动端导航遮罩层 -->
-        <div class="mobile-nav-overlay lg:hidden" id="mobileNavOverlay"></button>
+        <div class="mobile-nav-overlay lg:hidden" id="mobileNavOverlay"></div>
         <!-- 移动端导航菜单 -->
         <nav class="mobile-nav lg:hidden" id="mobileNav">
             <a href="index.html">首页</a>
@@ -936,7 +935,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
-                </button>
+                </div>
                 <div class="mobile-submenu-items" id="mobileSubmenuItems">
                     <a href="services.html#product-simple-insight">一体化智能可观测平台</a>
                     <a href="services.html#product-muxi-gpu">国产通用GPU</a>
@@ -945,47 +944,47 @@
                     <a href="services.html#product-ai-bidding">AI招投标助手</a>
                     <a href="services.html#product-ai-health">职场健康加油站</a>
                     <a href="services.html#product-low-altitude">低空经济|低空综合管理服务平台</a>
-                </button>
-            </button>
+                </div>
+            </div>
             <div class="mobile-submenu">
                 <div class="mobile-submenu-trigger" id="mobileStrengthSubmenuTrigger">
                     <span>企业实力</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
-                </button>
+                </div>
                 <div class="mobile-submenu-items" id="mobileStrengthSubmenuItems">
                     <a href="qualifications.html#honors">荣誉资质</a>
                     <a href="qualifications.html#clients">权威客户</a>
-                </button>
-            </button>
+                </div>
+            </div>
             <div class="mobile-submenu">
                 <div class="mobile-submenu-trigger" id="mobileJoinsSubmenuTrigger">
                     <span>招贤纳士</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
-                </button>
+                </div>
                 <div class="mobile-submenu-items" id="mobileJoinsSubmenuItems">
                     <a href="joins.html#openings">常招职位</a>
                     <a href="joins.html#culture">文化环境</a>
-                </button>
-            </button>
+                </div>
+            </div>
             <div class="mobile-submenu">
                 <div class="mobile-submenu-trigger" id="mobileAboutSubmenuTrigger">
                     <span>关于我们</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform">
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
-                </button>
+                </div>
                 <div class="mobile-submenu-items" id="mobileAboutSubmenuItems">
                     <a href="about.html#about">关于申朴</a>
                     <a href="about.html#culture">企业文化</a>
                     <a href="about.html#timeline">发展历程</a>
                     <a href="about.html#branches">分支机构</a>
                     <a href="about.html#offshore">离岸交付中心</a>
-                </button>
-            </button>
+                </div>
+            </div>
             <a href="contact.html" class="mt-6 px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl text-white">咨询合作</a>
         </nav>
 
@@ -993,7 +992,7 @@
         <div style="display:none">
         <!-- Hero Section -->
         <section class="relative py-16 lg:py-24 overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"></button>
+            <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"></div>
             <div class="max-w-[1280px] mx-auto px-6 lg:px-10 grid lg:grid-cols-5 gap-8 items-center">
                 <!-- 左侧文字区域 -->
                 <div class="lg:col-span-2 relative z-10">
@@ -1007,88 +1006,88 @@
                             <p class="text-base text-slate-600 dark:text-slate-400 mb-6 max-w-md leading-relaxed">
                                 AI-First：赋能企业实现数智化转型，构建未来生产力。从算力底座到行业应用，提供全栈式AI解决方案。
                             </p>
-                        </button>
+                        </div>
                         
                         <!-- Slide 2: 可观测APM体验监测平台 -->
                         <div class="hero-text-slide" data-slide="1">
-                            <div class="inline-block bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3">自有产品</button>
+                            <div class="inline-block bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3">自有产品</div>
                             <h1 class="text-2xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-4">
                                 可观测APM体验监测平台
                             </h1>
                             <p class="text-base text-slate-600 dark:text-slate-400 mb-6 max-w-md leading-relaxed">
                                 私有部署，与运维平台对接一体化。故障精准定位，实时决策，运维提效。全链路端到端、全场景，支持从代码到用户端全流程可观测。三层下钻，覆盖全部可观测要素。
                             </p>
-                        </button>
+                        </div>
                         
                         <!-- Slide 3: AI场景实施方案 -->
                         <div class="hero-text-slide" data-slide="2">
-                            <div class="inline-block bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3">自有产品</button>
+                            <div class="inline-block bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3">自有产品</div>
                             <h1 class="text-2xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-4">
                                 AI场景实施方案
                             </h1>
                             <p class="text-base text-slate-600 dark:text-slate-400 mb-6 max-w-md leading-relaxed">
                                 AI原生开发平台建设落地(云架构构建)。Agent开发、训练及集群管理。Agent工程化训练(大模型/深度学习/记忆与知识库/Skill/垂直行业Agent开发等方向)。AI辅助编程领域小模型构建与训练。
                             </p>
-                        </button>
+                        </div>
                         
                         <!-- Slide 4: OceanBase数据库 -->
                         <div class="hero-text-slide" data-slide="3">
-                            <div class="inline-block bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full mb-3">代理产品</button>
+                            <div class="inline-block bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full mb-3">代理产品</div>
                             <h1 class="text-2xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-4">
                                 OceanBase数据库
                             </h1>
                             <p class="text-base text-slate-600 dark:text-slate-400 mb-6 max-w-md leading-relaxed">
                                 三地五中心城市级无损灾难的数据库。全兼容Oracle SQL5.8语法，老系统快速迁移。具备集中式数据库、分布式数据库双能力。一份数据实时同步支持生产、数据分析两用。极致压缩技术，节省60%存储成本。
                             </p>
-                        </button>
+                        </div>
                         
                         <!-- Slide 5: 沐曦GPU算力 -->
                         <div class="hero-text-slide" data-slide="4">
-                            <div class="inline-block bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full mb-3">代理产品</button>
+                            <div class="inline-block bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full mb-3">代理产品</div>
                             <h1 class="text-2xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-4">
                                 沐曦GPU算力
                             </h1>
                             <p class="text-base text-slate-600 dark:text-slate-400 mb-6 max-w-md leading-relaxed">
                                 兼容CUDA生态，迁移无门槛。训推一体，场景适配更佳。高能效比，同算力下功耗比竞品低17%+。支持多品牌产品异构混训，平滑替换。可买、可租。
                             </p>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <!-- 了解更多方案按钮 -->
                     <div class="flex flex-wrap gap-4">
                         <a href="business-detail.html" class="bg-primary text-background-dark font-bold px-8 py-3 rounded-lg flex items-center gap-2 hover:scale-105 transition-transform">
                             了解更多方案 <span class="material-symbols-outlined">arrow_forward</span>
                         </a>
-                    </button>
-                </button>
+                    </div>
+                </div>
                 
                 <!-- 右侧轮播图区域 -->
                 <div class="lg:col-span-3">
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-primary/20" style="aspect-ratio: 16/10;">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-background-dark/60 via-transparent to-transparent z-10"></button>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-background-dark/60 via-transparent to-transparent z-10"></div>
                         <!-- 轮播图片容器 -->
                         <div class="hero-carousel">
                             <!-- Slide 1 -->
                             <div class="carousel-slide active">
                                 <img alt="核心产品" class="w-full h-full object-cover" src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2Funnamed.png&nonce=6baf7142-a984-4e0d-8a7b-eb9501b2f128&project_id=7612545482618945587&sign=9a16827f80139594747df47605d8361a3d7ead2335597c65d880a6fb96382e50">
-                            </button>
+                            </div>
                             <!-- Slide 2: APM平台 -->
                             <div class="carousel-slide">
                                 <img alt="可观测APM体验监测平台" class="w-full h-full object-cover" src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_69cc57b4-c799-41c4-bccb-1cb109b9e32c.jpeg?sign=1804329169-4c5fd27494-0-1fa58ee1aae27963bb4575b7f09df708284334bdc5ef6aa28931a29c46b4c1c0">
-                            </button>
+                            </div>
                             <!-- Slide 3: AI场景实施方案 -->
                             <div class="carousel-slide">
                                 <img alt="AI场景实施方案" class="w-full h-full object-cover" src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_05dd7f5b-830c-46bc-8e0f-43cd67bc5247.jpeg?sign=1804329174-d60c0fc350-0-8ea99b0d2eec0c089d2c69b0d01a4fad160505bde4d228552c7b38816ff4cf8e">
-                            </button>
+                            </div>
                             <!-- Slide 4: OceanBase数据库 -->
                             <div class="carousel-slide">
                                 <img alt="OceanBase数据库" class="w-full h-full object-cover" src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_09f0f0ad-46d2-493b-93e7-8aaa378cad70.jpeg?sign=1804329169-793289b0ff-0-83a03a3c0bbb34cd972c3114829b130ae7f9c4113262eb4f58693c900e7f311f">
-                            </button>
+                            </div>
                             <!-- Slide 5: 沐曦GPU算力 -->
                             <div class="carousel-slide">
                                 <img alt="沐曦GPU算力" class="w-full h-full object-cover" src="https://coze-coding-project.tos.coze.site/coze_storage_7612546253980762121/image/generate_image_1fe1d97c-d361-41b2-a5b0-20906524ab48.jpeg?sign=1804329174-f0e8ebb734-0-b279a258ed1f4941c5d4abc0165493082d8cd7bd8f4c533f6d648e25d9c01f56">
-                            </button>
-                        </button>
+                            </div>
+                        </div>
                         
                         <!-- 小圆点导航 -->
                         <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
@@ -1097,10 +1096,10 @@
                             <button class="carousel-dot" data-slide="2"></button>
                             <button class="carousel-dot" data-slide="3"></button>
                             <button class="carousel-dot" data-slide="4"></button>
-                        </button>
-                    </button>
-                </button>
-            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Four Core Business Pillars -->
@@ -1109,17 +1108,17 @@
                 <div class="text-center mb-16 animate-fade-in">
                     <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">四大核心业务板块</h2>
                     <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">全面覆盖AI价值链，为不同规模的企业量身定制数智化路径</p>
-                </button>
+                </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Pillar 1 -->
                     <div id="consulting" class="bg-background-light dark:bg-background-dark p-8 rounded-xl border border-slate-200 dark:border-primary/10 hover:border-primary transition-all group card-shadow hover:card-shadow-hover hover:animate-hover-up" style="scroll-margin-top: 100px;">
                         <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-background-dark transition-colors">
                             <span class="material-symbols-outlined text-2xl">strategy</span>
-                        </button>
+                        </div>
                         <!-- 业务配图 -->
                         <div class="mb-4 h-32 overflow-hidden rounded-lg">
                             <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" alt="AI咨询和解决方案" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </button>
+                        </div>
                         <h3 class="text-xl font-bold mb-4">AI咨询和解决方案</h3>
                         <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#consulting-1" class="hover:text-primary transition-colors">AI 战略规划</a></li>
@@ -1127,16 +1126,16 @@
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#consulting-3" class="hover:text-primary transition-colors">AI Agent 智能体开发与实施</a></li>
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#consulting-4" class="hover:text-primary transition-colors">AI代码安全审查</a></li>
                         </ul>
-                    </button>
+                    </div>
                     <!-- Pillar 2 -->
                     <div id="infrastructure" class="bg-background-light dark:bg-background-dark p-8 rounded-xl border border-slate-200 dark:border-primary/10 hover:border-primary transition-all group card-shadow hover:card-shadow-hover hover:animate-hover-up" style="scroll-margin-top: 100px;">
                         <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-background-dark transition-colors">
                             <span class="material-symbols-outlined text-2xl">database</span>
-                        </button>
+                        </div>
                         <!-- 业务配图 -->
                         <div class="mb-4 h-32 overflow-hidden rounded-lg">
                             <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=200&fit=crop" alt="AI基建服务" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </button>
+                        </div>
                         <h3 class="text-xl font-bold mb-4">AI基建服务</h3>
                         <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#infrastructure-1" class="hover:text-primary transition-colors">算力供给与集群管理</a></li>
@@ -1144,16 +1143,16 @@
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#infrastructure-3" class="hover:text-primary transition-colors">高速互联与网络架构</a></li>
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#infrastructure-4" class="hover:text-primary transition-colors">全栈软件平台与工具链</a></li>
                         </ul>
-                    </button>
+                    </div>
                     <!-- Pillar 3 -->
                     <div id="industry" class="bg-background-light dark:bg-background-dark p-8 rounded-xl border border-slate-200 dark:border-primary/10 hover:border-primary transition-all group card-shadow hover:card-shadow-hover hover:animate-hover-up" style="scroll-margin-top: 100px;">
                         <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-background-dark transition-colors">
                             <span class="material-symbols-outlined text-2xl">apartment</span>
-                        </button>
+                        </div>
                         <!-- 业务配图 -->
                         <div class="mb-4 h-32 overflow-hidden rounded-lg">
                             <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=200&fit=crop" alt="AI行业应用" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </button>
+                        </div>
                         <h3 class="text-xl font-bold mb-4">AI行业应用</h3>
                         <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#industry-1" class="hover:text-primary transition-colors">金融行业 AI 解决方案</a></li>
@@ -1161,16 +1160,16 @@
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#industry-3" class="hover:text-primary transition-colors">制造行业 AI 解决方案</a></li>
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#industry-4" class="hover:text-primary transition-colors">零售与电商行业 AI 解决方案</a></li>
                         </ul>
-                    </button>
+                    </div>
                     <!-- Pillar 4 -->
                     <div id="operation" class="bg-background-light dark:bg-background-dark p-8 rounded-xl border border-slate-200 dark:border-primary/10 hover:border-primary transition-all group card-shadow hover:card-shadow-hover hover:animate-hover-up" style="scroll-margin-top: 100px;">
                         <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-background-dark transition-colors">
                             <span class="material-symbols-outlined text-2xl">settings_account_box</span>
-                        </button>
+                        </div>
                         <!-- 业务配图 -->
                         <div class="mb-4 h-32 overflow-hidden rounded-lg">
                             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop" alt="AI驱动智能运营" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </button>
+                        </div>
                         <h3 class="text-xl font-bold mb-4">AI驱动智能运营</h3>
                         <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#operation-1" class="hover:text-primary transition-colors">数字化人才交付</a></li>
@@ -1178,11 +1177,11 @@
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#operation-3" class="hover:text-primary transition-colors">智能业务流程外包</a></li>
                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span><a href="business-detail.html#operation-4" class="hover:text-primary transition-colors">AI专家技术支持</a></li>
                         </ul>
-                    </button>
-                </button>
-            </button>
+                    </div>
+                </div>
+            </div>
         </section>
-        </button>
+        </div>
         <!-- ========== 以上内容已隐藏 ========== -->
 
         <!-- Flagship Products Showcase -->
@@ -1192,16 +1191,16 @@
                     <div>
                         <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">核心产品</h2>
                         <p class="text-slate-600 dark:text-slate-400 max-w-xl">基于核心技术研发的标准化产品，满足多样化业务场景需求</p>
-                    </button>
+                    </div>
                     <a href="business-detail.html#star-products" class="text-primary font-bold flex items-center gap-2 hover:underline">
                         查看全部产品库 <span class="material-symbols-outlined">chevron_right</span>
                     </a>
-                </button>
+                </div>
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
                     <!-- Featured Product 1 (Large) - Simple Insight -->
                     <div id="product-simple-insight" class="lg:col-span-8 group relative overflow-hidden rounded-2xl bg-slate-900 border border-primary/20 aspect-[16/9] lg:aspect-auto animate-fade-in" style="scroll-margin-top: 100px;">
                         <img alt="Simple Insight 一体化智能可观测平台" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2Funnamed+2.png&nonce=d757bb5e-62b7-479c-a5c1-2cc43cc4bd75&project_id=7612545482618945587&sign=e918d63a5286a8282cff26aa9885afb8eeecfeea298c3024719304d00f84a8d2">
-                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></button>
+                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-8 lg:p-12">
                             <span class="inline-block bg-primary text-background-dark text-xs font-black px-3 py-1 rounded-full mb-4 uppercase tracking-wider">本地私有化部署</span>
                             <h3 class="text-3xl font-bold text-white mb-4">Simple Insight 一体化智能可观测平台</h3>
@@ -1209,8 +1208,8 @@
                             <a href="business-detail.html#product-simple-insight" class="inline-flex bg-white/10 hover:bg-white/20 text-white backdrop-blur-md px-6 py-2 rounded-lg font-bold transition-all items-center gap-2">
                                 详情介绍 <span class="material-symbols-outlined">launch</span>
                             </a>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     <!-- Product 2 - AI招聘助手 -->
                     <div id="product-ai-recruit" class="lg:col-span-4 bg-background-light dark:bg-primary/5 rounded-2xl p-8 border border-slate-200 dark:border-primary/10 flex flex-col card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in" style="scroll-margin-top: 100px;">
                         <span class="material-symbols-outlined text-4xl text-primary mb-6">person_search</span>
@@ -1220,8 +1219,8 @@
                             <a class="absolute inset-0 z-10 cursor-pointer" href="business-detail.html#product-ai-recruit"></a>
                             <span class="text-xs font-medium text-slate-500 relative z-0">智能人力资源</span>
                             <span class="material-symbols-outlined text-primary relative z-0">arrow_forward</span>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <!-- Product 3 - AI招投标助手 -->
                     <div id="product-ai-bidding" class="lg:col-span-4 bg-background-light dark:bg-primary/5 rounded-2xl p-8 border border-slate-200 dark:border-primary/10 flex flex-col card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in" style="scroll-margin-top: 100px;">
@@ -1232,12 +1231,12 @@
                             <a class="absolute inset-0 z-10 cursor-pointer" href="business-detail.html#product-ai-bidding"></a>
                             <span class="text-xs font-medium text-slate-500 relative z-0">智慧办公</span>
                             <span class="material-symbols-outlined text-primary relative z-0">arrow_forward</span>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     <!-- Featured Product 4 - 沐曦国产通用 GPU (Large) -->
                     <div id="product-muxi-gpu" class="lg:col-span-8 group relative overflow-hidden rounded-2xl bg-slate-900 border border-primary/20 aspect-[16/9] lg:aspect-auto animate-fade-in" style="scroll-margin-top: 100px;">
                         <img alt="沐曦国产通用 GPU" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2Funnamed+3.png&nonce=360a47c3-f2f2-4c91-aa3b-240be3ba4481&project_id=7612545482618945587&sign=20927bc3c4e720b6c2e7ac966db9fe1bec119729e64453dd130d836e70017e20">
-                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></button>
+                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-8 lg:p-12">
                             <span class="inline-block bg-primary text-background-dark text-xs font-black px-3 py-1 rounded-full mb-4 uppercase tracking-wider">国产算力底座</span>
                             <h3 class="text-3xl font-bold text-white mb-4">国产通用 GPU</h3>
@@ -1245,13 +1244,13 @@
                             <a href="business-detail.html#product-muxi-gpu" class="inline-flex bg-primary text-background-dark px-6 py-2 rounded-lg font-bold hover:scale-105 transition-all items-center gap-2">
                                 申请试用 <span class="material-symbols-outlined">science</span>
                             </a>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <!-- Featured Product 5 - OceanBase数据库 (Large) -->
                     <div id="product-oceanbase" class="lg:col-span-8 group relative overflow-hidden rounded-2xl bg-slate-900 border border-primary/20 aspect-[16/9] lg:aspect-auto animate-fade-in" style="scroll-margin-top: 100px;">
                         <img alt="OceanBase 数据库" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2FOceanBase2.png&nonce=44cb68f4-91a2-49f1-806b-21e1f47417f2&project_id=7612545482618945587&sign=10e192a8b89e01871140ecd51394cd16cc8b025522582b23a4028ebd635f0850">
-                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></button>
+                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-8 lg:p-12">
                             <span class="inline-block bg-primary text-background-dark text-xs font-black px-3 py-1 rounded-full mb-4 uppercase tracking-wider">企业级数据库</span>
                             <h3 class="text-3xl font-bold text-white mb-4">OceanBase 数据库</h3>
@@ -1260,8 +1259,8 @@
                             <a href="business-detail.html#product-oceanbase" class="inline-flex bg-primary text-background-dark px-6 py-2 rounded-lg font-bold hover:scale-105 transition-all items-center gap-2">
                                 了解详情 <span class="material-symbols-outlined">database</span>
                             </a>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     <!-- Product 6 - 职场健康加油站 -->
                     <div id="product-ai-health" class="lg:col-span-4 bg-background-light dark:bg-primary/5 rounded-2xl p-8 border border-slate-200 dark:border-primary/10 flex flex-col card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in" style="scroll-margin-top: 100px;">
                         <span class="material-symbols-outlined text-4xl text-primary mb-6">health_metrics</span>
@@ -1271,13 +1270,13 @@
                             <a class="absolute inset-0 z-10 cursor-pointer" href="business-detail.html#product-ai-health"></a>
                             <span class="text-xs font-medium text-slate-500 relative z-0">大健康领域</span>
                             <span class="material-symbols-outlined text-primary relative z-0">arrow_forward</span>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <!-- Featured Product 7 - 低空综合管理服务平台 (Full Width) -->
                     <div id="product-low-altitude" class="lg:col-span-12 group relative overflow-hidden rounded-2xl bg-slate-900 border border-primary/20 min-h-[400px] lg:min-h-[500px] animate-fade-in" style="scroll-margin-top: 100px;">
                         <img alt="低空综合管理服务平台" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src="assets/backgrounds/低空经济bg.png">
-                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></button>
+                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-8 lg:p-12">
                             <span class="inline-block bg-primary text-background-dark text-xs font-black px-3 py-1 rounded-full mb-4 uppercase tracking-wider">智慧城市·低空经济</span>
                             <h3 class="text-3xl font-bold text-white mb-4">低空综合管理服务平台</h3>
@@ -1285,8 +1284,8 @@
                             <a href="business-detail.html#product-low-altitude" class="inline-flex bg-primary text-background-dark px-6 py-2 rounded-lg font-bold hover:scale-105 transition-all items-center gap-2">
                                 了解详情 <span class="material-symbols-outlined">flight</span>
                             </a>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <!-- Custom Product CTA -->
                     <div class="lg:col-span-12 flex items-center justify-center p-8 bg-primary/10 rounded-2xl border border-dashed border-primary/40 animate-fade-in">
@@ -1296,10 +1295,10 @@
                             <a href="contact.html" class="bg-primary text-background-dark font-bold px-6 py-2 rounded-lg hover:bg-primary/90 transition-all inline-block">
                                 立即咨询专家
                             </a>
-                        </button>
-                    </button>
-                </button>
-            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Related Cases Section -->
@@ -1308,7 +1307,7 @@
                 <div class="text-center mb-16 animate-fade-in">
                     <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">相关案例</h2>
                     <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">深耕金融科技领域，以AI技术赋能银行等业务创新，助力客户实现数智化转型</p>
-                </button>
+                </div>
 
                 <div class="space-y-12">
                     <!-- 案例1: SME智能信贷审批解决方案 -->
@@ -1320,17 +1319,17 @@
                                 <div>
                                     <h3 class="text-lg lg:text-xl font-bold text-white">SME智能信贷审批解决方案</h3>
                                     <p class="text-blue-100 text-xs mt-0.5">针对中小微企业信贷审批业务场景</p>
-                                </button>
-                            </button>
-                        </button>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 内容区域 -->
                         <div class="flex flex-col lg:flex-row-reverse">
                             <!-- 右侧图片 -->
                             <div class="lg:w-72 xl:w-80 flex-shrink-0">
                                 <div class="h-48 lg:h-full rounded-none overflow-hidden">
                                     <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2FSME%E6%99%BA%E8%83%BD%E4%BF%A1%E8%B4%B7%E5%AE%A1%E6%89%B9%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.jpeg&nonce=77563556-2944-404f-b8c9-80a56c1e0dcc&project_id=7612545482618945587&sign=a088814f852d0cc2f317df5f682ad81eaa7b6da016a79ed57502af70be6d1ffa" alt="SME智能信贷审批解决方案" class="w-full h-full object-cover">
-                                </button>
-                            </button>
+                                </div>
+                            </div>
                             <!-- 左侧内容 -->
                             <div class="flex-1 p-6">
                                 <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
@@ -1338,31 +1337,31 @@
                                 </p>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
                                     <div class="text-center p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">+8.3%</button>
-                                        <div class="text-xs text-slate-500 dark:text-slate-400">审批通过率净增</button>
-                                    </button>
+                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">+8.3%</div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400">审批通过率净增</div>
+                                    </div>
                                     <div class="text-center p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">-3.6%</button>
-                                        <div class="text-xs text-slate-500 dark:text-slate-400">不良率净降</button>
-                                    </button>
+                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">-3.6%</div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400">不良率净降</div>
+                                    </div>
                                     <div class="text-center p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">-75%</button>
-                                        <div class="text-xs text-slate-500 dark:text-slate-400">单均风控成本</button>
-                                    </button>
+                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">-75%</div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400">单均风控成本</div>
+                                    </div>
                                     <div class="text-center p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">-87%</button>
-                                        <div class="text-xs text-slate-500 dark:text-slate-400">端到端审批时长</button>
-                                    </button>
-                                </button>
+                                        <div class="text-xl lg:text-2xl font-bold text-primary mb-1">-87%</div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400">端到端审批时长</div>
+                                    </div>
+                                </div>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">智能风控</span>
                                     <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">OCR/NLP</span>
                                     <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">信贷审批</span>
                                     <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">城商行实践</span>
-                                </button>
-                            </button>
-                        </button>
-                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- 案例2: 小微企业线上开户智能解决方案 -->
                     <div class="bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg animate-fade-in">
@@ -1373,17 +1372,17 @@
                                 <div>
                                     <h3 class="text-lg lg:text-xl font-bold text-white">小微企业线上开户智能解决方案</h3>
                                     <p class="text-emerald-100 text-xs mt-0.5">某国有银行成功实践案例</p>
-                                </button>
-                            </button>
-                        </button>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 内容区域 -->
                         <div class="flex flex-col lg:flex-row-reverse">
                             <!-- 右侧图片 -->
                             <div class="lg:w-72 xl:w-80 flex-shrink-0">
                                 <div class="h-48 lg:h-full rounded-none overflow-hidden">
                                     <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E5%B0%8F%E5%BE%AE%E4%BC%81%E4%B8%9A%E7%BA%BF%E4%B8%8A%E5%BC%80%E6%88%B7%E6%99%BA%E8%83%BD%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.jpeg&nonce=ea0410c0-68b6-4f2c-b724-c0599205e36a&project_id=7612545482618945587&sign=22cee4df94033659cc2cf5a1d0c7fa74cfed868a3d5816773b37bd7dd084d16e" alt="小微企业线上开户智能解决方案" class="w-full h-full object-cover">
-                                </button>
-                            </button>
+                                </div>
+                            </div>
                             <!-- 左侧内容 -->
                             <div class="flex-1 p-6">
                                 <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
@@ -1393,40 +1392,40 @@
                                     <div class="flex items-start gap-3">
                                         <div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
                                             <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400">speed</span>
-                                        </button>
+                                        </div>
                                         <div>
                                             <h4 class="font-semibold text-slate-900 dark:text-slate-100 text-sm mb-1">AI驱动·极致提效</h4>
                                             <p class="text-xs text-slate-500 dark:text-slate-400">OCR+人脸识别替代90%人工录入，审核周期从数日缩短至分钟级</p>
-                                        </button>
-                                    </button>
+                                        </div>
+                                    </div>
                                     <div class="flex items-start gap-3">
                                         <div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
                                             <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400">sync</span>
-                                        </button>
+                                        </div>
                                         <div>
                                             <h4 class="font-semibold text-slate-900 dark:text-slate-100 text-sm mb-1">端到端·数字化闭环</h4>
                                             <p class="text-xs text-slate-500 dark:text-slate-400">全流程线上化，实现"零跑腿"开户，电子签章确保合规可追溯</p>
-                                        </button>
-                                    </button>
+                                        </div>
+                                    </div>
                                     <div class="flex items-start gap-3">
                                         <div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
                                             <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400">public</span>
-                                        </button>
+                                        </div>
                                         <div>
                                             <h4 class="font-semibold text-slate-900 dark:text-slate-100 text-sm mb-1">无缝·跨境服务能力</h4>
                                             <p class="text-xs text-slate-500 dark:text-slate-400">支持多语言、跨境身份认证和国际AML/KYC引擎，助力企业出海</p>
-                                        </button>
-                                    </button>
-                                </button>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium rounded-full">智能识别</span>
                                     <span class="px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium rounded-full">实时风控</span>
                                     <span class="px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium rounded-full">NLP客服</span>
                                     <span class="px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium rounded-full">跨境服务</span>
-                                </button>
-                            </button>
-                        </button>
-                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- 案例3: AI Agent安全检测与加固平台 -->
                     <div class="bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-primary/10 shadow-lg animate-fade-in">
@@ -1437,17 +1436,17 @@
                                 <div>
                                     <h3 class="text-lg lg:text-xl font-bold text-white">AI Agent安全检测与加固平台</h3>
                                     <p class="text-purple-100 text-xs mt-0.5">为企业AI Agent安全护航</p>
-                                </button>
-                            </button>
-                        </button>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 内容区域 -->
                         <div class="flex flex-col lg:flex-row-reverse">
                             <!-- 右侧图片 -->
                             <div class="lg:w-72 xl:w-80 flex-shrink-0">
                                 <div class="h-48 lg:h-full rounded-none overflow-hidden">
                                     <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2FAI+Agent%E5%AE%89%E5%85%A8%E4%BD%93%E7%B3%BB.jpeg&nonce=5134b623-898d-447c-a621-05f9c849bc6e&project_id=7612545482618945587&sign=fe3b65220befc3a5922f7fbbcf0eea017526d8db9dfc8f2d719b95afacbd24a7" alt="AI Agent安全检测与加固平台" class="w-full h-full object-cover">
-                                </button>
-                            </button>
+                                </div>
+                            </div>
                             <!-- 左侧内容 -->
                             <div class="flex-1 p-6">
                                 <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
@@ -1465,7 +1464,7 @@
                                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>模型投毒检测</li>
                                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>代码注入防护</li>
                                         </ul>
-                                    </button>
+                                    </div>
                                     <div class="p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
                                         <h4 class="font-semibold text-slate-900 dark:text-slate-100 text-sm mb-3 flex items-center gap-2">
                                             <span class="material-symbols-outlined text-purple-600 dark:text-purple-400 text-lg">manage_accounts</span>
@@ -1477,19 +1476,19 @@
                                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>自动巡检机制</li>
                                             <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>自动处置响应</li>
                                         </ul>
-                                    </button>
-                                </button>
+                                    </div>
+                                </div>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-medium rounded-full">Agent安全</span>
                                     <span class="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-medium rounded-full">生命周期管理</span>
                                     <span class="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-medium rounded-full">风险检测</span>
                                     <span class="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-medium rounded-full">合规加固</span>
-                                </button>
-                            </button>
-                        </button>
-                    </button>
-                </button>
-            </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Technical Whitepapers Section -->
@@ -1498,14 +1497,14 @@
                 <div class="text-center mb-16 animate-fade-in">
                     <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">技术白皮书</h2>
                     <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">深入了解我们AI解决方案的技术架构、实施路径与最佳实践</p>
-                </button>
+                </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Whitepaper 1 - AI招聘助手 -->
                     <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('ai-recruit')">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">person_search</span>
-                        </button>
+                        </div>
                         <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">AI招聘助手技术白皮书</h3>
                         <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">基于深度学习的简历智能解析、自动初筛与面试评估系统技术架构详解，助力企业招聘效率提升300%以上。</p>
                         <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
@@ -1513,14 +1512,14 @@
                             <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
                                 下载预览 <span class="material-symbols-outlined text-lg">download</span>
                             </span>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <!-- Whitepaper 2 - AI招投标助手 -->
                     <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('ai-bidding')">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">description</span>
-                        </button>
+                        </div>
                         <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">AI招投标助手技术白皮书</h3>
                         <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">招标文件智能分析、合规性审查与应标方案自动生成技术方案，大幅提升中标率并降低人为失误。</p>
                         <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
@@ -1528,14 +1527,14 @@
                             <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
                                 下载预览 <span class="material-symbols-outlined text-lg">download</span>
                             </span>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <!-- Whitepaper 3 - 职场健康加油站 -->
                     <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('ai-health')">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">health_metrics</span>
-                        </button>
+                        </div>
                         <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">职场健康加油站技术白皮书</h3>
                         <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">专注企业职工健康管理的智能监测系统，提供一站式健康检测、评估与干预服务。</p>
                         <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
@@ -1543,14 +1542,14 @@
                             <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
                                 下载预览 <span class="material-symbols-outlined text-lg">download</span>
                             </span>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <!-- Whitepaper 4 - Simple Insight -->
                     <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('simple-insight')">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">insights</span>
-                        </button>
+                        </div>
                         <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">Simple Insight技术白皮书</h3>
                         <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">一体化智能可观测平台架构设计，全栈链路监控、智能异常检测与自动化响应技术方案详解。</p>
                         <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
@@ -1558,14 +1557,14 @@
                             <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
                                 下载预览 <span class="material-symbols-outlined text-lg">download</span>
                             </span>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <!-- Whitepaper 5 - OceanBase数据库 -->
                     <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('oceanbase')">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">storage</span>
-                        </button>
+                        </div>
                         <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">OceanBase数据库技术白皮书</h3>
                         <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">三地五中心城市级无损容灾架构、全兼容Oracle SQL语法实现原理与企业级数据库迁移最佳实践。</p>
                         <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
@@ -1573,14 +1572,14 @@
                             <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
                                 下载预览 <span class="material-symbols-outlined text-lg">download</span>
                             </span>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <!-- Whitepaper 6 - 沐曦国产通用GPU -->
                     <div class="bg-background-light dark:bg-background-dark rounded-2xl p-8 border border-slate-200 dark:border-primary/10 card-shadow hover:card-shadow-hover hover:animate-hover-up animate-fade-in group cursor-pointer" onclick="openModal('muxi-gpu')">
                         <div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-4xl text-primary">developer_board</span>
-                        </button>
+                        </div>
                         <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">沐曦国产通用GPU技术白皮书</h3>
                         <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">国产通用GPU架构设计、大规模AI计算优化与图形渲染技术详解，实现国产化替代的核心动力源。</p>
                         <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-primary/10">
@@ -1588,18 +1587,18 @@
                             <span class="text-primary flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
                                 下载预览 <span class="material-symbols-outlined text-lg">download</span>
                             </span>
-                        </button>
-                    </button>
-                </button>
-            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- CTA Section -->
         <section class="py-20 bg-background-dark text-white relative overflow-hidden animate-fade-in">
             <div class="absolute inset-0 opacity-10">
-                <div class="absolute top-0 left-0 w-96 h-96 bg-primary rounded-full blur-[120px]"></button>
-                <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary rounded-full blur-[120px]"></button>
-            </button>
+                <div class="absolute top-0 left-0 w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
+            </div>
             <div class="max-w-[1280px] mx-auto px-6 lg:px-10 relative z-10 text-center">
                 <h2 class="text-4xl lg:text-5xl font-black mb-8">开启您的 AI 数智化之旅</h2>
                 <p class="text-xl text-slate-300 max-w-4xl mx-auto mb-10">
@@ -1612,8 +1611,8 @@
                     <button id="showWhitepapersBtn" onclick="toggleWhitepapers()" class="bg-white/10 hover:bg-white/20 text-white px-10 py-4 rounded-xl text-lg font-bold backdrop-blur-md transition-all">
                         查看技术白皮书
                     </button>
-                </button>
-            </button>
+                </div>
+            </div>
         </section>
 
         <!-- Footer -->
@@ -1625,16 +1624,16 @@
                         <div class="flex items-center gap-3 mb-4">
                             <div class="h-10 w-10 flex items-center justify-center">
                                 <img src="assets/logos/申朴圆点logo.png" alt="Cisetech Logo" class="h-8 w-auto object-contain">
-                            </button>
+                            </div>
                             <div>
                                 <h3 class="text-lg font-bold text-white">Cisetech</h3>
                                 <p class="text-xs text-slate-500">申朴信息技术（上海）股份有限公司</p>
-                            </button>
-                        </button>
+                            </div>
+                        </div>
                         <p class="text-slate-400 text-sm leading-relaxed">
                             申信达诚，朴心进取
                         </p>
-                    </button>
+                    </div>
                     
                     <!-- 核心产品 -->
                     <div class="footer-col">
@@ -1648,7 +1647,7 @@
                             <li><a href="services.html#product-ai-health" class="footer-link">职场健康加油站</a></li>
                             <li><a href="services.html#product-low-altitude" class="footer-link">低空综合管理服务平台</a></li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <!-- 联系我们 -->
                     <div class="footer-col">
@@ -1674,7 +1673,7 @@
                                 <span>上海市浦东新区国展路1529号906-908室</span>
                             </li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <!-- 关注我们 -->
                     <div class="footer-col">
@@ -1686,10 +1685,10 @@
                             <div class="wechat-qrcode-popup">
                                 <img src="https://code.coze.cn/api/sandbox/coze_coding/file/proxy?expire_time=-1&file_path=assets%2F%E7%94%B3%E6%9C%B4%E6%9C%8D%E5%8A%A1%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg&nonce=fa8195e2-1745-486c-8dd5-1664e5198a65&project_id=7612545482618945587&sign=60d8b3903f8e4d4d551217c02caf3512076d3c4ffca00d5eb195030d803b2b3c" alt="微信公众号">
                                 <p class="wechat-qrcode-label">扫码关注公众号</p>
-                            </button>
-                        </button>
-                    </button>
-                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- 底部版权 -->
                 <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -1698,18 +1697,18 @@
                         <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">隐私政策</a>
                         <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">使用条款</a>
                         <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-sm">网站地图</a>
-                    </button>
-                </button>
-            </button>
+                    </div>
+                </div>
+            </div>
         </footer>
-    </button>
+    </div>
 
     <!-- 回到顶部按钮 -->
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:&quot;smooth&quot;})">
+    <div class="back-to-top" id="backToTop">
         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
-    </button>
+    </div>
 
     <!-- 交互脚本 -->
     <script>
@@ -1870,19 +1869,19 @@
                 <button class="modal-close" onclick="closeModal()">
                     <span class="material-symbols-outlined">close</span>
                 </button>
-            </button>
+            </div>
             <div class="modal-body" id="modalBody">
                 <!-- 动态内容将在这里加载 -->
-            </button>
+            </div>
             <div class="modal-footer">
                 <button class="btn-close" onclick="closeModal()">关闭</button>
                 <button class="btn-download" onclick="downloadWhitepaper()">
                     <span class="material-symbols-outlined">download</span>
                     下载完整白皮书
                 </button>
-            </button>
-        </button>
-    </button>
+            </div>
+        </div>
+    </div>
     
     <!-- 技术白皮书数据内容 -->
     <script>
@@ -1897,8 +1896,8 @@
                         <p>AI招聘助手是一款基于深度学习与自然语言处理技术的新一代智能招聘系统。通过智能简历解析、自动初筛、智能面试评估等核心功能，全面重构企业招聘流程，显著提升招聘效率与质量。</p>
                         <div class="tech-highlight">
                             <p>核心价值：提升招聘效率300%以上，降低招聘成本60%，提高人岗匹配准确率</p>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>二、核心技术架构</h4>
@@ -1909,7 +1908,7 @@
                             <li><strong>智能面试评估系统：</strong>集成语音识别（ASR）与情感分析技术，自动评估面试表现，生成结构化评估报告</li>
                             <li><strong>推荐算法引擎：</strong>采用协同过滤与内容推荐相结合的混合推荐算法，实时推荐最匹配的候选人</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>三、技术实现细节</h4>
@@ -1920,7 +1919,7 @@
                             <li><strong>数据库架构：</strong>Elasticsearch全文检索 + PostgreSQL关系存储 + Redis缓存，毫秒级响应</li>
                             <li><strong>API接口设计：</strong>RESTful API + GraphQL，支持Web、移动端、第三方系统集成</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>四、应用场景</h4>
@@ -1930,7 +1929,7 @@
                             <li><strong>面试辅助：</strong>实时提示候选人关键信息与风险点，生成面试题库，记录面试评价</li>
                             <li><strong>人才库管理：</strong>自动分类、标签化，激活沉睡人才池</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>五、性能指标</h4>
@@ -1941,7 +1940,7 @@
                             <li>系统可用性：≥99.9%</li>
                             <li>支持并发用户：≥10,000+</li>
                         </ul>
-                    </button>
+                    </div>
                 `
             },
             'ai-bidding': {
@@ -1953,8 +1952,8 @@
                         <p>AI招投标助手是一款面向政府采购与企业招标的智能应标系统。通过自动化分析招标需求、智能生成应标文件、合规性审查等功能，大幅降低招投标工作量，提升中标率。</p>
                         <div class="tech-highlight">
                             <p>核心价值：应标效率提升500%，合规性审查准确率达99%，中标率提升40%以上</p>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>二、核心技术架构</h4>
@@ -1965,7 +1964,7 @@
                             <li><strong>风险检测引擎：</strong>基于规则引擎与机器学习的混合系统，识别资质不符、业绩缺失等风险点</li>
                             <li><strong>竞品分析：</strong>自动抓取公开信息，分析竞争对手报价策略与技术方案</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>三、技术实现细节</h4>
@@ -1976,7 +1975,7 @@
                             <li><strong>AI内容生成：</strong>集成GPT-4、Claude等大语言模型，生成高质量技术方案</li>
                             <li><strong>数字签名：</strong>集成国密算法，支持电子签章与加密传输</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>四、应用场景</h4>
@@ -1986,7 +1985,7 @@
                             <li><strong>资质管理：</strong>自动维护资质证书库，及时预警资质到期</li>
                             <li><strong>业绩管理：</strong>智能匹配历史业绩，自动生成业绩证明材料</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>五、性能指标</h4>
@@ -1997,7 +1996,7 @@
                             <li>系统可用性：≥99.95%</li>
                             <li>支持并发项目：≥5,000+</li>
                         </ul>
-                    </button>
+                    </div>
                 `
             },
             'ai-health': {
@@ -2009,8 +2008,8 @@
                         <p>职场健康加油站是一款专注企业职工健康管理的智能终端设备。通过多模态生物传感器与AI算法，为企业职工提供一站式健康指标检测、智能风险评估与个性化健康干预服务，助力企业构建健康关怀体系，提升员工幸福感与工作效率。</p>
                         <div class="tech-highlight">
                             <p>核心价值：职工健康检测时间≤5分钟，准确率达医疗级标准，健康建议个性化匹配率≥90%，企业员工健康管理效率提升60%</p>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
 
                     <div class="tech-section">
                         <h4>二、核心技术架构</h4>
@@ -2021,7 +2020,7 @@
                             <li><strong>智能问诊系统：</strong>集成医疗知识图谱与NLP技术，为职工提供健康咨询与就医建议</li>
                             <li><strong>企业健康档案管理：</strong>区块链技术保障数据安全，支持企业职工健康档案云端存储与管理</li>
                         </ul>
-                    </button>
+                    </div>
 
                     <div class="tech-section">
                         <h4>三、技术实现细节</h4>
@@ -2032,7 +2031,7 @@
                             <li><strong>边缘计算：</strong>本地AI芯片处理敏感数据，保障职工隐私安全</li>
                             <li><strong>IoT互联互通：</strong>支持BLE、WiFi、4G/5G多种通信方式，便于企业内部部署</li>
                         </ul>
-                    </button>
+                    </div>
 
                     <div class="tech-section">
                         <h4>四、应用场景</h4>
@@ -2042,7 +2041,7 @@
                             <li><strong>企业健康服务：</strong>职工预检分诊，健康数据采集，远程健康管理</li>
                             <li><strong>企业健康福利：</strong>定期健康检测，健康评估报告，个性化健康建议推送</li>
                         </ul>
-                    </button>
+                    </div>
 
                     <div class="tech-section">
                         <h4>五、性能指标</h4>
@@ -2053,7 +2052,7 @@
                             <li>数据加密标准：国密SM2/SM3/SM4</li>
                             <li>支持并发职工检测：≥500+</li>
                         </ul>
-                    </button>
+                    </div>
                 `
             },
             'simple-insight': {
@@ -2065,8 +2064,8 @@
                         <p>Simple Insight是一款面向企业本地私有化部署的一体化智能可观测平台。集成全栈链路监控、智能异常检测、自动化响应等功能，为本地私有化部署应用提供全方位的可观测性与安全护航。</p>
                         <div class="tech-highlight">
                             <p>核心价值：故障检测时间缩短70%，故障定位时间缩短80%，MTTR（平均修复时间）降低60%</p>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>二、核心技术架构</h4>
@@ -2077,7 +2076,7 @@
                             <li><strong>日志智能分析：</strong>NLP技术分析日志，自动提取关键信息，生成问题摘要</li>
                             <li><strong>指标可视化：</strong>自定义Dashboard，支持100+种图表类型，实时监控业务指标</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>三、技术实现细节</h4>
@@ -2088,7 +2087,7 @@
                             <li><strong>告警系统：</strong>多级告警策略，支持邮件、短信、钉钉、企业微信等通知方式</li>
                             <li><strong>API集成：</strong>开放API，支持与Prometheus、Grafana、ELK等系统集成</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>四、应用场景</h4>
@@ -2098,7 +2097,7 @@
                             <li><strong>安全审计：</strong>自动识别异常访问、SQL注入、XSS攻击等安全威胁</li>
                             <li><strong>容量规划：</strong>基于历史趋势预测资源需求，优化成本</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>五、性能指标</h4>
@@ -2109,7 +2108,7 @@
                             <li>支持数据保留：≥365天</li>
                             <li>系统可用性：≥99.99%</li>
                         </ul>
-                    </button>
+                    </div>
                 `
             },
             'oceanbase': {
@@ -2121,8 +2120,8 @@
                         <p>OceanBase是一款原生分布式关系数据库，具备集中式与分布式双能力，支持三地五中心城市级无损容灾，全兼容Oracle SQL语法，助力企业数据库国产化替代与数字化转型。</p>
                         <div class="tech-highlight">
                             <p>核心价值：城市级容灾RPO=0，存储成本降低60%，迁移成本降低80%，单集群支持1000+节点</p>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>二、核心技术架构</h4>
@@ -2133,7 +2132,7 @@
                             <li><strong>HTAP混合负载：</strong>一份数据同时支持OLTP与OLAP，TP与AP负载隔离，避免资源争抢</li>
                             <li><strong>极致压缩技术：</strong>列式存储+多种压缩算法，节省60%以上存储成本</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>三、技术实现细节</h4>
@@ -2144,7 +2143,7 @@
                             <li><strong>分区技术：</strong>支持Hash、Range、List分区，自动分区路由</li>
                             <li><strong>备份恢复：</strong>物理备份+逻辑备份，支持秒级快照与时间点恢复</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>四、应用场景</h4>
@@ -2154,7 +2153,7 @@
                             <li><strong>电商交易系统：</strong>订单、库存系统，高并发、低延迟</li>
                             <li><strong>政府政务系统：</strong>一网通办、数据共享，国产化替代</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>五、性能指标</h4>
@@ -2165,7 +2164,7 @@
                             <li>事务延迟（P99）：≤10ms</li>
                             <li>系统可用性：≥99.999%（5个9）</li>
                         </ul>
-                    </button>
+                    </div>
                 `
             },
             'muxi-gpu': {
@@ -2177,8 +2176,8 @@
                         <p>沐曦国产通用GPU是一款面向大规模AI计算与图形渲染的自主可控GPU芯片。采用先进制程工艺与自研架构，实现通用计算与图形渲染的双引擎设计，为国产化替代提供强大算力底座。</p>
                         <div class="tech-highlight">
                             <p>核心价值：AI计算性能对标国际主流产品，图形渲染兼容DirectX/OpenGL，功耗降低30%</p>
-                        </button>
-                    </button>
+                        </div>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>二、核心技术架构</h4>
@@ -2189,7 +2188,7 @@
                             <li><strong>先进制程工艺：</strong>7nm/5nm工艺，集成晶体管数≥600亿</li>
                             <li><strong>异构计算支持：</strong>支持FP16、FP32、FP64、INT8等多种数据精度</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>三、技术实现细节</h4>
@@ -2200,7 +2199,7 @@
                             <li><strong>互联技术：</strong>支持NVLink、PCIe 5.0，多卡并行扩展</li>
                             <li><strong>驱动软件栈：</strong>自研驱动+编译器，兼容PyTorch、TensorFlow、MindSpore等框架</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>四、应用场景</h4>
@@ -2210,7 +2209,7 @@
                             <li><strong>图形渲染：</strong>CAD设计、3D建模、视频编辑</li>
                             <li><strong>科学计算：</strong>气象预测、基因测序、物理模拟</li>
                         </ul>
-                    </button>
+                    </div>
                     
                     <div class="tech-section">
                         <h4>五、性能指标</h4>
@@ -2221,7 +2220,7 @@
                             <li>功耗：≤300W</li>
                             <li>制程工艺：7nm/5nm</li>
                         </ul>
-                    </button>
+                    </div>
                 `
             }
         };
