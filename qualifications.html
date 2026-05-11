@@ -1646,37 +1646,6 @@
             background: linear-gradient(to right, #0ea5e9, #22d3ee);
             border-radius: 1px;
         }
-            .back-to-top {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #0ea5e9, #22d3ee);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            pointer-events: none;
-            transform: scale(1);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
-            z-index: 1000;
-            border: none;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        
-        .back-to-top:hover {
-            transform: scale(1.1);
-            background: linear-gradient(135deg, #0ea5e9dd, #22d3eedd);
-            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
-        }
     </style>
 </head>
 <body class="bg-background-light font-display text-slate-900">
@@ -3412,21 +3381,6 @@
             initClientCarousels();
             initLogoPreview();
         });
-            // 回到顶部
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        </script>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-        </svg>
-    </button>
+    </script>
 </body>
 </html>
