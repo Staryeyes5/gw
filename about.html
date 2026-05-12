@@ -3717,21 +3717,6 @@
                 { start: { x: 4800, y: 400 }, control: { x: 4950, y: 325 }, end: { x: 5000, y: 400 } }
             ];
             
-            // 根据X坐标计算Y坐标（沿着贝塞尔曲线）
-                
-                // 计算在该段中的位置 (t从0到1)
-                const segmentLength = segment.end.x - segment.start.x;
-                const t = (x - segment.start.x) / segmentLength;
-                
-                // 二次贝塞尔曲线公式: B(t) = (1-t)²P0 + 2(1-t)tP1 + t²P2
-                const mt = 1 - t;
-                const y = mt * mt * segment.start.y + 
-                          2 * mt * t * segment.control.y + 
-                          t * t * segment.end.y;
-                
-                return y;
-            }
-            
             // 激活时间点
             function activatePoint(point) {
                 if (!point.classList.contains('active')) {
@@ -3746,11 +3731,31 @@
                 });
             }
             
+            // 计算波浪线Y坐标
+            function getWaveY(x) {
+                const segment = waveSegments.find(seg => x >= seg.start.x && x <= seg.end.x);
+                
+                if (!segment) {
+                    return 400;
+                }
+                
+                const segmentLength = segment.end.x - segment.start.x;
+                const t = (x - segment.start.x) / segmentLength;
+                
+                const mt = 1 - t;
+                const y = mt * mt * segment.start.y + 
+                          2 * mt * t * segment.control.y + 
+                          t * t * segment.end.y;
+                
+                return y;
+            }
+
             // 初始化时间点位置（根据X坐标计算Y坐标）
             function initPointPositions() {
                 timelinePoints.forEach(point => {
                     const x = parseInt(point.dataset.x);
-                    c                    point.style.left = `${x}px`;
+                    const y = getWaveY(x);
+                    point.style.left = `${x}px`;
                     point.style.top = `${y}px`;
                 });
             }
@@ -3768,7 +3773,8 @@
                 ballX = progress * (totalWaveWidth - 200);
                 
                 // 获取波浪线上的Y坐标
-                c                
+                const ballY = getWaveY(ballX);
+                
                 // 更新小球位置
                 movingBall.style.left = `${ballX}px`;
                 movingBall.style.top = `${ballY}px`;
@@ -3939,7 +3945,8 @@
                 // 创建事件项
                 events.forEach((event, index) => {
                     const eventItem = document.createElement('div');
-                    e                    const yPos = startY + index * spacing;
+                    eventItem.className = 'event-item absolute';
+                    const yPos = startY + index * spacing;
                     eventItem.style.left = `${lineX}px`;
                     eventItem.style.top = `${yPos}px`;
                     eventItem.style.opacity = '0';
