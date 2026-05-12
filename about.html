@@ -4688,52 +4688,33 @@
                 const position = latLngToVector3(center.lat, center.lng, 1.5);
 
                 // 标记点 - 更小更精致
-                const markerGeometry = new THREE.SphereGeometry(0.012, 16, 16);
+                const markerGeometry = new THREE.SphereGeometry(0.012, 16, 16);  // 进一步缩小标记点
                 const markerMaterial = new THREE.MeshBasicMaterial({
                     color: 0x00ffff
                 });
                 const marker = new THREE.Mesh(markerGeometry, markerMaterial);
                 marker.position.copy(position);
                 marker.userData = { center, index };
-                globe.add(marker);
+                globe.add(marker); // 作为地球的子对象
                 markers.push(marker);
-                markerMeshes.push(marker);
+                markerMeshes.push(marker);  // 用于hover检测
 
-                // 创建城市名称标签 - 为每个城市手动指定偏移方向防止重叠
+                // 创建城市名称标签 - 根据位置智能调整偏移方向
                 const labelDiv = document.createElement('div');
                 labelDiv.className = 'city-label';
                 labelDiv.textContent = center.name;
                 const cityLabel = new THREE.CSS2DObject(labelDiv);
-
-                // 手动为每个城市指定标签偏移 [x偏移, y偏移, 缩放比例]
-                // 通过调整偏移方向(上下左右)和距离来避免标签重叠
-                const labelOffsets = {
-                    '肇庆': [-0.22, 0.08, 1.2],
-                    '临汾': [0.18, 0.12, 1.3],
-                    '海阳': [-0.18, 0.14, 1.3],
-                    '韶关': [0.2, -0.06, 1.2],
-                    '乌镇': [-0.2, 0.1, 1.25],
-                    '湛江': [-0.22, -0.08, 1.2],
-                    '呼和浩特': [0.15, 0.12, 1.35],
-                    '丽水': [-0.15, 0.12, 1.25],
-                    '银川': [-0.22, 0.1, 1.3],
-                    '南昌': [0.18, -0.08, 1.2],
-                    '重庆': [-0.2, -0.1, 1.2],
-                    '贵阳': [0.2, -0.06, 1.2],
-                    '安顺': [-0.22, -0.12, 1.2],
-                    '淮北': [0.15, 0.14, 1.3],
-                    '东莞': [0.2, -0.1, 1.2],
-                    '武汉': [-0.15, 0.12, 1.25],
-                    '亳州': [-0.2, 0.14, 1.3]
-                };
-
-                const offset = labelOffsets[center.name] || [0.15, 0.1, 1.25];
-                const labelPos = position.clone().multiplyScalar(offset[2]);
-                labelPos.x += offset[0];
-                labelPos.y += offset[1];
+                
+                // 根据城市位置调整标签偏移比例和方向
+                // 高纬度城市使用更大的偏移，低纬度城市使用较小的偏移
+                const offsetMultiplier = Math.abs(center.lat) > 35 ? 1.35 : 1.25;
+                // 根据经度决定标签在左边还是右边显示
+                const xOffset = center.lng > 100 ? 0.15 : -0.15;
+                const labelPos = position.clone().multiplyScalar(offsetMultiplier);
+                labelPos.x += xOffset;
                 cityLabel.position.copy(labelPos);
-                cityLabel.userData = { basePosition: position.clone() };
-                scene.add(cityLabel);
+                cityLabel.userData = { basePosition: position.clone() }; // 保存基础位置
+                scene.add(cityLabel); // 添加到场景而不是地球
                 cityLabels.push(cityLabel);
             });
 
