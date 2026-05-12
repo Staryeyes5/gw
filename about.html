@@ -4454,12 +4454,12 @@
                 { name: '银川', desc: '宁夏银川市', lat: 38.49, lng: 106.23, region: '西北地区-宁夏' },
                 { name: '南昌', desc: '江西省南昌市', lat: 28.80, lng: 115.89, region: '华东地区-江西省' },
                 { name: '重庆', desc: '重庆市渝北区', lat: 29.56, lng: 106.55, region: '西南地区-重庆市' },
-                { name: '贵阳', desc: '贵州省贵阳市', lat: 26.65, lng: 106.63, region: '西南地区-贵州省' },
-                { name: '安顺', desc: '贵州省安顺市', lat: 26.25, lng: 105.95, region: '西南地区-贵州省' },
-                { name: '淮北', desc: '安徽省淮北市', lat: 33.97, lng: 116.79, region: '华东地区-安徽省' },
-                { name: '东莞', desc: '广东省东莞市', lat: 23.02, lng: 113.75, region: '华南地区-粤港澳大湾区' },
+                { name: '贵阳', desc: '贵州省贵阳市', lat: 26.65, lng: 106.63, region: '西南地区-贵州省', labelOffsetX: 0.25, labelOffsetY: 0.15 },
+                { name: '安顺', desc: '贵州省安顺市', lat: 26.25, lng: 105.95, region: '西南地区-贵州省', labelOffsetX: -0.25, labelOffsetY: -0.1 },
+                { name: '淮北', desc: '安徽省淮北市', lat: 33.97, lng: 116.79, region: '华东地区-安徽省', labelOffsetX: 0.3, labelOffsetY: -0.1 },
+                { name: '东莞', desc: '广东省东莞市', lat: 23.02, lng: 113.75, region: '华南地区-粤港澳大湾区', labelOffsetX: 0.25, labelOffsetY: 0.1 },
                 { name: '武汉', desc: '湖北省武汉市洪山区', lat: 30.59, lng: 114.31, region: '华中地区-湖北省' },
-                { name: '亳州', desc: '安徽省亳州市', lat: 33.87, lng: 115.78, region: '华东地区-安徽省' }
+                { name: '亳州', desc: '安徽省亳州市', lat: 33.87, lng: 115.78, region: '华东地区-安徽省', labelOffsetX: -0.3, labelOffsetY: 0.15 }
             ];
 
             // 创建场景
@@ -4710,8 +4710,21 @@
                 const offsetMultiplier = Math.abs(center.lat) > 35 ? 1.35 : 1.25;
                 // 根据经度决定标签在左边还是右边显示
                 const xOffset = center.lng > 100 ? 0.15 : -0.15;
+                
+                // 针对重叠城市的自定义偏移量
+                const labelOffsets = {
+                    '安顺': { x: -0.25, y: 0.12 },
+                    '亳州': { x: 0.22, y: -0.1 },
+                    '东莞': { x: 0.2, y: -0.08 },
+                    '肇庆': { x: -0.2, y: 0.1 },
+                    '武汉': { x: 0.18, y: -0.08 },
+                    '淮北': { x: -0.18, y: 0.1 },
+                };
+                const customOffset = labelOffsets[center.name] || { x: 0, y: 0 };
+                
                 const labelPos = position.clone().multiplyScalar(offsetMultiplier);
-                labelPos.x += xOffset;
+                labelPos.x += xOffset + customOffset.x;
+                labelPos.y += customOffset.y;
                 cityLabel.position.copy(labelPos);
                 cityLabel.userData = { basePosition: position.clone() }; // 保存基础位置
                 scene.add(cityLabel); // 添加到场景而不是地球
