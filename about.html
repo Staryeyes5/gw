@@ -2534,7 +2534,7 @@
                     <div class="timeline-entry">
                         <div class="timeline-dot"></div>
                         <div class="timeline-year">2010年</div>
-                        <div class="timeline-desc">6月申朴信息成立；与阿里巴巴集团签署协议；成为阿里IT服务供应商</div>
+                        <div class="timeline-desc">6月申朴信息成立；与阿里巴巴集团签署协议，成为阿里IT服务供应商</div>
                     </div>
                     <div class="timeline-entry">
                         <div class="timeline-dot"></div>
@@ -2564,12 +2564,12 @@
                     <div class="timeline-entry">
                         <div class="timeline-dot"></div>
                         <div class="timeline-year">2016年</div>
-                        <div class="timeline-desc">11月成功登录新三板，股票代码 870221；通过软件能力成熟度模型；CMMI3级认证</div>
+                        <div class="timeline-desc">11月成功登录新三板，股票代码 870221；通过软件能力成熟度模型CMMI3级认证</div>
                     </div>
                     <div class="timeline-entry">
                         <div class="timeline-dot"></div>
                         <div class="timeline-year">2017年</div>
-                        <div class="timeline-desc">荣获上海市科技小巨人；培育企业资格；荣获全国创新创业大赛优胜奖</div>
+                        <div class="timeline-desc">荣获上海市科技小巨人培育企业资格；荣获全国创新创业大赛优胜奖</div>
                     </div>
                     <div class="timeline-entry">
                         <div class="timeline-dot"></div>
@@ -2589,27 +2589,27 @@
                     <div class="timeline-entry">
                         <div class="timeline-dot"></div>
                         <div class="timeline-year">2021年</div>
-                        <div class="timeline-desc">获得上海市专精特新中小企业称号；6月成为中国农业银行；IT框架服务商</div>
+                        <div class="timeline-desc">获得上海市专精特新中小企业称号；6月成为中国农业银行IT框架服务商</div>
                     </div>
                     <div class="timeline-entry">
                         <div class="timeline-dot"></div>
                         <div class="timeline-year">2022年</div>
-                        <div class="timeline-desc">1月通过lS020000信息技术服务；管理体系认证；成为蚂蚁集团框架服务商</div>
+                        <div class="timeline-desc">1月通过IS020000信息技术服务管理体系认证；成为蚂蚁集团框架服务商</div>
                     </div>
                     <div class="timeline-entry">
                         <div class="timeline-dot"></div>
                         <div class="timeline-year">2023年</div>
-                        <div class="timeline-desc">3月公司通过软件能力成熟度模型；CMMI5级认证；9月成为舍弗勒；IT框架服务商；11月成为腾讯集团合作伙伴</div>
+                        <div class="timeline-desc">3月公司通过软件能力成熟度模型CMMI5级认证；9月成为舍弗勒IT框架服务商；11月成为腾讯集团合作伙伴</div>
                     </div>
                     <div class="timeline-entry">
                         <div class="timeline-dot"></div>
                         <div class="timeline-year">2024年</div>
-                        <div class="timeline-desc">4月获得华为-HarmonyOS开发服务商、生态市场服务商称号；7月成立香港全资子公司；辐射并拓展海外业务；9月通过ISO22301业务连续性管理体系、ISO45001职业健康安全管理体系认证；10月成为百度智能云；框架供应商；12月获得2024第八届北交所新三板年度风云榜-成长性卓越企业奖项</div>
+                        <div class="timeline-desc">4月获得华为-HarmonyOS开发服务商、生态市场服务商称号；7月成立香港全资子公司；辐射并拓展海外业务；9月通过ISO22301业务连续性管理体系、ISO45001职业健康安全管理体系认证；10月成为百度智能云框架供应商；12月获得2024第八届北交所新三板年度风云榜-成长性卓越企业奖项</div>
                     </div>
                     <div class="timeline-entry">
                         <div class="timeline-dot"></div>
                         <div class="timeline-year">2025年</div>
-                        <div class="timeline-desc">3月通过高新技术企业复审；3月成为浦发银行；IT框架供应商；7月成为国泰海通；框架服务商；8月通过TMMI3认证；12月收购赫里普达成战略合作</div>
+                        <div class="timeline-desc">3月通过高新技术企业复审；3月成为浦发银行IT框架供应商；7月成为国泰海通框架服务商；8月通过TMMI3认证；12月收购赫里普达成战略合作</div>
                     </div>
                     <div class="timeline-entry">
                         <div class="timeline-dot"></div>
@@ -2678,11 +2678,10 @@
                 color: #0369a1;
             }
 
-            @media (max-width: 1024px) {
+        
+    @media (max-width: 1024px) {
                 .timeline-scroll {
-                    max-height: 450px;
-                }
-                .timeline-year {
+                    max-height: 450px;            <    }        <        .timeline-year {
                     font-size: 16px;
                 }
                 .timeline-desc {
@@ -2692,7 +2691,7 @@
         </style>
     </section>
 
-<script>
+    <section id="stats" class="py-16 bg-slate-50" style="scroll-margin-top: 80px;">
     // 轮播逻辑
     let currentGroup = 0;
     const totalGroups = 7;
@@ -2733,8 +2732,7 @@
 
         const pathLength = wavePath.getTotalLength();
         const positions = [0.125, 0.3125, 0.5, 0.6875, 0.875]; // 12.5%, 31.25%, 50%, 68.75%, 87.5%
-        
-
+        c
         // 计算缩放比例
         const scaleX = waveSvg.clientWidth / 1200;
 
@@ -3875,8 +3873,7 @@
             function initPointPositions() {
                 timelinePoints.forEach(point => {
                     const x = parseInt(point.dataset.x);
-                    
-                    point.style.left = `${x}px`;
+                    c                    point.style.left = `${x}px`;
                     point.style.top = `${y}px`;
                 });
             }
@@ -3894,8 +3891,7 @@
                 ballX = progress * (totalWaveWidth - 200);
                 
                 // 获取波浪线上的Y坐标
-                
-                
+                c                
                 // 更新小球位置
                 movingBall.style.left = `${ballX}px`;
                 movingBall.style.top = `${ballY}px`;
@@ -4066,8 +4062,7 @@
                 // 创建事件项
                 events.forEach((event, index) => {
                     const eventItem = document.createElement('div');
-                    
-                    const yPos = startY + index * spacing;
+                    e                    const yPos = startY + index * spacing;
                     eventItem.style.left = `${lineX}px`;
                     eventItem.style.top = `${yPos}px`;
                     eventItem.style.opacity = '0';
