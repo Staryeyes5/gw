@@ -1366,14 +1366,6 @@
         }
         
         /* 小球隐藏动画 */
-        .moving-ball {
-            transition: opacity 500ms ease;
-        }
-        
-        .moving-ball {
-            position: absolute;
-            will-change: left, top;
-        }
         
         .timeline-point {
             position: absolute;
@@ -1781,38 +1773,6 @@
 
 <style>
     /* 发展历程背景 */
-    .milestone-section {
-        background: url('assets/backgrounds/发展历程bg.jpg') center center/cover no-repeat;
-        position: relative;
-        overflow: visible;
-    }
-
-    .milestone-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-            left: 0;
-        right: 0;
-        bottom: 0;
-        /* 泛白效果：使用白色半透明遮罩 */
-        background: rgba(255, 255, 255, 0.30);
-        z-index: 1;
-    }
-
-    .milestone-section::after {
-        content: '';
-        position: absolute;
-        top: 0;
-            left: 0;
-        right: 0;
-        bottom: 0;
-        /* 添加渐变柔化效果 */
-        background: linear-gradient(180deg,
-            rgba(255, 255, 255, 0.35) 0%,
-            rgba(255, 255, 255, 0.30) 50%,
-            rgba(255, 255, 255, 0.35) 100%);
-        z-index: 2;
-    }
 
     /* 波浪线 */
     .timeline-wave {
@@ -1847,107 +1807,7 @@
     .event-group.active {
         opacity: 1;
         transform: translateY(0);
-    }
-
-    /* 单个事件点 */
-    .event-item {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-        max-width: 320px;
-        text-align: center;
-        transition: all 0.3s ease;
-        z-index: 20;
-    }
-
-    .event-item:hover {
-        transform: scale(1.05);
-    }
-
-    .event-item:hover .event-year {
-        color: #2563eb;
-        text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9);
-    }
-
-    .event-item:hover .event-desc {
-        color: #0f172a;
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
-    }
-
-    .event-item::before {
-        content: '';
-        position: absolute;
-        width: 14px;
-        height: 14px;
-        background: #3b82f6;
-        border-radius: 50%;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        box-shadow: 0 0 12px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.2);
-        z-index: 10;
-    }
-
-    .event-content {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        width: auto;
-        max-width: 280px;
-    }
-
-    .event-item.above .event-content {
-        bottom: 100%;
-        margin-bottom: 25px;
-    }
-
-    .event-item.below .event-content {
-        top: 100%;
-        margin-top: 25px;
-    }
-
-    .event-year {
-        font-size: 32px;
-        font-weight: 700;
-        color: #2563eb;
-        margin-bottom: 8px;
-        text-shadow: 0 2px 8px rgba(255, 255, 255, 0.9), 0 1px 3px rgba(255, 255, 255, 0.8);
-    }
-
-    .event-desc {
-        font-size: 18px;
-        color: #0f172a;
-        line-height: 1.6;
-        font-weight: 500;
-        word-wrap: break-word;
-        word-break: keep-all;
-        white-space: normal;
-        width: 100%;
-        display: inline-block;
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        padding: 10px 16px;
-        border-radius: 10px;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-        text-shadow: none;
-    }
-
-    /* 连接点 */
-    .wave-point {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: #3b82f6;
-        border-radius: 50%;
-        top: 50%;
-        transform: translateY(-50%);
-        box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
-    }
+    }/* 连接点 */
 
     /* 轮播指示器 */
     .milestone-indicators {
@@ -2550,9 +2410,6 @@
 
     @media (max-width: 640px) {
         /* 移动端时间线适配 */
-        .milestone-section {
-            min-height: 550px !important;
-        }
         
         .timeline-events {
             height: 450px !important;
@@ -2560,20 +2417,6 @@
         
         .timeline-wave svg {
             height: 450px;
-        }
-        
-        .event-item {
-            max-width: 140px !important;
-            font-size: 12px;
-        }
-        
-        .event-year {
-            font-size: 13px !important;
-        }
-        
-        .event-desc {
-            font-size: 11px !important;
-            line-height: 1.3 !important;
         }
         
         .timeline-arrow {
@@ -2641,295 +2484,213 @@
 </style>
 
 <!-- 发展历程 -->
-<section id="timeline" class="milestone-section py-16 relative" style="min-height: 750px; overflow: visible;">
-    <!-- 标题区域 -->
-    <div class="container mx-auto px-4 relative z-30 mb-10">
-        <div class="text-center">
-            <span class="inline-block px-5 py-2 bg-blue-500/10 backdrop-blur-sm text-blue-600 rounded-full text-sm font-bold mb-4 border border-blue-400/20 hidden">MILESTONES</span>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-3">发展历程</h2>
-            <p class="text-slate-600 text-lg">16年砥砺前行，持续创新发展</p>
-        </div>
-    </div>
-
-    <!-- 时间线容器 -->
-    <div class="container mx-auto px-4 relative z-30" style="height: 600px; overflow: visible;">
-        <!-- 波浪线 -->
-        <div class="timeline-wave">
-            <svg width="100%" height="600" viewBox="0 0 1200 600" preserveAspectRatio="none" id="waveSvg">
-                <path id="wavePath"
-                      d="M0 500
-                         C180 530, 280 410, 400 390
-                         S650 240, 850 140
-                         S1050 40, 1200 -10"
-                      fill="none"
-                      stroke="#60a5fa"
-                      stroke-width="4"
-                      stroke-linecap="round"/>
-            </svg>
-        </div>
-
-        <!-- 事件组容器 -->
-        <div id="timelineEvents" class="timeline-events">
-            <!-- 事件组1 -->
-            <div class="event-group active" data-group="0">
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2010年</div>
-                        <div class="event-desc">6月申朴信息成立</div>
-                    </div>
-                </div>
-                <div class="event-item below">
-                    <div class="event-content">
-                        <div class="event-year">2010年</div>
-                        <div class="event-desc">与阿里巴巴集团签署协议<br>成为阿里IT服务供应商</div>
-                    </div>
-                </div>
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2011年</div>
-                        <div class="event-desc">成为中国平安集团IT供应商</div>
-                    </div>
-                </div>
-                <div class="event-item below">
-                    <div class="event-content">
-                        <div class="event-year">2012年</div>
-                        <div class="event-desc">成为中国太平集团IT框架合作伙伴</div>
-                    </div>
-                </div>
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2013年</div>
-                        <div class="event-desc">获得上海市软件企业称号，获得IS027001认证</div>
-                    </div>
-                </div>
+<section id="timeline" class="py-16 md:py-24 bg-[#F5F7FA]">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <!-- Section Title -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-3">发展历程</h2>
+                <div class="w-16 h-1 bg-sky-600 mx-auto rounded-full"></div>
             </div>
 
-            <!-- 事件组2 -->
-            <div class="event-group" data-group="1">
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2014年</div>
-                        <div class="event-desc">获得上海市创新基金奖励</div>
+            <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                <!-- Left: Image Collage -->
+                <div class="lg:w-2/5 relative">
+                    <!-- Decorative blue blocks -->
+                    <div class="absolute -left-4 top-0 w-5 h-3/4 bg-sky-700 rounded-r-lg hidden lg:block"></div>
+                    <div class="absolute bottom-12 right-4 w-16 h-16 bg-sky-700 rounded-lg hidden lg:block opacity-60"></div>
+                    
+                    <!-- Image grid -->
+                    <div class="relative pl-4 lg:pl-8">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="space-y-3">
+                                <div class="bg-white p-2 rounded-lg shadow-md">
+                                    <img src="assets/logos/cisetech-brand-3d.jpeg" alt="Cisetech品牌" class="w-full h-40 md:h-48 object-cover rounded">
+                                </div>
+                                <div class="bg-white p-2 rounded-lg shadow-md">
+                                    <img src="assets/team/门口办公环境.JPG" alt="公司前台" class="w-full h-32 md:h-40 object-cover rounded">
+                                </div>
+                            </div>
+                            <div class="space-y-3 mt-8">
+                                <div class="bg-white p-2 rounded-lg shadow-md">
+                                    <img src="assets/team/tuanjian_1.png" alt="团队活动" class="w-full h-48 md:h-56 object-cover rounded">
+                                </div>
+                                <div class="bg-white p-2 rounded-lg shadow-md">
+                                    <img src="assets/about/cisetech-office-1.jpeg" alt="办公环境" class="w-full h-32 md:h-40 object-cover rounded">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="event-item below">
-                    <div class="event-content">
-                        <div class="event-year">2015年</div>
-                        <div class="event-desc">同太平洋保险、中英人寿、长城人寿、前海人寿建立框架合作关系</div>
-                    </div>
-                </div>
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2015年</div>
-                        <div class="event-desc">获得上海市高新技术企业称号</div>
-                    </div>
-                </div>
-                <div class="event-item below">
-                    <div class="event-content">
-                        <div class="event-year">2016年</div>
-                        <div class="event-desc">11月成功登录新三板，股票代码 870221</div>
-                    </div>
-                </div>
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2016年</div>
-                        <div class="event-desc">通过软件能力成熟度模型<br>CMMI3级认证</div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- 事件组3 -->
-            <div class="event-group" data-group="2">
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2017年</div>
-                        <div class="event-desc">荣获上海市科技小巨人<br>培育企业资格</div>
-                    </div>
-                </div>
-                <div class="event-item below">
-                    <div class="event-content">
-                        <div class="event-year">2017年</div>
-                        <div class="event-desc">荣获全国创新创业大赛优胜奖</div>
-                    </div>
-                </div>
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2018年</div>
-                        <div class="event-desc">荣获上海市研发机构认证</div>
-                    </div>
-                </div>
-                <div class="event-item below">
-                    <div class="event-content">
-                        <div class="event-year">2018年</div>
-                        <div class="event-desc">荣获上海市浦东新区科技发展基金重点培育企业</div>
-                    </div>
-                </div>
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2019年</div>
-                        <div class="event-desc">通过IS09001质量认证</div>
-                    </div>
-                </div>
-            </div>
+                <!-- Right: Scrollable Timeline -->
+                <div class="lg:w-3/5">
+                    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                        <div class="timeline-scroll max-h-[520px] md:max-h-[600px] overflow-y-auto pr-4 custom-scrollbar">
+                            <!-- Timeline line -->
+                            <div class="relative pl-8">
+                                <!-- Vertical line -->
+                                <div class="absolute left-[9px] top-2 bottom-2 w-0.5 bg-slate-200"></div>
 
-            <!-- 事件组4 -->
-            <div class="event-group" data-group="3">
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2020年</div>
-                        <div class="event-desc">荣获上海市科技小巨人资格</div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2010年</div>
+                        <div class="timeline-desc">6月申朴信息成立；与阿里巴巴集团签署协议；成为阿里IT服务供应商</div>
                     </div>
-                </div>
-                <div class="event-item below">
-                    <div class="event-content">
-                        <div class="event-year">2021年</div>
-                        <div class="event-desc">获得上海市专精特新中小企业称号</div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2011年</div>
+                        <div class="timeline-desc">成为中国平安集团IT供应商</div>
                     </div>
-                </div>
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2021年</div>
-                        <div class="event-desc">6月成为中国农业银行<br>IT框架服务商</div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2012年</div>
+                        <div class="timeline-desc">成为中国太平集团IT框架合作伙伴</div>
                     </div>
-                </div>
-                <div class="event-item below">
-                    <div class="event-content">
-                        <div class="event-year">2022年</div>
-                        <div class="event-desc">1月通过lS020000信息技术服务<br>管理体系认证</div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2013年</div>
+                        <div class="timeline-desc">获得上海市软件企业称号，获得IS027001认证</div>
                     </div>
-                </div>
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2022年</div>
-                        <div class="event-desc">成为蚂蚁集团框架服务商</div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2014年</div>
+                        <div class="timeline-desc">获得上海市创新基金奖励</div>
                     </div>
-                </div>
-            </div>
-
-            <!-- 事件组5 -->
-            <div class="event-group" data-group="4">
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2023年</div>
-                        <div class="event-desc">3月公司通过软件能力成熟度模型<br>CMMI5级认证</div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2015年</div>
+                        <div class="timeline-desc">同太平洋保险、中英人寿、长城人寿、前海人寿建立框架合作关系；获得上海市高新技术企业称号</div>
                     </div>
-                </div>
-                <div class="event-item below">
-                    <div class="event-content">
-                        <div class="event-year">2023年</div>
-                        <div class="event-desc">9月成为舍弗勒<br>IT框架服务商</div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2016年</div>
+                        <div class="timeline-desc">11月成功登录新三板，股票代码 870221；通过软件能力成熟度模型；CMMI3级认证</div>
                     </div>
-                </div>
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2023年</div>
-                        <div class="event-desc">11月成为腾讯集团合作伙伴</div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2017年</div>
+                        <div class="timeline-desc">荣获上海市科技小巨人；培育企业资格；荣获全国创新创业大赛优胜奖</div>
                     </div>
-                </div>
-                <div class="event-item below">
-                    <div class="event-content">
-                        <div class="event-year">2024年</div>
-                        <div class="event-desc">4月获得华为-HarmonyOS开发服务商、生态市场服务商称号</div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2018年</div>
+                        <div class="timeline-desc">荣获上海市研发机构认证；荣获上海市浦东新区科技发展基金重点培育企业</div>
                     </div>
-                </div>
-                <div class="event-item above">
-                    <div class="event-content">
-                        <div class="event-year">2024年</div>
-                        <div class="event-desc">7月成立香港全资子公司<br>辐射并拓展海外业务</div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2019年</div>
+                        <div class="timeline-desc">通过IS09001质量认证</div>
                     </div>
-                </div>
-            </div>
-
-            <!-- 事件组6 -->
-            <div class="event-group" data-group="5">
-            <div class="event-item above">
-                <div class="event-content">
-                    <div class="event-year">2024年</div>
-                    <div class="event-desc">9月通过ISO22301业务连续性管理体系、ISO45001职业健康安全管理体系认证</div>
-                </div>
-            </div>
-            <div class="event-item below">
-                <div class="event-content">
-                    <div class="event-year">2024年</div>
-                    <div class="event-desc">10月成为百度智能云<br>框架供应商</div>
-                </div>
-            </div>
-            <div class="event-item above">
-                <div class="event-content">
-                    <div class="event-year">2024年</div>
-                    <div class="event-desc">12月获得2024第八届北交所新三板年度风云榜-成长性卓越企业奖项</div>
-                </div>
-            </div>
-            <div class="event-item below">
-                <div class="event-content">
-                    <div class="event-year">2025年</div>
-                    <div class="event-desc">3月通过高新技术企业复审</div>
-                </div>
-            </div>
-            <div class="event-item above">
-                <div class="event-content">
-                    <div class="event-year">2025年</div>
-                    <div class="event-desc">3月成为浦发银行<br>IT框架供应商</div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2020年</div>
+                        <div class="timeline-desc">荣获上海市科技小巨人资格</div>
+                    </div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2021年</div>
+                        <div class="timeline-desc">获得上海市专精特新中小企业称号；6月成为中国农业银行；IT框架服务商</div>
+                    </div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2022年</div>
+                        <div class="timeline-desc">1月通过lS020000信息技术服务；管理体系认证；成为蚂蚁集团框架服务商</div>
+                    </div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2023年</div>
+                        <div class="timeline-desc">3月公司通过软件能力成熟度模型；CMMI5级认证；9月成为舍弗勒；IT框架服务商；11月成为腾讯集团合作伙伴</div>
+                    </div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2024年</div>
+                        <div class="timeline-desc">4月获得华为-HarmonyOS开发服务商、生态市场服务商称号；7月成立香港全资子公司；辐射并拓展海外业务；9月通过ISO22301业务连续性管理体系、ISO45001职业健康安全管理体系认证；10月成为百度智能云；框架供应商；12月获得2024第八届北交所新三板年度风云榜-成长性卓越企业奖项</div>
+                    </div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2025年</div>
+                        <div class="timeline-desc">3月通过高新技术企业复审；3月成为浦发银行；IT框架供应商；7月成为国泰海通；框架服务商；8月通过TMMI3认证；12月收购赫里普达成战略合作</div>
+                    </div>
+                    <div class="timeline-entry">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2026年</div>
+                        <div class="timeline-desc">3月通过CMMI5认证复审</div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- 事件组7 -->
-        <div class="event-group" data-group="6">
-            <div class="event-item above">
-                <div class="event-content">
-                    <div class="event-year">2025年</div>
-                    <div class="event-desc">7月成为国泰海通<br>框架服务商</div>
-                </div>
-            </div>
-            <div class="event-item below">
-                <div class="event-content">
-                    <div class="event-year">2025年</div>
-                    <div class="event-desc">8月通过TMMI3认证</div>
-                </div>
-            </div>
-            <div class="event-item above">
-                <div class="event-content">
-                    <div class="event-year">2025年</div>
-                    <div class="event-desc">12月收购赫里普达成战略合作</div>
-                </div>
-            </div>
-            <div class="event-item below">
-                <div class="event-content">
-                    <div class="event-year">2026年</div>
-                    <div class="event-desc">3月通过CMMI5认证复审</div>
-                </div>
-            </div>
-            <div class="event-item above">
-                <div class="event-content" style="text-align: center; white-space: nowrap;">
-                    <div class="event-year text-blue-500 font-bold text-lg">未完待续...</div>
-                </div>
-            </div>
-        </div>
+        <style>
+            .custom-scrollbar::-webkit-scrollbar {
+                width: 6px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-track {
+                background: #f1f5f9;
+                border-radius: 3px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb {
+                background: #94a3b8;
+                border-radius: 3px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                background: #64748b;
+            }
 
-        <!-- 左右箭头按钮 - 移出container让它们靠边缘 -->
-        <button class="timeline-arrow timeline-arrow-left" onclick="prevGroup()" aria-label="上一页" style="left: 10px;">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-        </button>
-        <button class="timeline-arrow timeline-arrow-right" onclick="nextGroup()" aria-label="下一页" style="right: 10px;">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-        </button>
+            .timeline-entry {
+                position: relative;
+                padding: 12px 0 20px 0;
+            }
+            .timeline-entry:last-child {
+                padding-bottom: 4px;
+            }
+            .timeline-dot {
+                position: absolute;
+                left: -26px;
+                top: 16px;
+                width: 10px;
+                height: 10px;
+                background: #0284c7;
+                border-radius: 50%;
+                border: 2px solid #e0f2fe;
+                z-index: 1;
+            }
+            .timeline-year {
+                font-size: 18px;
+                font-weight: 700;
+                color: #0284c7;
+                margin-bottom: 4px;
+            }
+            .timeline-desc {
+                font-size: 15px;
+                line-height: 1.7;
+                color: #475569;
+            }
+            .timeline-entry:hover .timeline-dot {
+                transform: scale(1.4);
+                background: #0369a1;
+                box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+                transition: all 0.2s ease;
+            }
+            .timeline-entry:hover .timeline-year {
+                color: #0369a1;
+            }
 
-        <div class="milestone-indicators">
-            <div class="milestone-indicator active" onclick="goToGroup(0)"></div>
-            <div class="milestone-indicator" onclick="goToGroup(1)"></div>
-            <div class="milestone-indicator" onclick="goToGroup(2)"></div>
-            <div class="milestone-indicator" onclick="goToGroup(3)"></div>
-            <div class="milestone-indicator" onclick="goToGroup(4)"></div>
-            <div class="milestone-indicator" onclick="goToGroup(5)"></div>
-            <div class="milestone-indicator" onclick="goToGroup(6)"></div>
-        </div>
-    </div>
-</section>
+            @media (max-width: 1024px) {
+                .timeline-scroll {
+                    max-height: 450px;
+                }
+                .timeline-year {
+                    font-size: 16px;
+                }
+                .timeline-desc {
+                    font-size: 14px;
+                }
+            }
+        </style>
+    </section>
 
 <script>
     // 轮播逻辑
@@ -2972,7 +2733,7 @@
 
         const pathLength = wavePath.getTotalLength();
         const positions = [0.125, 0.3125, 0.5, 0.6875, 0.875]; // 12.5%, 31.25%, 50%, 68.75%, 87.5%
-        const events = group.querySelectorAll('.event-item');
+        
 
         // 计算缩放比例
         const scaleX = waveSvg.clientWidth / 1200;
@@ -4082,13 +3843,6 @@
             ];
             
             // 根据X坐标计算Y坐标（沿着贝塞尔曲线）
-            function getWaveY(x) {
-                // 找到对应的曲线段
-                const segment = waveSegments.find(seg => x >= seg.start.x && x <= seg.end.x);
-                
-                if (!segment) {
-                    return 400; // 默认位置
-                }
                 
                 // 计算在该段中的位置 (t从0到1)
                 const segmentLength = segment.end.x - segment.start.x;
@@ -4121,7 +3875,7 @@
             function initPointPositions() {
                 timelinePoints.forEach(point => {
                     const x = parseInt(point.dataset.x);
-                    const y = getWaveY(x);
+                    
                     point.style.left = `${x}px`;
                     point.style.top = `${y}px`;
                 });
@@ -4140,7 +3894,7 @@
                 ballX = progress * (totalWaveWidth - 200);
                 
                 // 获取波浪线上的Y坐标
-                const ballY = getWaveY(ballX);
+                
                 
                 // 更新小球位置
                 movingBall.style.left = `${ballX}px`;
@@ -4312,7 +4066,7 @@
                 // 创建事件项
                 events.forEach((event, index) => {
                     const eventItem = document.createElement('div');
-                    eventItem.className = 'event-item absolute';
+                    
                     const yPos = startY + index * spacing;
                     eventItem.style.left = `${lineX}px`;
                     eventItem.style.top = `${yPos}px`;
