@@ -4726,7 +4726,7 @@
                 labelPos.x += xOffset + customOffset.x;
                 labelPos.y += customOffset.y;
                 cityLabel.position.copy(labelPos);
-                cityLabel.userData = { basePosition: position.clone() }; // 保存基础位置
+                cityLabel.userData = { basePosition: position.clone(), customOffset: customOffset }; // 保存基础位置和自定义偏移
                 scene.add(cityLabel); // 添加到场景而不是地球
                 cityLabels.push(cityLabel);
             });
@@ -5100,10 +5100,13 @@
                         label.position.copy(labelPos);
                     } else {
                     */
-                        // 普通标签，使用basePosition计算
-                        const basePos = label.userData.basePosition;
+                        // 普通标签，使用basePosition + customOffset计算
+                        const basePos = label.userData.basePosition.clone();
+                        if (label.userData.customOffset) {
+                            basePos.add(label.userData.customOffset);
+                        }
                         // 应用地球的旋转
-                        const rotatedPos = basePos.clone().applyQuaternion(globe.quaternion);
+                        const rotatedPos = basePos.applyQuaternion(globe.quaternion);
                         label.position.copy(rotatedPos);
                     /*
                     }
