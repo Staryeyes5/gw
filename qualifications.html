@@ -2664,6 +2664,9 @@
             currentCategory = nextCategory;
             currentDataIndex = 0; // 从第一张卡片开始
             renderCards(nextCategory);
+            
+            // 重启自动滚动，确保新分类的轮播正常运行
+            restartAutoScroll();
         }
 
         // 暂停自动滚动
