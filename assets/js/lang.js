@@ -28,10 +28,10 @@ const translations = {
         // 核心业务
         'section.core-business.title': '核心业务',
         'section.core-business.subtitle': '全栈AI能力，赋能企业智能化转型',
-        'section.ai-consulting': 'AI咨询',
-        'section.ai-infra': 'AI基建服务',
-        'section.ai-solutions': 'AI Agent开发实施',
-        'section.talent': '人才配置与管理服务',
+        'section.ai-consulting': '战略规划',
+        'section.ai-infra': '解决方案',
+        'section.ai-solutions': '产品',
+        'section.talent': '人力资源配置与服务',
         
         // 关于我们
         'about.title': '关于申朴',
