@@ -1573,6 +1573,10 @@
             .category-info-title { font-size: 20px; margin-bottom: 8px; }
             .category-info-desc { font-size: 13px; opacity: 0.8; }
             .honor-carousel-wrapper { 
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                transform: none !important;
                 width: 100%; 
                 height: auto; 
                 min-height: 450px;
@@ -1583,17 +1587,19 @@
         }
         
         @media (max-width: 768px) {
-            .honor-carousel-section { min-height: 550px; }
-            .category-sidebar { padding: 20px; min-height: auto; }
+            .honor-carousel-section { min-height: auto; }
+            .category-sidebar { padding: 16px; min-height: auto; }
             .category-tabs-container { 
-                gap: 30px;
+                gap: 20px;
                 flex-direction: row;
                 min-height: auto;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             .category-tab { 
-                font-size: 16px; 
-                letter-spacing: 3px;
-                padding-left: 16px;
+                font-size: 14px; 
+                letter-spacing: 2px;
+                padding-left: 14px;
                 position: relative;
                 opacity: 1;
                 transform: none;
@@ -1609,25 +1615,27 @@
                 position: relative;
                 top: auto;
             }
-            .tab-icon { width: 7px; height: 7px; }
-            .carousel-content-area { min-height: 550px; padding: 10px; }
-            .category-info-right { display: block; margin-bottom: 12px; }
-            .category-info-title { font-size: 18px; }
-            .category-info-desc { font-size: 12px; }
-            .honor-carousel-wrapper { width: 100%; min-height: 420px; }
-            .honor-card { width: 200px; }
+            .tab-icon { width: 6px; height: 6px; }
+            .carousel-content-area { min-height: auto; padding: 0 10px 10px; position: relative; }
+            .category-info-right { display: block; margin-bottom: 10px; }
+            .category-info-title { font-size: 16px; }
+            .category-info-desc { font-size: 11px; }
+            .honor-carousel-wrapper { width: 100%; min-height: auto; }
+            .honor-card { width: 180px; flex-shrink: 0; }
             .honor-card-image { height: 120px; padding: 8px; }
-            .honor-card-image img { width: 160px; height: 100px; }
-            .honor-card-info { padding: 10px 12px; }
-            .honor-card-title { font-size: 12px; }
-            .honor-card-subtitle { font-size: 10px; }
+            .honor-card-image img { width: 140px; height: 90px; object-fit: contain; }
+            .honor-card-info { padding: 8px 10px; }
+            .honor-card-title { font-size: 11px; }
+            .honor-card-subtitle { font-size: 9px; }
         }
         
         @media (max-width: 480px) {
-            .category-tab { font-size: 13px; }
-            .honor-card { width: 170px; }
-            .honor-card-image { height: 110px; padding: 12px; }
-            .honor-card-image img { width: 120px; height: 90px; }
+            .category-tab { font-size: 12px; letter-spacing: 1px; }
+            .honor-card { width: 150px; }
+            .honor-card-image { height: 100px; padding: 6px; }
+            .honor-card-image img { width: 110px; height: 75px; object-fit: contain; }
+            .honor-card-title { font-size: 10px; }
+            .honor-card-subtitle { font-size: 9px; }
         }
         
         /* Footer标题下划线装饰 */
