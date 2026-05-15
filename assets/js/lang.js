@@ -1,1188 +1,465 @@
-// ===== Global Language Switch =====
-let currentLang = localStorage.getItem('siteLanguage') || 'zh';
+// ===== 全局语言切换功能 =====
+// 支持所有页面的中英文切换
 
-const zhToEn = {
-    "为信仰，我们是国内领先的数转智改与AI智能化综合服务商。深耕战略规划、解决方案、自研产品矩阵、人力资源配置四大核心业务方向，依托人工智能、大数据、区块链、隐私计算以及5G多元化前沿技术底座，构建技术自研、服务落地、产业赋能的三位一体智能化服务体系。我们精准聚焦保险、银行、金融科技、融资租赁、互联网、新型制造等重点行业，同时广泛辐射政企、央国企等多元服务领域，打造适配不同行业属性、不同企业发展阶段的数转智改方案矩阵，全方位、多层次驱动千行百业完成智能化、数字化转型升级": "Driven by belief, we are a leading domestic comprehensive service provider for digital transformation and AI intelligence. We deeply cultivate four core business directions: strategic planning, solutions, self-developed product matrix, and HR configuration. Leveraging diversified cutting-edge technology foundations including AI, big data, blockchain, privacy computing, and 5G, we build a trinity intelligent service system of self-developed technology, service implementation, and industry empowerment.",
-    "高端新型制造企业。公司具备完善的全链路综合服务能力，从企业数字化顶层战略规划、定制化行业解决方案输出，到AI智能产品、大数据管理、国产信创适配、移动安全防护、客户体验优化五大自研产品矩阵落地交付，搭配全周期人力资源配置，一站式满足企业顶层转型设计、数字化系统搭建、业务流程优化、灵活用工交付等多元化发展需求": "high-end advanced manufacturing enterprises. The company has comprehensive full-link service capabilities, from enterprise digital top-level strategic planning and customized industry solution delivery, to five major self-developed product matrices.",
-    "4月获得华为-HarmonyOS开发服务商、生态市场服务商称号；7月成立香港全资子公司；辐射并拓展海外业务；9月通过ISO22301业务连续性管理体系、ISO45001职业健康安全管理体系认证；10月成为百度智能云框架供应商；12月获得2024第八届北交所新三板年度风云榜-成长性卓越企业奖项": "April: Obtained Huawei HarmonyOS Development Service Provider title; July: established Hong Kong subsidiary; September: passed ISO22301 and ISO45001 certifications; October: became Baidu Intelligent Cloud framework supplier; December: won 2024 NEEQ Outstanding Growth Enterprise Award",
-    "未来，我们将持续深耕技术研发，深化AI技术与实体经济的深度融合创新，不断迭代优化技术架构、打磨智能化技术与产品服务体系，以高可靠、高专业、全覆盖的全链路数智化能力，助力各行业企业实现降本增效与高质量转型升级，致力于让先进AI智能科技普惠产业、赋能企业、覆盖每一个角落": "In the future, we will continue to deepen technology R&D, strengthen the deep integration and innovation of AI technology with the real economy, continuously iterate and optimize technical architecture, and refine intelligent technology and product service systems.",
-    "AI原生开发平台建设落地(云架构构建)。Agent开发、训练及集群管理。Agent工程化训练(大模型/深度学习/记忆与知识库/Skill/垂直行业Agent开发等方向)。AI辅助编程领域小模型构建与训练。": "AI-Native development platform implementation (cloud architecture). Agent development, training and cluster management. Agent engineering training (LLM/deep learning/memory & knowledge base/Skill/vertical industry Agent development). AI-assisted programming domain small model construction and training.",
-    "数据库SQL代码调优与AI智能审核（SQL AI Review）、数据库研发规范管理（Bettle）、数据库代码自动转换（Carn）、数据迁移与同步（Data Bus）、以及企业应用鸿蒙化架构与实施方案": "Database SQL Code Tuning & AI Intelligent Review (SQL AI Review), Database Development Standard Management (Bettle), Database Code Auto-Conversion (Carn), Data Migration & Synchronization (Data Bus), and Enterprise HarmonyOS Architecture & Implementation",
-    "依托深度语义分析与智能规则库，支持Java、Python、PHP等主流开发语言，兼容Oracle、MySQL、PostgreSQL等主流数据库，无需运行代码即可完成自动化扫描。": "Leveraging deep semantic analysis and intelligent rule engine, supporting mainstream development languages such as Java, Python, PHP, compatible with mainstream databases such as Oracle, MySQL, PostgreSQL, completing automated scanning without running code.",
-    "原生分布式数据库，具备城市级无损容灾、全兼容Oracle SQL语法、极致压缩等核心能力，为金融、政务、电信等关键行业提供高可用、高性能、高安全的数据基础设施解决方案。": "Native distributed database with city-level disaster recovery, full Oracle SQL syntax compatibility, extreme compression and other core capabilities, providing high-availability, high-performance, high-security data infrastructure solutions for key industries such as finance, government, and telecommunications.",
-    "支持Java、Python、JavaScript三大主流语言，深度集成JMeter、TestNG、Locust等测试框架，提供语法高亮、自动补全、在线编辑等智能化功能。": "Supporting three mainstream languages — Java, Python, JavaScript — deeply integrated with testing frameworks such as JMeter, TestNG, Locust, providing intelligent features including syntax highlighting, auto-completion, and online editing.",
-    "遵循《数据安全法》与民航领域数据安全规范，采用HTTPS/TLS 1.3传输加密、AES-256-GCM字段级加密、RBAC权限控制，保障数据安全合规。": "Compliant with the Data Security Law and civil aviation data security regulations, using HTTPS/TLS 1.3 transmission encryption, AES-256-GCM field-level encryption, RBAC access control, ensuring data security and compliance.",
-    "3月通过高新技术企业复审；3月成为浦发银行IT框架供应商；7月成为国泰海通框架服务商；8月通过TMMI3认证；12月收购赫里普达成战略合作": "March: Passed High-Tech Enterprise re-certification; became SPD Bank IT framework supplier; July: became Guotai Haitong framework service provider; August: passed TMMI Level 3 certification; December: acquired Helipu for strategic partnership",
-    "以人工智能技术为核心，重构企业招聘全流程，通过智能化、数据化手段，提升招聘效率与人才匹配精准度，构建高效、精准、智能的人才招聘与管理体系。": "With AI technology at the core, reconstructing the entire enterprise recruitment process, improving recruitment efficiency and talent matching precision through intelligent and data-driven methods, building an efficient, precise, and intelligent talent recruitment and management system.",
-    "Simple Insight一体化智能可观测平台，集成全栈链路监控、智能异常检测与自动化响应，为企业本地私有化部署提供全方位安全护航": "Simple Insight Integrated Intelligent Observability Platform, integrating full-stack link monitoring, intelligent anomaly detection, and automated response, providing comprehensive security for enterprise on-premise private deployment",
-    "打造企业专属AI 原生技术底座，支持私有化部署与多云适配，提供模型管理、数据治理、向量库、提示词工程、LLMOps 全生命周期能力。": "Building enterprise-exclusive AI-native technology foundations, supporting private deployment and multi-cloud adaptation, providing full-lifecycle capabilities including model management, data governance, vector databases, prompt engineering, and LLMOps.",
-    "AI通过B端工具整合健康资源，支持管理系统定制化开发，助力企业构建“检测+服务+商业”开放健康生态，融合职工健康管理与企业发展。": "AI integrates health resources through B2B tools, supporting customized management system development, helping enterprises build detection-service-commerce open health ecosystems, integrating employee health management with enterprise development.",
-    "AI通过B端工具整合健康资源，支持管理系统定制化开发，助力企业构建\"检测+服务+商业\"开放健康生态，融合职工健康管理与企业发展。": "AI integrates health resources through B2B tools, supporting customized management system development, helping enterprises build an open health ecosystem of detection + services + commerce, integrating employee health management with business development.",
-    "提供基础规则与业务规则双层配置，内置飞行计划编号生成、时空数据关联等低空场景专用规则，支持JSON、XML、CSV等多种格式。": "Providing dual-layer configuration of basic rules and business rules, with built-in low-altitude scenario-specific rules such as flight plan numbering and spatiotemporal data association, supporting multiple formats including JSON, XML, CSV.",
-    "AI整合“筛查-监测-干预”全链路服务，结合医用设备生成职工个人健康画像，实现一站式管理与职工健康数据、干预措施的闭环联动。": "AI integrates screening-monitoring-intervention full-link services, generating employee personal health profiles with medical equipment, achieving one-stop management and closed-loop linkage of health data and interventions.",
-    "AI整合\"筛查-监测-干预\"全链路服务，结合医用设备生成职工个人健康画像，实现一站式管理与职工健康数据、干预措施的闭环联动。": "AI integrates the full-chain screening-monitoring-intervention service, combined with medical equipment to generate individual employee health profiles, achieving one-stop management and closed-loop linkage of employee health data and intervention measures.",
-    "AI辅助编程工具、AI招聘、招投标助手、各类场景AI Agent、智安AI Agent安全验证平台、Agent代码安全审查": "AI-Assisted Programming Tools, AI Recruitment, Bidding Assistant, Various AI Agents, AI Agent Security Verification Platform, Agent Code Security Audit",
-    "曦云 / 曦思 / 曦彩三大系列，PCIe/OAM 多形态，风冷 / 液冷可选，覆盖云端训推、大模型推理、高端渲染全场景。": "Three series — Xi Yun / Xi Si / Xi Cai — with PCIe/OAM form factors, air/liquid cooling options, covering all scenarios from cloud training-inference to large model inference and high-end rendering.",
-    "AI算法实时解析各环节安全数据，精准研判风险，将AI安全能力融入全流程，主动预判隐患，替代被动防护，实现安全管控无死角。": "AI algorithms analyze security data in real-time, precisely assess risks, integrate AI security capabilities throughout the process, proactively predict threats, replacing passive protection with comprehensive security management.",
-    "基于大模型人才画像与智能匹配技术，构建弹性的数字化人才供应链，为企业提供高适配度的技术人才与项目团队，支撑业务快速迭代。": "Building an elastic digital talent supply chain based on large-model talent profiling and intelligent matching, providing enterprises with highly adaptable technical talents and project teams to support rapid business iteration.",
-    "AI联动多套系设备，灵活覆盖企业办公区、食堂等场景，实时采集十大核心健康指标并同步管理，构建企业全域实时健康监测网络。": "AI connects multiple sets of equipment, flexibly covering enterprise office areas, cafeterias and other scenarios, collecting ten core health indicators in real-time and synchronizing management, building enterprise-wide real-time health monitoring network.",
-    "AI基于检测数据生成职工定制化健康计划，联动第三方专业机构提供康复服务，实现精准个性化管理，提升干预效果与职工依从性。": "AI generates customized health plans based on test data, links with third-party professional institutions for rehabilitation services, achieving precise personalized management, improving intervention effectiveness and employee compliance.",
-    "实现漏洞精准定位、风险等级分级、修复方案一键生成，降低误报率与漏报率，有效规避因代码缺陷引发的数据安全事故与性能故障。": "Achieving precise vulnerability localization, risk level grading, one-click remediation plan generation, reducing false positive and false negative rates, effectively avoiding data security incidents and performance failures caused by code defects.",
-    "卓越技术，权威认可。我们致力于构建全球领先、合规、可信赖的 AI 信息技术服务，为全球客户提供最高标准的数字安全保障。": "Outstanding Technology, Authoritative Recognition. We are committed to building globally leading, compliant, and trustworthy AI IT services, providing the highest standard of digital security for global clients.",
-    "面向低空飞行管理领域的专业测试平台，支持测试任务管理、测试数据管理、测试脚本管理等核心功能，保障低空飞行安全高效运行。": "A professional testing platform for low-altitude flight management, supporting core functions including test task management, test data management, and test script management, ensuring safe and efficient low-altitude flight operations.",
-    "无缝对接Git、Jenkins等开发运维工具，适配DevSecOps研发流程，实现安全管控前置化，缩减安全运维成本。": "Seamlessly integrating with development and operations tools such as Git and Jenkins, adapting to DevSecOps development processes, achieving proactive security management, reducing security operations costs.",
-    "通过前置化安全管控，帮助企业满足等保2.0、数据安全法等合规要求，全面提升企业数据库代码质量与核心数据安全防护能力。": "Through proactive security management, helping enterprises meet compliance requirements such as Level Protection 2.0 and Data Security Law, comprehensively improving enterprise database code quality and core data security protection capabilities.",
-    "覆盖创建、执行、停止、保存、删除五大环节，支持三步引导式配置、定时调度与实时监控，实现测试任务标准化、智能化管控。": "Covering five key stages: creation, execution, stop, save, and deletion, supporting three-step guided configuration, scheduled dispatch, and real-time monitoring, achieving standardized and intelligent test task management.",
-    "一站式AI智能辅助工具，为企业快速获取标讯信息、撰写标书、智能查重纠错、合规校验要点、提升中标效率，全程省心高效。": "One-stop AI intelligent assistant tool for enterprises to quickly access bidding information, write proposals, intelligent duplicate checking and error correction, compliance verification, improving win rates — worry-free and efficient throughout.",
-    "采用分层微服务+云原生部署架构，实现集群化部署、故障自动转移、数据多副本存储，确保服务可用性不低于99.99%。": "Adopting layered microservice + cloud-native deployment architecture, achieving cluster deployment, automatic failover, multi-replica data storage, ensuring service availability of no less than 99.99%.",
-    "Simple Insight一体化智能可观测平台架构设计，全栈链路监控、智能异常检测与自动化响应技术方案详解。": "Simple Insight integrated intelligent observability platform architecture design, with detailed technical solutions for full-stack link monitoring, intelligent anomaly detection, and automated response.",
-    "为企业提供全栈式算力基础设施服务，通过异构芯片选型、弹性调度与集群化部署，构建高效、可扩展的 AI 算力底座。": "Providing enterprises with full-stack computing infrastructure services, building efficient, scalable AI computing foundations through heterogeneous chip selection, elastic scheduling, and cluster deployment.",
-    "基于AI智能化平台与专业服务团队，为企业提供端到端的业务流程外包服务，通过人机协同模式实现效率提升与成本优化。": "Providing end-to-end BPO services through AI-intelligent platforms and professional service teams, achieving efficiency improvement and cost optimization through human-AI collaboration.",
-    "全自研 GPU IP，多精度混合算力，搭配高带宽显存与高速互连技术，性能对标国际主流，支撑千亿参数大模型训推。": "Fully self-developed GPU IP with mixed-precision computing, paired with high-bandwidth memory and high-speed interconnect technology, benchmarking against international mainstream performance, supporting hundred-billion-parameter large model training and inference.",
-    "面向低空飞行管理领域的专业测试平台，支持测试任务全生命周期管理、测试数据智能生成、多语言脚本编写等核心功能。": "A professional testing platform for low-altitude flight management, supporting test task lifecycle management, intelligent test data generation, multi-language scripting and other core functions.",
-    "作为拥有CMMI5全球顶级认证的高新技术企业，公司技术实力雄厚，手握7项技术专利、180余项软件著作权，汇聚": "As a high-tech enterprise with CMMI5 global top-level certification, the company has strong technical capabilities, holding 7 technology patents and over 180 software copyrights, gathering",
-    "金融级移动安全检测平台（IOS/安卓/鸿蒙APP、小程序、SDK等）、移动安全检测工具包、互联网运营反薅羊毛": "Financial-Grade Mobile Security Detection Platform (iOS/Android/HarmonyOS APP, Mini Programs, SDKs, etc.), Mobile Security Detection Toolkit, Internet Anti-Fraud",
-    "金融级移动安全检测平台（IOS/安卓/鸿蒙APP、小程序、SDK等）、移动安全检测工具包、互联网运营反薠羊毛": "Financial-Grade Mobile Security Detection Platform (iOS/Android/HarmonyOS APP, Mini Programs, SDKs, etc.), Mobile Security Detection Toolkit, Internet Anti-Fraud",
-    "具备自定义审计规则、批量项目检测能力，支持审计报告自动导出、漏洞追踪闭环管理，满足企业规模化安全审计需求。": "Equipped with custom audit rules, batch project detection capabilities, supporting automated audit report export, closed-loop vulnerability tracking management, meeting enterprise large-scale security audit needs.",
-    "为企业提供与 AI 基建深度绑定的人才培养服务，让技术底座与人才能力同步升级，保障 AI 基建价值最大化。": "Providing enterprises with talent development services deeply integrated with AI infrastructure, ensuring technology foundations and talent capabilities upgrade in sync, maximizing AI infrastructure value.",
-    "3月公司通过软件能力成熟度模型CMMI5级认证；9月成为舍弗勒IT框架服务商；11月成为腾讯集团合作伙伴": "March: Passed CMMI Level 5 certification; September: became Schaeffler IT framework service provider; November: became Tencent Group partner",
-    "AI-First：赋能企业实现数智化转型，构建未来生产力。从算力底座到行业应用，提供全栈式AI解决方案。": "AI-First: Empowering enterprises to achieve digital-intelligent transformation, building future productivity. From computing foundation to industry applications, providing full-stack AI solutions.",
-    "精通目标检测（YOLO、Faster R-CNN等）、图像分割（U-Net、Mask R-CNN等）算法": "Proficient in object detection (YOLO, Faster R-CNN, etc.) and image segmentation (U-Net, Mask R-CNN, etc.) algorithms",
-    "内容安全与合规治理：依托多模态大模型，提供文本、图片、音视频的智能审核与人工精校，构建全时段内容安全防线": "Content Security & Compliance Governance: Leveraging multimodal large models for intelligent and manual review of text, images, audio, and video, building an around-the-clock content security defense line",
-    "自研 MXMACA® 软件栈兼容 CUDA，支持主流开源生态，业务近零成本迁移，适配各类创新模型与算子。": "Self-developed MXMACA® software stack compatible with CUDA, supporting mainstream open-source ecosystems, near-zero-cost business migration, adapting to various innovative models and operators.",
-    "万卡集群线性度 91.2%，长期稳定无中断运行，适配浪潮、H3C 等主流服务器，商业化千卡集群批量落地。": "10,000-card cluster linearity of 91.2%, long-term stable uninterrupted operation, compatible with mainstream servers such as Inspur and H3C, commercial thousand-card clusters deployed at scale.",
-    "AI自动抓取、分类全网招投标信息，智能筛选定位高匹配项目，节省人工检索时间，提升项目获取效率与精准度。": "AI automatically captures and categorizes nationwide bidding information, intelligently screens and locates high-match projects, saving manual search time, improving project acquisition efficiency and accuracy.",
-    "为企业提供全链路 AI 战略咨询服务，通过现状评估、场景挖掘与技术规划，构建可落地的 AI 转型蓝图。": "Providing enterprises with full-lifecycle AI strategic consulting services, building actionable AI transformation blueprints through current-state assessment, scenario discovery, and technology planning.",
-    "以AI大模型为核心，提供全流程智能化服务，自动生成适配方案，减少人工干预，让企业轻松享受专业安全保障。": "With AI large models at the core, providing full-process intelligent services, automatically generating adapted solutions, reducing manual intervention, enabling enterprises to easily enjoy professional security assurance.",
-    "内置120+AI智能检测组件，覆盖多形态应用与多维度风险，AI深度学习筛选风险，提升检测精准度与效率。": "Built-in 120+ AI intelligent detection components, covering multi-form applications and multi-dimensional risks, using AI deep learning to filter risks, improving detection accuracy and efficiency.",
-    "申朴信息上海总部乔迁至浦东新区国展路1529号，新办公空间将为团队提供更好的工作环境和协作条件...": "Cisetech Shanghai headquarters relocated to No. 1529 Guozhan Road, Pudong New Area. The new office space provides a better working environment and collaboration conditions...",
-    "全面兼容Oracle SQL语法、PL/SQL、数据类型等，老系统丝滑迁移，大幅降低迁移成本与风险。": "Fully compatible with Oracle SQL syntax, PL/SQL, data types, etc., smooth legacy system migration, significantly reducing migration costs and risks.",
-    "AI自动解析海量简历、提取关键信息，结合岗位需求智能匹配筛选，降低人工成本，提升初筛效率与精准度。": "AI automatically parses massive resumes, extracts key information, and intelligently matches and screens based on job requirements, reducing labor costs and improving screening efficiency and accuracy.",
-    "AI对接多招聘平台及企业自有渠道，实现招聘信息自动同步、统一管理，消除信息孤岛，提升渠道运营效率。": "AI connects with multiple recruitment platforms and enterprise channels, achieving automatic recruitment information sync and unified management, eliminating information silos, improving channel operation efficiency.",
-    "全面兼容Oracle SQL语法、数据类型及PL/SQL，大幅降低迁移成本和改造风险，实现平滑迁移": "Fully compatible with Oracle SQL syntax, data types and PL/SQL, significantly reducing migration costs and transformation risks, achieving smooth migration",
-    "呼叫中心服务、客服、外呼、催收、标注、审核、运营、互联网营销推广、金融后台服务、其他业务运营服务。": "Call Center Services, Customer Service, Outbound, Collection, Annotation, Review, Operations, Internet Marketing, Financial Back-Office Services, Other Business Operations.",
-    "基于深度学习的简历智能解析、自动初筛与面试评估系统技术架构详解，助力企业招聘效率提升300%以上。": "Detailed technical architecture of the deep learning-based intelligent resume parsing, automatic screening, and interview evaluation system, boosting recruitment efficiency by over 300%.",
-    "面向企业数据库安全的专业化静态代码检测产品，精准识别SQL注入、权限越权、数据泄露等高风险问题。": "A professional static code detection product for enterprise database security, accurately identifying high-risk issues such as SQL injection, privilege escalation, and data leakage.",
-    "呼叫中心服务、客服、外呼、催收、标注、审核、运营、互联网营销推广、金融后台服务、其他业务运营服务": "Call Center Services, Customer Service, Outbound, Collection, Annotation, Review, Operations, Internet Marketing, Financial Back-Office Services, Other Business Operations",
-    "三地五中心城市级无损容灾架构、全兼容Oracle SQL语法实现原理与企业级数据库迁移最佳实践。": "Three-region five-center city-level lossless disaster recovery architecture, full Oracle SQL syntax compatibility and enterprise database migration best practices.",
-    "负责自然语言处理模型的研发与优化，包括LLM微调、RAG、Prompt Engineering等": "Responsible for NLP model R&D and optimization, including LLM fine-tuning, RAG, Prompt Engineering, etc.",
-    "智能客户交互中心：提供基于大模型的工单处理、智能外呼、精准营销及在线客户关怀服务，提升转化与留存": "Intelligent Customer Interaction Center: Providing large-model-based ticket processing, intelligent outbound calls, precision marketing, and online customer care, improving conversion and retention",
-    "沐曦国产通用GPU，专为大规模AI计算设计，支持通用计算与图形渲染，实现国产化替代的强大动力源": "Maxxiri domestic general-purpose GPU, designed for large-scale AI computing, supporting general computing and graphics rendering, a powerful driver for domestic substitution",
-    "AI结合各平台特性优化发布方案，一键精准投放，提升职位曝光与候选人触达率，优化招聘投放ROI。": "AI optimizes posting strategies based on platform characteristics, enabling one-click precise distribution, improving job exposure and candidate reach, optimizing recruitment ROI.",
-    "AI挖掘历史中标数据与市场动态，提供趋势分析、竞争研判，输出投标策略与报价参考，助力科学决策。": "AI mines historical winning bid data and market dynamics, provides trend analysis, competitive assessment, outputs bidding strategies and pricing references, supporting scientific decision-making.",
-    "构建面向 AI 工作负载优化的专用网络，支撑多机多卡高效通信与跨区域协同，保障训练与推理性能。": "Building dedicated networks optimized for AI workloads, supporting efficient multi-node multi-card communication and cross-region collaboration, ensuring training and inference performance.",
-    "训练框架优化：PyTorch/TensorFlow/DeepSpeed 等分布式训练与性能调优": "Training Framework Optimization: Distributed training and performance tuning with PyTorch/TensorFlow/DeepSpeed",
-    "AI驱动漏洞管理，实时发现、分级、修复漏洞，依托AI自学习能力迭代防护策略，构建闭环防护体系。": "AI-driven vulnerability management: real-time discovery, classification, and remediation of vulnerabilities, leveraging AI self-learning to iterate protection strategies, building a closed-loop defense system.",
-    "AI分析招聘全流程数据，生成多维度报告与优化建议，为招聘策略调整、人才规划提供科学数据依据。": "AI analyzes full recruitment process data, generates multi-dimensional reports and optimization suggestions, providing scientific data basis for recruitment strategy adjustment and talent planning.",
-    "支持同城三机房及三地五中心部署架构，RPO=0、RTO<30秒，确保业务在极端灾害下的连续性": "Supporting same-city three-datacenter and three-region five-center deployment architecture, RPO=0, RTO<30s, ensuring business continuity under extreme disasters",
-    "AI多维度挖掘潜在优质人才、精准触达，构建并更新企业人才库，为人才储备与战略招聘提供支撑。": "AI multi-dimensionally mines potential quality talents, precisely reaches them, builds and updates enterprise talent pools, supporting talent reserve and strategic recruitment.",
-    "历经支付宝双11流量考验，支持在线扩缩容、故障自愈，为关键业务提供99.999%可用性保障": "Tested by Alipay Double 11 traffic, supporting online scaling, self-healing from failures, providing 99.999% availability guarantee for critical business",
-    "提供从训练到推理的一体化软件平台与自动化工具链，降低 AI 开发门槛，加速模型迭代与落地。": "Providing an integrated software platform and automated toolchain from training to inference, lowering AI development barriers and accelerating model iteration and deployment.",
-    "AI自动生成专业报告，挖掘高频风险、定位根源，提供优化建议，为安全决策与整改提供数据支撑。": "AI auto-generates professional reports, identifying high-frequency risks and root causes, providing optimization recommendations, supporting security decision-making and remediation with data.",
-    "支持与国际 GPU 异构混训，算力利用效率超 100%，盘活既有资源，最大化保护客户投资。": "Supporting heterogeneous mixed training with international GPUs, computing utilization exceeding 100%, revitalizing existing resources, maximizing customer investment protection.",
-    "原生分布式数据库，具备城市级无损容灾、全兼容Oracle SQL语法、极致压缩等核心能力": "Native distributed database with city-level disaster recovery, full Oracle SQL syntax compatibility, extreme compression and other core capabilities",
-    "基于LSM-Tree存储引擎的高效压缩技术，压缩比可达3:1至10:1，大幅节省存储成本": "Efficient compression technology based on LSM-Tree storage engine, compression ratio up to 3:1 to 10:1, significantly saving storage costs",
-    "人工智能、软件研发、大数据、区块链、物联网、网络与数据安全等各类技术开发、测试、运维等。": "AI, Software R&D, Big Data, Blockchain, IoT, Network & Data Security and Other Technical Development, Testing, Operations, etc.",
-    "AI 驱动的人才管理：通过 AI 工具实现人才筛选、绩效量化与能力成长追踪，确保交付质量": "AI-Driven Talent Management: Using AI tools for talent screening, performance quantification, and capability growth tracking, ensuring delivery quality",
-    "自动化采集标讯信息、分析招标需求，一键生成合规应标文件，大幅降低人为失误，提升中标率。": "Automatically collecting bidding information, analyzing tender requirements, generating compliant bid documents with one click, significantly reducing human errors and improving win rates.",
-    "跨行业复合型专业人才，搭建标准化、专业化的人才服务与项目交付体系。至今，公司已长期服务": "cross-industry composite professionals, building standardized and professional talent service and project delivery systems. To date, the company has long served",
-    "我们服务覆盖金融、科技、互联网、制造等多个行业，与众多知名企业建立了长期稳定的合作关系": "Our services cover finance, technology, internet, manufacturing and other industries, having established long-term stable partnerships with many well-known enterprises",
-    "聚焦AI、大数据、信创等前沿技术领域，深度参与金融级项目，在实际业务场景中锤炼技术能力": "Focusing on AI, big data, IT innovation and other cutting-edge technology fields, deeply participating in financial-grade projects, honing technical skills in real business scenarios",
-    "AI驱动的人才管理：通过 AI 工具实现人才筛选、绩效量化与能力成长追踪，确保交付质量": "AI-Driven Talent Management: Achieving talent screening, performance quantification, and capability growth tracking through AI tools, ensuring delivery quality",
-    "同太平洋保险、中英人寿、长城人寿、前海人寿建立框架合作关系；获得上海市高新技术企业称号": "Established framework partnerships with CPIC, AVIVA Life, Great Wall Life, and Qianhai Life; obtained Shanghai High-Tech Enterprise title",
-    "人工智能、软件研发、大数据、区块链、物联网、网络与数据安全等各类技术开发、测试、运维等": "AI, Software R&D, Big Data, Blockchain, IoT, Network & Data Security and Other Technical Development, Testing, Operations, etc.",
-    "招标文件智能分析、合规性审查与应标方案自动生成技术方案，大幅提升中标率并降低人为失误。": "Intelligent bidding document analysis, compliance review, and automatic bid proposal generation — significantly improving win rates while reducing human errors.",
-    "集成全栈链路监控、智能异常检测与自动化响应，为企业本地私有化部署提供全方位安全护航。": "Integrating full-stack link monitoring, intelligent anomaly detection, and automated response, providing comprehensive security for enterprise on-premise private deployment.",
-    "11月成功登录新三板，股票代码 870221；通过软件能力成熟度模型CMMI3级认证": "November: Listed on NEEQ, stock code 870221; passed CMMI Level 3 certification",
-    "覆盖从前端用户体验到后端基础设施的全链路监控，实时掌握系统运行状态，快速定位性能瓶颈": "Full-link monitoring from frontend user experience to backend infrastructure, real-time system status tracking, rapid performance bottleneck identification",
-    "有Stable Diffusion、Midjourney等AIGC模型部署经验者优先": "Experience deploying AIGC models such as Stable Diffusion, Midjourney preferred",
-    "分布式存储架构：PB 级对象存储、数据湖 / 仓建设，满足高吞吐、高 IOPS 需求": "Distributed Storage Architecture: PB-scale object storage, data lake/warehouse construction, meeting high-throughput, high-IOPS requirements",
-    "智能客服：语音 / 文本交互机器人，7×24 小时处理咨询、查询、投诉，降低人力成本": "Intelligent Customer Service: Voice/text interactive bots, 24/7 handling inquiries, queries, complaints, reducing labor costs",
-    "集成全栈链路监控、智能异常检测与自动化响应，为企业本地私有化部署提供全方位安全护航": "Integrating full-stack link monitoring, intelligent anomaly detection, and automated response, providing comprehensive security for enterprise on-premise private deployment",
-    "AI对照最新法规与招标要求，自动检查标书合规性与完整性，识别疏漏项，降低废标风险。": "AI checks bid document compliance and completeness against latest regulations and tender requirements, identifies omissions, reducing disqualification risk.",
-    "凭借在AI技术创新领域的持续投入和卓越表现，申朴信息顺利通过高新技术企业认定...": "With continuous investment and outstanding performance in AI technology innovation, Cisetech has successfully passed the High-Tech Enterprise certification...",
-    "有RAG、Function Calling、Multi-Agent等项目经验者优先": "Experience with RAG, Function Calling, Multi-Agent projects preferred",
-    "有TensorFlow Lite、ONNX Runtime等边缘推理框架经验者优先": "Experience with edge inference frameworks such as TensorFlow Lite, ONNX Runtime preferred",
-    "负责深度学习模型的研发与优化，包括CNN、RNN、Transformer等网络架构": "Responsible for deep learning model R&D and optimization, including CNN, RNN, Transformer architectures",
-    "异构算力集群：GPU/TPU/ASIC/FPGA 等专用芯片选型与多机多卡集群搭建": "Heterogeneous Computing Clusters: GPU/TPU/ASIC/FPGA dedicated chip selection and multi-node multi-card cluster setup",
-    "基于AI算法的智能异常检测引擎，自动识别系统异常模式，减少告警噪音，提升运维效率": "AI-based intelligent anomaly detection engine, automatically identifying system anomaly patterns, reducing alert noise, improving operations efficiency",
-    "移动APP体验监测、采购管理系统(SRM)、人力资源管理SaaS平台（HR在线）": "Mobile APP Experience Monitoring, Procurement Management System (SRM), HR Management SaaS Platform (HR Online)",
-    "一套引擎同时支持集中式与分布式部署，灵活适配不同业务规模，平滑扩展无需改造应用。": "One engine supports both centralized and distributed deployment, flexibly adapting to different business scales, smooth scaling without application modification.",
-    "团队能力共建：通过内训师培养、技术沙龙、项目制实战，沉淀企业内部 AI 基建能力": "Team Capability Co-building: Cultivating internal trainers, tech salons, project-based practice, embedding AI infrastructure capabilities within the enterprise",
-    "独创编码压缩技术，节省60%存储成本，一份数据支持生产与分析两用，降本增效显著。": "Proprietary encoding compression technology, saving 60% storage costs, single data copy supporting both production and analytics, significantly reducing costs and improving efficiency.",
-    "AI动态监测项目资质、时间节点等，及时预警各类投标风险，帮助企业提前规避隐患。": "AI dynamically monitors project qualifications, timelines, etc., timely warning of various bidding risks, helping enterprises proactively avoid potential issues.",
-    "服务银行、保险、证券、互联网等行业头部客户，参与千万级项目，积累高价值行业经验": "Serving leading clients in banking, insurance, securities, internet and other industries, participating in ten-million-level projects, accumulating high-value industry experience",
-    "数据资产治理与可视化平台、长尾客户营销（大数据模型+自动外呼+服销+企微私域）": "Data Asset Governance & Visualization Platform, Long-Tail Customer Marketing (Big Data Model + Auto Outbound + Telesales + WeCom Private Domain)",
-    "熟悉TensorRT、ONNX、TensorFlow Serving等推理框架": "Familiar with inference frameworks such as TensorRT, ONNX, TensorFlow Serving",
-    "专为大规模AI计算设计，支持通用计算与图形渲染，实现国产化替代的强大动力源。": "Designed for large-scale AI computing, supporting general computing and graphics rendering, a powerful driver for domestic substitution.",
-    "拥有多项高含金量资质认证，包括CMMI 5级、ISO系列认证、高新技术企业等": "Holding multiple high-value certifications including CMMI Level 5, ISO series certifications, High-Tech Enterprise and more",
-    "面向企业数据库安全的专业化静态代码检测产品，聚焦SQL代码全生命周期安全管控": "A professional static code detection product for enterprise database security, focusing on SQL code lifecycle security management",
-    "支持本地私有化部署，数据不出企业网络边界，满足金融等行业对数据安全的严苛要求": "Supporting on-premise private deployment, data stays within enterprise network boundaries, meeting strict data security requirements of industries like finance",
-    "具有竞争力的薪酬福利、弹性工作安排、丰富多彩的团队活动，让工作与生活和谐共存": "Competitive compensation and benefits, flexible work arrangements, diverse team activities, enabling harmonious coexistence of work and life",
-    "申朴信息与某国有银行签署AI战略合作协议，将为其提供智能化转型解决方案...": "Cisetech signed an AI strategic partnership agreement with a state-owned bank, providing intelligent transformation solutions...",
-    "全新升级的AI招聘助手2.0版本正式上线，新增智能面试、简历解析等功能...": "The fully upgraded AI Recruitment Assistant 2.0 is now live, with new features including intelligent interviews and resume parsing...",
-    "无论您是寻求AI解决方案，还是希望了解我们的产品与服务，我们都期待与您交流": "Whether you're seeking AI solutions or want to learn about our products and services, we look forward to connecting with you",
-    "完善的技术培训体系和导师制度，从新人到技术专家的清晰成长路径，加速职业发展": "Comprehensive technical training system and mentorship program, clear growth path from newcomer to technical expert, accelerating career development",
-    "专为大规模AI计算设计，支持通用计算与图形渲染，实现国产化替代的强大动力源": "Designed for large-scale AI computing, supporting general computing and graphics rendering, a powerful driver for domestic substitution",
-    "深度语义分析 | 智能规则库 | 漏洞精准定位 | DevSecOps适配": "Deep Semantic Analysis | Intelligent Rule Library | Precise Vulnerability Detection | DevSecOps Integration",
-    "重塑人才招聘流程，通过简历智能解析与初筛，提升招聘效率 300% 以上。": "Reshaping the talent recruitment process, with intelligent resume parsing and screening, improving recruitment efficiency by over 300%.",
-    "1月通过IS020000信息技术服务管理体系认证；成为蚂蚁集团框架服务商": "January: Passed ISO20000 certification; became Ant Group framework service provider",
-    "自动化分析招标需求，一键生成合规应标文件，大幅降低人为失误，提升中标率。": "Automated bidding requirement analysis, one-click compliant bid document generation, significantly reducing human errors and improving win rates.",
-    "专注企业职工健康管理的智能监测系统，提供一站式健康检测、评估与干预服务。": "An intelligent monitoring system focused on employee health management, providing one-stop health detection, assessment, and intervention services.",
-    "有OceanBase、TiDB、PostgreSQL等开源项目经验者优先": "Experience with open-source projects such as OceanBase, TiDB, PostgreSQL preferred",
-    "精通Python语言，熟悉Django、Flask、FastAPI等框架": "Proficient in Python, familiar with Django, Flask, FastAPI and other frameworks",
-    "熟悉MySQL、PostgreSQL、Redis、MongoDB等数据库": "Familiar with databases such as MySQL, PostgreSQL, Redis, MongoDB",
-    "合规风控 Agent：自动审核合同条款、合规校验、风险预警、反欺诈执行等": "Compliance & Risk Agent: Automated contract clause review, compliance verification, risk alerts, anti-fraud enforcement, etc.",
-    "融入 CI/CD 流程，实现 \"写 - 审 - 测 - 修\" 自动化闭环": "Integrated into CI/CD pipeline, achieving an automated Write-Review-Test-Fix closed loop",
-    "凭借在信息技术领域的卓越表现，我们屡获各级政府和行业协会颁发的荣誉认可": "With outstanding performance in IT, we have been repeatedly recognized by governments and industry associations at all levels",
-    "重塑人才招聘流程，通过AI技术实现简历智能解析与初筛，显著提升招聘效率": "Reshaping the talent recruitment process, achieving intelligent resume parsing and screening through AI technology, significantly improving recruitment efficiency",
-    "熟悉LangChain、AutoGPT、BabyAGI等Agent框架": "Familiar with Agent frameworks such as LangChain, AutoGPT, BabyAGI",
-    "有CVPR、ICCV、NeurIPS、ICML等顶级会议论文发表者优先": "Publications in top conferences such as CVPR, ICCV, NeurIPS, ICML preferred",
-    "安全 Agent：终端安全监控、异常行为检测、漏洞扫描、安全事件响应等": "Security Agent: Endpoint security monitoring, anomaly detection, vulnerability scanning, security incident response, etc.",
-    "专注企业职工健康管理，提供一站式健康监测、智能评估与个性化干预服务。": "Focused on enterprise employee health management, providing one-stop health monitoring, intelligent assessment, and personalized intervention services.",
-    "针对中小微企业信贷审批业务场景，使用私有化AI工具处理核心业务逻辑。": "For SME credit approval business scenarios, using privatized AI tools to process core business logic.",
-    "专为小微企业打造，AI驱动实现极致提效，开户流程从几天缩短到几分钟。": "Customized for SMEs, AI-driven extreme efficiency, account opening process shortened from days to minutes.",
-    "针对AI Agent应用的安全检测与加固，确保企业AI应用安全可靠。": "Security detection and hardening for AI Agent applications, ensuring enterprise AI application security and reliability.",
-    "成立于2010年，新三板上市企业，15年金融科技与企业数字化转型经验": "Founded in 2010, NEEQ-listed enterprise, 15 years of fintech and enterprise digital transformation experience",
-    "内置自动化响应机制，对常见异常自动触发修复动作，大幅缩短故障恢复时间": "Built-in automated response mechanism, automatically triggering remediation actions for common anomalies, significantly reducing fault recovery time",
-    "精通HTML5、CSS3、JavaScript/TypeScript": "Proficient in HTML5, CSS3, JavaScript/TypeScript",
-    "负责Python后端系统开发，包括API设计、数据处理、业务逻辑实现": "Responsible for Python backend system development, including API design, data processing, and business logic implementation",
-    "熟悉MySQL、Redis、MongoDB等数据库，有数据库优化经验": "Familiar with MySQL, Redis, MongoDB and other databases, with database optimization experience",
-    "计算机、电子工程、数学等相关专业硕士及以上学历，3年以上视觉算法经验": "Master's degree or above in Computer Science, Electronic Engineering, Mathematics, etc., 3+ years of visual algorithm experience",
-    "负责AI Agent系统的研究与开发，包括规划、记忆、工具调用等模块": "Responsible for AI Agent system R&D, including planning, memory, tool invocation and other modules",
-    "精通Transformer、Attention机制等深度学习核心算法": "Proficient in deep learning core algorithms such as Transformer and Attention mechanisms",
-    "精通CNN、RNN、Transformer、GAN等深度学习网络架构": "Proficient in deep learning architectures such as CNN, RNN, Transformer, GAN",
-    "合规审查：自动审核合同、监管文件，识别合规风险，提升审核效率与准确性": "Compliance Review: Automated contract and regulatory document review, identifying compliance risks, improving review efficiency and accuracy",
-    "数字孪生：构建产线 / 工厂数字模型，模拟优化生产流程，降低试错成本": "Digital Twin: Building digital models of production lines/factories, simulating and optimizing production processes, reducing trial-and-error costs",
-    "开发架构、运维架构、算力架构、安全架构、Agent架构、知识库构建": "Development Architecture, Operations Architecture, Computing Architecture, Security Architecture, Agent Architecture, Knowledge Base Construction",
-    "凭借在信息技术领域的卓越表现，屡获各级政府和行业协会颁发的荣誉认可": "Recognized by governments and industry associations at all levels for outstanding performance in IT",
-    "精通React/Vue/Angular等前端框架，具备前端开发能力": "Proficient in React/Vue/Angular and other frontend frameworks with frontend development capabilities",
-    "计算机、数学、自动化等相关专业硕士及以上学历，3年以上深度学习经验": "Master's degree or above in Computer Science, Mathematics, Automation, etc., 3+ years of deep learning experience",
-    "扁平化管理，透明的沟通机制，与行业顶尖人才共同成长，享受思想碰撞。": "Flat management, transparent communication, growing with top industry talents, enjoying intellectual exchange.",
-    "无论是个人成长还是事业发展，突破的关键在于持续的努力和专业的追求。": "Whether personal growth or career development, the key to breakthrough lies in sustained effort and professional pursuit.",
-    "边缘算力部署：端侧 / 边缘设备推理加速、低延迟响应与离线运行能力": "Edge Computing Deployment: Endpoint/edge device inference acceleration, low-latency response, and offline operation",
-    "高速数据传输：高带宽网络、低延迟 IO 优化服务，消除训练数据瓶颈": "High-speed Data Transfer: High-bandwidth networking, low-latency IO optimization services, eliminating training data bottlenecks",
-    "模型调优服务：模型性能评估、参数调优、精度提升、推理加速等专业支持": "Model Tuning Services: Model performance evaluation, parameter tuning, accuracy improvement, inference acceleration, and other professional support",
-    "标注(文本、语音、视频、智驾等)、审核、模型训练、AI人才培训等": "Annotation (Text, Voice, Video, Autonomous Driving, etc.), Review, Model Training, AI Talent Training, etc.",
-    "卓越技术，权威认可。构建全球领先、合规、可信赖的AI信息技术服务": "Outstanding Technology, Authoritative Recognition. Building Globally Leading, Compliant, and Trustworthy AI IT Services",
-    "6月申朴信息成立；与阿里巴巴集团签署协议，成为阿里IT服务供应商": "June: Cisetech founded; signed agreement with Alibaba Group",
-    "计算机、数学等相关专业硕士及以上学历，3年以上NLP/大模型经验": "Master's degree or above in Computer Science, Mathematics, etc., 3+ years of NLP/large model experience",
-    "弹性调度能力：分布式训练调度、断点续训、自动扩缩容与资源池化管理": "Elastic Scheduling: Distributed training scheduling, checkpoint resume training, auto-scaling, and resource pool management",
-    "绿色算力中心：液冷散热、智能供电与数据中心能效优化，实现降本增效": "Green Computing Centers: Liquid cooling, intelligent power supply, and data center energy efficiency optimization for cost reduction",
-    "个性化推荐：基于用户行为与偏好，精准推荐商品，提升转化率与客单价": "Personalized Recommendation: Precise product recommendations based on user behavior and preferences, improving conversion rates and average order value",
-    "安全加固服务：AI系统安全评估、漏洞修复、数据安全策略制定与实施": "Security Hardening Services: AI system security assessment, vulnerability remediation, data security strategy development and implementation",
-    "基于核心技术研发的标准化产品与代理产品，满足多样化业务场景需求": "Standardized and agency products based on core technology R&D, meeting diverse business scenario needs",
-    "OCR+人脸识别替代90%人工录入，审核周期从数日缩短至分钟级": "OCR + Facial Recognition replacing 90% manual input, review cycle shortened from days to minutes",
-    "熟悉Spring Boot、Spring Cloud等主流框架": "Familiar with Spring Boot, Spring Cloud and other mainstream frameworks",
-    "负责分布式数据库内核的研发，包括查询优化、存储引擎、事务处理等": "Responsible for distributed database kernel R&D, including query optimization, storage engines, transaction processing, etc.",
-    "多 Agent 协同：跨部门、跨系统智能联动，端到端流程自动化": "Multi-Agent Collaboration: Cross-department, cross-system intelligent coordination, end-to-end process automation",
-    "数据治理体系：数据清洗、标注、版本管理、质量监控与合规审计服务": "Data Governance System: Data cleaning, annotation, version management, quality monitoring, and compliance audit services",
-    "网络智能调度：流量优化、故障自愈与 QoS 保障，提升通信效率": "Intelligent Network Scheduling: Traffic optimization, self-healing, and QoS assurance, improving communication efficiency",
-    "生产排程优化：基于订单、产能、物料数据，智能排产，提升生产效率": "Production Scheduling Optimization: Intelligent production planning based on orders, capacity, and material data, improving production efficiency",
-    "IT治理、降本增效、AI原生开发平台、降本增效、应用场景设计": "IT Governance, Cost Reduction & Efficiency, AI-Native Development Platform, Application Scenario Design",
-    "完善的资质认证体系，涵盖国际标准认证、行业资质和各类经营许可": "Comprehensive qualification certification system, covering international standard certifications, industry qualifications, and various business licenses",
-    "荣获上海市科技小巨人培育企业资格；荣获全国创新创业大赛优胜奖": "Awarded Shanghai Technology Little Giant Cultivation Enterprise qualification; won National Innovation & Entrepreneurship Competition Excellence Award",
-    "荣获上海市研发机构认证；荣获上海市浦东新区科技发展基金重点培": "Awarded Shanghai R&D Institution certification; awarded Shanghai Pudong New Area Science and Technology Development Fund Key Cultivation",
-    "负责AI基础设施的研发，包括分布式训练、集群调度、存储系统等": "Responsible for AI infrastructure R&D, including distributed training, cluster scheduling, storage systems, etc.",
-    "负责计算机视觉算法的研发，包括目标检测、图像分割、人脸识别等": "Responsible for computer vision algorithm R&D, including object detection, image segmentation, face recognition, etc.",
-    "精通Java/Python/Node.js等至少一种后端语言": "Proficient in at least one backend language such as Java/Python/Node.js",
-    "MLOps 平台：模型开发、部署、监控、迭代全流程自动化管理": "MLOps Platform: Full-lifecycle automated management of model development, deployment, monitoring, and iteration",
-    "智能理赔：材料智能审核、理赔反欺诈、定损自动化、理赔时效提升": "Intelligent Claims: Smart document review, claims anti-fraud, automated damage assessment, improved claims processing time",
-    "智能内容生态：内容推荐、信息流优化、短视频 / 直播智能分发": "Intelligent Content Ecosystem: Content recommendation, feed optimization, short video/live streaming intelligent distribution",
-    "无人零售：智能货架、自助结算、无人店，提升购物体验与运营效率": "Unmanned Retail: Smart shelves, self-service checkout, unmanned stores, enhancing shopping experience and operational efficiency",
-    "负责AIGC模型的工程化落地，包括模型压缩、量化、部署优化": "Responsible for AIGC model engineering implementation, including model compression, quantization, and deployment optimization",
-    "负责机器学习基础算法的研究，包括优化、统计学习、强化学习等": "Responsible for fundamental ML algorithm research, including optimization, statistical learning, reinforcement learning, etc.",
-    "负责边缘计算平台的研发，包括边缘推理、设备管理、数据同步等": "Responsible for edge computing platform R&D, including edge inference, device management, data synchronization, etc.",
-    "精通C/C++/Python，有嵌入式开发或IoT项目经验": "Proficient in C/C++/Python, with embedded development or IoT project experience",
-    "负责Web前端页面开发，包括UI实现、交互逻辑、数据可视化": "Responsible for web frontend development, including UI implementation, interaction logic, data visualization",
-    "容器化调度：K8s 等容器编排，实现资源高效利用与弹性扩展": "Container Orchestration: Container scheduling with K8s, achieving efficient resource utilization and elastic scaling",
-    "知识转移培训：技术文档编写、最佳实践分享、团队能力提升培训": "Knowledge Transfer Training: Technical documentation, best practice sharing, team capability enhancement training",
-    "银行级移动安全SaaS服务平台、移动安全隐私合规检测产品": "Bank-Grade Mobile Security SaaS Platform, Mobile Security & Privacy Compliance Detection Products",
-    "参与AI相关项目开发，包括模型部署、数据处理、服务化封装": "Participate in AI-related project development, including model deployment, data processing, and service encapsulation",
-    "全流程线上化，实现\"零跑腿\"开户，电子签章确保合规可追溯": "Fully online process, achieving zero-visit account opening with e-signatures ensuring compliance and traceability",
-    "跟踪前沿技术，探索大模型在Agent、RAG等方向的应用": "Track cutting-edge technologies, explore LLM applications in Agent, RAG, and other directions",
-    "熟悉视觉-语言模型（如CLIP、BLIP、LLaVA等）": "Familiar with vision-language models (e.g., CLIP, BLIP, LLaVA)",
-    "计算机、数学、统计相关专业博士学位，3年以上算法研究经验": "PhD in Computer Science, Mathematics, Statistics or related fields, 3+ years algorithm research experience",
-    "熟悉Webpack、Vite等构建工具，有前端工程化经验": "Familiar with build tools such as Webpack, Vite, with frontend engineering experience",
-    "智能广告营销：广告投放优化、点击率预估、ROI 智能提升": "Intelligent Ad Marketing: Ad placement optimization, click-through rate prediction, intelligent ROI improvement",
-    "业务流程 Agent：自动执行工单、审批、对账、客服等": "Business Process Agent: Auto-executing work orders, approvals, reconciliation, customer service, etc.",
-    "全面覆盖AI价值链，为不同规模的企业量身定制数智化路径": "Comprehensive AI value chain coverage, tailoring digital-intelligent pathways for enterprises of all sizes",
-    "负责多模态大模型的研究与开发，包括图文融合、视频理解等": "Responsible for research and development of multimodal large models, including image-text fusion, video understanding, etc.",
-    "有ICML、NeurIPS、CVPR等顶级会议论文发表": "Publications in top conferences such as ICML, NeurIPS, CVPR",
-    "有CVPR、ICCV、ECCV等顶级会议论文发表者优先": "Publications in top conferences such as CVPR, ICCV, ECCV preferred",
-    "精通Java基础，熟悉JVM原理、多线程、IO、集合等": "Proficient in Java fundamentals, familiar with JVM principles, multithreading, IO, collections, etc.",
-    "数据安全管控：隐私计算、数据脱敏、访问控制与全链路加密": "Data Security Control: Privacy computing, data desensitization, access control, and full-link encryption",
-    "跨区域互联：云边端、多数据中心间低延迟、高可靠网络架构": "Cross-region Interconnection: Low-latency, high-reliability network architecture across cloud-edge-endpoint and multiple data centers",
-    "用户增长与运营：用户画像、精准拉新、促活留存、流失预警": "User Growth & Operations: User profiling, precision acquisition, engagement & retention, churn early warning",
-    "参与系统架构设计，解决技术难题，提升系统性能与稳定性": "Participate in system architecture design, solving technical challenges, improving system performance and stability",
-    "全国布局，专业交付 - 在11个交付基地为您提供服务": "Nationwide Coverage, Professional Delivery — Serving you from 11 delivery bases",
-    "在这里，每一份才华都值得被看见，每一次成长都有舞台。": "Here, every talent deserves to be seen, and every growth has a stage.",
-    "负责大语言模型的预训练、微调、提示工程等核心算法研究": "Responsible for core algorithm research including pre-training, fine-tuning, and prompt engineering of large language models",
-    "有CVPR、ICCV、ACL等顶级会议论文发表者优先": "Publications in top conferences such as CVPR, ICCV, ACL preferred",
-    "精通Go/Python/C++，有大规模系统开发经验": "Proficient in Go/Python/C++, with large-scale system development experience",
-    "跟踪计算机视觉前沿技术，探索3D视觉、视频理解等方向": "Track computer vision frontiers, explore 3D vision, video understanding, and other directions",
-    "支撑业务系统快速 AI 化，构建企业 AI 能力中枢": "Support rapid AI integration of business systems, building enterprise AI capability hub",
-    "库存管理：预测销量，智能补货，降低库存积压与缺货风险": "Inventory Management: Sales forecasting, intelligent restocking, reducing overstock and stockout risks",
-    "Simple Insight 一体化智能可观测平台": "Simple Insight Integrated Intelligent Observability Platform",
-    "构建Agent评估体系，优化Agent任务执行效果": "Build Agent evaluation systems, optimize Agent task execution effectiveness",
-    "有AI/ML相关项目经验、大模型应用开发经验者优先": "Experience with AI/ML projects and large model application development preferred",
-    "熟悉MySQL、Redis、MongoDB等数据库": "Familiar with databases such as MySQL, Redis, MongoDB",
-    "专业团队随时为您服务，我们期待与您建立长期合作关系": "Professional team always at your service, we look forward to building a long-term partnership with you",
-    "数据智能分析：用户行为分析、业务指标监控、异常预警": "Data Intelligence Analysis: User behavior analysis, business metrics monitoring, anomaly alerts",
-    "获得上海市软件企业称号，获得IS027001认证": "Obtained Shanghai Software Enterprise title and ISO27001 certification",
-    "精通大语言模型微调、LoRA、RLHF等训练技术": "Proficient in large language model fine-tuning, LoRA, RLHF and other training technologies",
-    "深厚的数学基础，精通优化理论、概率论、线性代数等": "Strong mathematical foundation, proficient in optimization theory, probability, linear algebra, etc.",
-    "跟踪深度学习前沿技术，探索新型网络架构与训练方法": "Track deep learning frontiers, explore novel network architectures and training methods",
-    "熟悉Linux操作系统，有Shell脚本编写能力": "Familiar with Linux OS, with Shell scripting capabilities",
-    "熟悉React、Vue或Angular等主流框架": "Familiar with mainstream frameworks such as React, Vue, or Angular",
-    "训推一体化：统一环境适配、模型快速上线与版本管理": "Training-Inference Integration: Unified environment adaptation, rapid model deployment, and version management",
-    "上海市浦东新区国展路1529号906-908室": "Room 906-908, No. 1529 Guozhan Road, Pudong New Area, Shanghai",
-    "算力租赁/供给、算力资源管理、混合算力架构设计": "Computing Rental/Supply, Resource Management, Hybrid Computing Architecture Design",
-    "深耕金融科技领域，以AI技术赋能银行等业务创新": "Deeply cultivating fintech, empowering banking and business innovation with AI technology",
-    "北京市朝阳区大郊亭中街华腾国际2号院5号楼5B": "Room 5B, Building 5, Huateng International, Dajiaoting Middle Street, Chaoyang District, Beijing",
-    "参与需求分析，与产品、设计团队协作完成项目开发": "Participate in requirements analysis, collaborating with product and design teams to complete project development",
-    "点击地球上的标记点进行调整，拖动标记点移动位置": "Click markers on the globe to adjust, drag markers to move positions",
-    "精通Python/C++，有高并发服务开发经验": "Proficient in Python/C++, with high-concurrency service development experience",
-    "有AI基础设施、云原生、微服务等项目经验者优先": "Experience with AI infrastructure, cloud-native, microservices projects preferred",
-    "精通C/C++/Rust，有大规模系统开发经验": "Proficient in C/C++/Rust, with large-scale system development experience",
-    "现代化办公环境，配备人体工学座椅与双屏显示器": "Modern office environment, equipped with ergonomic chairs and dual monitors",
-    "参与项目架构设计，制定技术方案，推动项目落地": "Participate in project architecture design, formulating technical solutions, driving project implementation",
-    "负责企业信息安全体系建设、安全审计与合规检查": "Responsible for enterprise information security system construction, security auditing and compliance inspection",
-    "协助项目经理进行项目管理、进度跟踪与协调沟通": "Assist project managers with project management, progress tracking and coordination",
-    "负责文本、图片、视频内容的安全审核与质量把控": "Responsible for text, image, video content security review and quality control",
-    "跟踪学术前沿，探索算法在实际业务中的应用价值": "Track academic frontiers, explore algorithm application value in real-world business",
-    "优化GPU集群性能，提升训练效率与资源利用率": "Optimize GPU cluster performance, improve training efficiency and resource utilization",
-    "AI 生成代码合规性、安全性、规范性自动审查": "Automated compliance, security, and standards review of AI-generated code",
-    "业务流程咨询、系统方案、产品设计、技术架构": "Business Process Consulting, System Solutions, Product Design, Technical Architecture",
-    "AI生成代码合规性、安全性、规范性自动审查": "AI-Generated Code Compliance, Security, and Standardization Automated Review",
-    "定期技术分享会、外部培训机会、技术大会参与": "Regular tech sharing sessions, external training opportunities, tech conference participation",
-    "ISO45001 职业健康安全管理体系认证": "ISO45001 Occupational Health & Safety Management System Certification",
-    "PDF · 2.5MB · 2024年3月": "PDF · 2.5MB · March 2024",
-    "PDF · 2.8MB · 2024年3月": "PDF · 2.8MB · March 2024",
-    "PDF · 3.1MB · 2024年3月": "PDF · 3.1MB · March 2024",
-    "PDF · 3.5MB · 2024年3月": "PDF · 3.5MB · March 2024",
-    "PDF · 3.8MB · 2024年3月": "PDF · 3.8MB · March 2024",
-    "PDF · 4.2MB · 2024年3月": "PDF · 4.2MB · March 2024",
-    "加入我们 | Cisetech官方招聘网站": "Join Us | Cisetech Official Recruitment Website",
-    "可落地 AI 场景挖掘（降本、增效、增收）": "Actionable AI Scenario Mining (Cost Reduction, Efficiency Enhancement, Revenue Growth)",
-    "发表高水平学术论文，推动技术创新与专利布局": "Publish high-level academic papers, driving technological innovation and patent portfolio",
-    "精通LLVM、MLIR、TVM等编译器框架": "Proficient in LLVM, MLIR, TVM and other compiler frameworks",
-    "负责数据标注、数据清洗、数据质量检查等工作": "Responsible for data annotation, data cleaning, data quality inspection and other work",
-    "我们的专家团队可以为您量身打造专属AI工具": "Our expert team can tailor exclusive AI tools for you",
-    "将边缘计算能力应用于物联网、智能硬件等场景": "Apply edge computing capabilities to IoT, smart hardware, and other scenarios",
-    "编写高质量代码，进行代码审查，确保代码质量": "Write high-quality code, conduct code reviews, ensure code quality",
-    "优化代码性能，解决技术难题，提升系统稳定性": "Optimize code performance, solve technical challenges, improve system stability",
-    "漏洞检测、开源组件风险、许可证问题一键排查": "One-click detection of vulnerabilities, open-source component risks, and license issues",
-    "代码小模型、领域模型训练、Agent调优": "Code Small Models, Domain Model Training, Agent Fine-Tuning",
-    "打造以AI为核心引擎的全场景智能科技集团": "Building an All-Scenario Intelligent Technology Group with AI as the Core Engine",
-    "弹性工作时间、远程办公支持、丰富团建活动": "Flexible working hours, remote work support, diverse team building activities",
-    "全面医疗保险、年度体检、心理健康咨询服务": "Comprehensive medical insurance, annual checkup, psychological counseling services",
-    "Cisetech - 申朴AI・智创无限": "Cisetech - AI Empowered, Infinite Innovation",
-    "ISO22301 业务连续性管理体系认证": "ISO22301 Business Continuity Management System Certification",
-    "参与需求分析与技术方案设计，编写技术文档": "Participate in requirements analysis and technical solution design, writing technical documentation",
-    "与产品、设计、后端团队协作，完成项目开发": "Collaborate with product, design, and backend teams to complete project development",
-    "负责GPU编译器优化、算子优化及性能调优": "Responsible for GPU compiler optimization, operator optimization and performance tuning",
-    "精通CUDA编程、TensorRT优化等": "Proficient in CUDA programming, TensorRT optimization, etc.",
-    "负责产品功能测试、性能测试、自动化测试等": "Responsible for product functional testing, performance testing, automated testing, etc.",
-    "负责AI智能运营平台的日常运营与数据处理": "Responsible for daily operations and data processing of AI intelligent operations platform",
-    "多年来，我们用最朴素的心，做最前沿的事。": "For years, we have approached the most cutting-edge work with the purest heart.",
-    "优化模型推理性能，提升训练效率与模型效果": "Optimize model inference performance, improve training efficiency and model effectiveness",
-    "优化推理引擎，提升模型推理性能与成本效率": "Optimize inference engines, improving model inference performance and cost efficiency",
-    "熟悉嵌入式系统、物联网协议、边缘AI框架": "Familiar with embedded systems, IoT protocols, edge AI frameworks",
-    "优化视觉模型性能，提升检测精度与推理速度": "Optimize vision model performance, improve detection accuracy and inference speed",
-    "优化系统性能，解决技术难题，提升开发效率": "Optimize system performance, solve technical challenges, improve development efficiency",
-    "客户第一，服务优先，申信达诚，朴心进取": "Customer First, Service Priority, Integrity & Trustworthiness, Pragmatic & Enterprising",
-    "遍布全国的服务网络，为您提供本地化支持": "Nationwide service network, providing localized support",
-    "OceanBase 企业级分布式数据库": "OceanBase Enterprise Distributed Database",
-    "ISO27001 信息安全管理体系认证": "ISO27001 Information Security Management System Certification",
-    "ISO20000 IT服务管理体系认证": "ISO20000 IT Service Management System Certification",
-    "Simple Insight技术白皮书": "Simple Insight Technical White Paper",
-    "代码质量评分与优化建议，提升交付稳定性": "Code quality scoring and optimization suggestions, improving delivery stability",
-    "精通网络安全、应用安全、数据安全等领域": "Proficient in network security, application security, data security and other fields",
-    "有顶级会议论文发表或开源项目贡献者优先": "Publications in top-tier conferences or contributions to open-source projects preferred",
-    "零代码可视化编排，快速搭建 AI 应用": "Zero-code visual orchestration, rapidly build AI applications",
-    "多模型统一调度与性能优化，降低算力成本": "Unified multi-model scheduling and performance optimization, reducing computing costs",
-    "多模态数据标注 、数据采集、数据治理": "Multi-Modal Data Annotation, Data Collection, Data Governance",
-    "劳务派遣、灵活用工、HRO、RPO等": "Labor Dispatch, Flexible Employment, HRO, RPO, etc.",
-    "周一至周五 9:00 - 18:00": "Monday to Friday 9:00 - 18:00",
-    "业务场景 AI 化路线图、落地优先级": "Business Scenario AI Transformation Roadmap, Implementation Priorities",
-    "构建高并发、低延迟的AI生成内容服务": "Build high-concurrency, low-latency AI content generation services",
-    "优化数据库性能，提升吞吐量与响应速度": "Optimize database performance, improve throughput and response speed",
-    "AI 聚力数转智改，创领智能新生态": "AI-Powered Digital Transformation, Creating a New Intelligent Ecosystem",
-    "自主研发核心技术，拥有多项发明专利": "Independently developed core technologies with multiple invention patents",
-    "自主研发软件产品，持续创新技术积累": "Independently developed software products, continuous innovation and technology accumulation",
-    "了解申朴最新动态，把握AI行业前沿": "Stay updated with Cisetech's latest developments and AI industry frontiers",
-    "AI Agent 智能体开发与实施": "AI Agent Development & Implementation",
-    "OceanBase数据库技术白皮书": "OceanBase Database Technical White Paper",
-    "参与前端架构设计，制定前端开发规范": "Participate in frontend architecture design, establishing frontend development standards",
-    "具备强烈的科研热情，有团队合作精神": "Possess strong research enthusiasm and team collaboration spirit",
-    "优化多模态模型的训练效率与推理性能": "Optimize training efficiency and inference performance of multimodal models",
-    "研究新型架构技术，推动基础设施创新": "Research novel architecture technologies, drive infrastructure innovation",
-    "有高并发、分布式系统开发经验者优先": "Experience with high-concurrency, distributed system development preferred",
-    "有数据可视化、移动端开发经验者优先": "Experience with data visualization and mobile development preferred",
-    "有独立完成项目全流程开发经验者优先": "Experience with independently completing full project lifecycle development preferred",
-    "请填写以下信息，我们会尽快与您联系": "Please fill in the following information and we will contact you shortly",
-    "提供户外拓展训练、团队游戏、聚餐等": "Outdoor team building, team games, group dining, and more",
-    "数据不出域、权限可管控、行为可审计": "Data stays on-premises, controllable permissions, auditable behaviors",
-    "申朴信息技术（上海）股份有限公司": "Cisetech Information Technology (Shanghai) Co., Ltd.",
-    "全栈AI能力，赋能企业智能化转型": "Full-Stack AI Capabilities, Empowering Enterprise Intelligent Transformation",
-    "华为HarmonyOS开发服务商": "Huawei HarmonyOS Development Service Provider",
-    "成为中国太平集团IT框架合作伙伴": "Became IT framework partner for China Taiping Group",
-    "了解Simple Insight": "Learn About Simple Insight",
-    "原生分布式·城市级容灾·极致压缩": "Native Distributed · City-Level Disaster Recovery · Extreme Compression",
-    "✅ 提交成功！我们将尽快与您联系": "Submitted successfully! We will contact you soon",
-    "AI驱动型智能运营服务与人才赋能": "AI-Driven Intelligent Operations Services & Talent Empowerment",
-    "参与需求分析、技术方案设计与实施": "Participate in requirements analysis, technical solution design and implementation",
-    "负责深度学习推理框架的优化与部署": "Responsible for deep learning inference framework optimization and deployment",
-    "从陆家嘴的深夜到数字世界的黎明，": "From late nights in Lujiazui to the dawn of the digital world,",
-    "优化边缘设备上的AI模型推理性能": "Optimize AI model inference performance on edge devices",
-    "用能力证明自己，用专业成就未来。": "Prove yourself with ability, achieve the future with professionalism.",
-    "周一至周五 9:00-18:00": "Monday to Friday 9:00-18:00",
-    "企业 AI 现状评估、成熟度诊断": "Enterprise AI current-state assessment and maturity diagnosis",
-    "低空经济|低空综合管理服务平台": "Low-Altitude Economy | Low-Altitude Management Platform",
-    "AI招聘助手2.0版本正式发布": "AI Recruitment Assistant 2.0 Officially Released",
-    "AI监测·智能评估·个性化干预": "AI Monitoring · Intelligent Assessment · Personalized Intervention",
-    "全兼容Oracle SQL语法": "Full Oracle SQL Syntax Compatibility",
-    "我们关注每一位员工的成长与幸福": "We Care About Every Employee's Growth and Happiness",
-    "TMMI3 测试成熟度模型认证": "TMMI Level 3 Test Maturity Model Certification",
-    "为企业AI Agent安全护航": "Safeguarding Enterprise AI Agent Security",
-    "关于我们 - Cisetech": "About Us - Cisetech",
-    "荣获“AI创新企业50强”称号": "Awarded \"Top 50 AI Innovation Enterprises\" Title",
-    "荣获\"AI创新企业50强\"称号": "Named \"Top 50 AI Innovative Enterprises\"",
-    "针对中小微企业信贷审批业务场景": "For SME credit approval business scenarios",
-    "正在寻找志同道合的你，共赴山海": "Looking for like-minded you, to journey together",
-    "重要节假日及特定庆祝日多种福利": "Various benefits for major holidays and special celebrations",
-    "小微企业线上开户智能解决方案": "SME Online Account Opening Intelligent Solution",
-    "AI Agent安全检测平台": "AI Agent Security Detection Platform",
-    "申朴信息获评高新技术企业认定": "Cisetech Awarded High-Tech Enterprise Certification",
-    "与某国有银行达成AI战略合作": "AI Strategic Partnership with a State-Owned Bank",
-    "全栈监控·智能诊断·自动响应": "Full-Stack Monitoring · Intelligent Diagnosis · Automated Response",
-    "智能筛选·精准匹配·高效招聘": "Intelligent Screening · Precise Matching · Efficient Recruitment",
-    "智能标讯·精准分析·高效应标": "Intelligent Bid Info · Precise Analysis · Efficient Bidding",
-    "AI Agent 智能体开发": "AI Agent Development",
-    "大模型算法研究员 / 工程师": "Large Model Algorithm Researcher / Engineer",
-    "SME智能信贷审批解决方案": "SME Intelligent Credit Approval Solution",
-    "用数据说话，见证成长与实力": "Let the Data Speak, Witness Growth and Strength",
-    "智启数字新程，重塑产业未来": "Intelligently Opening New Digital Journeys, Reshaping Industry Futures",
-    "成为中国平安集团IT供应商": "Became IT supplier for Ping An Group",
-    "3月通过CMMI5认证复审": "March: Passed CMMI Level 5 re-certification",
-    "国产通用 GPU 算力底座": "Domestic General-Purpose GPU Computing Foundation",
-    "AI人才培训及企业AI培训": "AI Talent Training & Enterprise AI Training",
-    "DevSecOps无缝对接": "DevSecOps Seamless Integration",
-    "我们将为您匹配最适合的岗位": "We'll match you with the most suitable position",
-    "中国创新创业大赛企业优胜奖": "China Innovation & Entrepreneurship Competition Enterprise Excellence Award",
-    "上海市人工智能行业协会会员": "Shanghai AI Industry Association Member",
-    "OceanBase 数据库": "OceanBase Database",
-    "互联网行业 AI 解决方案": "Internet Industry AI Solutions",
-    "Python高级开发工程师": "Senior Python Development Engineer",
-    "加入申朴，与技术前沿同行。": "Join Cisetech, Walk with Technology Frontiers.",
-    "MLSys/推理优化工程师": "MLSys/Inference Optimization Engineer",
-    "申朴 SQL 代码审计平台": "Cisetech SQL Code Audit Platform",
-    "开启您的 AI 数智化之旅": "Start Your AI Digital-Intelligent Journey",
-    "祝愿你能找到属于自己的舞台": "Wishing you find the stage that belongs to you",
-    "期待与您携手共创数字化未来": "Looking forward to partnering with you to create a digital future",
-    "OceanBase数据库": "OceanBase Database",
-    "在岸、离岸、全职、兼职等": "Onshore, Offshore, Full-Time, Part-Time, etc.",
-    "申朴信息上海总部乔迁新址": "Cisetech Shanghai HQ Relocates to New Office",
-    "各级政府行业协会荣誉认可": "Honors recognized by government and industry associations at all levels",
-    "涵盖国际标准、行业资质等": "Covering international standards, industry qualifications, etc.",
-    "深度语义分析与智能规则库": "Deep Semantic Analysis & Intelligent Rule Engine",
-    "自定义审计规则与批量检测": "Custom Audit Rules & Batch Detection",
-    "期待与您携手，共创新未来": "Looking Forward to Working with You to Create a New Future",
-    "AI招投标助手技术白皮书": "AI Bidding Assistant Technical White Paper",
-    "可观测APM体验监测平台": "Observable APM Experience Monitoring Platform",
-    "制造行业 AI 解决方案": "Manufacturing Industry AI Solutions",
-    "企业 AI 原生开发平台": "Enterprise AI-Native Development Platform",
-    "每一行代码都是一份承诺。": "Every line of code is a commitment.",
-    "国际标准认证与行业资质": "International Standard Certifications & Industry Qualifications",
-    "软件能力成熟度最高等级": "Highest Level of Software Capability Maturity",
-    "国内外布局 专业化服务": "Global Presence, Professional Services",
-    "获得上海市创新基金奖励": "Received Shanghai Innovation Fund Award",
-    "全栈链路监控与智能诊断": "Full-Stack Link Monitoring & Intelligent Diagnosis",
-    "了解OceanBase": "Learn About OceanBase",
-    "漏洞精准定位与风险分级": "Precise Vulnerability Localization & Risk Grading",
-    "测试任务全生命周期管理": "Test Task Full Lifecycle Management",
-    "AIGC 工程化工程师": "AIGC Engineering Engineer",
-    "Java高级开发工程师": "Senior Java Development Engineer",
-    "AI全流程智能运营托管": "AI Full-Process Intelligent Operations Management",
-    "AI赋能全生命周期安全": "AI-Empowered Full Lifecycle Security",
-    "AI招聘助手技术白皮书": "AI Recruitment Assistant Technical White Paper",
-    "深度学习/大模型工程师": "Deep Learning/Large Model Engineer",
-    "拖拽旋转 | 滚轮缩放": "Drag to rotate | Scroll to zoom",
-    "机器学习基础算法研究员": "Machine Learning Fundamental Algorithm Researcher",
-    "全自研架构 高性能算力": "Fully Self-developed Architecture, High-performance Computing",
-    "全兼容生态 零成本迁移": "Fully Compatible Ecosystem, Zero-cost Migration",
-    "异构混训 高效利用资产": "Heterogeneous Mixed Training, Efficient Asset Utilization",
-    "全行业赋能 定制化方案": "Full-industry Enablement, Customized Solutions",
-    "一体化智能可观测平台": "Integrated Intelligent Observability Platform",
-    "大数据管理与应用方向": "Big Data Management & Application",
-    "200+项软件著作权": "200+ Software Copyrights",
-    "Mock数据智能生成": "Intelligent Mock Data Generation",
-    "进度可视化与缺陷跟踪": "Progress Visualization & Defect Tracking",
-    "AI解决方案行业应用": "AI Solutions Industry Applications",
-    "没有找到合适的职位？": "Didn't find the right position?",
-    "180+项软件著作权": "180+ Software Copyrights",
-    "新三板最佳公司成长奖": "NEEQ Best Company Growth Award",
-    "AI早防早核预防体系": "AI Early Prevention and Screening System",
-    "AI自动填充生成标书": "AI Auto-Fill Bid Document Generation",
-    "NLP/大模型工程师": "NLP/Large Model Engineer",
-    "MLSys/推理优化": "MLSys/Inference Optimization",
-    "低空综合管理服务平台": "Low-Altitude Comprehensive Management Platform",
-    "全栈软件平台与工具链": "Full-Stack Software Platform & Toolchain",
-    "开启您的AI转型之旅": "Start Your AI Transformation Journey",
-    "江苏省苏州市工业园区": "Industrial Park, Suzhou, Jiangsu",
-    "贵州省贵阳市观山湖区": "Guanshanhu District, Guiyang, Guizhou",
-    "江西省南昌市赣江新区": "Ganjiang New Area, Nanchang, Jiangxi",
-    "数据库内核研发工程师": "Database Kernel R&D Engineer",
-    "悬停查看团建活动照片": "Hover to view team building photos",
-    "SQL代码审计平台": "SQL Code Audit Platform",
-    "申信达诚，朴心进取": "Integrity and Diligence, Pragmatic and Enterprising",
-    "申朴AI・智创无限": "Cisetech AI · Infinite Innovation",
-    "算力供给与集群管理": "Computing Supply & Cluster Management",
-    "人力资源配置与服务": "HR Configuration & Services",
-    "智慧城市·低空经济": "Smart City · Low-Altitude Economy",
-    "AI驱动·极致提效": "AI-Driven · Extreme Efficiency",
-    "安全检测·加固防护": "Security Detection · Hardened Protection",
-    "自主创新 持续突破": "Independent Innovation, Continuous Breakthrough",
-    "资深AI技术专家及": "senior AI technology experts and",
-    "互联网标杆企业以及": "internet benchmark enterprises, and",
-    "了解SQL审计平台": "Learn About SQL Audit Platform",
-    "AI全流程智能服务": "AI Full-Process Intelligent Services",
-    "AI全渠道信息同步": "AI Multi-Channel Information Sync",
-    "AI多场景精准监测": "AI Multi-Scenario Precise Monitoring",
-    "AI全流程健康闭环": "AI Full-Process Health Loop",
-    "AI个性化健康干预": "AI Personalized Health Intervention",
-    "沐曦国产通用GPU": "Maxxiri Domestic General-Purpose GPU",
-    "AI咨询和解决方案": "AI Consulting & Solutions",
-    "AI自动化合规审查": "AI Automated Compliance Review",
-    "互联网行业解决方案": "Internet Industry Solutions",
-    "数据基础设施与治理": "Data Infrastructure & Governance",
-    "高速互联与网络架构": "High-Speed Interconnect & Network Architecture",
-    "湖北省武汉市洪山区": "Hongshan District, Wuhan, Hubei",
-    "辽宁省大连市高新区": "High-Tech Zone, Dalian, Liaoning",
-    "陕西省西安市高新区": "High-Tech Zone, Xi'an, Shaanxi",
-    "河南省郑州市金水区": "Jinshui District, Zhengzhou, Henan",
-    "江苏省南京市建邺区": "Jianye District, Nanjing, Jiangsu",
-    "浙江省杭州市西湖区": "Xihu District, Hangzhou, Zhejiang",
-    "广东省广州市天河区": "Tianhe District, Guangzhou, Guangdong",
-    "广东省珠海市香洲区": "Xiangzhou District, Zhuhai, Guangdong",
-    "海南省海口市龙华区": "Longhua District, Haikou, Hainan",
-    "福建省福州市鼓楼区": "Gulou District, Fuzhou, Fujian",
-    "福建省漳州市芗城区": "Xiangcheng District, Zhangzhou, Fujian",
-    "湖南省长沙市岳麓区": "Yuelu District, Changsha, Hunan",
-    "四川省成都市高新区": "High-Tech Zone, Chengdu, Sichuan",
-    "贵州省安顺市西秀区": "Xixiu District, Anshun, Guizhou",
-    "安徽省亳州市谯城区": "Qiaocheng District, Bozhou, Anhui",
-    "安徽省淮北市相山区": "Xiangshan District, Huaibei, Anhui",
-    "安徽省合肥市蜀山区": "Shushan District, Hefei, Anhui",
-    "福建省厦门市思明区": "Siming District, Xiamen, Fujian",
-    "广东省东莞市南城区": "Nancheng District, Dongguan, Guangdong",
-    "端到端·数字化闭环": "End-to-End Digital Closed Loop",
-    "无缝·跨境服务能力": "Seamless Cross-border Service Capability",
-    "边缘计算研发工程师": "Edge Computing R&D Engineer",
-    "深度学习算法工程师": "Deep Learning Algorithm Engineer",
-    "悬停查看办公环境图": "Hover to view office environment photos",
-    "集中/分布式双能力": "Centralized/Distributed Dual Capabilities",
-    "业务流程人员供给": "Business Process Personnel Supply",
-    "需要定制化产品？": "Need Customized Products?",
-    "覆盖核心技术领域": "Covering Core Technology Areas",
-    "信息安全管理体系": "Information Security Management System",
-    "IT服务管理体系": "IT Service Management System",
-    "软件企业认定证书": "Software Enterprise Certification",
-    "专精特新中小企业": "Specialized, Refined, Differential and Innovative SME",
-    "浦东新区研发机构": "Pudong New Area R&D Institution",
-    "自动化响应与修复": "Automated Response & Remediation",
-    "AI简历智能筛选": "AI Intelligent Resume Screening",
-    "AI智能职位发布": "AI Intelligent Job Posting",
-    "AI人才挖掘储备": "AI Talent Mining & Reserve",
-    "AI数据决策支持": "AI Data-Driven Decision Support",
-    "AI开放生态赋能": "AI Open Ecosystem Empowerment",
-    "合规要求全面满足": "Comprehensive Compliance Satisfaction",
-    "AI专家技术支持": "AI Expert Technical Support",
-    "大数据开发工程师": "Big Data Development Engineer",
-    "AI场景实施方案": "AI Scenario Implementation Plan",
-    "AI动态循环防护": "AI Dynamic Cyclic Protection",
-    "AI实时风险预警": "AI Real-Time Risk Warning",
-    "AI智能风险报告": "AI Intelligent Risk Report",
-    "AI代码安全审查": "AI Code Security Review",
-    "AI适配灵活部署": "AI-Adaptive Flexible Deployment",
-    "诚信经营示范单位": "Integrity Business Demonstration Unit",
-    "AI 招投标助手": "AI Bidding Assistant",
-    "AI数据决策辅助": "AI Data-Driven Decision Assistance",
-    "AI智能标书生成": "AI Intelligent Bid Document Generation",
-    "AI高效信息匹配": "AI Efficient Information Matching",
-    "AI驱动智能运营": "AI-Driven Intelligent Operations",
-    "制造行业解决方案": "Manufacturing Industry Solutions",
-    "内蒙古呼和浩特市": "Hohhot, Inner Mongolia",
-    "员工享有带薪休假": "Employees enjoy paid leave",
-    "互联网安全工程师": "Cybersecurity Engineer",
-    "深度学习/大模型": "Deep Learning / Large Models",
-    "国产通用 GPU": "Domestic General-Purpose GPU",
-    "智能业务流程外包": "Intelligent Business Process Outsourcing",
-    "浙江省桐乡市乌镇": "Wuzhen, Tongxiang, Zhejiang",
-    "浙江省嘉兴市乌镇": "Wuzhen, Jiaxing, Zhejiang",
-    "探索你的无限可能": "Explore Your Infinite Possibilities",
-    "多模态算法工程师": "Multimodal Algorithm Engineer",
-    "智能体研发工程师": "Agent R&D Engineer",
-    "欢迎莅临参观交流": "Welcome to Visit and Exchange",
-    "国产通用GPU": "Domestic General-Purpose GPU",
-    "AI招投标助手": "AI Bidding Assistant",
-    "职场健康加油站": "Workplace Health Station",
-    "扫码关注公众号": "Scan to follow our official account",
-    "战略咨询和规划": "Strategic Consulting & Planning",
-    "本地私有化部署": "On-Premise Private Deployment",
-    "CMMI 5级": "CMMI Level 5",
-    "TMMi 3级": "TMMi Level 3",
-    "测试成熟度模型": "Test Maturity Model",
-    "业务连续性管理": "Business Continuity Management",
-    "从香港辐射海外": "Expanding Overseas from Hong Kong",
-    "值得信赖的服务": "Trusted Services",
-    "了解沐曦GPU": "Learn About Maxxiri GPU",
-    "AI 战略规划": "AI Strategic Planning",
-    "AI 行业应用": "AI Industry Applications",
-    "私有化安全部署": "On-Premise Secure Deployment",
-    "城市级无损容灾": "City-Level Lossless Disaster Recovery",
-    "多语言脚本支持": "Multi-Language Script Support",
-    "高可用架构保障": "High Availability Architecture Assurance",
-    "全链路数据安全": "Full-Link Data Security",
-    "高性能计算能力": "High-Performance Computing",
-    "大容量显存配置": "Large Capacity VRAM",
-    "国产化生态适配": "Domestic Ecosystem Adaptation",
-    "与技术前沿同行": "Walk with Technology Frontiers",
-    "鸿蒙开发工程师": "HarmonyOS Development Engineer",
-    "为什么选择申朴": "Why Choose Cisetech",
-    "AI多维度检测": "AI Multi-Dimensional Detection",
-    "治理性规范企业": "Governance Standard Enterprise",
-    "成长性卓越企业": "Outstanding Growth Enterprise",
-    "AI 招聘助手": "AI Recruitment Assistant",
-    "呼和浩特分公司": "呼和浩特 Branch",
-    "前端开发工程师": "Frontend Development Engineer",
-    "为什么选择我们": "Why Choose Us",
-    "全栈开发工程师": "Full-Stack Development Engineer",
-    "视觉算法工程师": "Visual Algorithm Engineer",
-    "编译优化工程师": "Compilation Optimization Engineer",
-    "内容安全审核员": "Content Security Reviewer",
-    "数据标注工程师": "Data Annotation Engineer",
-    "了解沐歙GPU": "Learn About Maxxiri GPU",
-    "查看全部产品库": "View All Products",
-    "数字化人才交付": "Digital Talent Delivery",
-    "金融级安全合规": "Financial-Grade Security & Compliance",
-    "沐曦GPU算力": "Maxxiri GPU Computing",
-    "高稳定 易部署": "High Stability, Easy Deployment",
-    "查看技术白皮书": "View Technical White Paper",
-    "香港特别行政区": "Hong Kong SAR",
-    "导师1对1指导": "1-on-1 Mentorship",
-    "荣誉资质与IP": "Honors, Qualifications & IP",
-    "等全球顶级认证": "and Other Global Top Certifications",
-    "标记点位置调试": "Marker Position Debugging",
-    "端到端审批时长": "End-to-End Approval Duration",
-    "审批通过率净增": "Approval Rate Net Increase",
-    "Agent安全": "Agent Security",
-    "AI招聘助手": "AI Recruitment Assistant",
-    "离岸交付中心": "Offshore Delivery Centers",
-    "探索AI服务": "Explore AI Services",
-    "国产信创方向": "Domestic IT Innovation",
-    "移动安全方向": "Mobile Security Direction",
-    "客户体验方向": "Customer Experience Direction",
-    "技术人员供给": "Technical Talent Supply",
-    "核心产品方案": "Core Product Solutions",
-    "智能人力资源": "Intelligent HR",
-    "国产算力底座": "Domestic Computing Foundation",
-    "职场健康管理": "Workplace Health Management",
-    "企业级数据库": "Enterprise Database",
-    "查看全部产品": "View All Products",
-    "查看更多资质": "View More Qualifications",
-    "质量管理体系": "Quality Management System",
-    "高新技术企业": "High-Tech Enterprise",
-    "查看更多资讯": "View More News",
-    "获取解决方案": "Get Solutions",
-    "联系我们咨询": "Contact Us for Consultation",
-    "头部保险巨头": "leading insurance giants,",
-    "大型银行机构": "major banking institutions,",
-    "7项技术专利": "7 Technical Patents",
-    "AI基建服务": "AI Infrastructure Services",
-    "全栈链路监控": "Full-Stack Link Monitoring",
-    "智能异常检测": "Intelligent Anomaly Detection",
-    "返回产品列表": "Back to Products",
-    "极致数据压缩": "Extreme Data Compression",
-    "金融级高可用": "Financial-Grade High Availability",
-    "绿色节能设计": "Green Energy-Efficient Design",
-    "查看在招职位": "View Open Positions",
-    "大数据架构师": "Big Data Architect",
-    "AI行业应用": "AI Industry Applications",
-    "AI智能运营": "AI Intelligent Operations",
-    "补充医疗保险": "Supplementary Medical Insurance",
-    "年度健康体检": "Annual Health Checkup",
-    "总部办公地址": "Headquarters Office Address",
-    "代码注入防护": "Code Injection Protection",
-    "业务上线管理": "Business Launch Management",
-    "北京市海淀区": "Haidian District, Beijing",
-    "以人为本文化": "People-Oriented Culture",
-    "了解更多方案": "Learn More Solutions",
-    "了解申朴文化": "Learn About Cisetech Culture",
-    "单均风控成本": "Per-Policy Risk Control Cost",
-    "智能运营专员": "Intelligent Operations Specialist",
-    "内容安全审核": "Content Security Review",
-    "返回核心产品": "Back to Core Products",
-    "立即咨询专家": "Consult an Expert Now",
-    "山东省海阳市": "Haiyang, Shandong",
-    "山西省临汾市": "Linfen, Shanxi",
-    "浙江省丽水市": "Lishui, Zhejiang",
-    "重庆市渝北区": "Yubei District, Chongqing",
-    "江西省南昌市": "Nanchang, Jiangxi",
-    "广东省韶关市": "Shaoguan, Guangdong",
-    "广东省肇庆市": "Zhaoqing, Guangdong",
-    "广东省湛江市": "Zhanjiang, Guangdong",
-    "重庆市奉节县": "Fengjie County, Chongqing",
-    "深圳申朴信息": "Cisetech Shenzhen",
-    "权限审批流程": "Permission Approval Process",
-    "核心业务详情": "Core Business Details",
-    "期待与您合作": "Looking Forward to Collaborating",
-    "安全检测能力": "Security Detection Capabilities",
-    "自动处置响应": "Automated Response",
-    "运营管理能力": "Operations Management Capabilities",
-    "自动巡检机制": "Automated Inspection Mechanism",
-    "数据泄露防护": "Data Leakage Prevention",
-    "模型投毒检测": "Model Poisoning Detection",
-    "过度授权检测": "Excessive Authorization Detection",
-    "极致压缩技术": "Extreme Compression Technology",
-    "全面福利保障": "Comprehensive Benefits",
-    "超棒团队氛围": "Great Team Atmosphere",
-    "全球项目历练": "Global Project Experience",
-    "清晰晋升通道": "Clear Promotion Path",
-    "多元业务场景": "Diverse Business Scenarios",
-    "持续学习成长": "Continuous Learning & Growth",
-    "申能金融大厦": "Shenneng Finance Building",
-    "解决方案详情": "Solution Details",
-    "DevOps": "DevOps",
-    "广东省东莞市": "Dongguan, Guangdong",
-    "生命周期管理": "Lifecycle Management",
-    "周一至周五：": "Monday to Friday:",
-    "AI人才培训": "AI Talent Training",
-    "数据库安全": "Database Security",
-    "审批通过率": "Approval Rate",
-    "软件著作权": "Software Copyrights",
-    "国家级认定": "National Certification",
-    "国内外布局": "Global Presence",
-    "3-10年": "3-10 Years",
-    "测试工程师": "Testing Engineer",
-    "8-10年": "8-10 Years",
-    "10年以上": "10+ Years",
-    "6-10年": "6-10 Years",
-    "数据标注员": "Data Annotator",
-    "发送简历至": "Send resume to",
-    "下载白皮书": "Download White Paper",
-    "2010年": "2010",
-    "2011年": "2011",
-    "2012年": "2012",
-    "2013年": "2013",
-    "2014年": "2014",
-    "2015年": "2015",
-    "2016年": "2016",
-    "2017年": "2017",
-    "2018年": "2018",
-    "2019年": "2019",
-    "2020年": "2020",
-    "2021年": "2021",
-    "2022年": "2022",
-    "2023年": "2023",
-    "2024年": "2024",
-    "2025年": "2025",
-    "2026年": "2026",
-    "NLP客服": "NLP Customer Service",
-    "北京分公司": "北京 Branch",
-    "南京分公司": "南京 Branch",
-    "东莞分公司": "东莞 Branch",
-    "临汾分公司": "临汾 Branch",
-    "丽水分公司": "丽水 Branch",
-    "乌镇分公司": "乌镇 Branch",
-    "厦门分公司": "厦门 Branch",
-    "合肥分公司": "合肥 Branch",
-    "南昌分公司": "南昌 Branch",
-    "卓越技术栈": "Excellent Tech Stack",
-    "前沿技术栈": "Cutting-Edge Tech Stack",
-    "客服热线：": "Customer Service Hotline: ",
-    "不良率净降": "Defect Rate Reduction",
-    "应届毕业生": "Fresh Graduate",
-    "宁夏银川市": "Yinchuan, Ningxia",
-    "大连分公司": "Dalian Branch",
-    "海阳分公司": "Haiyang Branch",
-    "银川分公司": "Yinchuan Branch",
-    "西安分公司": "Xi'an Branch",
-    "郑州分公司": "Zhengzhou Branch",
-    "苏州分公司": "Suzhou Branch",
-    "杭州分公司": "Hangzhou Branch",
-    "广州分公司": "Guangzhou Branch",
-    "珠海分公司": "Zhuhai Branch",
-    "海口分公司": "Haikou Branch",
-    "福州分公司": "Fuzhou Branch",
-    "漳州分公司": "Zhangzhou Branch",
-    "长沙分公司": "Changsha Branch",
-    "成都分公司": "Chengdu Branch",
-    "贵阳分公司": "Guiyang Branch",
-    "安顺分公司": "Anshun Branch",
-    "亳州分公司": "Bozhou Branch",
-    "淮北分公司": "Huaibei Branch",
-    "赣江分公司": "Ganjiang Branch",
-    "奉节分公司": "Fengjie Branch",
-    "调整标记点": "Adjust Markers",
-    "权限未开通": "Permission Not Activated",
-    "城商行实践": "City Commercial Bank Practice",
-    "全方位成长": "All-Around Growth",
-    "节假日休息": "Holiday Rest",
-    "商务合作：": "Business Cooperation:",
-    "健全的激励": "Comprehensive Incentives",
-    "大健康领域": "Health & Wellness Sector",
-    "技术白皮书": "Technical White Paper",
-    "本科及以上": "Bachelor's and above",
-    "硕士及以上": "Master's and above",
-    "香港子公司": "Hong Kong Subsidiary",
-    "核心产品": "Core Products",
-    "企业实力": "Enterprise Strength",
-    "荣誉资质": "Honors & Qualifications",
-    "权威客户": "Trusted Clients",
-    "招贤纳士": "Careers",
-    "常招职位": "Open Positions",
-    "文化环境": "Culture & Environment",
-    "关于我们": "About Us",
-    "关于申朴": "About Cisetech",
-    "企业文化": "Corporate Culture",
-    "发展历程": "Development History",
-    "分支机构": "Branch Offices",
-    "咨询合作": "Contact & Cooperation",
-    "申朴信息": "Cisetech",
-    "联系我们": "Contact Us",
-    "关注我们": "Follow Us",
-    "隐私政策": "Privacy Policy",
-    "使用条款": "Terms of Use",
-    "网站地图": "Sitemap",
-    "立即咨询": "Contact Us Now",
-    "核心业务": "Core Business",
-    "顶层设计": "Top-Level Design",
-    "应用模式": "Application Models",
-    "技术选型": "Technology Selection",
-    "解决方案": "Solutions",
-    "数据加工": "Data Processing",
-    "模型训练": "Model Training",
-    "信息安全": "Information Security",
-    "用户体验": "User Experience",
-    "AI方向": "AI Direction",
-    "AI基建": "AI Infrastructure",
-    "用工配置": "Employment Configuration",
-    "交付模式": "Delivery Model",
-    "详情介绍": "Details",
-    "了解详情": "Learn More",
-    "智慧办公": "Smart Office",
-    "申请试用": "Request Trial",
-    "相关案例": "Related Cases",
-    "审批时长": "Approval Duration",
-    "资质认证": "Qualification Certifications",
-    "专利证书": "Patent Certificates",
-    "核心数据": "Key Metrics",
-    "企业客户": "Enterprise Clients",
-    "技术专家": "Technical Experts",
-    "核心资质": "Core Qualifications",
-    "企业资讯": "Company News",
-    "行业动态": "Industry Updates",
-    "合作签约": "Partnership Signing",
-    "产品发布": "Product Launch",
-    "公司动态": "Company Updates",
-    "立即合作": "Cooperate Now",
-    "阅读更多": "Read More",
-    "年 深耕": "Years of Deep Expertise",
-    "服务客户": "Clients Served",
-    "服务项目": "Projects Delivered",
-    "企业愿景": "Corporate Vision",
-    "核心价值": "Core Values",
-    "亚洲大陆": "Asia",
-    "欧洲大陆": "Europe",
-    "非洲大陆": "Africa",
-    "客户认可": "Client Recognition",
-    "证券基金": "Securities & Funds",
-    "数据要素": "Data Elements",
-    "金融科技": "Fintech",
-    "新型制造": "Advanced Manufacturing",
-    "软件企业": "Software Enterprise",
-    "加入申朴": "Join Cisetech",
-    "技术深耕": "Technical Depth",
-    "广阔平台": "Broad Platform",
-    "快速成长": "Rapid Growth",
-    "温暖关怀": "Warm Care",
-    "热招职位": "Open Positions",
-    "1-3年": "1-3 Years",
-    "2-6年": "2-6 Years",
-    "3-5年": "3-5 Years",
-    "5-8年": "5-8 Years",
-    "3-6年": "3-6 Years",
-    "3-8年": "3-8 Years",
-    "产品经理": "Product Manager",
-    "项目经理": "Project Manager",
-    "员工福利": "Employee Benefits",
-    "五险一金": "Five Insurances & Housing Fund",
-    "带薪年假": "Paid Annual Leave",
-    "弹性工作": "Flexible Working",
-    "技术培训": "Technical Training",
-    "团队建设": "Team Building",
-    "节日福利": "Holiday Benefits",
-    "员工关怀": "Employee Care",
-    "舒适办公": "Comfortable Office",
-    "技术成长": "Technical Growth",
-    "生活平衡": "Work-Life Balance",
-    "健康保障": "Health Protection",
-    "投递简历": "Submit Resume",
-    "工作时间": "Working Hours",
-    "浦东新区": "Pudong New Area",
-    "查看详情": "View Details",
-    "了解更多": "Learn More",
-    "查看更多": "View More",
-    "返回顶部": "Back to Top",
-    "加载更多": "Load More",
-    "下载预览": "Download Preview",
-    "上传简历": "Upload Resume",
-    "合规加固": "Compliance Hardening",
-    "华东地区": "East China",
-    "华中地区": "Central China",
-    "华北地区": "North China",
-    "华南地区": "South China",
-    "呼和浩特": "呼和浩特",
-    "华腾国际": "Huateng International",
-    "任职要求": "Requirements",
-    "公司福利": "Company Benefits",
-    "周末休息": "Weekend Rest",
-    "了解服务": "Learn About Services",
-    "项目助理": "Project Assistant",
-    "测试专家": "Testing Expert",
-    "编译优化": "Compilation Optimization",
-    "智能运营": "Intelligent Operations",
-    "经验不限": "Experience Not Required",
-    "提交投递": "Submit Application",
-    "立即致电": "Call Now",
-    "我知道了": "Got It",
-    "职位描述": "Job Description",
-    "荣誉奖项": "Honors & Awards",
-    "西南地区": "Southwest China",
-    "西北地区": "Northwest China",
-    "软件著作": "Software Copyrights",
-    "更多资讯": "More News",
-    "荣获奖项": "Awards Won",
-    "自有产品": "Proprietary Products",
-    "立即开始": "Get Started",
-    "目录导航": "Navigation",
-    "长路同行": "Long Journey Together",
-    "实时风控": "Real-Time Risk Control",
-    "电话咨询": "Phone Consultation",
-    "智能识别": "Intelligent Recognition",
-    "机制体系": "Mechanism System",
-    "充实生活": "Fulfilling Life",
-    "风险检测": "Risk Detection",
-    "智能风控": "Intelligent Risk Control",
-    "部门团建": "Team Building",
-    "自我介绍": "Self Introduction",
-    "工作年限": "Years of Experience",
-    "年起深耕": "Years of Deep Expertise",
-    "社会保障": "Social Security",
-    "社会招聘": "Social Recruitment",
-    "校园招聘": "Campus Recruitment",
-    "薪酬福利": "Compensation & Benefits",
-    "工作地点": "Work Location",
-    "经验要求": "Experience Required",
-    "学历要求": "Education Required",
-    "前端开发": "Frontend Development",
-    "后端开发": "Backend Development",
-    "算法开发": "Algorithm Development",
-    "安全开发": "Security Development",
-    "测试开发": "Test Development",
-    "项目管理": "Project Management",
-    "产品运营": "Product Operations",
-    "数据分析": "Data Analysis",
-    "基础架构": "Infrastructure",
-    "信贷审批": "Credit Approval",
-    "跨境服务": "Cross-border Services",
-    "朴心进取": "Pure-hearted Progress",
-    "职位名称": "Position Title",
-    "投递成功": "Submission Successful",
-    "绩效奖金": "Performance Bonus",
-    "邮件咨询": "Email Inquiry",
-    "案例一": "Case 1",
-    "案例二": "Case 2",
-    "案例三": "Case 3",
-    "即未来": "is the Future",
-    "北美洲": "North America",
-    "南美洲": "South America",
-    "大洋洲": "Oceania",
-    "15项": "15 Items",
-    "互联网": "Internet",
-    "技术类": "Technical",
-    "产品类": "Product",
-    "运营类": "Operations",
-    "产品一": "Product 1",
-    "产品二": "Product 2",
-    "产品三": "Product 3",
-    "产品四": "Product 4",
-    "产品五": "Product 5",
-    "产品六": "Product 6",
-    "产品七": "Product 7",
-    "卓越城": "Excellence City",
-    "长三角": "Yangtze River Delta",
-    "纬度:": "Latitude:",
-    "经度:": "Longitude:",
-    "请选择": "Please Select",
-    "手机号": "Mobile Number",
-    "SRE": "SRE",
-    "DBA": "DBA",
-    "首页": "Home",
-    "产品": "Products",
-    "员工": "Employees",
-    "认证": "Certifications",
-    "7项": "7 Items",
-    "保险": "Insurance",
-    "银行": "Banking",
-    "其他": "Others",
-    "全部": "All",
-    "上海": "Shanghai",
-    "电话": "Phone",
-    "邮箱": "Email",
-    "菜单": "Menu",
-    "发送": "Send",
-    "提交": "Submit",
-    "关闭": "Close",
-    "搜索": "Search",
-    "收起": "Collapse",
-    "展开": "Expand",
-    "北京": "北京",
-    "南京": "南京",
-    "东莞": "东莞",
-    "临汾": "临汾",
-    "丽水": "丽水",
-    "乌镇": "乌镇",
-    "厦门": "厦门",
-    "合肥": "合肥",
-    "南昌": "南昌",
-    "取消": "Cancel",
-    "双休": "Weekends Off",
-    "中文": "Chinese",
-    "待定": "TBD",
-    "海阳": "Haiyang",
-    "银川": "Yinchuan",
-    "重庆": "Chongqing",
-    "武汉": "Wuhan",
-    "韶关": "Shaoguan",
-    "肇庆": "Zhaoqing",
-    "深圳": "Shenzhen",
-    "湛江": "Zhanjiang",
-    "大连": "Dalian",
-    "西安": "Xi'an",
-    "郑州": "Zhengzhou",
-    "苏州": "Suzhou",
-    "杭州": "Hangzhou",
-    "广州": "Guangzhou",
-    "珠海": "Zhuhai",
-    "海口": "Haikou",
-    "福州": "Fuzhou",
-    "漳州": "Zhangzhou",
-    "长沙": "Changsha",
-    "成都": "Chengdu",
-    "贵阳": "Guiyang",
-    "安顺": "Anshun",
-    "亳州": "Bozhou",
-    "淮北": "Huaibei",
-    "赣江": "Ganjiang",
-    "奉节": "Fengjie",
-    "不限": "Not Required",
-    "设计": "Design",
-    "市场": "Marketing",
-    "销售": "Sales",
-    "人事": "HR",
-    "财务": "Finance",
-    "行政": "Administration",
-    "法务": "Legal",
-    "运维": "Operations",
-    "香港": "Hong Kong",
-    "姓名": "Name",
+// 翻译字典 - 包含所有页面的文本
+const translations = {
+    zh: {
+        // 导航菜单
+        'nav.home': '首页',
+        'nav.products': '核心产品',
+        'nav.qualifications': '企业实力',
+        'nav.joins': '招贤纳士',
+        'nav.about': '关于我们',
+        'nav.contact': '咨询合作',
+        'nav.about-us': '关于申朴',
+        'nav.news': '申朴资讯',
+        
+        // 首页 Banner
+        'banner.title1': 'Cisetech',
+        'banner.slogan1': '申朴AI・智创无限',
+        'banner.desc1': 'AI 聚力数转智改，创领智能新生态',
+        'banner.title2': '数字化转型',
+        'banner.slogan2': '全栈式解决方案',
+        'banner.desc2': '从咨询规划到落地实施，助力企业实现数字化升级',
+        'banner.title3': '技术创新',
+        'banner.slogan3': '前沿技术 · 无限可能',
+        'banner.desc3': '深耕AI、大数据、云计算，打造企业核心竞争力',
+        
+        // 核心业务
+        'section.core-business.title': '核心业务',
+        'section.core-business.subtitle': '全栈AI能力，赋能企业智能化转型',
+        'section.ai-consulting': '战略规划',
+        'section.ai-infra': '解决方案',
+        'section.ai-solutions': '产品',
+        'section.talent': '人力资源配置与服务',
+        
+        // 关于我们
+        'about.title': '关于申朴',
+        'about.subtitle': '专注金融科技与企业数字化转型',
+        'about.intro': '申朴信息技术（上海）股份有限公司',
+        'about.mission': '我们的使命',
+        'about.vision': '我们的愿景',
+        'about.values': '核心价值观',
+        'about.history': '发展历程',
+        
+        // 企业实力
+        'qualifications.title': '企业实力',
+        'qualifications.subtitle': '专业资质，值得信赖',
+        'qualifications.certifications': '资质认证',
+        'qualifications.honors': '荣誉奖项',
+        
+        // 核心产品
+        'products.title': '核心产品',
+        'products.subtitle': '创新产品，赋能业务',
+        'products.simple-insight': 'Simple Insight',
+        'products.muxi-gpu': '沐曦国产通用GPU',
+        'products.oceanbase': 'OceanBase数据库',
+        'products.ai-recruit': 'AI招聘助手',
+        'products.ai-bidding': 'AI招投标助手',
+        'products.ai-health': '职场健康加油站',
+        
+        // 招贤纳士
+        'joins.title': '招贤纳士',
+        'joins.subtitle': '加入我们，共创未来',
+        'joins.positions': '热招职位',
+        'joins.benefits': '员工福利',
+        
+        // 联系我们
+        'contact.title': '联系我们',
+        'contact.subtitle': '期待与您合作',
+        'contact.info': '联系方式',
+        'contact.address': '公司地址',
+        'contact.phone': '联系电话',
+        'contact.email': '电子邮箱',
+        
+        // 申朴资讯
+        'news.title': '申朴资讯',
+        'news.subtitle': '最新动态，了解申朴',
+        'news.latest': '最新资讯',
+        'news.more': '查看更多'
+    },
+    en: {
+        // Navigation Menu
+        'nav.home': 'Home',
+        'nav.products': 'Core Products',
+        'nav.qualifications': 'Qualifications',
+        'nav.joins': 'Careers',
+        'nav.about': 'About',
+        'nav.contact': 'Contact',
+        'nav.about-us': 'About Cisetech',
+        'nav.news': 'News',
+        
+        // Home Banner
+        'banner.title1': 'Cisetech',
+        'banner.slogan1': 'AI Empowered, Infinite Innovation',
+        'banner.desc1': 'AI driven digital transformation, creating intelligent ecosystem',
+        'banner.title2': 'Digital Transformation',
+        'banner.slogan2': 'Full-Stack Solutions',
+        'banner.desc2': 'From consulting to implementation, enabling enterprise digital upgrade',
+        'banner.title3': 'Technology Innovation',
+        'banner.slogan3': 'Frontier Technology, Infinite Possibilities',
+        'banner.desc3': 'Deep expertise in AI, Big Data, Cloud Computing, building core competitiveness',
+        
+        // Core Business
+        'section.core-business.title': 'Core Business',
+        'section.core-business.subtitle': 'Full-stack AI capabilities, empowering enterprise intelligent transformation',
+        'section.ai-consulting': 'AI Consulting',
+        'section.ai-infra': 'AI Infrastructure Services',
+        'section.ai-solutions': 'AI Agent Development & Implementation',
+        'section.talent': 'Talent Services',
+        
+        // About Us
+        'about.title': 'About Cisetech',
+        'about.subtitle': 'Focusing on Fintech and Enterprise Digital Transformation',
+        'about.intro': 'Cisetech (Shanghai) Co., Ltd.',
+        'about.mission': 'Our Mission',
+        'about.vision': 'Our Vision',
+        'about.values': 'Core Values',
+        'about.history': 'Company History',
+        
+        // Qualifications
+        'qualifications.title': 'Qualifications',
+        'qualifications.subtitle': 'Professional Qualifications, Trustworthy',
+        'qualifications.certifications': 'Certifications',
+        'qualifications.honors': 'Honors & Awards',
+        
+        // Products
+        'products.title': 'Core Products',
+        'products.subtitle': 'Innovative Products, Empowering Business',
+        'products.simple-insight': 'Simple Insight',
+        'products.muxi-gpu': 'Maxxiri GPU',
+        'products.oceanbase': 'OceanBase Database',
+        'products.ai-recruit': 'AI Recruitment Assistant',
+        'products.ai-bidding': 'AI Bidding Assistant',
+        'products.ai-health': 'Workplace Health Station',
+        
+        // Careers
+        'joins.title': 'Careers',
+        'joins.subtitle': 'Join Us, Create the Future',
+        'joins.positions': 'Open Positions',
+        'joins.benefits': 'Employee Benefits',
+        
+        // Contact
+        'contact.title': 'Contact Us',
+        'contact.subtitle': 'Looking Forward to Working with You',
+        'contact.info': 'Contact Information',
+        'contact.address': 'Company Address',
+        'contact.phone': 'Phone Number',
+        'contact.email': 'Email Address',
+        
+        // News
+        'news.title': 'News',
+        'news.subtitle': 'Latest Updates, Learn About Cisetech',
+        'news.latest': 'Latest News',
+        'news.more': 'View More'
+    }
 };
 
-const sortedKeys = Object.keys(zhToEn).sort((a, b) => b.length - a.length);
+// 页面选择器映射 - 每个页面的需要翻译的元素选择器
+const pageSelectors = {
+    // 首页
+    'index.html': {
+        'nav.home': 'a[href="index.html"].nav-link',
+        'nav.products': '.nav-dropdown a[href="services.html#products"]',
+        'nav.qualifications': 'a[href="qualifications.html"].nav-link',
+        'nav.joins': 'a[href="joins.html"].nav-link',
+        'nav.contact': 'a[href="contact.html"]',
+        'nav.about-us': '.nav-dropdown-menu a[href="about.html"]',
+        'nav.news': '.nav-dropdown-menu a[href="news.html"]',
+        'section.core-business.title': '[data-section="services"] h2',
+        'section.core-business.subtitle': '[data-section="services"] .text-slate-400'
+    },
+    // 关于我们
+    'about.html': {
+        'nav.home': 'a[href="index.html"].nav-link',
+        'nav.products': '.nav-dropdown a[href="services.html#products"]',
+        'nav.qualifications': 'a[href="qualifications.html"].nav-link',
+        'nav.joins': 'a[href="joins.html"].nav-link',
+        'nav.contact': 'a[href="contact.html"]',
+        'nav.about-us': '.nav-dropdown a[href="about.html"]',
+        'nav.news': '.nav-dropdown-menu a[href="news.html"]',
+        'about.title': '.page-header h1',
+        'about.history': '.section-title'
+    },
+    // 企业实力
+    'qualifications.html': {
+        'nav.home': 'a[href="index.html"].nav-link',
+        'nav.products': '.nav-dropdown a[href="services.html#products"]',
+        'nav.qualifications': 'a[href="qualifications.html"].nav-link',
+        'nav.joins': 'a[href="joins.html"].nav-link',
+        'nav.contact': 'a[href="contact.html"]',
+        'nav.about-us': '.nav-dropdown a[href="about.html"]',
+        'nav.news': '.nav-dropdown-menu a[href="news.html"]',
+        'qualifications.title': '.page-header h1',
+        'qualifications.subtitle': '.section-subtitle'
+    },
+    // 核心产品
+    'services.html': {
+        'nav.home': 'a[href="index.html"].nav-link',
+        'nav.products': '.nav-dropdown a[href="services.html#products"]',
+        'nav.qualifications': 'a[href="qualifications.html"].nav-link',
+        'nav.joins': 'a[href="joins.html"].nav-link',
+        'nav.contact': 'a[href="contact.html"]',
+        'nav.about-us': '.nav-dropdown a[href="about.html"]',
+        'nav.news': '.nav-dropdown-menu a[href="news.html"]',
+        'products.title': '.hero-text-slide h1',
+        'products.subtitle': '.section-subtitle'
+    },
+    // 招贤纳士
+    'joins.html': {
+        'nav.home': 'a[href="index.html"].nav-link',
+        'nav.products': '.nav-dropdown a[href="services.html#products"]',
+        'nav.qualifications': 'a[href="qualifications.html"].nav-link',
+        'nav.joins': 'a[href="joins.html"].nav-link',
+        'nav.contact': 'a[href="contact.html"]',
+        'nav.about-us': '.nav-dropdown a[href="about.html"]',
+        'nav.news': '.nav-dropdown-menu a[href="news.html"]',
+        'joins.title': '.page-header h1',
+        'joins.subtitle': '.section-subtitle'
+    },
+    // 联系我们
+    'contact.html': {
+        'nav.home': 'a[href="index.html"].nav-link',
+        'nav.products': '.nav-dropdown a[href="services.html#products"]',
+        'nav.qualifications': 'a[href="qualifications.html"].nav-link',
+        'nav.joins': 'a[href="joins.html"].nav-link',
+        'nav.contact': 'a[href="contact.html"]',
+        'nav.about-us': '.nav-dropdown a[href="about.html"]',
+        'nav.news': '.nav-dropdown-menu a[href="news.html"]',
+        'contact.title': '.page-header h1',
+        'contact.subtitle': '.section-subtitle'
+    },
+    // 申朴资讯
+    'news.html': {
+        'nav.home': 'a[href="index.html"].nav-link',
+        'nav.products': '.nav-dropdown a[href="services.html#products"]',
+        'nav.qualifications': 'a[href="qualifications.html"].nav-link',
+        'nav.joins': 'a[href="joins.html"].nav-link',
+        'nav.contact': 'a[href="contact.html"]',
+        'nav.about-us': '.nav-dropdown a[href="about.html"]',
+        'nav.news': '.nav-dropdown a[href="news.html"]',
+        'news.title': 'h1',
+        'news.subtitle': '.section-subtitle'
+    },
+    // 业务详情
+    'business-detail.html': {
+        'nav.home': 'a[href="index.html"].nav-link',
+        'nav.products': '.nav-dropdown a[href="services.html#products"]',
+        'nav.qualifications': 'a[href="qualifications.html"].nav-link',
+        'nav.joins': 'a[href="joins.html"].nav-link',
+        'nav.contact': 'a[href="contact.html"]',
+        'nav.about-us': '.nav-dropdown a[href="about.html"]',
+        'nav.news': '.nav-dropdown-menu a[href="news.html"]'
+    }
+};
 
+// 获取当前语言，默认为中文
+let currentLang = localStorage.getItem('siteLanguage') || 'zh';
+
+// 切换语言函数
 function switchLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('siteLanguage', lang);
     
-    // Update active button state
+    // 更新语言切换按钮的激活状态
     document.querySelectorAll('.lang-switch').forEach(btn => {
         if (btn.dataset.lang === lang) {
-            btn.classList.add('text-cyan-400');
+            btn.classList.add('active', 'text-cyan-400');
             btn.classList.remove('text-slate-300');
-            btn.classList.add('active');
         } else {
-            btn.classList.remove('text-cyan-400');
+            btn.classList.remove('active', 'text-cyan-400');
             btn.classList.add('text-slate-300');
-            btn.classList.remove('active');
         }
     });
     
-    updatePageText(lang);
+    // 更新页面上的文本
+    updatePageText();
 }
 
-function updatePageText(lang) {
-    // Update page title
-    const path = window.location.pathname;
-    const pageMap = {
-        '/': 'index', '/index.html': 'index',
-        '/about.html': 'about', '/qualifications.html': 'qualifications',
-        '/services.html': 'services', '/joins.html': 'joins',
-        '/contact.html': 'contact', '/business-detail.html': 'business-detail'
-    };
-    const pageName = pageMap[path] || 'index';
-    const titleMap = {"index": {"zh": "申朴信息 - AI驱动的数字技术服务商", "en": "Cisetech - AI-Driven Digital Technology Services"}, "about": {"zh": "关于申朴 - 申朴信息", "en": "About Cisetech - Cisetech Information"}, "qualifications": {"zh": "企业实力 - 申朴信息", "en": "Capabilities - Cisetech Information"}, "services": {"zh": "核心产品 - 申朴信息", "en": "Core Products - Cisetech Information"}, "joins": {"zh": "招贤纳士 - 申朴信息", "en": "Careers - Cisetech Information"}, "contact": {"zh": "联系我们 - 申朴信息", "en": "Contact Us - Cisetech Information"}, "business-detail": {"zh": "产品详情 - 申朴信息", "en": "Product Details - Cisetech Information"}};
-    if (titleMap[pageName]) {
-        document.title = titleMap[pageName][lang] || document.title;
-    }
-    
-    // Translate or restore all text nodes
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-    const textNodes = [];
-    while (walker.nextNode()) {
-        const node = walker.currentNode;
-        const text = node.textContent.trim();
-        if (text && /[\u4e00-\u9fff]/.test(text)) {
-            textNodes.push(node);
+// 更新页面文本
+function updatePageText() {
+    try {
+        // 获取当前页面文件名
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+        // 获取当前页面的选择器
+        const selectors = pageSelectors[currentPage] || pageSelectors['index.html'];
+
+        // 更新导航菜单（通用）
+        updateNavigation();
+
+        // 更新所有带有 data-i18n 属性的元素
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLang][key]) {
+                element.textContent = translations[currentLang][key];
+            }
+        });
+
+        // 更新页面特定内容（不包括data-i18n已经处理的）
+        for (const [key, selector] of Object.entries(selectors)) {
+            if (translations[currentLang][key]) {
+                try {
+                    const elements = document.querySelectorAll(selector);
+                    elements.forEach(element => {
+                        // 确保元素不在header导航栏内且不是logo元素，并且没有data-i18n属性
+                        if (!element.closest('header') &&
+                            !element.classList.contains('site-logo-text') &&
+                            !element.hasAttribute('data-i18n')) {
+                            element.textContent = translations[currentLang][key];
+                        }
+                    });
+                } catch (e) {
+                    console.warn(`Failed to update element with selector "${selector}":`, e);
+                }
+            }
         }
+
+        // 更新 Banner（仅首页）
+        if (currentPage === 'index.html') {
+            updateBanner();
+        }
+    } catch (error) {
+        console.error('Error updating page text:', error);
     }
-    
-    textNodes.forEach(node => {
-        const parent = node.parentElement;
-        if (!parent) return;
+}
+
+// 更新导航菜单（所有页面通用）
+function updateNavigation() {
+    try {
+        // 桌面端导航 - 使用更精确的选择器
+        const navLinks = {
+            'nav.home': 'a[href="index.html"].nav-link',
+            'nav.products': '.nav-dropdown a[href="services.html#products"]',
+            'nav.qualifications': 'a[href="qualifications.html"].nav-link',
+            'nav.joins': 'a[href="joins.html"].nav-link',
+            'nav.about': '.nav-dropdown a[href="about.html"]',
+            'nav.contact': 'a[href="contact.html"]'
+        };
         
-        if (lang === 'en') {
-            // Store original Chinese text for restoration
-            if (!parent.dataset.origText) {
-                parent.dataset.origText = parent.innerHTML;
-            }
-            // Translate
-            const translated = translateText(node.textContent);
-            if (translated !== node.textContent) {
-                node.textContent = translated;
-            }
-        } else {
-            // Restore original Chinese
-            if (parent.dataset.origText) {
-                parent.innerHTML = parent.dataset.origText;
-                delete parent.dataset.origText;
+        // 下拉菜单
+        const dropdownLinks = {
+            'nav.about-us': '.nav-dropdown-menu a[href="about.html"]',
+            'nav.news': '.nav-dropdown-menu a[href="news.html"]'
+        };
+        
+        // 移动端导航
+        const mobileNavLinks = {
+            'nav.home': '#mobileNav > a[href="index.html"]',
+            'nav.products': '#mobileSubmenuTrigger span',
+            'nav.qualifications': '#mobileNav > a[href="qualifications.html"]',
+            'nav.joins': '#mobileNav > a[href="joins.html"]',
+            'nav.contact': '#mobileNav a[href="contact.html"]',
+            'nav.about-us': '#mobileAboutSubmenuTrigger span',
+            'nav.news': '#mobileAboutSubmenuItems a[href="news.html"]'
+        };
+        
+        // 更新桌面端导航链接
+        for (const [key, selector] of Object.entries(navLinks)) {
+            if (translations[currentLang][key]) {
+                try {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.textContent = translations[currentLang][key];
+                    }
+                } catch (e) {
+                    console.warn(`Failed to update nav link with selector "${selector}":`, e);
+                }
             }
         }
-    });
-    
-    // Handle image alt attributes
-    updateImageAlt(lang);
-    
-    // Handle input placeholders
-    updatePlaceholders(lang);
-}
-
-function translateText(text) {
-    if (!text || !/[\u4e00-\u9fff]/.test(text)) return text;
-    
-    // 1. Exact match
-    if (zhToEn[text]) return zhToEn[text];
-    
-    // 2. Normalized whitespace match
-    const normalized = text.replace(/\s+/g, ' ');
-    if (zhToEn[normalized]) return zhToEn[normalized];
-    
-    // 3. Substring replacement (longest first)
-    let result = text;
-    let changed = false;
-    for (const zh of sortedKeys) {
-        if (zh.length < 2) continue;
-        if (result.includes(zh)) {
-            result = result.replace(new RegExp(escapeRegExp(zh), "g"), zhToEn[zh]);
-            changed = true;
+        
+        // 更新下拉菜单链接
+        for (const [key, selector] of Object.entries(dropdownLinks)) {
+            if (translations[currentLang][key]) {
+                try {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.textContent = translations[currentLang][key];
+                    }
+                } catch (e) {
+                    console.warn(`Failed to update dropdown link with selector "${selector}":`, e);
+                }
+            }
         }
+        
+        // 更新移动端导航链接
+        for (const [key, selector] of Object.entries(mobileNavLinks)) {
+            if (translations[currentLang][key]) {
+                try {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.textContent = translations[currentLang][key];
+                    }
+                } catch (e) {
+                    console.warn(`Failed to update mobile nav link with selector "${selector}":`, e);
+                }
+            }
+        }
+    } catch (error) {
+        console.error('Error updating navigation:', error);
     }
-    
-    return changed ? result : text;
 }
 
-function escapeRegExp(string) {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function updateImageAlt(lang) {
-    const altMap = {
-        "Cisetech AI\u8d4b\u80fd": "Cisetech AI Empowerment",
-        "\u7533\u6734\u4fe1\u606f": "Cisetech Information",
-        "\u5168\u7403\u5e03\u5c40": "Global Presence",
-        "AI\u6280\u672f": "AI Technology",
-    };
-    
-    document.querySelectorAll('img[alt]').forEach(img => {
-        if (lang === 'en') {
-            if (!img.dataset.origAlt) img.dataset.origAlt = img.alt;
-            if (altMap[img.alt]) img.alt = altMap[img.alt];
-            else {
-                const translated = translateText(img.alt);
-                if (translated !== img.alt) img.alt = translated;
+// 更新 Banner（仅首页）
+function updateBanner() {
+    try {
+        const slides = [0, 1, 2];
+        const keys = ['title', 'slogan', 'desc'];
+        
+        slides.forEach(slideIndex => {
+            const slide = document.querySelector(`.banner-slide[data-slide="${slideIndex}"]`);
+            if (slide) {
+                const title = slide.querySelector('.hero-title');
+                const slogan = slide.querySelector('.ai-glow');
+                const desc = slide.querySelector('.banner-content .text-slate-200:not(.ai-glow)');
+                
+                if (title) title.textContent = translations[currentLang][`banner.title${slideIndex + 1}`];
+                if (slogan) slogan.textContent = translations[currentLang][`banner.slogan${slideIndex + 1}`];
+                if (desc) desc.textContent = translations[currentLang][`banner.desc${slideIndex + 1}`];
             }
-        } else {
-            if (img.dataset.origAlt) {
-                img.alt = img.dataset.origAlt;
-                delete img.dataset.origAlt;
-            }
-        }
-    });
+        });
+    } catch (error) {
+        console.error('Error updating banner:', error);
+    }
 }
 
-function updatePlaceholders(lang) {
-    document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
-        if (lang === 'en') {
-            if (!el.dataset.origPlaceholder) el.dataset.origPlaceholder = el.placeholder;
-            const translated = translateText(el.placeholder);
-            if (translated !== el.placeholder) el.placeholder = translated;
-        } else {
-            if (el.dataset.origPlaceholder) {
-                el.placeholder = el.dataset.origPlaceholder;
-                delete el.dataset.origPlaceholder;
-            }
-        }
-    });
-}
-
+// 初始化语言
 function initLanguage() {
-    const savedLang = localStorage.getItem('siteLanguage') || 'zh';
-    currentLang = savedLang;
-    
-    // Set active button state
+    // 设置语言切换按钮的激活状态
     document.querySelectorAll('.lang-switch').forEach(btn => {
-        if (btn.dataset.lang === savedLang) {
-            btn.classList.add('text-cyan-400');
+        if (btn.dataset.lang === currentLang) {
+            btn.classList.add('active', 'text-cyan-400');
             btn.classList.remove('text-slate-300');
-            btn.classList.add('active');
         } else {
-            btn.classList.remove('text-cyan-400');
+            btn.classList.remove('active', 'text-cyan-400');
             btn.classList.add('text-slate-300');
-            btn.classList.remove('active');
         }
     });
     
-    // Apply saved language
-    if (savedLang === 'en') {
-        updatePageText('en');
-    }
+    // 更新页面文本
+    updatePageText();
 }
 
+// 绑定语言切换事件
 function bindLanguageEvents() {
     document.querySelectorAll('.lang-switch').forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', (e) => {
             e.preventDefault();
-            const lang = this.dataset.lang;
-            if (lang && lang !== currentLang) {
-                switchLanguage(lang);
-            }
+            const lang = btn.dataset.lang;
+            switchLanguage(lang);
         });
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    initLanguage();
+// 等待DOM加载完成
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        bindLanguageEvents();
+        initLanguage();
+    });
+} else {
+    // DOM已经加载完成
     bindLanguageEvents();
-});
+    // 延迟一点执行，确保所有元素都已渲染
+    setTimeout(initLanguage, 100);
+}
